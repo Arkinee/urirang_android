@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/email_login_linear_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/email_login_back_arrow"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/info_description"
+            android:onClick="emailLoginOnClick"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:src="@drawable/ic_back_arrow" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/email_login_view_border"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorInfoBorder"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_linear_top" />
+
+    <TextView
+        android:id="@+id/email_login_tv_word_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="19sp"
+        android:text="@string/email_login_tv_word_email"
+        android:textColor="@android:color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_view_border" />
+
+    <TextView
+        android:id="@+id/info_tv_and"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="19sp"
+        android:text="@string/email_login_tv_word_suffix"
+        android:textColor="@android:color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/email_login_tv_word_email"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_view_border" />
+
+    <TextView
+        android:id="@+id/email_login_tv_word_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="19sp"
+        android:text="@string/email_login_tv_word_login"
+        android:textColor="@android:color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/email_login_tv_word_email"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_tv_word_email" />
+
+    <EditText
+        android:id="@+id/email_login_edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="42dp"
+        android:background="@null"
+        android:hint="@string/email_login_tv_word_email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textColor="@color/colorInfoNickname"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_tv_word_login" />
+
+    <View
+        android:id="@+id/email_login_view_email"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:background="@color/colorInfoView"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_edt_email" />
+
+    <EditText
+        android:id="@+id/email_login_edt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="42dp"
+        android:background="@null"
+        android:hint="@string/email_login_hint_password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textColor="@color/colorInfoNickname"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_view_email" />
+
+    <View
+        android:id="@+id/email_login_view_password"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:background="@color/colorInfoView"
+        app:layout_constraintTop_toBottomOf="@+id/email_login_edt_password" />
+
+    <TextView
+        android:id="@+id/email_login_tv_login"
+        android:layout_width="156dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="23dp"
+        android:background="@drawable/src_login"
+        android:gravity="center"
+        android:onClick="emailLoginOnClick"
+        android:text="@string/email_login_tv_login"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/email_login_tv_find_password"
+        app:layout_constraintDimensionRatio="156:38"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/email_login_tv_find_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="107dp"
+        android:onClick="emailLoginOnClick"
+        android:text="@string/email_login_tv_find_password"
+        android:textColor="@android:color/black"
+        android:textSize="11.5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">URIRANG</string>
+    <string name="loading">로딩중&#8230;</string>
+    <string name="mbti">MBTI</string>
+
+    <string name="splash_description">SPLASH</string>
+
+    <!-- Social Login -->
+    <string name="social_login_description">SOCIAL</string>
+    <string name="social_login_tv_top_1">뭐하고 있어,</string>
+    <string name="social_login_tv_top_2">우리랑 </string>
+    <string name="social_login_tv_top_3">놀자!</string>
+    <string name="social_login_tv_top_4">로 지지고 볶는</string>
+    <string name="social_login_tv_top_5">우리들만의</string>
+    <string name="social_login_tv_top_6">커뮤니티</string>
+
+    <string name="social_login_tv_email_login">이메일로 로그인</string>
+    <string name="social_login_tv_kakao_login">카카오톡으로 로그인</string>
+    <string name="social_login_tv_use_anonymous">비회원으로 둘러보기</string>
+    <string name="social_login_tv_sign_up">회원가입</string>
+
+    <!-- Info -->
+    <string name="info_description">MBTIINFO</string>
+    <string name="info_tv_complete">완료</string>
+    <string name="info_tv_word_nickname">닉네임</string>
+    <string name="info_tv_and">과\u0020</string>
+    <string name="info_tv_suffix">를</string>
+    <string name="info_tv_word_let_me_know">알려줘!</string>
+    <string name="info_tv_word_no_mbti">아직도 유형을 모른다고?</string>
+    <string name="info_tv_word_go_test">테스트 하러가기</string>
+
+    <!-- Email Login -->
+    <string name="email_login_tv_word_email">이메일</string>
+    <string name="email_login_tv_word_suffix">로</string>
+    <string name="email_login_tv_word_login">로그인해볼까?</string>
+    <string name="email_login_hint_password">비밀번호</string>
+    <string name="email_login_tv_find_password"><u>비밀번호 찾기</u></string>
+    <string name="email_login_tv_login">로그인</string>
+
+    <!-- SignUp -->
+    <string name="signup_description">SIGNUP</string>
+    <string name="signup_tv_hi">안녕!</string>
+    <string name="signup_tv_who_are_you">네가 누구라고?</string>
+    <string name="signup_tv_next">다음</string>
+    <string name="signup_tv_password_check">비밀번호 확인</string>
+
+    <!-- Find Password -->
+    <string name="find_password_description">FIND</string>
+    <string name="find_password_tv_check">확인</string>
+    <string name="find_password_tv_word_what">이런!</string>
+    <string name="find_password_tv_word_forgot_password">를 잊었다고?</string>
+    <string name="find_password_hint_email_address">이메일 주소</string>
+
+    <string name="find_password_complete_tv_dont_worry">이제 걱정마!</string>
+    <string name="find_password_complete_tv_mail_box">메일함</string>
+    <string name="find_password_complete_tv_check_mail_box">을 확인해봐.</string>
+    <string name="find_password_complete_tv_send_to_email">입력한 메일 주소로 초기화된 비밀번호를 보냈어요.</string>
+    <string name="find_password_complete_tv_go_init">처음으로</string>
+
+
+</resources>

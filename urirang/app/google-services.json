@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "952764523456",
+    "firebase_url": "https://urirang-e2567.firebaseio.com",
+    "project_id": "urirang-e2567",
+    "storage_bucket": "urirang-e2567.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952764523456:android:0632e6bdd90f1b075d9e25",
+        "android_client_info": {
+          "package_name": "com.makeus.urirang.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952764523456-2lrv7c74pmphcklahoifu3lmh3k29e1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.makeus.urirang.android",
+            "certificate_hash": "790a69835193f1c99ebfb605ee1ee43e82f2223a"
+          }
+        },
+        {
+          "client_id": "952764523456-pi2gvrvrg12lllutc7jdht8rr3goa4gi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVp4I4FBiHmBOToF5ZzazldtE9UfoVcTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952764523456-pi2gvrvrg12lllutc7jdht8rr3goa4gi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
