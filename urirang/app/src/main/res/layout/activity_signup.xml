@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/signup_back_arrow"
+            android:id="@+id/signup_iv_back_arrow"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:contentDescription="@string/signup_description"
@@ -26,6 +26,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/signup_tv_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="14sp"

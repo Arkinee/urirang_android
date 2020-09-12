@@ -42,6 +42,22 @@
         <activity android:name=".src.login.info.InfoActivity" />
         <activity android:name=".src.login.signup.SignUpActivity" />
 
+        <!-- Kakao social login-->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+
+        <!-- Firebase Cloud Messaging Service -->
+        <service
+            android:name=".src.fcm.FirebaseCloudMessagingService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+
     </application>
 
 </manifest>

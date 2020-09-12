@@ -20,6 +20,9 @@ public class EmailLoginActivity extends BaseActivity {
 
     public void emailLoginOnClick(View view) {
         switch (view.getId()) {
+            case R.id.email_login_iv_back_arrow:
+                finish();
+                break;
             case R.id.email_login_tv_find_password:
                 Intent intent = new Intent(this, FindPasswordActivity.class);
                 startActivity(intent);

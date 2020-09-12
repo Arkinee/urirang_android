@@ -105,18 +105,18 @@
     <ImageView
         android:id="@+id/social_login_iv_mbti"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="241dp"
         android:layout_marginTop="42dp"
         android:contentDescription="@string/social_login_description"
         android:scaleType="fitXY"
         android:src="@drawable/ic_mbti_logo"
-        app:layout_constraintDimensionRatio="360:233"
         app:layout_constraintTop_toBottomOf="@+id/social_login_linear_center" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/social_login_iv_mbti">
 

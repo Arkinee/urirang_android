@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/email_login_back_arrow"
+            android:id="@+id/email_login_iv_back_arrow"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:contentDescription="@string/info_description"

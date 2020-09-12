@@ -2,6 +2,9 @@
     <string name="app_name">URIRANG</string>
     <string name="loading">로딩중&#8230;</string>
     <string name="mbti">MBTI</string>
+    <string name="response_empty_body">서버 응답문제</string>
+    <string name="network_connect_failure">서버연결 실패</string>
+    <string name="kakao_app_key">209ef9ac93dbc645f4b5160b6d3eb4fc</string>
 
     <string name="splash_description">SPLASH</string>
 
@@ -29,6 +32,9 @@
     <string name="info_tv_word_no_mbti">아직도 유형을 모른다고?</string>
     <string name="info_tv_word_go_test">테스트 하러가기</string>
 
+    <string name="info_toast_nickname">닉네임을 입력해 주세요</string>
+    <string name="info_toast_mbti">MBTI를 선택해 주세요</string>
+
     <!-- Email Login -->
     <string name="email_login_tv_word_email">이메일</string>
     <string name="email_login_tv_word_suffix">로</string>
@@ -43,6 +49,9 @@
     <string name="signup_tv_who_are_you">네가 누구라고?</string>
     <string name="signup_tv_next">다음</string>
     <string name="signup_tv_password_check">비밀번호 확인</string>
+
+    <string name="signup_toast_pass_check">비밀번호가 일치하지 않습니다</string>
+    <string name="signup_toast_email_reg">이메일 형식이 올바르지 않습니다</string>
 
     <!-- Find Password -->
     <string name="find_password_description">FIND</string>
