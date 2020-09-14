@@ -10,6 +10,6 @@ import retrofit2.http.POST;
 
 public interface InfoRetrofitInterface {
 
-    @POST("/api/user")
+    @POST("/api/user/signUp")
     Call<signupResponse> tryPostSignUp(@Body HashMap<String, Object> params);
 }
