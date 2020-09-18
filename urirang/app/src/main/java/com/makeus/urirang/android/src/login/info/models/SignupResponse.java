@@ -2,7 +2,7 @@ package com.makeus.urirang.android.src.login.info.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class signupResponse {
+public class SignupResponse {
 
     @SerializedName("message")
     String message;

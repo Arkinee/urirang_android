@@ -66,5 +66,8 @@
     <string name="find_password_complete_tv_send_to_email">입력한 메일 주소로 초기화된 비밀번호를 보냈어요.</string>
     <string name="find_password_complete_tv_go_init">처음으로</string>
 
+    <!-- Main -->
+    <string name="main_description">MAIN</string>
+
 
 </resources>

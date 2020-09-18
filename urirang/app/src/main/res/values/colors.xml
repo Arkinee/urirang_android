@@ -9,5 +9,6 @@
     <color name="colorInfoBorder">#979797</color>
     <color name="colorInfoNickname">#821e2022</color>
     <color name="colorInfoView">#5a979797</color>
+    <color name="colorBorder">#d8d8d8</color>
 
 </resources>

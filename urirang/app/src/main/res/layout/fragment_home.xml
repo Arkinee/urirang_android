@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        app:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/src_main_appbar_background"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <TextView
+                android:id="@+id/main_tv_appbar"
+                tools:text="뚜진,\nINTP는\n 어떤 캐릭터라고 생각해?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:lineSpacingExtra="15sp"
+                android:textColor="@android:color/white"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

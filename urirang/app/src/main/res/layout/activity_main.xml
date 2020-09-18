@@ -6,13 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".src.main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/colorInfoBorder"
+        app:layout_constraintBottom_toTopOf="@+id/main_constraint_bottom_navigation" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_constraint_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintDimensionRatio="360:54">
+
+        <ImageView
+            android:id="@+id/main_iv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/main_description"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:src="@drawable/ic_home_selected"
+            app:layout_constraintEnd_toStartOf="@+id/main_iv_board"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/main_iv_board"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/main_description"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:src="@drawable/ic_board_unselected"
+            app:layout_constraintEnd_toStartOf="@+id/main_iv_olympic"
+            app:layout_constraintStart_toEndOf="@+id/main_iv_home" />
+
+        <ImageView
+            android:id="@+id/main_iv_olympic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/main_description"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:src="@drawable/ic_olympic_unselected"
+            app:layout_constraintEnd_toStartOf="@+id/main_iv_mypage"
+            app:layout_constraintStart_toEndOf="@+id/main_iv_board" />
+
+        <ImageView
+            android:id="@+id/main_iv_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/main_description"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:src="@drawable/ic_mypage_unselected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_iv_olympic" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

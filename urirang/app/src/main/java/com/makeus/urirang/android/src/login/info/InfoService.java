@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.login.info.interfaces.InfoActivityView;
 import com.makeus.urirang.android.src.login.info.interfaces.InfoRetrofitInterface;
-import com.makeus.urirang.android.src.login.info.models.signupResponse;
+import com.makeus.urirang.android.src.login.info.models.SignupResponse;
 
 import java.util.HashMap;
 
@@ -29,11 +29,11 @@ public class InfoService {
 
     public void tryPostSignup(HashMap<String, Object> params) {
         final InfoRetrofitInterface infoRetrofitInterface = getRetrofit().create(InfoRetrofitInterface.class);
-        infoRetrofitInterface.tryPostSignUp(params).enqueue(new Callback<signupResponse>() {
+        infoRetrofitInterface.tryPostSignUp(params).enqueue(new Callback<SignupResponse>() {
             @Override
-            public void onResponse(@NonNull Call<signupResponse> call, @NonNull Response<signupResponse> response) {
+            public void onResponse(@NonNull Call<SignupResponse> call, @NonNull Response<SignupResponse> response) {
 
-                final signupResponse signupResponse = response.body();
+                final SignupResponse signupResponse = response.body();
                 if (signupResponse == null) {
                     mView.signupFailure(mContext.getString(R.string.response_empty_body));
                     return;
@@ -47,7 +47,7 @@ public class InfoService {
             }
 
             @Override
-            public void onFailure(Call<signupResponse> call, Throwable t) {
+            public void onFailure(Call<SignupResponse> call, Throwable t) {
                 mView.signupFailure(mContext.getString(R.string.network_connect_failure));
             }
         });

@@ -13,3 +13,8 @@ URIRANG Android
 		- Extra info 작성
 		- Email Login 작성
 	- 회원가입 프로세스 적용, API 적용
+
+# '20.09.19
+	- UI
+		- main 하단 탭
+	- 로그인 API 적용
