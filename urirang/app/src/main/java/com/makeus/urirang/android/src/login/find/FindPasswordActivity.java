@@ -15,6 +15,8 @@ public class FindPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_find_password);
     }
 
+
+
     public void findPasswordOnClick(View view) {
             switch (view.getId()){
                 case R.id.find_password_tv_check:
