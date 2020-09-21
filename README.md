@@ -18,3 +18,6 @@ URIRANG Android
 	- UI
 		- main 하단 탭
 	- 로그인 API 적용
+
+# '20.09.21
+	- Home UI 일부 작성

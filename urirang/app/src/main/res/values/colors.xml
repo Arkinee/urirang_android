@@ -3,12 +3,18 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBasicBlack">#00000000</color>
 
 
     <color name="colorInfoTvComplete">#4c000000</color>
     <color name="colorInfoBorder">#979797</color>
     <color name="colorInfoNickname">#821e2022</color>
     <color name="colorInfoView">#5a979797</color>
-    <color name="colorBorder">#d8d8d8</color>
+    <color name="colorHotPink">#ea0071</color>
+    <color name="colorGreenCyan">#34f899</color>
+    <color name="colorDodgerBlue">#438aff</color>
+    <color name="colorOffYellow">#e6f241</color>
+    <color name="colorHomeBorder">#d8d8d8</color>
 
 </resources>

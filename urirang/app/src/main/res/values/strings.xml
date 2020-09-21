@@ -69,5 +69,17 @@
     <!-- Main -->
     <string name="main_description">MAIN</string>
 
+    <!-- Home -->
+    <string name="home_description">HOME</string>
+    <string name="home_tv_app_bar_tv_extra">어떤캐릭터라고 생각해?</string>
+    <string name="home_tv_app_bar_tv_suffix">는</string>
+    <string name="home_tv_go_world_cup">월드컵 하러가기</string>
+
+    <string name="home_tv_best_article">베스트 게시글</string>
+    <string name="home_tv_popular_article">모두랑 인기 게시물</string>
+    <string name="home_tv_other_test">각종 테스트 \u2022 검사 추천</string>
+    <string name="home_tv_other_test_wording">이런 테스트는 어때?</string>
+    <string name="home_tv_relative_contents">MBTI 관련 컨텐츠</string>
+    <string name="home_tv_relative_contents_wording">아마 이것도 좋아할걸!</string>
 
 </resources>

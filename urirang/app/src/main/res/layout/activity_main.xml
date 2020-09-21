@@ -6,7 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".src.main.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/main_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/main_view_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
+        android:id="@+id/main_view_border"
         android:layout_width="match_parent"
         android:layout_height="0.3dp"
         android:background="@color/colorInfoBorder"
@@ -25,6 +37,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/main_description"
+            android:onClick="mainOnClick"
             android:paddingStart="22dp"
             android:paddingEnd="22dp"
             android:src="@drawable/ic_home_selected"
@@ -37,21 +50,23 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/main_description"
+            android:onClick="mainOnClick"
             android:paddingStart="22dp"
             android:paddingEnd="22dp"
             android:src="@drawable/ic_board_unselected"
-            app:layout_constraintEnd_toStartOf="@+id/main_iv_olympic"
+            app:layout_constraintEnd_toStartOf="@+id/main_iv_world_cup"
             app:layout_constraintStart_toEndOf="@+id/main_iv_home" />
 
         <ImageView
-            android:id="@+id/main_iv_olympic"
+            android:id="@+id/main_iv_world_cup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/main_description"
+            android:onClick="mainOnClick"
             android:paddingStart="22dp"
             android:paddingEnd="22dp"
-            android:src="@drawable/ic_olympic_unselected"
+            android:src="@drawable/ic_world_cup_unselected"
             app:layout_constraintEnd_toStartOf="@+id/main_iv_mypage"
             app:layout_constraintStart_toEndOf="@+id/main_iv_board" />
 
@@ -61,11 +76,12 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/main_description"
+            android:onClick="mainOnClick"
             android:paddingStart="22dp"
             android:paddingEnd="22dp"
             android:src="@drawable/ic_mypage_unselected"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/main_iv_olympic" />
+            app:layout_constraintStart_toEndOf="@+id/main_iv_world_cup" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

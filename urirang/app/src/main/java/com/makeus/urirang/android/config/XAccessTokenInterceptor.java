@@ -1,5 +1,7 @@
 package com.makeus.urirang.android.config;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import java.io.IOException;
@@ -20,8 +22,8 @@ public class XAccessTokenInterceptor implements Interceptor {
         final String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, null);
 
         if (jwtToken != null) {
-//            Log.d("TAG", "token: " + jwtToken);
-            builder.addHeader("X-ACCESS-TOKEN", jwtToken);
+            Log.d("TAG", "token: " + jwtToken);
+            builder.addHeader("Authorization", jwtToken);
         }
         return chain.proceed(builder.build());
     }
