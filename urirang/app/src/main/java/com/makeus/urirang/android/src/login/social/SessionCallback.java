@@ -57,22 +57,22 @@ public class SessionCallback implements ISessionCallback {
                 UserAccount kakaoAccount = result.getKakaoAccount();
                 if (kakaoAccount != null) {
 
-                    Profile profile = kakaoAccount.getProfile();
-                    String nick = "";
-                    if (profile != null) {
-//                        Log.d(TAG, "nick: " + profile.getNickname());
-                        nick = profile.getNickname();
-                    } else if (kakaoAccount.profileNeedsAgreement() == OptionalBoolean.TRUE) {
-                        //동의 요청 후 프로필 정보 획득 가능
-                    } else {
-                        //프로필 획득 불가
-                    }
+//                    Profile profile = kakaoAccount.getProfile();
+//                    String nick = "";
+//                    if (profile != null) {
+////                        Log.d(TAG, "nick: " + profile.getNickname());
+//                        nick = profile.getNickname();
+//                    } else if (kakaoAccount.profileNeedsAgreement() == OptionalBoolean.TRUE) {
+//                        //동의 요청 후 프로필 정보 획득 가능
+//                    } else {
+//                        //프로필 획득 불가
+//                    }
 
                     AccessToken accessToken = Session.getCurrentSession().getTokenInfo();
-//                    Log.d(TAG, "access token: " + accessToken.getAccessToken());
+                    Log.d(TAG, "access token: " + accessToken.getAccessToken());
 
-//                    final SocialService socialService = new SocialService(mSocialView, mContext, accessToken.getAccessToken(), String.valueOf(result.getId()));
-//                    socialService.tryIsMember();
+                    final SocialService socialService = new SocialService(mSocialView, mContext, accessToken.getAccessToken());
+                    socialService.tryGetIsMember();
 
                 }
             }

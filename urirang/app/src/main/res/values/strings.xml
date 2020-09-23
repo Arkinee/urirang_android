@@ -6,6 +6,7 @@
     <string name="network_connect_failure">서버연결 실패</string>
     <string name="kakao_app_key">209ef9ac93dbc645f4b5160b6d3eb4fc</string>
 
+    <!-- Splash -->
     <string name="splash_description">SPLASH</string>
 
     <!-- Social Login -->

@@ -17,24 +17,32 @@ import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.login.info.interfaces.InfoActivityView;
 import com.makeus.urirang.android.src.login.social.SocialLoginActivity;
+import com.makeus.urirang.android.src.login.social.SocialService;
+import com.makeus.urirang.android.src.login.social.interfaces.KakaoLoginView;
+import com.makeus.urirang.android.src.main.MainActivity;
 
 import java.util.HashMap;
 
-public class InfoActivity extends BaseActivity implements InfoActivityView {
+public class InfoActivity extends BaseActivity implements InfoActivityView, KakaoLoginView {
 
     private String mSelectedMbti = "";
     private EditText mInfoEdtNickname;
     private InputMethodManager mInputMethodManager;
 
     private boolean mDoubleClickFlag = false;
+    private boolean mKakaoSignUp;
+    private String mToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_info);
 
+        mKakaoSignUp = getIntent().getBooleanExtra("kakao", false);
         mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mInfoEdtNickname = findViewById(R.id.info_edt_nickname);
+
+        if(mKakaoSignUp) mToken = getIntent().getStringExtra("token");
     }
 
     public void infoOnClick(View view) {
@@ -59,15 +67,26 @@ public class InfoActivity extends BaseActivity implements InfoActivityView {
                     return;
                 }
 
-                HashMap<String, Object> params = new HashMap<>();
-                params.put("email", getIntent().getStringExtra("email"));
-                params.put("password", getIntent().getStringExtra("password"));
-                params.put("nickname", mInfoEdtNickname.getText().toString());
-                params.put("mbti", mSelectedMbti);
+                if(!mKakaoSignUp) {
+                    HashMap<String, Object> params = new HashMap<>();
+                    params.put("email", getIntent().getStringExtra("email"));
+                    params.put("password", getIntent().getStringExtra("password"));
+                    params.put("nickname", mInfoEdtNickname.getText().toString());
+                    params.put("mbti", mSelectedMbti);
 
-                final InfoService signupService = new InfoService(this, this);
-                signupService.tryPostSignup(params);
-                showProgressDialog();
+                    final InfoService signupService = new InfoService(this, this);
+                    signupService.tryPostSignup(params);
+                    showProgressDialog();
+                }else{
+                    HashMap<String, Object> params = new HashMap<>();
+                    params.put("accessToken", mToken);
+                    params.put("nickname", mInfoEdtNickname.getText().toString());
+                    params.put("mbti", mSelectedMbti);
+
+                    final SocialService socialService = new SocialService(this, this, mToken);
+                    socialService.tryPostLogin();
+                    showProgressDialog();
+                }
 
                 break;
             case R.id.info_constraint_go_test:
@@ -266,5 +285,21 @@ public class InfoActivity extends BaseActivity implements InfoActivityView {
         hideProgressDialog();
         showCustomToastShort(message);
         mDoubleClickFlag = false;
+    }
+
+    @Override
+    public void tryPostKakaoLoginSuccess() {
+        hideProgressDialog();
+        showCustomToastShort("회원가입 성공");
+
+        Intent goMainIntent = new Intent(this, MainActivity.class);
+        startActivity(goMainIntent);
+        finish();
+    }
+
+    @Override
+    public void tryPostKakaoLoginFailure() {
+        hideProgressDialog();
+        showCustomToastShort("회원가입 실패");
     }
 }

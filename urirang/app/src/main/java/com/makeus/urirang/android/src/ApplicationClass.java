@@ -44,7 +44,7 @@ public class ApplicationClass extends Application {
     public static DecimalFormat myFormatter = new DecimalFormat("###,###");
 
     // SharedPreferences 키 값
-    public static String TAG = "urirang";
+    public static String TAG = "BreezeWind";
 
     // JWT Token 키 값
     public static final String X_ACCESS_TOKEN = "X-ACCESS-TOKEN";
