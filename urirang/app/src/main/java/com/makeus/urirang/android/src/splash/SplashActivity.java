@@ -17,31 +17,56 @@ import com.kakao.util.helper.Utility;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.login.social.SocialLoginActivity;
+import com.makeus.urirang.android.src.main.MainActivity;
+import com.makeus.urirang.android.src.splash.interfaces.SplashActivityView;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import io.fabric.sdk.android.Fabric;
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements SplashActivityView {
+
+    private Context mContext;
+    private SplashActivityView mView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-//        getKeyHash(this);
+        mContext = this;
+        mView = this;
         Handler hd = new Handler();
-        hd.postDelayed(new splashHandler(), 1000); // 1초 후에 hd handler 실행
+        hd.postDelayed(new splashHandler(), 750); // 1초 후에 hd handler 실행
     }
 
     private class splashHandler implements Runnable {
         public void run() {
-
-            Intent goLogin = new Intent(SplashActivity.this, SocialLoginActivity.class);
-            startActivity(goLogin);
-            finish();
+            final SplashService splashService = new SplashService(mView, mContext);
+            splashService.tryGetUserInfo();
         }
+    }
+
+    @Override
+    public void tryGetAutoLoginSuccessGoMain() {
+        Intent goMain = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(goMain);
+        finish();
+    }
+
+    @Override
+    public void tryGetAutoLoginSuccessGoLogIn(String message) {
+        Intent goLogin = new Intent(SplashActivity.this, SocialLoginActivity.class);
+        startActivity(goLogin);
+        finish();
+    }
+
+    @Override
+    public void tryGetAutoLoginFailure(String message) {
+        Intent goLogin = new Intent(SplashActivity.this, SocialLoginActivity.class);
+        startActivity(goLogin);
+        finish();
     }
 
     public String getKeyHash(final Context context) {

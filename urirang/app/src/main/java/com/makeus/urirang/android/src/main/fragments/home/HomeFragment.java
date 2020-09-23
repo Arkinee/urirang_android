@@ -17,10 +17,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.main.MainActivity;
+import com.makeus.urirang.android.src.main.fragments.home.adapters.HomeTopPagerAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.RelateContentAdapter;
+import com.makeus.urirang.android.src.main.fragments.home.fragments.WithYouFragment;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeActivityView;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
 
@@ -32,6 +35,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private TextView mHomeTvAppBarMbti;
     private MainActivity mMainActivity;
 
+    private ViewPager mHomeViewPagerTop;
     private RecyclerView mHomeRvPost;
     private RecyclerView mHomeRvOtherTest;
     private RecyclerView mHomeRvRelateContents;
@@ -39,6 +43,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private ArrayList<RelateContent> mRelateList;
 
     private RelateContentAdapter mRelateAdapter;
+    private HomeTopPagerAdapter mHomeTopPagerAdapter;
+
+    private WithYouFragment mWithYouFragment;
 
     private boolean mDoubleClickFlag = false;
 
@@ -54,6 +61,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mHomeTvAppBarMbti = view.findViewById(R.id.home_tv_appbar_mbti);
         LinearLayout homeLinearGoWorldCup = view.findViewById(R.id.home_linear_go_world_cup);
 
+        mHomeViewPagerTop = view.findViewById(R.id.home_viewpager_top);
         mHomeRvPost = view.findViewById(R.id.home_rv_post);
         mHomeRvOtherTest = view.findViewById(R.id.home_rv_other_test);
         mHomeRvRelateContents = view.findViewById(R.id.home_rv_relate_contents);
@@ -72,6 +80,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
             }
         });
 
+        mWithYouFragment = new WithYouFragment();
+
+        mHomeTopPagerAdapter = new HomeTopPagerAdapter(mMainActivity.getSupportFragmentManager(), 3, mMainActivity);
+        mHomeTopPagerAdapter.addFragment(mWithYouFragment);
+
+        mHomeViewPagerTop.setAdapter(mHomeTopPagerAdapter);
+        mHomeViewPagerTop.setOffscreenPageLimit(3);
+
+
+        int dpValue = 17;
+        int leftMargin = 20;
+        int previewValue = 125;
+        float d = getResources().getDisplayMetrics().density;
+        int margin = (int) (dpValue * d);
+        int lMargin = (int) (leftMargin * d);
+        int preview = (int) (previewValue * d);
+
+        mHomeViewPagerTop.setClipToPadding(false);
+        mHomeViewPagerTop.setPadding(lMargin, 0, preview, 0);
+        mHomeViewPagerTop.setPageMargin(margin);
+
         homeIvNotice.setOnClickListener(this);
         homeLinearGoWorldCup.setOnClickListener(this);
 
@@ -85,12 +114,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
         mHomeRvRelateContents.setAdapter(mRelateAdapter);
         mHomeRvRelateContents.setLayoutManager(new LinearLayoutManager(mMainActivity, LinearLayoutManager.HORIZONTAL, false));
-//        PagerSnapHelper snapHelper = new PagerSnapHelper();
-//        snapHelper.attachToRecyclerView(mHomeRvRelateContents);
+
         final int radius = getResources().getDimensionPixelSize(R.dimen.radius);
         final int dotsHeight = getResources().getDimensionPixelSize(R.dimen.dots_height);
         final int activeColor = ContextCompat.getColor(mMainActivity, R.color.colorBlack);
-        final int inactiveColor = ContextCompat.getColor(mMainActivity, R.color.colorBasicBlack);
+        final int inactiveColor = ContextCompat.getColor(mMainActivity, R.color.colorBasicBlack9);
         mHomeRvRelateContents.addItemDecoration(new DotIndicatorDecoration(radius, radius * 4, dotsHeight, inactiveColor, activeColor));
         new PagerSnapHelper().attachToRecyclerView(mHomeRvRelateContents);
 

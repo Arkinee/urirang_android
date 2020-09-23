@@ -21,3 +21,6 @@ URIRANG Android
 
 # '20.09.21
 	- Home UI 老何 累己
+
+# '20.09.23
+	- Home UI 老何 累己
