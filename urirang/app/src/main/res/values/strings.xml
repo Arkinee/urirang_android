@@ -84,5 +84,14 @@
     <string name="home_tv_relative_contents_wording">아마 이것도 좋아할걸!</string>
 
     <string name="home_tv_with_you">너희랑</string>
+    <string name="home_tv_hall_of_fame">명예의 전당</string>
+    <string name="home_tv_hall_of_fame_wording">이전 토픽 다시보기</string>
+
+    <!-- Hall of fame -->
+    <string name="hall_of_fame_description">HALLOFFAME</string>
+    <string name="hall_of_fame">명예의 전당</string>
+    <string name="hall_of_fame_tv_filter_by_created">최신순</string>
+    <string name="hall_of_fame_tv_filter_by_popularity">인기순</string>
+    <string name="hall_of_fame_tv_comment">코멘트</string>
 
 </resources>

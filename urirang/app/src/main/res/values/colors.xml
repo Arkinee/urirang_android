@@ -4,11 +4,13 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBasicBlack27">#46000000</color>
     <color name="colorBasicBlack47">#76000000</color>
     <color name="colorBasicBlack40">#66000000</color>
     <color name="colorBasicBlack83">#D6000000</color>
     <color name="colorBasicBlack38">#63000000</color>
     <color name="colorBasicBlack98">#fc000000</color>
+    <color name="colorBasicBlack92">#ec000000</color>
     <color name="colorBasicBlack59">#98000000</color>
     <color name="colorBasicBlack75">#BF000000</color>
     <color name="colorBasicBlack9">#17000000</color>

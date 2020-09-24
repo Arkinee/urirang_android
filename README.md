@@ -27,3 +27,5 @@ URIRANG Android
 
 # '20.09.24
 	- 카카오 로그인 테스트중
+	- 명예의 전당 UI 완료
+	- 홈 상단 viewpager부분 구현중

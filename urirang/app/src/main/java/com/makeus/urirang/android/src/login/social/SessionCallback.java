@@ -69,7 +69,7 @@ public class SessionCallback implements ISessionCallback {
 //                    }
 
                     AccessToken accessToken = Session.getCurrentSession().getTokenInfo();
-                    Log.d(TAG, "access token: " + accessToken.getAccessToken());
+//                    Log.d(TAG, "access token: " + accessToken.getAccessToken());
 
                     final SocialService socialService = new SocialService(mSocialView, mContext, accessToken.getAccessToken());
                     socialService.tryGetIsMember();

@@ -23,6 +23,7 @@ import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.HomeTopPagerAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.RelateContentAdapter;
+import com.makeus.urirang.android.src.main.fragments.home.fragments.HallOfFameFragment;
 import com.makeus.urirang.android.src.main.fragments.home.fragments.WithYouFragment;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeActivityView;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
@@ -46,6 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private HomeTopPagerAdapter mHomeTopPagerAdapter;
 
     private WithYouFragment mWithYouFragment;
+    private HallOfFameFragment mHallOfFameFragment;
 
     private boolean mDoubleClickFlag = false;
 
@@ -81,9 +83,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         });
 
         mWithYouFragment = new WithYouFragment();
+        mHallOfFameFragment = new HallOfFameFragment();
 
         mHomeTopPagerAdapter = new HomeTopPagerAdapter(mMainActivity.getSupportFragmentManager(), 3, mMainActivity);
         mHomeTopPagerAdapter.addFragment(mWithYouFragment);
+        mHomeTopPagerAdapter.addFragment(mHallOfFameFragment);
 
         mHomeViewPagerTop.setAdapter(mHomeTopPagerAdapter);
         mHomeViewPagerTop.setOffscreenPageLimit(3);
