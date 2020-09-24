@@ -22,7 +22,7 @@ public class HallOfFameFragment extends Fragment implements View.OnClickListener
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_with_you, container, false);
+        View view = inflater.inflate(R.layout.fragment_home_hall_of_fame, container, false);
 
         mHomeHallOfFameIvMain = view.findViewById(R.id.fragment_home_hall_of_fame_iv_main);
         CardView homeCardHallOfFame = view.findViewById(R.id.fragment_home_hall_of_fame_card);

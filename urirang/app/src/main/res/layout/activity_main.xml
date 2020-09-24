@@ -8,9 +8,8 @@
 
     <FrameLayout
         android:id="@+id/main_frame"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/main_view_border"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,9 +26,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_constraint_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="360:54">
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
             android:id="@+id/main_iv_home"

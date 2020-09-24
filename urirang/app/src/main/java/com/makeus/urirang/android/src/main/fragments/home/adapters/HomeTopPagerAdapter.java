@@ -12,7 +12,7 @@ import java.util.List;
 
 public class HomeTopPagerAdapter extends FragmentStatePagerAdapter {
 
-    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private List<Fragment> mFragmentList = new ArrayList<>();
     private int mFragmentCount;
     private Context mContext;
 
@@ -20,16 +20,13 @@ public class HomeTopPagerAdapter extends FragmentStatePagerAdapter {
         mFragmentList.add(fragment);
     }
 
-    public void removeFragment(int index) {
-        mFragmentList.remove(index);
-    }
-
     public void replaceFragment(int index, Fragment fragment){
         mFragmentList.set(index, fragment);
     }
 
-    public HomeTopPagerAdapter(FragmentManager fm, int fragmentCount, Context context) {
+    public HomeTopPagerAdapter(FragmentManager fm, List<Fragment> fragmentList, int fragmentCount, Context context) {
         super(fm);
+        this.mFragmentList = fragmentList;
         this.mFragmentCount = fragmentCount;
         this.mContext = context;
     }

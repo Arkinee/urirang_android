@@ -165,7 +165,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@android:color/black"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -225,6 +225,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9.5dp"
+                android:layout_marginStart="19.5dp"
+                android:layout_marginEnd="19.5dp"
                 android:paddingBottom="11dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@+id/home_tv_popular_article"
@@ -244,7 +246,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/home_tv_other_test"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBasicBlack47"
                 android:textSize="9.5sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_view_bottom_of_rv" />
@@ -287,7 +289,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/home_tv_relative_contents"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBasicBlack47"
                 android:textSize="9.5sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_view_bottom_of_rv_2" />
@@ -310,10 +312,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="87dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_tv_related_contents_wording"
-                tools:listitem="@layout/item_home_relate_content" />
+                 />
+
+            <com.chahinem.pageindicator.PageIndicator
+                android:id="@+id/home_rv_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_rv_relate_contents"
+                app:layout_constraintVertical_bias="0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

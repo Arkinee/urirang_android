@@ -11,7 +11,7 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:contentDescription="@string/signup_description"
-        android:onClick="signUpOnClick"
+        android:onClick="hallOnClick"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:src="@drawable/ic_back_arrow"

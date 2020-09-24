@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chahinem.pageindicator.PageIndicator;
+
 import org.jetbrains.annotations.NotNull;
 
 public class DotIndicatorDecoration extends RecyclerView.ItemDecoration {

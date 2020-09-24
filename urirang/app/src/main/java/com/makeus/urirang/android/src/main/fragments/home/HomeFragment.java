@@ -14,21 +14,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.chahinem.pageindicator.PageIndicator;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.main.MainActivity;
+import com.makeus.urirang.android.src.main.fragments.home.adapters.HomePostAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.HomeTopPagerAdapter;
+import com.makeus.urirang.android.src.main.fragments.home.adapters.OtherTestAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.RelateContentAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.fragments.HallOfFameFragment;
 import com.makeus.urirang.android.src.main.fragments.home.fragments.WithYouFragment;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeActivityView;
+import com.makeus.urirang.android.src.main.fragments.home.models.HomePost;
+import com.makeus.urirang.android.src.main.fragments.home.models.OtherTest;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, HomeActivityView {
 
@@ -42,9 +49,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private RecyclerView mHomeRvRelateContents;
 
     private ArrayList<RelateContent> mRelateList;
+    private ArrayList<HomePost> mPostList;
+    private ArrayList<OtherTest> mTestList;
+    private ArrayList<Fragment> mFragmentList;
 
     private RelateContentAdapter mRelateAdapter;
     private HomeTopPagerAdapter mHomeTopPagerAdapter;
+    private HomePostAdapter mHomePostAdapter;
+    private OtherTestAdapter mOtherTestAdapter;
 
     private WithYouFragment mWithYouFragment;
     private HallOfFameFragment mHallOfFameFragment;
@@ -69,29 +81,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mHomeRvRelateContents = view.findViewById(R.id.home_rv_relate_contents);
 
         mRelateList = new ArrayList<>();
-        mRelateAdapter = new RelateContentAdapter(mMainActivity, mRelateList, new RelateContentAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
-                if (mDoubleClickFlag) return;
-                mDoubleClickFlag = true;
-
-                Intent urlIntent = new Intent(Intent.ACTION_VIEW);
-                Uri uri = Uri.parse(mRelateList.get(pos).getLink());
-                urlIntent.setData(uri);
-                startActivity(urlIntent);
-            }
-        });
+        mPostList = new ArrayList<>();
+        mTestList = new ArrayList<>();
+        mFragmentList = new ArrayList<>();
 
         mWithYouFragment = new WithYouFragment();
         mHallOfFameFragment = new HallOfFameFragment();
 
-        mHomeTopPagerAdapter = new HomeTopPagerAdapter(mMainActivity.getSupportFragmentManager(), 3, mMainActivity);
-        mHomeTopPagerAdapter.addFragment(mWithYouFragment);
-        mHomeTopPagerAdapter.addFragment(mHallOfFameFragment);
+        // 상단 viewpager
+        mFragmentList.add(mWithYouFragment);
+        mFragmentList.add(mHallOfFameFragment);
+        mHomeTopPagerAdapter = new HomeTopPagerAdapter(mMainActivity.getSupportFragmentManager(), mFragmentList, 3, mMainActivity);
+
+//        mHomeTopPagerAdapter.addFragment(mWithYouFragment);
+//        mHomeTopPagerAdapter.addFragment(mHallOfFameFragment);
 
         mHomeViewPagerTop.setAdapter(mHomeTopPagerAdapter);
         mHomeViewPagerTop.setOffscreenPageLimit(3);
+        mHomeViewPagerTop.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         int dpValue = 17;
         int leftMargin = 20;
@@ -105,6 +127,63 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mHomeViewPagerTop.setPadding(lMargin, 0, preview, 0);
         mHomeViewPagerTop.setPageMargin(margin);
 
+        // 인기 게시물
+        mHomePostAdapter = new HomePostAdapter(mMainActivity, mPostList, new HomePostAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+
+            }
+        });
+
+        mHomeRvPost.addItemDecoration(new DividerItemDecoration(mHomeRvPost.getContext(), new LinearLayoutManager(getActivity()).getOrientation()));
+        mHomeRvPost.setAdapter(mHomePostAdapter);
+
+        // 각종 테스트
+        mOtherTestAdapter = new OtherTestAdapter(mMainActivity, mTestList, new OtherTestAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Intent urlIntent = new Intent(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse(mTestList.get(pos).getLink());
+                urlIntent.setData(uri);
+                startActivity(urlIntent);
+                mMainActivity.showProgressDialog();
+            }
+        });
+
+        mHomeRvOtherTest.setLayoutManager(new LinearLayoutManager(mMainActivity, LinearLayoutManager.HORIZONTAL, false));
+        mHomeRvOtherTest.setAdapter(mOtherTestAdapter);
+        mHomeRvOtherTest.addItemDecoration(new RvSpaceDecoration(mMainActivity, 7));
+        new PagerSnapHelper().attachToRecyclerView(mHomeRvOtherTest);
+
+        // 관련 컨텐츠
+        mRelateAdapter = new RelateContentAdapter(mMainActivity, mRelateList, new RelateContentAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                Intent urlIntent = new Intent(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse(mRelateList.get(pos).getLink());
+                urlIntent.setData(uri);
+                startActivity(urlIntent);
+            }
+        });
+
+        mHomeRvRelateContents.setAdapter(mRelateAdapter);
+        mHomeRvRelateContents.setLayoutManager(new LinearLayoutManager(mMainActivity, LinearLayoutManager.HORIZONTAL, false));
+
+//        final int radius = getResources().getDimensionPixelSize(R.dimen.radius);
+//        final int dotsHeight = getResources().getDimensionPixelSize(R.dimen.dots_height);
+//        final int activeColor = ContextCompat.getColor(mMainActivity, R.color.colorBlack);
+//        final int inactiveColor = ContextCompat.getColor(mMainActivity, R.color.colorBasicBlack9);
+//        mHomeRvRelateContents.addItemDecoration(new DotIndicatorDecoration(radius, radius * 4, dotsHeight, inactiveColor, activeColor));
+        new PagerSnapHelper().attachToRecyclerView(mHomeRvRelateContents);
+
+        PageIndicator pageIndicator = view.findViewById(R.id.home_rv_indicator);
+        pageIndicator.attachTo(mHomeRvOtherTest);
+
+
+        // 리스너
         homeIvNotice.setOnClickListener(this);
         homeLinearGoWorldCup.setOnClickListener(this);
 
@@ -116,22 +195,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mHomeRvRelateContents.setAdapter(mRelateAdapter);
-        mHomeRvRelateContents.setLayoutManager(new LinearLayoutManager(mMainActivity, LinearLayoutManager.HORIZONTAL, false));
-
-        final int radius = getResources().getDimensionPixelSize(R.dimen.radius);
-        final int dotsHeight = getResources().getDimensionPixelSize(R.dimen.dots_height);
-        final int activeColor = ContextCompat.getColor(mMainActivity, R.color.colorBlack);
-        final int inactiveColor = ContextCompat.getColor(mMainActivity, R.color.colorBasicBlack9);
-        mHomeRvRelateContents.addItemDecoration(new DotIndicatorDecoration(radius, radius * 4, dotsHeight, inactiveColor, activeColor));
-        new PagerSnapHelper().attachToRecyclerView(mHomeRvRelateContents);
-
         mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
         mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
         mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
         mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
 
+        mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
+        mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
+        mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
+
+        mTestList.add(new OtherTest("에고그램", "https://egogramtest.kr/"));
+        mTestList.add(new OtherTest("에니어그램", "https://enneagram-app.appspot.com/quest"));
+        mTestList.add(new OtherTest("MGRAM", "https://mgram.me/ko/"));
+        mTestList.add(new OtherTest("8기능", "http://jung.test.typologycentral.com/"));
+
+        mOtherTestAdapter.notifyDataSetChanged();
         mRelateAdapter.notifyDataSetChanged();
+        mHomePostAdapter.notifyDataSetChanged();
 
         getUserInfo();
 
@@ -172,5 +252,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void onResume() {
         super.onResume();
         mDoubleClickFlag = false;
+        mHomeViewPagerTop.setCurrentItem(0);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mMainActivity.hideProgressDialog();
     }
 }
