@@ -57,7 +57,7 @@ public class SocialService {
                     mView.tryGetIsMemberSuccessGoMain(mToken);
                 } else if (response.raw().code() == 404) {
                     mView.tryGetIsMemberSuccessNeedSignUp(mToken);
-                }else if(response.raw().code() == 401){
+                } else if (response.raw().code() == 401) {
                     mView.tryGetIsMemberFailure("카카오 로그인 실패");
                 }
 
@@ -104,6 +104,8 @@ public class SocialService {
                     sSharedPreferences.edit().putString(X_ACCESS_TOKEN, kakaoLoginResponse.getToken()).apply();
                     mKakaoView.tryPostKakaoLoginSuccess();
                 } else if (response.raw().code() == 401) {
+                    mKakaoView.tryPostKakaoLoginFailure();
+                } else if(response.raw().code() == 500){
                     mKakaoView.tryPostKakaoLoginFailure();
                 }
 

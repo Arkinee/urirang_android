@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBlackBoard">#090909</color>
     <color name="colorBasicBlack27">#46000000</color>
     <color name="colorBasicBlack47">#76000000</color>
     <color name="colorBasicBlack40">#66000000</color>
@@ -14,10 +15,14 @@
     <color name="colorBasicBlack59">#98000000</color>
     <color name="colorBasicBlack75">#BF000000</color>
     <color name="colorBasicBlack9">#17000000</color>
+    <color name="colorBottomSheetBack">#70000000</color>
 
 
+    <color name="colorSearchLinear">#eeeeee</color>
     <color name="colorInfoTvComplete">#4c000000</color>
     <color name="colorInfoBorder">#979797</color>
+    <color name="colorInfoBorder23">#37979797</color>
+    <color name="colorInfoBorder34">#56979797</color>
     <color name="colorInfoNickname">#821e2022</color>
     <color name="colorInfoView">#5a979797</color>
     <color name="colorHotPink">#ea0071</color>
@@ -25,5 +30,7 @@
     <color name="colorDodgerBlue">#438aff</color>
     <color name="colorOffYellow">#e6f241</color>
     <color name="colorHomeBorder">#33d8d8d8</color>
+    <color name="colorBoardTvSearch">#33151515</color>
+    <color name="colorSearchHint">#de151515</color>
 
 </resources>

@@ -33,16 +33,12 @@ public class InfoService {
             @Override
             public void onResponse(@NonNull Call<SignupResponse> call, @NonNull Response<SignupResponse> response) {
 
-                final SignupResponse signupResponse = response.body();
-                if (signupResponse == null) {
-                    mView.signupFailure(mContext.getString(R.string.response_empty_body));
-                    return;
-                }
-
-                if (signupResponse.getMessage().equals("가입에 성공하였습니다.")) {
-                    mView.signupSuccess(signupResponse.getMessage());
-                } else {
+                if(response.raw().code() == 400){
+                    final SignupResponse signupResponse = response.body();
                     mView.signupFailure(signupResponse.getMessage());
+                }else if(response.raw().code() == 200){
+                    final SignupResponse signupResponse = response.body();
+                    mView.signupSuccess(signupResponse.getMessage());
                 }
             }
 

@@ -114,10 +114,10 @@ public class InfoActivity extends BaseActivity implements InfoActivityView, Kaka
                 ((ImageView)findViewById(R.id.info_istj)).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_mbti_3_istj_selected));
                 mSelectedMbti = "istj";
                 break;
-            case R.id.info_istp:
+            case R.id.bottom_sheet_mbti_filter_istp:
                 uncheckAll();
                 ((ImageView)findViewById(R.id.info_iv_istp_checked)).setVisibility(View.VISIBLE);
-                ((ImageView)findViewById(R.id.info_istp)).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_mbti_4_istp_selected));
+                ((ImageView)findViewById(R.id.bottom_sheet_mbti_filter_istp)).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_mbti_4_istp_selected));
                 mSelectedMbti = "istp";
                 break;
 

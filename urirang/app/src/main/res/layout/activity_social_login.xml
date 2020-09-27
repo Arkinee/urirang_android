@@ -105,7 +105,7 @@
     <ImageView
         android:id="@+id/social_login_iv_mbti"
         android:layout_width="match_parent"
-        android:layout_height="241dp"
+        android:layout_height="216dp"
         android:layout_marginTop="42dp"
         android:contentDescription="@string/social_login_description"
         android:scaleType="fitXY"

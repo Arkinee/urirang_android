@@ -6,14 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".src.main.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/main_frame"
+    <com.makeus.urirang.android.src.main.MainViewPager
+        android:id="@+id/main_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/main_view_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View

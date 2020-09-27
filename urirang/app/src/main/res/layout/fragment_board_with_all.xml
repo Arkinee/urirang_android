@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/fragment_with_all_linear_search"
+        android:layout_width="231dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/src_board_search_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="7dp"
+            android:contentDescription="@string/board_description"
+            android:src="@drawable/ic_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:text="@string/board_tv_search"
+            android:textColor="@color/colorBoardTvSearch"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="8dp"
+        android:layout_height="9dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="3dp"
+        android:contentDescription="@string/board_description"
+        android:src="@drawable/ic_filtering"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_with_all_linear_search"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_with_all_tv_mbti_filtering"
+        app:layout_constraintTop_toTopOf="@+id/fragment_with_all_linear_search" />
+
+    <TextView
+        android:id="@+id/fragment_with_all_tv_mbti_filtering"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/board_with_you_tv_mbti_filtering"
+        android:textColor="@color/colorBasicBlack92"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_with_all_linear_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragment_with_all_linear_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_with_all_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_with_all_linear_search"
+        tool:listitem="@layout/item_board_with_all" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment_with_all_fab_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/colorBlack"
+        android:src="@drawable/ic_with_all_write"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

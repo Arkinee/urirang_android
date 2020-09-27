@@ -1,5 +1,6 @@
-package com.makeus.urirang.android.src.main.fragments.mypage;
+package com.makeus.urirang.android.src.main.fragments.board.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +12,21 @@ import androidx.fragment.app.Fragment;
 
 import com.makeus.urirang.android.R;
 
-public class MyPageFragment extends Fragment {
+public class BoardWithYouFragment extends Fragment {
+
+    private Context mContext;
+
+    public BoardWithYouFragment() {
+    }
+
+    public BoardWithYouFragment(Context context) {
+        this.mContext = context;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mypage, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_board_with_you, container, false);
 
 
         return view;

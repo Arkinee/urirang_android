@@ -137,13 +137,13 @@ public class SignUpActivity extends BaseActivity {
                     return;
                 }
 
-                Pattern pattern2 = Pattern.compile("/^(?=.[a-zA-Z])(?=.[!@#$%^+=-])(?=.[0-9]).{6,16}/");
+                Pattern pattern2 = Pattern.compile("^(?=.[a-zA-Z])(?=.[!@#$%^+=-])(?=.[0-9]).{6,16}");
                 Matcher m2 = pattern.matcher(mSignUpEdtPass.getText().toString());
 
-                if (!m.find()) {
-                    showCustomToastShort(getString(R.string.signup_toast_pass_invalid_format));
-                    return;
-                }
+//                if (!m.find()) {
+//                    showCustomToastShort(getString(R.string.signup_toast_pass_invalid_format));
+//                    return;
+//                }
 
                 //비밀번호 체크
                 if (!mSignUpEdtPass.getText().toString().equals(mSignUpEdtPassCheck.getText().toString())) {

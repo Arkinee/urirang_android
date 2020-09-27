@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/src_bottom_sheet_corner"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet_linear_top"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:background="@drawable/src_bottom_sheet_corner"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bottom_sheet_mbti_filter_tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mbti_filter"
+        android:textColor="@color/colorBasicBlack83"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_linear_top" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_iv_close"
+        android:layout_width="50.3dp"
+        android:layout_height="42dp"
+        android:contentDescription="@string/mbti_filter_description"
+        android:paddingStart="19.3dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="19.3dp"
+        android:paddingBottom="15dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_sheet_mbti_filter_tv_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottom_sheet_mbti_filter_tv_top" />
+
+    <View
+        android:id="@+id/bottom_sheet_mbti_filter_view_border"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorInfoBorder23"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_tv_top" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_intj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="41dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_1_intj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_infj"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_view_border" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_infj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="41dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_2_infj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_istj"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_intj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_view_border" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_istj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="41dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_3_istj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_istp"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_infj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_view_border" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_istp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="42dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_4_istp_unselected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_istj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_view_border" />
+
+    <!-- 2번째 줄 -->
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_intp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_5_intp_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_infp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_intj" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_infp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_6_infp_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_isfj"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_intp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_infj" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_isfj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_7_isfj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_isfp"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_infp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_istj" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_isfp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="42dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_8_isfp_unselected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_isfj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_istp" />
+
+    <!-- 3번째 줄-->
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_entj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_9_entj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_enfj"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_intp" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_enfj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_10_enfj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_estj"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_entj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_infp" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_estj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_11_estj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_estp"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_enfj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_isfj" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_estp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="42dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_12_estp_unselected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_estj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_isfp" />
+
+    <!-- 4번째 줄-->
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_entp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_13_entp_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_enfp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_entj" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_enfp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_14_enfp_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_esfj"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_entp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_enfj" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_esfj"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_15_esfj_unselected"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_mbti_filter_esfp"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_enfp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_estj" />
+
+    <ImageView
+        android:id="@+id/bottom_sheet_mbti_filter_esfp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="42dp"
+        android:contentDescription="@string/info_description"
+        android:src="@drawable/ic_mbti_16_esfp_unselected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_mbti_filter_esfj"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_estp" />
+
+    <TextView
+        android:id="@+id/bottom_sheet_mbti_filter_tv_apply"
+        android:layout_width="156dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="51dp"
+        android:background="@drawable/src_login"
+        android:gravity="center"
+        android:text="@string/mbti_filter_tv_apply"
+        android:textColor="@android:color/white"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_enfp" />
+
+    <View
+        android:id="@+id/bottom_sheet_bottom_space"
+        android:layout_width="match_parent"
+        android:layout_height="17dp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_mbti_filter_tv_apply" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:text="asd"
+        android:textColorHint="@android:color/white"
+        android:background="@color/colorBasicBlack9"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_bottom_space" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

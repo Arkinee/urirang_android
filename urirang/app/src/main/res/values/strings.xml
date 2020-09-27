@@ -98,4 +98,21 @@
     <string name="hall_of_fame_tv_filter_by_popularity">인기순</string>
     <string name="hall_of_fame_tv_comment">코멘트</string>
 
+    <!-- Board -->
+    <string name="board_description">BOARD</string>
+    <string name="board">게시판</string>
+    <string name="board_tv_search">검색</string>
+    <string name="board_with_you_tv_mbti_filtering">MBTI 필터링</string>
+    <string name="board_tv_view_wording">조회</string>
+
+    <!-- MBTI Filter -->
+    <string name="mbti_filter_description">MBTI_FILTERING</string>
+    <string name="mbti_filter">MBTI 필터링</string>
+    <string name="mbti_filter_tv_apply">필터링 적용</string>
+
+    <!-- Search -->
+    <string name="search_description">SEARCH</string>
+    <string name="search">검색</string>
+    <string name="search_edt_hint">검색어 입력</string>
+
 </resources>

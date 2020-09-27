@@ -72,7 +72,8 @@ public class EmailLoginActivity extends BaseActivity implements EmailLoginActivi
     @Override
     public void tryPostLoginFailure(String message) {
         hideProgressDialog();
-        showCustomToastShort(message);
+        showCustomToastShort("로그인 실패");
+        mDoubleClickFlag = false;
     }
 
 }

@@ -88,7 +88,7 @@
         android:maxLines="1"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:textColor="@color/colorInfoNickname"
+        android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintTop_toBottomOf="@+id/signup_tv_who_are_you" />
 
@@ -110,6 +110,7 @@
         android:text="@string/signup_tv_validate_email"
         android:textColor="@color/colorDodgerBlue"
         android:textSize="11sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/signup_view_email"
         app:layout_constraintTop_toBottomOf="@+id/signup_view_email" />
 
@@ -126,7 +127,7 @@
         android:maxLines="1"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:textColor="@color/colorInfoNickname"
+        android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintTop_toBottomOf="@+id/signup_tv_email_validity" />
 
@@ -148,6 +149,7 @@
         android:text="@string/signup_tv_validate_password"
         android:textColor="@color/colorDodgerBlue"
         android:textSize="11sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/signup_view_password"
         app:layout_constraintTop_toBottomOf="@+id/signup_view_password" />
 
@@ -164,7 +166,7 @@
         android:maxLines="1"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:textColor="@color/colorInfoNickname"
+        android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintTop_toBottomOf="@+id/signup_tv_password_validity" />
 
