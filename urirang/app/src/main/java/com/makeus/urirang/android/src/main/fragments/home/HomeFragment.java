@@ -12,15 +12,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.chahinem.pageindicator.PageIndicator;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.HomePostAdapter;
@@ -35,7 +34,8 @@ import com.makeus.urirang.android.src.main.fragments.home.models.OtherTest;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator3;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, HomeActivityView {
 
@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private ViewPager mHomeViewPagerTop;
     private RecyclerView mHomeRvPost;
     private RecyclerView mHomeRvOtherTest;
-    private RecyclerView mHomeRvRelateContents;
+    private ViewPager2 mHomeViewPagerRelateContents;
 
     private ArrayList<RelateContent> mRelateList;
     private ArrayList<HomePost> mPostList;
@@ -57,6 +57,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private HomeTopPagerAdapter mHomeTopPagerAdapter;
     private HomePostAdapter mHomePostAdapter;
     private OtherTestAdapter mOtherTestAdapter;
+
+    private CircleIndicator3 mIndicator;
 
     private WithYouFragment mWithYouFragment;
     private HallOfFameFragment mHallOfFameFragment;
@@ -78,7 +80,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mHomeViewPagerTop = view.findViewById(R.id.home_viewpager_top);
         mHomeRvPost = view.findViewById(R.id.home_rv_post);
         mHomeRvOtherTest = view.findViewById(R.id.home_rv_other_test);
-        mHomeRvRelateContents = view.findViewById(R.id.home_rv_relate_contents);
+        mHomeViewPagerRelateContents = view.findViewById(R.id.home_view_pager_relate_contents);
+
+        mIndicator = view.findViewById(R.id.home_indicator);
 
         mRelateList = new ArrayList<>();
         mPostList = new ArrayList<>();
@@ -92,9 +96,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mFragmentList.add(mWithYouFragment);
         mFragmentList.add(mHallOfFameFragment);
         mHomeTopPagerAdapter = new HomeTopPagerAdapter(mMainActivity.getSupportFragmentManager(), mFragmentList, 3, mMainActivity);
-
-//        mHomeTopPagerAdapter.addFragment(mWithYouFragment);
-//        mHomeTopPagerAdapter.addFragment(mHallOfFameFragment);
 
         mHomeViewPagerTop.setAdapter(mHomeTopPagerAdapter);
         mHomeViewPagerTop.setOffscreenPageLimit(3);
@@ -156,32 +157,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         new PagerSnapHelper().attachToRecyclerView(mHomeRvOtherTest);
 
         // 관련 컨텐츠
-        mRelateAdapter = new RelateContentAdapter(mMainActivity, mRelateList, new RelateContentAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
-                if (mDoubleClickFlag) return;
-                mDoubleClickFlag = true;
 
-                Intent urlIntent = new Intent(Intent.ACTION_VIEW);
-                Uri uri = Uri.parse(mRelateList.get(pos).getLink());
-                urlIntent.setData(uri);
-                startActivity(urlIntent);
+        mRelateAdapter = new RelateContentAdapter(getActivity(), 3);
+        mHomeViewPagerRelateContents.setAdapter(mRelateAdapter);
+
+        mIndicator.setViewPager(mHomeViewPagerRelateContents);
+        mIndicator.createIndicators(3,0);
+        mHomeViewPagerRelateContents.setOffscreenPageLimit(3);
+
+        mHomeViewPagerRelateContents.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                mIndicator.animatePageSelected(position % 3);
+            }
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                if(positionOffsetPixels == 0){
+                    mHomeViewPagerRelateContents.setCurrentItem(position);
+                }
             }
         });
-
-        mHomeRvRelateContents.setAdapter(mRelateAdapter);
-        mHomeRvRelateContents.setLayoutManager(new LinearLayoutManager(mMainActivity, LinearLayoutManager.HORIZONTAL, false));
-
-//        final int radius = getResources().getDimensionPixelSize(R.dimen.radius);
-//        final int dotsHeight = getResources().getDimensionPixelSize(R.dimen.dots_height);
-//        final int activeColor = ContextCompat.getColor(mMainActivity, R.color.colorBlack);
-//        final int inactiveColor = ContextCompat.getColor(mMainActivity, R.color.colorBasicBlack9);
-//        mHomeRvRelateContents.addItemDecoration(new DotIndicatorDecoration(radius, radius * 4, dotsHeight, inactiveColor, activeColor));
-        new PagerSnapHelper().attachToRecyclerView(mHomeRvRelateContents);
-
-        PageIndicator pageIndicator = view.findViewById(R.id.home_rv_indicator);
-        pageIndicator.attachTo(mHomeRvOtherTest);
-
 
         // 리스너
         homeIvNotice.setOnClickListener(this);

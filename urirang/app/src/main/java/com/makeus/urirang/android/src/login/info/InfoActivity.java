@@ -84,7 +84,7 @@ public class InfoActivity extends BaseActivity implements InfoActivityView, Kaka
                     params.put("mbti", mSelectedMbti);
 
                     final SocialService socialService = new SocialService(this, this, mToken);
-                    socialService.tryPostLogin();
+                    socialService.tryPostKakaoSignUp(params);
                     showProgressDialog();
                 }
 

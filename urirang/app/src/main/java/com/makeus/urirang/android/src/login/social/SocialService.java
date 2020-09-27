@@ -1,6 +1,7 @@
 package com.makeus.urirang.android.src.login.social;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -50,17 +51,13 @@ public class SocialService {
             @Override
             public void onResponse(@NonNull Call<SocialResponse> call, @NonNull Response<SocialResponse> response) {
 
-                final SocialResponse socialResponse = response.body();
-                if (socialResponse == null) {
-                    mView.tryGetIsMemberFailure(mContext.getString(R.string.response_empty_body));
-                    return;
-                }
+                Log.d("로그", String.valueOf(response.raw().code()));
 
-                if (response.code() == 200) {
+                if (response.raw().code() == 200) {
                     mView.tryGetIsMemberSuccessGoMain(mToken);
-                } else if (response.code() == 404) {
+                } else if (response.raw().code() == 404) {
                     mView.tryGetIsMemberSuccessNeedSignUp(mToken);
-                }else if(response.code() == 401){
+                }else if(response.raw().code() == 401){
                     mView.tryGetIsMemberFailure("카카오 로그인 실패");
                 }
 
@@ -73,22 +70,40 @@ public class SocialService {
         });
     }
 
-    public void tryPostLogin() {
+    public void tryPostKakaoSignUp(HashMap<String, Object> params) {
+        final SocialRetrofitInterface socialRetrofitInterface = getRetrofitForKakao().create(SocialRetrofitInterface.class);
+        socialRetrofitInterface.tryPostKakaoSignUp(params).enqueue(new Callback<KakaoLoginResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<KakaoLoginResponse> call, @NonNull Response<KakaoLoginResponse> response) {
+
+                if (response.raw().code() == 200) {
+                    final KakaoLoginResponse kakaoLoginResponse = response.body();
+                    sSharedPreferences.edit().putString(X_ACCESS_TOKEN, kakaoLoginResponse.getToken()).apply();
+                    mKakaoView.tryPostKakaoLoginSuccess();
+                } else if (response.raw().code() == 401) {
+                    mKakaoView.tryPostKakaoLoginFailure();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<KakaoLoginResponse> call, Throwable t) {
+                mView.tryGetIsMemberFailure(mContext.getString(R.string.network_connect_failure));
+            }
+        });
+    }
+
+    public void tryPostKakaoLogin() {
         final SocialRetrofitInterface socialRetrofitInterface = getRetrofitForKakao().create(SocialRetrofitInterface.class);
         socialRetrofitInterface.tryPostKakaoLogin(mToken).enqueue(new Callback<KakaoLoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<KakaoLoginResponse> call, @NonNull Response<KakaoLoginResponse> response) {
 
-                final KakaoLoginResponse kakaoLoginResponse = response.body();
-                if (kakaoLoginResponse == null) {
-                    mView.tryGetIsMemberFailure(mContext.getString(R.string.response_empty_body));
-                    return;
-                }
-
-                if (response.code() == 200) {
+                if (response.raw().code() == 200) {
+                    final KakaoLoginResponse kakaoLoginResponse = response.body();
                     sSharedPreferences.edit().putString(X_ACCESS_TOKEN, kakaoLoginResponse.getToken()).apply();
                     mKakaoView.tryPostKakaoLoginSuccess();
-                } else if (response.code() == 401) {
+                } else if (response.raw().code() == 401) {
                     mKakaoView.tryPostKakaoLoginFailure();
                 }
 

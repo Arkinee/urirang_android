@@ -7,80 +7,48 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.bumptech.glide.Glide;
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.main.fragments.home.fragments.RelateContentFragment;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RelateContentAdapter extends RecyclerView.Adapter<RelateContentAdapter.ViewHolder> {
+public class RelateContentAdapter extends FragmentStateAdapter {
 
     private Context mContext;
-    private ArrayList<RelateContent> mRelateList;
-    private OnItemClickListener mListener = null;
+    private List<Fragment> mRelateList;
+    private int mCount;
 
-    public interface OnItemClickListener {
-        void onItemClick(View v, int pos);
+    public RelateContentAdapter(FragmentActivity fa, int count){
+        super(fa);
+        mCount = count;
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mListener = listener;
-    }
-
-    public RelateContentAdapter(Context context, ArrayList<RelateContent> relateContents, OnItemClickListener listener) {
-        this.mContext = context;
-        this.mRelateList = relateContents;
-        this.mListener = listener;
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView ivContentImage;
-
-        ViewHolder(final View itemView) {
-            super(itemView);
-            // 뷰 객체에 대한 참조. (hold strong reference)
-            ivContentImage = itemView.findViewById(R.id.item_home_relate_content_iv);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int pos = getAdapterPosition();
-                    if (pos != RecyclerView.NO_POSITION) {
-                        if (mListener != null) {
-                            mListener.onItemClick(v, pos);
-                        }
-                    }
-                }
-            });
-
-        }
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        Context context = parent.getContext();
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.item_home_relate_content, parent, false);
-        ViewHolder vh = new ViewHolder(view);
-
-        return vh;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        RelateContent content = mRelateList.get(position);
-
-//        Glide.with(mContext).load(content.getImageUrl()).into(holder.ivContentImage);
+    public void addFragment(Fragment fragment){
+        mRelateList.add(fragment);
     }
 
     @Override
     public int getItemCount() {
-        return mRelateList.size();
+        return 2000;
     }
 
+    @NonNull
+    @Override
+    public Fragment createFragment(int position) {
+        int index = getRealPosition(position);
+
+        if(index == 0) return new RelateContentFragment("https://comic.naver.com/index.nhn", "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20151104_44%2Fmjlove8468_1446609708084wqcjq_JPEG%2F%25B3%25D7%25C0%25CC%25B9%25F6%25C0%25A5%25C5%25F7_3.jpg&type=sc960_832");
+        else if(index == 1) return new RelateContentFragment("https://www.naver.com", "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5097%2F2019%2F07%2F25%2F368292_267336_3425_20190725113616536.jpg&type=sc960_832");
+        else if (index == 2) return new RelateContentFragment("https://google.com", "data:image/png;base64,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");
+        else return null;
+    }
+
+    public int getRealPosition(int position) {return position % mCount;}
 }

@@ -32,3 +32,6 @@ URIRANG Android
 
 # '20.09.25
 	- 权 包访 牧刨明何盒 indicator 备泅秦具窃
+
+# '20.09.27
+	- 权 包访 牧刨明 indicator 利侩

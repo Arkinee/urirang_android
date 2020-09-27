@@ -19,7 +19,7 @@
             app:cardCornerRadius="5dp">
 
             <ImageView
-                android:id="@+id/item_home_relate_content_iv"
+                android:id="@+id/fragment_home_relate_content_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/home_description"

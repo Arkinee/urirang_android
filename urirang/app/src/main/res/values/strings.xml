@@ -51,6 +51,10 @@
     <string name="signup_tv_next">다음</string>
     <string name="signup_tv_password_check">비밀번호 확인</string>
 
+    <string name="signup_tv_validate_email">사용 가능한 이메일입니다</string>
+    <string name="signup_tv_validate_password">사용 가능한 비밀번호입니다.</string>
+
+    <string name="signup_toast_pass_invalid_format">비밀번호는 영문 소,대문자와 특수문자(선택)의 조합입니다</string>
     <string name="signup_toast_pass_check">비밀번호가 일치하지 않습니다</string>
     <string name="signup_toast_email_reg">이메일 형식이 올바르지 않습니다</string>
 

@@ -1,7 +1,12 @@
 package com.makeus.urirang.android.src.hallOfFame.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class PreviousSubject {
 
+    @SerializedName("id")
+    private int id;
+    @SerializedName("id")
     private String imageUrl;
     private String title;
     private String mbti;

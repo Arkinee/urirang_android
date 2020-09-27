@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -29,15 +30,14 @@
             android:id="@+id/signup_tv_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="14sp"
-            android:textColor="@color/colorInfoTvComplete"
-            android:text="@string/signup_tv_next"
-            android:textStyle="bold"
-            android:paddingEnd="19dp"
+            android:gravity="center"
             android:onClick="signUpOnClick"
             android:paddingStart="19dp"
-            android:gravity="center"
-            />
+            android:paddingEnd="19dp"
+            android:text="@string/signup_tv_next"
+            android:textColor="@color/colorInfoTvComplete"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -101,12 +101,24 @@
         android:background="@color/colorInfoView"
         app:layout_constraintTop_toBottomOf="@+id/signup_edt_email" />
 
+    <TextView
+        android:id="@+id/signup_tv_email_validity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2.5dp"
+        android:letterSpacing="0.06"
+        android:text="@string/signup_tv_validate_email"
+        android:textColor="@color/colorDodgerBlue"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@+id/signup_view_email"
+        app:layout_constraintTop_toBottomOf="@+id/signup_view_email" />
+
     <EditText
         android:id="@+id/signup_edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="42dp"
         android:background="@null"
         android:hint="@string/email_login_hint_password"
@@ -116,7 +128,7 @@
         android:paddingBottom="4dp"
         android:textColor="@color/colorInfoNickname"
         android:textSize="11sp"
-        app:layout_constraintTop_toBottomOf="@+id/signup_view_email" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_tv_email_validity" />
 
     <View
         android:id="@+id/signup_view_password"
@@ -127,12 +139,24 @@
         android:background="@color/colorInfoView"
         app:layout_constraintTop_toBottomOf="@+id/signup_edt_password" />
 
+    <TextView
+        android:id="@+id/signup_tv_password_validity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2.5dp"
+        android:letterSpacing="0.06"
+        android:text="@string/signup_tv_validate_password"
+        android:textColor="@color/colorDodgerBlue"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@+id/signup_view_password"
+        app:layout_constraintTop_toBottomOf="@+id/signup_view_password" />
+
     <EditText
         android:id="@+id/signup_edt_password_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="42dp"
         android:background="@null"
         android:hint="@string/signup_tv_password_check"
@@ -142,7 +166,7 @@
         android:paddingBottom="4dp"
         android:textColor="@color/colorInfoNickname"
         android:textSize="11sp"
-        app:layout_constraintTop_toBottomOf="@+id/signup_view_password" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_tv_password_validity" />
 
     <View
         android:id="@+id/email_login_view_password_check"

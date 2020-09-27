@@ -70,14 +70,14 @@ public class SocialLoginActivity extends BaseActivity implements SocialActivityV
 
     @Override
     public void tryGetIsMemberSuccessGoMain(String token) {
-        Log.d("로그", "go main");
+//        Log.d("로그", "go main");
         final SocialService socialService = new SocialService(mKakaoView, mContext, token);
-        socialService.tryPostLogin();
+        socialService.tryPostKakaoLogin();
     }
 
     @Override
     public void tryGetIsMemberSuccessNeedSignUp(String token) {
-        Log.d("로그", "need sign up");
+//        Log.d("로그", "need sign up");
         hideProgressDialog();
         Intent goExtraInfo = new Intent(this, InfoActivity.class);
         goExtraInfo.putExtra("token", token);
@@ -87,7 +87,7 @@ public class SocialLoginActivity extends BaseActivity implements SocialActivityV
 
     @Override
     public void tryGetIsMemberFailure(String message) {
-        Log.d("로그", "login failure");
+//        Log.d("로그", "login failure");
         hideProgressDialog();
         showCustomToastShort(message);
     }
