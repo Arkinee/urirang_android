@@ -21,6 +21,8 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.ApplicationClass;
+import com.makeus.urirang.android.src.login.social.SocialLoginActivity;
 import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.HomePostAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.HomeTopPagerAdapter;
@@ -76,6 +78,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mHomeTvAppBarNick = view.findViewById(R.id.home_tv_appbar_nick);
         mHomeTvAppBarMbti = view.findViewById(R.id.home_tv_appbar_mbti);
         LinearLayout homeLinearGoWorldCup = view.findViewById(R.id.home_linear_go_world_cup);
+
+        TextView homeIvUrirang = view.findViewById(R.id.home_iv_urirang);
+        homeIvUrirang.setOnClickListener(this);
 
         mHomeViewPagerTop = view.findViewById(R.id.home_viewpager_top);
         mHomeRvPost = view.findViewById(R.id.home_rv_post);
@@ -225,6 +230,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.home_iv_urirang:
+                ApplicationClass.sSharedPreferences.edit().putString(ApplicationClass.X_ACCESS_TOKEN, "").apply();
+                Intent goLoginIntent = new Intent(getActivity(), SocialLoginActivity.class);
+                goLoginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(goLoginIntent);
+                ((MainActivity)getActivity()).finish();
                 break;
             case R.id.home_iv_notice:
                 break;

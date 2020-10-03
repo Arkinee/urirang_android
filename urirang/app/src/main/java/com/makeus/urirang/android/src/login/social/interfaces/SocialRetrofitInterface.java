@@ -22,6 +22,6 @@ public interface SocialRetrofitInterface {
     Call<KakaoLoginResponse> tryPostKakaoSignUp(@Body HashMap<String, Object> params);
 
     @POST("/api/user/kakaoLogin")
-    Call<KakaoLoginResponse> tryPostKakaoLogin(@Header("AccessToken") String kakaoToken);
+    Call<KakaoLoginResponse> tryPostKakaoLogin(@Body HashMap<String, Object> params);
 
 }

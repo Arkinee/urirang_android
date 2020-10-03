@@ -19,6 +19,8 @@ import com.makeus.urirang.android.src.login.social.interfaces.KakaoLoginView;
 import com.makeus.urirang.android.src.login.social.interfaces.SocialActivityView;
 import com.makeus.urirang.android.src.main.MainActivity;
 
+import java.util.HashMap;
+
 public class SocialLoginActivity extends BaseActivity implements SocialActivityView, KakaoLoginView {
 
     private KakaoLoginView mKakaoView;
@@ -41,8 +43,8 @@ public class SocialLoginActivity extends BaseActivity implements SocialActivityV
         session.addCallback(mSessionCallBack);
     }
 
-    public void socialLoginOnclick(View view){
-        switch (view.getId()){
+    public void socialLoginOnclick(View view) {
+        switch (view.getId()) {
             case R.id.social_login_tv_go_email_login:
                 Intent intent = new Intent(this, EmailLoginActivity.class);
                 startActivity(intent);
@@ -72,7 +74,12 @@ public class SocialLoginActivity extends BaseActivity implements SocialActivityV
     public void tryGetIsMemberSuccessGoMain(String token) {
 //        Log.d("로그", "go main");
         final SocialService socialService = new SocialService(mKakaoView, mContext, token);
-        socialService.tryPostKakaoLogin();
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("accessToken", token);
+        params.put("nickname", "");
+        params.put("mbti", "");
+        socialService.tryPostKakaoLogin(params);
+        showProgressDialog();
     }
 
     @Override

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_how_about_this_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="360:107"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/item_how_about_this_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintDimensionRatio="110:83"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/item_how_about_this_iv_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/how_about_this"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/item_how_about_this_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="9sp"
+            android:maxLines="2"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_how_about_this_card"
+            app:layout_constraintTop_toTopOf="@+id/item_how_about_this_card"
+            tools:text="내가 겪었던 찐F와 찐T썰 풀어보자" />
+
+        <ImageView
+            android:id="@+id/item_how_about_this_iv_mbti"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="17dp"
+            android:contentDescription="@string/how_about_this"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/item_how_about_this_card"
+            app:layout_constraintEnd_toStartOf="@+id/item_how_about_this_tv_nickname"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/item_how_about_this_card"
+            tools:src="@drawable/ic_mbti_7_isfj_selected" />
+
+        <TextView
+            android:id="@+id/item_how_about_this_tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:maxLines="1"
+            android:textColor="@color/colorBasicBlack98"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/item_how_about_this_iv_mbti"
+            app:layout_constraintEnd_toStartOf="@+id/item_how_about_this_iv_like"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/item_how_about_this_iv_mbti"
+            app:layout_constraintTop_toTopOf="@+id/item_how_about_this_iv_mbti"
+            tools:text="닉네임" />
+
+        <ImageView
+            android:id="@+id/item_how_about_this_iv_like"
+            android:layout_width="9dp"
+            android:layout_height="9dp"
+            android:layout_marginStart="7dp"
+            android:contentDescription="@string/how_about_this"
+            android:src="@drawable/ic_like"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/item_how_about_this_iv_mbti"
+            app:layout_constraintEnd_toStartOf="@+id/item_how_about_this_tv_like"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/item_how_about_this_tv_nickname"
+            app:layout_constraintTop_toTopOf="@+id/item_how_about_this_iv_mbti" />
+
+        <TextView
+            android:id="@+id/item_how_about_this_tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/colorBasicBlack59"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/item_how_about_this_iv_mbti"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/item_how_about_this_iv_like"
+            app:layout_constraintTop_toTopOf="@+id/item_how_about_this_iv_mbti"
+            tools:text="63" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

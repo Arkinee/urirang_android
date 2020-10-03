@@ -93,9 +93,9 @@ public class SocialService {
         });
     }
 
-    public void tryPostKakaoLogin() {
+    public void tryPostKakaoLogin(HashMap<String, Object> params) {
         final SocialRetrofitInterface socialRetrofitInterface = getRetrofitForKakao().create(SocialRetrofitInterface.class);
-        socialRetrofitInterface.tryPostKakaoLogin(mToken).enqueue(new Callback<KakaoLoginResponse>() {
+        socialRetrofitInterface.tryPostKakaoLogin(params).enqueue(new Callback<KakaoLoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<KakaoLoginResponse> call, @NonNull Response<KakaoLoginResponse> response) {
 

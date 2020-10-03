@@ -115,4 +115,13 @@
     <string name="search">검색</string>
     <string name="search_edt_hint">검색어 입력</string>
 
+    <!-- How About This -->
+    <string name="how_about_this">HOWABOUTTHIS</string>
+    <string name="how_about_this_tv_top">이건 어때</string>
+    <string name="how_about_this_1">1</string>
+    <string name="how_about_this_2">2</string>
+    <string name="how_about_this_3">3</string>
+    <string name="how_about_this_tv_filter_created_at">최신순</string>
+    <string name="how_about_this_tv_filter_popularity">인기순</string>
+
 </resources>
