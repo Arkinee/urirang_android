@@ -42,3 +42,6 @@ URIRANG Android
 
 # '20.10.03
 	- 이건 어때 ui, 필터링 ui 작성
+
+# '20.10.05
+	- interfaces 생성
