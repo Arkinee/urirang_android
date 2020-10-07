@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.board.adapters.SectionAdapter;
 import com.makeus.urirang.android.src.main.fragments.board.fragments.BoardWithAllFragment;
 import com.makeus.urirang.android.src.main.fragments.board.fragments.BoardWithYouFragment;
@@ -41,7 +42,7 @@ public class BoardFragment extends Fragment implements ViewPager.OnPageChangeLis
 
         mBoardTab = view.findViewById(R.id.fragment_board_tab);
         mBoardViewPager = view.findViewById(R.id.fragment_board_view_pager);
-        mSectionAdapter = new SectionAdapter(getActivity().getSupportFragmentManager());
+        mSectionAdapter = new SectionAdapter(((MainActivity)mContext).getSupportFragmentManager());
 
         mWithAllFragment = new BoardWithAllFragment(mContext);
         mWithYouFragment = new BoardWithYouFragment(mContext);

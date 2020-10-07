@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <ImageView
+        android:id="@+id/wiyh_you_comment_iv_back_arrow"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/with_you"
+        android:onClick="hallOnClick"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/with_you_comment_view_border"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorInfoBorder"
+        app:layout_constraintTop_toBottomOf="@+id/wiyh_you_comment_iv_back_arrow" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/with_you_tv_comment"
+        android:textColor="#090909"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/wiyh_you_comment_iv_back_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/wiyh_you_comment_iv_back_arrow" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorHomeBorder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/with_you_comment_view_border">
+
+        <ImageView
+            android:id="@+id/with_you_comment_iv_order_by"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/with_you"
+            android:src="@drawable/ic_order_by"
+            app:layout_constraintBottom_toBottomOf="@+id/with_you_comment_tv_order_by"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/with_you_comment_tv_order_by" />
+
+        <TextView
+            android:id="@+id/with_you_comment_tv_order_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5.3dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="15dp"
+            android:onClick="hallOnClick"
+            android:paddingStart="5dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="4dp"
+            android:text="@string/hall_of_fame_tv_filter_by_created"
+            android:textColor="@color/colorBasicBlack92"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/with_you_comment_iv_order_by"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/wiyh_you_comment_tv_mbti_filtering"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="15dp"
+            android:paddingStart="3dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="4dp"
+            android:text="@string/with_you_comment_tv_mbti_filtering"
+            android:textColor="@color/colorBasicBlack92"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="9dp"
+            android:contentDescription="@string/with_you"
+            android:src="@drawable/ic_filtering"
+            app:layout_constraintBottom_toBottomOf="@+id/wiyh_you_comment_tv_mbti_filtering"
+            app:layout_constraintEnd_toStartOf="@+id/wiyh_you_comment_tv_mbti_filtering"
+            app:layout_constraintTop_toTopOf="@+id/wiyh_you_comment_tv_mbti_filtering" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/with_you_comment_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/with_you_comment_tv_order_by" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorInfoBorder23"
+            app:layout_constraintBottom_toTopOf="@+id/with_you_comment_constraint_write" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/with_you_comment_constraint_write"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="360:53">
+
+            <TextView
+                android:id="@+id/with_you_comment_tv_anonymous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

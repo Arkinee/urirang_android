@@ -45,3 +45,7 @@ URIRANG Android
 
 # '20.10.05
 	- interfaces 积己
+
+# '20.10.07
+	- 呈锐尔 UI 累己
+	- Adapter 累己吝

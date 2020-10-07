@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mHomeTvAppBarMbti = view.findViewById(R.id.home_tv_appbar_mbti);
         LinearLayout homeLinearGoWorldCup = view.findViewById(R.id.home_linear_go_world_cup);
 
-        TextView homeIvUrirang = view.findViewById(R.id.home_iv_urirang);
+        ImageView homeIvUrirang = view.findViewById(R.id.home_iv_urirang);
         homeIvUrirang.setOnClickListener(this);
 
         mHomeViewPagerTop = view.findViewById(R.id.home_viewpager_top);

@@ -105,6 +105,14 @@
     <string name="board_with_you_tv_mbti_filtering">MBTI 필터링</string>
     <string name="board_tv_view_wording">조회</string>
 
+    <!-- With You -->
+    <string name="with_you">WITHYOU</string>
+    <string name="with_you_tv_topic">토픽</string>
+    <string name="with_you_tv_comment">코멘트</string>
+    <string name="with_you_comment_tv_mbti_filtering">MBTI 필터링</string>
+    <string name="with_you_tv_write_comment">댓글달기</string>
+    <string name="with_you_tv_write_comment_anonymous">익명</string>
+
     <!-- MBTI Filter -->
     <string name="mbti_filter_description">MBTI_FILTERING</string>
     <string name="mbti_filter">MBTI 필터링</string>
