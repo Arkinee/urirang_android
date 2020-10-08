@@ -67,6 +67,8 @@ public class BottomSheetMbtiFilterDialog extends BottomSheetDialogFragment imple
 
         ivClose = view.findViewById(R.id.bottom_sheet_mbti_filter_iv_close);
         tvApply = view.findViewById(R.id.bottom_sheet_mbti_filter_tv_apply);
+        TextView tvApply = view.findViewById(R.id.bottom_sheet_mbti_filter_tv_apply);
+        tvApply.setOnClickListener(this);
 
         // 1줄
         ivIntj = view.findViewById(R.id.bottom_sheet_mbti_filter_intj);

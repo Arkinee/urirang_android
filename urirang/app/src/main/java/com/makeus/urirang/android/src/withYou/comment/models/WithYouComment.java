@@ -28,10 +28,20 @@ public class WithYouComment {
     private boolean isAnonymous;
     @SerializedName("createdAt")
     private String createdAt;
-    @SerializedName("updateAt")
-    private String updateAt;
+    @SerializedName("updatedAt")
+    private String updatedAt;
     @SerializedName("Comments")
     private ArrayList<Comments> comments;
+    @SerializedName("isLiked")
+    private boolean isLiked;
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
 
     public int getId() {
         return id;
@@ -77,8 +87,8 @@ public class WithYouComment {
         return createdAt;
     }
 
-    public String getUpdateAt() {
-        return updateAt;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
     public ArrayList<Comments> getComments() {

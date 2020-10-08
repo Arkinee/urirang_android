@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.makeus.urirang.android.R;
-import com.makeus.urirang.android.src.main.fragments.board.models.WithAllPost;
+import com.makeus.urirang.android.src.main.fragments.board.models.BoardWithAllData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,8 +28,8 @@ import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHolder> implements Filterable {
 
     private Context mContext;
-    private ArrayList<WithAllPost> mWithAllList;
-    private ArrayList<WithAllPost> mFilterList;
+    private ArrayList<BoardWithAllData> mWithAllList;
+    private ArrayList<BoardWithAllData> mFilterList;
     private OnItemClickListener mListener = null;
 
     public interface OnItemClickListener {
@@ -40,7 +40,7 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
         this.mListener = listener;
     }
 
-    public WithAllAdapter(Context context, ArrayList<WithAllPost> postLists, OnItemClickListener listener) {
+    public WithAllAdapter(Context context, ArrayList<BoardWithAllData> postLists, OnItemClickListener listener) {
         this.mContext = context;
         this.mWithAllList = postLists;
         this.mFilterList = postLists;
@@ -100,11 +100,11 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        WithAllPost post = mFilterList.get(position);
+        BoardWithAllData post = mFilterList.get(position);
 
         holder.tvWithAllTitle.setText(post.getTitle());
-        holder.tvWithAllCommentsNum.setText("(".concat(String.valueOf(post.getComments())).concat(")"));
-        holder.tvWithAllNickname.setText(post.getNickname());
+        holder.tvWithAllCommentsNum.setText("(".concat(String.valueOf(post.getCommentNum())).concat(")"));
+        holder.tvWithAllNickname.setText(post.getUser().getNickname());
 
         String createdTime = post.getCreatedAt();
         SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -124,15 +124,19 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
         Date date = new Date(now);
         String today = afterFormat.format(date);
 
-        if(posted.substring(0,4).equals(today.substring(0,4))){
+        if (posted.substring(0, 5).equals(today.substring(0, 5))) {
             holder.ivWithAllNew.setVisibility(View.VISIBLE);
-        }else holder.ivWithAllNew.setVisibility(View.INVISIBLE);
+        } else holder.ivWithAllNew.setVisibility(View.INVISIBLE);
 
         holder.tvWithAllCreatedAt.setText(posted);
         holder.tvWithAllViews.setText(String.valueOf(post.getViews()));
         holder.tvWithAllLikes.setText(String.valueOf(post.getLikes()));
 
-        Glide.with(mContext).load(post.getThumbnailUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.ivWithAllThumbnail);
+        if (!post.getImages().get(0).getUrl().equals("") && post.getImages().get(0).getUrl() != null) {
+            Glide.with(mContext).load(post.getImages().get(0).getUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.ivWithAllThumbnail);
+        } else {
+            holder.ivWithAllThumbnail.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -140,7 +144,7 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
         return mFilterList.size();
     }
 
-    public WithAllPost getItem(int position) {
+    public BoardWithAllData getItem(int position) {
         return mFilterList.get(position);
     }
 
@@ -155,8 +159,8 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
                 if (charString.isEmpty()) {
                     mFilterList = mWithAllList;
                 } else {
-                    ArrayList<WithAllPost> filtered = new ArrayList<>();
-                    for (WithAllPost coupon : mFilterList) {
+                    ArrayList<BoardWithAllData> filtered = new ArrayList<>();
+                    for (BoardWithAllData post : mFilterList) {
 
                     }
                     mFilterList = filtered;
@@ -170,7 +174,7 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                mFilterList = (ArrayList<WithAllPost>) results.values;
+                mFilterList = (ArrayList<BoardWithAllData>) results.values;
                 notifyDataSetChanged();
             }
         };

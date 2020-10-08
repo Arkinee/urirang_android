@@ -112,6 +112,7 @@
     <string name="with_you_comment_tv_mbti_filtering">MBTI 필터링</string>
     <string name="with_you_tv_write_comment">댓글달기</string>
     <string name="with_you_tv_write_comment_anonymous">익명</string>
+    <string name="with_you_tv_comment_hint_new_opinion">새 의견을 남겨보세요.</string>
 
     <!-- MBTI Filter -->
     <string name="mbti_filter_description">MBTI_FILTERING</string>

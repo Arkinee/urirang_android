@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_with_you_comment_constraint"
@@ -103,8 +103,11 @@
             android:id="@+id/item_with_you_comment_tv_write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="17dp"
+            android:layout_marginEnd="12dp"
             android:letterSpacing="0.06"
+            android:paddingStart="5dp"
+            android:paddingTop="5.1dp"
+            android:paddingBottom="5.1dp"
             android:text="@string/with_you_tv_write_comment"
             android:textColor="@color/colorInfoBorder34"
             android:textSize="8.5sp"
@@ -117,7 +120,9 @@
             android:id="@+id/item_with_you_comment_linear_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5.1dp"
+            android:paddingStart="5dp"
+            android:paddingTop="5.1dp"
+            android:paddingBottom="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_with_you_comment_constraint_speech_bubble">
 
@@ -146,11 +151,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/item_with_you_comment_constraint_speech_bubble"
-            app:layout_constraintTop_toBottomOf="@+id/item_with_you_comment_linear_like" />
+            app:layout_constraintTop_toBottomOf="@+id/item_with_you_comment_linear_like"
+            tools:listitem="@layout/item_with_you_comment_by_comment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

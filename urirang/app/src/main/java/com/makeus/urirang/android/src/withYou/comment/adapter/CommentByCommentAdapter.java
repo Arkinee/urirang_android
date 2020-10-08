@@ -111,6 +111,7 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         Comments comment = mCommentList.get(position);
 
         holder.tvCommentNickname.setText(comment.getUserNickName());
+        holder.tvCommentContent.setText(comment.getContent());
 
         String createdTime = comment.getCreatedAt();
         SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -130,7 +131,7 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         Date date = new Date(now);
         String today = afterFormat.format(date);
 
-        if (posted.substring(0, 4).equals(today.substring(0, 4))) {
+        if (posted.substring(0, 5).equals(today.substring(0, 5))) {
             holder.ivNew.setVisibility(View.VISIBLE);
         } else holder.ivNew.setVisibility(View.INVISIBLE);
 
