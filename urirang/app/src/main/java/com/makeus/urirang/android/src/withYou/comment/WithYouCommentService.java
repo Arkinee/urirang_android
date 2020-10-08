@@ -11,6 +11,8 @@ import com.makeus.urirang.android.src.withYou.comment.interfaces.WithYouRetrofit
 import com.makeus.urirang.android.src.withYou.comment.models.LikeResponse;
 import com.makeus.urirang.android.src.withYou.comment.models.WithYouCommentResponse;
 
+import java.util.HashMap;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,68 +59,113 @@ public class WithYouCommentService {
     }
 
     // 원 댓글 좋아요
-    public void tryPostCommentLike(int commentId) {
-        final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
-        withYouRetrofitInterface.tryPostCommentLike(commentId).enqueue(new Callback<LikeResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
+    public void tryPostCommentLike(int commentId, boolean isLike) {
+        if(!isLike) {
+            final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
+            withYouRetrofitInterface.tryPostCommentLike(commentId).enqueue(new Callback<LikeResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
 
-                if (response.code() == 200) {
-                    final LikeResponse likeResponse = response.body();
-                    mView.tryPostLikeCommentSuccess();
-                } else {
-                    mView.tryPostLikeCommentFailure("좋아요 실패");
+                    if (response.code() == 201) {
+                        final LikeResponse likeResponse = response.body();
+                        mView.tryPostLikeCommentSuccess();
+                    }else if(response.code() == 409){
+                        mView.tryPostLikeCommentFailure("자신의 글은 좋아요를 누를 수 없습니다");
+                    } else {
+                        mView.tryPostLikeCommentFailure("실패");
+                    }
+
                 }
 
-            }
+                @Override
+                public void onFailure(Call<LikeResponse> call, Throwable t) {
+                    mView.tryPostLikeCommentFailure(mContext.getString(R.string.network_connect_failure));
+                }
+            });
+        }else{
+            final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
+            withYouRetrofitInterface.tryPostCommentDisLike(commentId).enqueue(new Callback<LikeResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
 
-            @Override
-            public void onFailure(Call<LikeResponse> call, Throwable t) {
-                mView.tryPostLikeCommentFailure(mContext.getString(R.string.network_connect_failure));
-            }
-        });
+                    if (response.code() == 201) {
+                        final LikeResponse likeResponse = response.body();
+                        mView.tryPostLikeCommentSuccess();
+                    } else {
+                        mView.tryPostLikeCommentFailure("실패");
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<LikeResponse> call, Throwable t) {
+                    mView.tryPostLikeCommentFailure(mContext.getString(R.string.network_connect_failure));
+                }
+            });
+        }
     }
 
     // 대댓글 좋아요
-    public void tryPostCommentByCommentLike(int commentId) {
-        final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
-        withYouRetrofitInterface.tryPostCommentLike(commentId).enqueue(new Callback<LikeResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
+    public void tryPostCommentByCommentLike(int commentId, boolean isLike) {
+        if(!isLike) {
+            final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
+            withYouRetrofitInterface.tryPostCommentLike(commentId).enqueue(new Callback<LikeResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
 
-                if (response.code() == 200) {
-                    final LikeResponse likeResponse = response.body();
-                    mCommentView.tryPostLikeCommentByCommentSuccess();
-                } else {
-                    mCommentView.tryPostLikeCommentByCommentFailure("좋아요 실패");
+                    if (response.code() == 201) {
+                        final LikeResponse likeResponse = response.body();
+                        mCommentView.tryPostLikeCommentByCommentSuccess();
+                    } else {
+                        mCommentView.tryPostLikeCommentByCommentFailure("실패");
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<LikeResponse> call, Throwable t) {
-                mCommentView.tryPostLikeCommentByCommentFailure(mContext.getString(R.string.network_connect_failure));
-            }
-        });
+                @Override
+                public void onFailure(Call<LikeResponse> call, Throwable t) {
+                    mCommentView.tryPostLikeCommentByCommentFailure(mContext.getString(R.string.network_connect_failure));
+                }
+            });
+        }else{
+            final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
+            withYouRetrofitInterface.tryPostCommentDisLike(commentId).enqueue(new Callback<LikeResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
+
+                    if (response.code() == 201) {
+                        final LikeResponse likeResponse = response.body();
+                        mCommentView.tryPostLikeCommentByCommentSuccess();
+                    } else {
+                        mCommentView.tryPostLikeCommentByCommentFailure("실패");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LikeResponse> call, Throwable t) {
+                    mCommentView.tryPostLikeCommentByCommentFailure(mContext.getString(R.string.network_connect_failure));
+                }
+            });
+        }
     }
 
     // 댓글 달기
-    public void tryPostWriteComment(int commentId) {
+    public void tryPostWriteComment(int topicId, String commentId, HashMap<String, Object> params) {
         final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
-        withYouRetrofitInterface.tryPostWriteComment(commentId).enqueue(new Callback<LikeResponse>() {
+        withYouRetrofitInterface.tryPostWriteComment(topicId, commentId, params).enqueue(new Callback<LikeResponse>() {
             @Override
             public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
 
                 if (response.code() == 200) {
                     final LikeResponse writeResponse = response.body();
-                    mCommentView.tryPostLikeCommentByCommentSuccess();
+                    mView.tryPostWriteCommentSuccess();
                 } else {
-                    mCommentView.tryPostLikeCommentByCommentFailure("글쓰기 실패");
+                    mView.tryPostWriteCommentFailure("글쓰기 실패");
                 }
             }
 
             @Override
             public void onFailure(Call<LikeResponse> call, Throwable t) {
-                mCommentView.tryPostLikeCommentByCommentFailure(mContext.getString(R.string.network_connect_failure));
+                mView.tryPostWriteCommentFailure(mContext.getString(R.string.network_connect_failure));
             }
         });
     }

@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -56,6 +58,8 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         TextView tvCommentContent;
         TextView tvCommentLike;
 
+        LinearLayout linearCommentLike;
+
         ViewHolder(final View itemView) {
             super(itemView);
             // 뷰 객체에 대한 참조. (hold strong reference)
@@ -66,20 +70,9 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
             tvCommentCreatedAt = itemView.findViewById(R.id.item_with_you_comment_by_comment_tv_created_at);
             tvCommentContent = itemView.findViewById(R.id.item_with_you_comment_by_comment_tv_content);
             tvCommentLike = itemView.findViewById(R.id.item_with_you_comment_by_comment_tv_like);
+            linearCommentLike = itemView.findViewById(R.id.item_with_you_comment_linear_like);
 
-            tvCommentLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int pos = getAdapterPosition();
-                    if (pos != RecyclerView.NO_POSITION) {
-                        if (mListener != null) {
-                            mListener.onLikeClick(v, pos);
-                        }
-                    }
-                }
-            });
-
-            tvCommentLike.setOnClickListener(new View.OnClickListener() {
+            linearCommentLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos = getAdapterPosition();
@@ -104,6 +97,16 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         ViewHolder vh = new ViewHolder(view);
 
         return vh;
+    }
+
+    public void likeComment(int pos) {
+        mCommentList.get(pos).setLiked(!mCommentList.get(pos).isLiked());
+        if (mCommentList.get(pos).isLiked()) {
+            mCommentList.get(pos).setLike(mCommentList.get(pos).getLike() + 1);
+        } else {
+            mCommentList.get(pos).setLike(mCommentList.get(pos).getLike() - 1);
+        }
+        notifyDataSetChanged();
     }
 
     @Override
@@ -137,6 +140,14 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
 
         holder.tvCommentCreatedAt.setText(posted);
         holder.tvCommentLike.setText(String.valueOf(comment.getLike()));
+
+        if (comment.isLiked()) {
+            holder.ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_true));
+            holder.tvCommentLike.setTextColor(mContext.getResources().getColor(R.color.colorHotPink));
+        } else {
+            holder.ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_false));
+            holder.tvCommentLike.setTextColor(mContext.getResources().getColor(R.color.colorBasicBlack27));
+        }
 
         if (comment.getUserMbti().equals("intj"))
             Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivCommentMbti);

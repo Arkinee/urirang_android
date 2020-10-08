@@ -39,6 +39,10 @@ public class WithYouComment {
         return isLiked;
     }
 
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
     public void setLiked(boolean liked) {
         isLiked = liked;
     }

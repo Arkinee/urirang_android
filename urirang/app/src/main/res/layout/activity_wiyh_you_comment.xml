@@ -106,6 +106,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/with_you_comment_rv"
             android:layout_width="0dp"
+            android:descendantFocusability="blocksDescendants"
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="35dp"

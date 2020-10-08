@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.makeus.urirang.android.src.withYou.comment.interfaces.WithYouActivity
 import com.makeus.urirang.android.src.withYou.comment.models.WithYouComment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
@@ -31,6 +33,7 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
     private Context mContext;
     private WithYouActivityView mView;
 
+    private EditText mWithYouCommentEdtContent;
     private TextView mWithYouCommentTvAnonymous;
     private TextView mWithYouCommentTvToComment;
 
@@ -40,7 +43,7 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
 
     private InputMethodManager mInputMethodManager;
     private boolean mIsAnonymous = false;
-    private int mSelectedCommentId = -1;
+    private String mSelectedCommentId = "";
     private int mTopicId = 0;
     private int mPosition = -1;
 
@@ -60,21 +63,26 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
         mWithYouList = new ArrayList<>();
         mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
+        mWithYouCommentEdtContent = findViewById(R.id.with_you_comment_edt_content);
         mWithYouCommentTvAnonymous = findViewById(R.id.with_you_comment_tv_anonymous);
         mWithYouCommentTvToComment = findViewById(R.id.with_you_comment_tv_toComment);
+
         mWithYouCommentRv = findViewById(R.id.with_you_comment_rv);
         mWithYouCommentAdatper = new WithYouCommentAdapter(this, mWithYouList, new WithYouCommentAdapter.OnItemClickListener() {
             @Override
             public void onWriteClick(View v, int pos) {
-                mSelectedCommentId = mWithYouCommentAdatper.getItem(pos).getTopicId();
-                Log.d("로그", "id " + mSelectedCommentId);
+                mSelectedCommentId = String.valueOf(mWithYouCommentAdatper.getItem(pos).getId());
+                mWithYouCommentTvToComment.setText("@".concat(mWithYouCommentAdatper.getItem(pos).getUserNickName()).concat("에게 댓글 남기는 중"));
+                mWithYouCommentTvToComment.setVisibility(View.VISIBLE);
+                Log.d("로그", "selected comment id " + mSelectedCommentId);
             }
 
             @Override
             public void onLikeClick(View v, int pos) {
                 mPosition = pos;
+                Log.d("로그", "position " + mPosition);
                 final WithYouCommentService likeService = new WithYouCommentService(mView, mContext);
-                likeService.tryPostCommentLike(mWithYouCommentAdatper.getItem(pos).getId());
+                likeService.tryPostCommentLike(mWithYouCommentAdatper.getItem(pos).getId(), mWithYouCommentAdatper.getItem(pos).isLiked());
                 showProgressDialog();
             }
         });
@@ -134,7 +142,19 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
                 mIsAnonymous = !mIsAnonymous;
                 break;
             case R.id.with_you_comment_iv_write:
-
+                final WithYouCommentService writeService = new WithYouCommentService(this, this);
+                HashMap<String, Object> params = new HashMap<>();
+                params.put("content", mWithYouCommentEdtContent.getText().toString());
+                params.put("isAnonymous", mIsAnonymous);
+                if (!mSelectedCommentId.equals("")) {
+                    writeService.tryPostWriteComment(mTopicId, mSelectedCommentId, params);
+                } else {
+                    writeService.tryPostWriteComment(mTopicId, "", params);
+                }
+                break;
+            case R.id.with_you_comment_tv_toComment:
+                mSelectedCommentId = "";
+                mWithYouCommentTvToComment.setVisibility(View.GONE);
                 break;
         }
     }
@@ -171,6 +191,28 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
     // 좋아요 실패
     @Override
     public void tryPostLikeCommentFailure(String message) {
+        hideProgressDialog();
+        showCustomToastShort(message);
+    }
+
+    // 글쓰기 성공
+    @Override
+    public void tryPostWriteCommentSuccess() {
+        mWithYouList.clear();
+        mPage = 1;
+        mSelectedMbti = "";
+
+        mWithYouCommentTvToComment.setVisibility(View.GONE);
+        mWithYouCommentEdtContent.setText("");
+        mWithYouCommentTvAnonymous.setTextColor(getResources().getColor(R.color.colorBasicBlack11));
+        mIsAnonymous = false;
+
+        getWithYouList(mSelectedMbti, mPage);
+    }
+
+    // 글쓰기 실패
+    @Override
+    public void tryPostWriteCommentFailure(String message) {
         hideProgressDialog();
         showCustomToastShort(message);
     }

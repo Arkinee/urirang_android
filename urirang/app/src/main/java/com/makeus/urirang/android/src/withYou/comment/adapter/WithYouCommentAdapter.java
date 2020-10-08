@@ -38,6 +38,9 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
     private OnItemClickListener mListener = null;
     private WithYouCommentByCommentView mView;
 
+    private CommentByCommentAdapter commentAdapter;
+    private int mPosition = -1;
+
     public interface OnItemClickListener {
         void onWriteClick(View v, int pos);
 
@@ -54,6 +57,7 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
         this.mFilterList = commentLists;
         this.mListener = listener;
         mView = this;
+
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -85,6 +89,8 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
             tvCommentWrite = itemView.findViewById(R.id.item_with_you_comment_tv_write);
             rvComment = itemView.findViewById(R.id.item_with_you_comment_rv);
             linearCommentLike = itemView.findViewById(R.id.item_with_you_comment_linear_like);
+
+            rvComment.addItemDecoration(new RecyclerDecoration(mContext, 12));
 
             tvCommentWrite.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -126,29 +132,38 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final WithYouComment comment = mFilterList.get(position);
 
-        CommentByCommentAdapter commentAdapter = new CommentByCommentAdapter(mContext, comment.getComments(), new CommentByCommentAdapter.OnItemClickListener() {
+        commentAdapter = new CommentByCommentAdapter(mContext, comment.getComments(), new CommentByCommentAdapter.OnItemClickListener() {
             @Override
             public void onLikeClick(View v, int pos) {
                 int commentId = comment.getComments().get(pos).getId();
+                mPosition = pos;
+                notifyDataSetChanged();
                 final WithYouCommentService likeService = new WithYouCommentService(mView, mContext);
-                likeService.tryPostCommentLike(commentId);
+                likeService.tryPostCommentByCommentLike(commentId, comment.getComments().get(pos).isLiked());
                 ((WithYouCommentActivity) mContext).showProgressDialog();
+
+                // UI 업데이트
+                comment.getComments().get(pos).setLiked(!comment.getComments().get(pos).isLiked());
+                if (comment.getComments().get(pos).isLiked()) {
+                    comment.getComments().get(pos).setLike(comment.getComments().get(pos).getLike() + 1);
+                } else {
+                    comment.getComments().get(pos).setLike(comment.getComments().get(pos).getLike() - 1);
+                }
             }
         });
 
-        holder.rvComment.addItemDecoration(new RecyclerDecoration(mContext, 12));
         holder.rvComment.setAdapter(commentAdapter);
 
         holder.tvCommentNickname.setText(comment.getUserNickName());
         holder.tvCommentContent.setText(comment.getContent());
 
-        if(comment.isLiked()) {
+        if (comment.isLiked()) {
             holder.ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_true));
             holder.tvCommentLike.setTextColor(mContext.getResources().getColor(R.color.colorHotPink));
-        }else{
+        } else {
             holder.ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_false));
             holder.tvCommentLike.setTextColor(mContext.getResources().getColor(R.color.colorBasicBlack27));
         }
@@ -214,6 +229,8 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
 
     @Override
     public void tryPostLikeCommentByCommentSuccess() {
+
+//        commentAdapter.likeComment(mPosition);
         ((WithYouCommentActivity) mContext).hideProgressDialog();
     }
 
@@ -232,8 +249,13 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
         return mFilterList.get(position);
     }
 
-    public void like(int pos){
+    public void like(int pos) {
         mFilterList.get(pos).setLiked(!mFilterList.get(pos).isLiked());
+        if (mFilterList.get(pos).isLiked()) {
+            mFilterList.get(pos).setLikes(mFilterList.get(pos).getLikes() + 1);
+        } else {
+            mFilterList.get(pos).setLikes(mFilterList.get(pos).getLikes() - 1);
+        }
         notifyDataSetChanged();
     }
 

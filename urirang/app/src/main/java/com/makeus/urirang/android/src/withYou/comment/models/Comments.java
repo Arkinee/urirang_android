@@ -35,6 +35,14 @@ public class Comments {
         return topicId;
     }
 
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
+
     public int getId() {
         return id;
     }

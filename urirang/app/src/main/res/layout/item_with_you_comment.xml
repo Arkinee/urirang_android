@@ -149,6 +149,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_with_you_comment_rv"
             android:layout_width="0dp"
+            android:nestedScrollingEnabled="false"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginTop="10dp"

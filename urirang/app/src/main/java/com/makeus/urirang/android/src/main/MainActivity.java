@@ -3,25 +3,28 @@ package com.makeus.urirang.android.src.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
-import com.makeus.urirang.android.src.dialog.BottomSheetMbtiFilterDialog;
+
+import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
+import static com.makeus.urirang.android.src.ApplicationClass.FCM_TOKEN;
+
 import com.makeus.urirang.android.src.main.adapter.MainFragmentPagerAdapter;
 import com.makeus.urirang.android.src.main.fragments.board.BoardFragment;
 import com.makeus.urirang.android.src.main.fragments.home.HomeFragment;
 import com.makeus.urirang.android.src.main.fragments.mypage.MyPageFragment;
 import com.makeus.urirang.android.src.main.fragments.worldCup.WorldCupFragment;
+import com.makeus.urirang.android.src.main.interfaces.MainActivityView;
 
-public class MainActivity extends BaseActivity implements BottomSheetMbtiFilterDialog.BottomSheetListener {
+import java.util.HashMap;
+
+public class MainActivity extends BaseActivity implements MainActivityView {
 
     private MainFragmentPagerAdapter mMainPagerAdapter;
     private MainViewPager mMainViewPager;
@@ -47,7 +50,15 @@ public class MainActivity extends BaseActivity implements BottomSheetMbtiFilterD
         setContentView(R.layout.activity_main);
 
         initialize();
+        refreshFcmToken();
 
+    }
+
+    void refreshFcmToken() {
+        final MainService fcmService = new MainService(this, this);
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("fcmToken", sSharedPreferences.getString(FCM_TOKEN, ""));
+        fcmService.tryPostFcmToken(params);
     }
 
     void initialize() {
@@ -191,7 +202,12 @@ public class MainActivity extends BaseActivity implements BottomSheetMbtiFilterD
     }
 
     @Override
-    public void onFilterApply(String mbti) {
+    public void tryPostFcmTokenSuccess() {
+
+    }
+
+    @Override
+    public void tryPostFcmTokenFailure() {
 
     }
 }

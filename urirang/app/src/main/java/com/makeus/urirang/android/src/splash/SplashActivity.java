@@ -25,6 +25,8 @@ import java.security.NoSuchAlgorithmException;
 
 import io.fabric.sdk.android.Fabric;
 
+import static com.makeus.urirang.android.src.ApplicationClass.getFcmToken;
+
 public class SplashActivity extends BaseActivity implements SplashActivityView {
 
     private Context mContext;
@@ -37,6 +39,7 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
 
         mContext = this;
         mView = this;
+        getFcmToken();
         Handler hd = new Handler();
         hd.postDelayed(new splashHandler(), 750); // 1초 후에 hd handler 실행
     }

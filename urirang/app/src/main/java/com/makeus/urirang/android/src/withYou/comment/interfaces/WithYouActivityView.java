@@ -14,4 +14,7 @@ public interface WithYouActivityView {
 
     void tryPostLikeCommentFailure(String message);
 
+    void tryPostWriteCommentSuccess();
+    void tryPostWriteCommentFailure(String message);
+
 }
