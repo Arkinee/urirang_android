@@ -365,8 +365,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/with_you_constraint_fourth_comment"
                     app:layout_constraintDimensionRatio="320:53"
                     app:layout_constraintTop_toBottomOf="@+id/with_you_constraint_second_comment">
 
@@ -457,6 +456,213 @@
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="@+id/with_you_third_comment_speech_bubble"
                         app:layout_constraintTop_toTopOf="@+id/with_you_third_comment_speech_bubble"
+                        tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- fourth -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/with_you_constraint_fourth_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/with_you_constraint_fifth_comment"
+                    app:layout_constraintDimensionRatio="320:53"
+                    app:layout_constraintTop_toBottomOf="@+id/with_you_constraint_third_comment">
+
+                    <ImageView
+                        android:id="@+id/with_you_fourth_comment_iv_mbti"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:contentDescription="@string/with_you"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_mbti_1_intj_selected" />
+
+                    <TextView
+                        android:id="@+id/with_you_fourth_comment_tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/colorBasicBlack98"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/with_you_fourth_comment_iv_mbti"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fourth_comment_iv_mbti"
+                        tools:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/with_you_fourth_comment_tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/colorBasicBlack40"
+                        android:textSize="8.5sp"
+                        app:layout_constraintStart_toEndOf="@+id/with_you_fourth_comment_tv_nickname"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fourth_comment_iv_mbti"
+                        tools:text="8/25 12:01" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintEnd_toStartOf="@+id/with_you_fourth_comment_tv_like"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fourth_comment_iv_mbti" />
+
+                    <TextView
+                        android:id="@+id/with_you_fourth_comment_tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/colorBasicBlack59"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fourth_comment_iv_mbti"
+                        tools:text="35" />
+
+                    <ImageView
+                        android:id="@+id/with_you_fourth_comment_speech_bubble"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_speech_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/with_you_fourth_comment_tv_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/with_you_fourth_comment_tv_nickname" />
+
+                    <TextView
+                        android:id="@+id/with_you_fourth_comment_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="9sp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBasicBlack83"
+                        android:textSize="11sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/with_you_fourth_comment_speech_bubble"
+                        app:layout_constraintEnd_toEndOf="@+id/with_you_fourth_comment_speech_bubble"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/with_you_fourth_comment_speech_bubble"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fourth_comment_speech_bubble"
+                        tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- fifth -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/with_you_constraint_fifth_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="320:53"
+                    app:layout_constraintTop_toBottomOf="@+id/with_you_constraint_fourth_comment">
+
+                    <ImageView
+                        android:id="@+id/with_you_fifth_comment_iv_mbti"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:contentDescription="@string/with_you"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_mbti_1_intj_selected" />
+
+                    <TextView
+                        android:id="@+id/with_you_fifth_comment_tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/colorBasicBlack98"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/with_you_fifth_comment_iv_mbti"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fifth_comment_iv_mbti"
+                        tools:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/with_you_fifth_comment_tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/colorBasicBlack40"
+                        android:textSize="8.5sp"
+                        app:layout_constraintStart_toEndOf="@+id/with_you_fifth_comment_tv_nickname"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fifth_comment_iv_mbti"
+                        tools:text="8/25 12:01" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintEnd_toStartOf="@+id/with_you_fifth_comment_tv_like"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fifth_comment_iv_mbti" />
+
+                    <TextView
+                        android:id="@+id/with_you_fifth_comment_tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/colorBasicBlack59"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fifth_comment_iv_mbti"
+                        tools:text="35" />
+
+                    <ImageView
+                        android:id="@+id/with_you_fifth_comment_speech_bubble"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_speech_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/with_you_fifth_comment_tv_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/with_you_fifth_comment_tv_nickname" />
+
+                    <TextView
+                        android:id="@+id/with_you_fifth_comment_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="9sp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBasicBlack83"
+                        android:textSize="11sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/with_you_fifth_comment_speech_bubble"
+                        app:layout_constraintEnd_toEndOf="@+id/with_you_fifth_comment_speech_bubble"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/with_you_fifth_comment_speech_bubble"
+                        app:layout_constraintTop_toTopOf="@+id/with_you_fifth_comment_speech_bubble"
                         tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,6 +64,22 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
     private TextView mWithYouThirdTvContent;
     private TextView mWithYouThirdTvLikes;
 
+    //fourth
+    private ConstraintLayout mWithYouFourthConstraint;
+    private ImageView mWithYouFourthIvMbti;
+    private TextView mWithYouFourthTvNickname;
+    private TextView mWithYouFourthTvCreatedAt;
+    private TextView mWithYouFourthTvContent;
+    private TextView mWithYouFourthTvLikes;
+
+    //fifth
+    private ConstraintLayout mWithYouFifthConstraint;
+    private ImageView mWithYouFifthIvMbti;
+    private TextView mWithYouFifthTvNickname;
+    private TextView mWithYouFifthTvCreatedAt;
+    private TextView mWithYouFifthTvContent;
+    private TextView mWithYouFifthTvLikes;
+
     private boolean mDoubleClickFlag = false;
     private int mTopicId = 0;
 
@@ -85,26 +101,41 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
         mWithYouTvCommentNum = view.findViewById(R.id.with_you_tv_comment);
         mWithYouIvMbti = view.findViewById(R.id.with_you_presenter_iv_mbti);
 
+        //1
         mWithYouFirstConstraint = view.findViewById(R.id.with_you_constraint_first_comment);
         mWithYouFirstIvMbti = view.findViewById(R.id.with_you_first_comment_iv_mbti);
         mWithYouFirstTvNickname = view.findViewById(R.id.with_you_first_comment_tv_nickname);
         mWithYouFirstTvCreatedAt = view.findViewById(R.id.with_you_first_comment_tv_created_at);
         mWithYouFirstTvContent = view.findViewById(R.id.with_you_first_comment_tv_content);
         mWithYouFirstTvLikes = view.findViewById(R.id.with_you_first_comment_tv_like);
-
+        //2
         mWithYouSecondConstraint = view.findViewById(R.id.with_you_constraint_second_comment);
         mWithYouSecondIvMbti = view.findViewById(R.id.with_you_second_comment_iv_mbti);
         mWithYouSecondTvNickname = view.findViewById(R.id.with_you_second_comment_tv_nickname);
         mWithYouSecondTvCreatedAt = view.findViewById(R.id.with_you_second_comment_tv_created_at);
         mWithYouSecondTvContent = view.findViewById(R.id.with_you_second_comment_tv_content);
         mWithYouSecondTvLikes = view.findViewById(R.id.with_you_second_comment_tv_like);
-
+        //3
         mWithYouThirdConstraint = view.findViewById(R.id.with_you_constraint_third_comment);
         mWithYouThirdIvMbti = view.findViewById(R.id.with_you_third_comment_iv_mbti);
         mWithYouThirdTvNickname = view.findViewById(R.id.with_you_third_comment_tv_nickname);
         mWithYouThirdTvCreatedAt = view.findViewById(R.id.with_you_third_comment_tv_created_at);
         mWithYouThirdTvContent = view.findViewById(R.id.with_you_third_comment_tv_content);
         mWithYouThirdTvLikes = view.findViewById(R.id.with_you_third_comment_tv_like);
+        //4
+        mWithYouFourthConstraint = view.findViewById(R.id.with_you_constraint_fourth_comment);
+        mWithYouFourthIvMbti = view.findViewById(R.id.with_you_fourth_comment_iv_mbti);
+        mWithYouFourthTvNickname = view.findViewById(R.id.with_you_fourth_comment_tv_nickname);
+        mWithYouFourthTvCreatedAt = view.findViewById(R.id.with_you_fourth_comment_tv_created_at);
+        mWithYouFourthTvContent = view.findViewById(R.id.with_you_fourth_comment_tv_content);
+        mWithYouFourthTvLikes = view.findViewById(R.id.with_you_fourth_comment_tv_like);
+        //5
+        mWithYouFifthConstraint = view.findViewById(R.id.with_you_constraint_fifth_comment);
+        mWithYouFifthIvMbti = view.findViewById(R.id.with_you_fifth_comment_iv_mbti);
+        mWithYouFifthTvNickname = view.findViewById(R.id.with_you_fifth_comment_tv_nickname);
+        mWithYouFifthTvCreatedAt = view.findViewById(R.id.with_you_fifth_comment_tv_created_at);
+        mWithYouFifthTvContent = view.findViewById(R.id.with_you_fifth_comment_tv_content);
+        mWithYouFifthTvLikes = view.findViewById(R.id.with_you_fifth_comment_tv_like);
 
         // 모든 코멘트 보기로 가기
         ImageView ivGoComment = view.findViewById(R.id.with_you_iv_go_comment);
@@ -128,7 +159,7 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
         super.onViewCreated(view, savedInstanceState);
 
         final BoardService withYouService = new BoardService(this, mContext);
-        withYouService.tryGetWithYouInfo(3);
+        withYouService.tryGetWithYouInfo(5);
         ((MainActivity) mContext).showProgressDialog();
 
     }
@@ -182,6 +213,8 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
         CommentList first = new CommentList();
         CommentList second = new CommentList();
         CommentList third = new CommentList();
+        CommentList fourth = new CommentList();
+        CommentList fifth = new CommentList();
 
 
         // first
@@ -193,7 +226,7 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
             mWithYouFirstTvContent.setText(first.getContent());
 
             String createdTime = first.getCreatedAt();
-            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd HH:mm");
 
             String posted = "";
@@ -255,7 +288,7 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
             mWithYouSecondTvContent.setText(second.getContent());
 
             String createdTime = second.getCreatedAt();
-            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd HH:mm");
 
             String posted = "";
@@ -317,7 +350,7 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
             mWithYouThirdTvContent.setText(third.getContent());
 
             String createdTime = third.getCreatedAt();
-            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd HH:mm");
 
             String posted = "";
@@ -367,6 +400,128 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
 
         } else {
             mWithYouThirdConstraint.setVisibility(View.INVISIBLE);
+        }
+
+        // fourth
+        if (data.getCommentLists().size() >= 4) {
+            fourth = data.getCommentLists().get(3);
+            mWithYouFourthTvNickname.setText(fourth.getUserNickName());
+            mWithYouFourthTvCreatedAt.setText(fourth.getCreatedAt());
+            mWithYouFourthTvLikes.setText(String.valueOf(fourth.getLike()));
+            mWithYouFourthTvContent.setText(fourth.getContent());
+
+            String createdTime = fourth.getCreatedAt();
+            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd HH:mm");
+
+            String posted = "";
+            if (createdTime != null) {
+                try {
+                    Date before = beforeFormat.parse(createdTime);
+                    posted = afterFormat.format(before);
+                } catch (ParseException e) {
+                    Log.d(TAG, e.toString());
+                }
+            }
+
+            mWithYouFourthTvCreatedAt.setText(posted);
+
+            if (third.getUserMbti().equals("intj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("infj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("istj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("istp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("intp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("infp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("isfj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("isfp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("entj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("enfj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("estj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("estp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("entp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("enfp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("esfj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mWithYouFourthIvMbti);
+            else if (third.getUserMbti().equals("esfp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mWithYouFourthIvMbti);
+
+        } else {
+            mWithYouFourthConstraint.setVisibility(View.INVISIBLE);
+        }
+
+        // fifth
+        if (data.getCommentLists().size() >= 4) {
+            fifth = data.getCommentLists().get(4);
+            mWithYouFifthTvNickname.setText(fifth.getUserNickName());
+            mWithYouFifthTvCreatedAt.setText(fifth.getCreatedAt());
+            mWithYouFifthTvLikes.setText(String.valueOf(fifth.getLike()));
+            mWithYouFifthTvContent.setText(fifth.getContent());
+
+            String createdTime = fifth.getCreatedAt();
+            SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd HH:mm");
+
+            String posted = "";
+            if (createdTime != null) {
+                try {
+                    Date before = beforeFormat.parse(createdTime);
+                    posted = afterFormat.format(before);
+                } catch (ParseException e) {
+                    Log.d(TAG, e.toString());
+                }
+            }
+
+            mWithYouFifthTvCreatedAt.setText(posted);
+
+            if (third.getUserMbti().equals("intj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("infj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("istj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("istp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("intp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("infp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("isfj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("isfp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("entj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("enfj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("estj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("estp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("entp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("enfp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("esfj"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mWithYouFifthIvMbti);
+            else if (third.getUserMbti().equals("esfp"))
+                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mWithYouFifthIvMbti);
+
+        } else {
+            mWithYouFifthConstraint.setVisibility(View.INVISIBLE);
         }
 
         ((MainActivity) mContext).hideProgressDialog();

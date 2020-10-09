@@ -142,6 +142,11 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
                 mIsAnonymous = !mIsAnonymous;
                 break;
             case R.id.with_you_comment_iv_write:
+                if(mWithYouCommentEdtContent.getText().toString().equals("")){
+                    showCustomToastShort("내용을 입력해 주세요");
+                    return;
+                }
+
                 final WithYouCommentService writeService = new WithYouCommentService(this, this);
                 HashMap<String, Object> params = new HashMap<>();
                 params.put("content", mWithYouCommentEdtContent.getText().toString());
@@ -151,6 +156,7 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
                 } else {
                     writeService.tryPostWriteComment(mTopicId, "", params);
                 }
+                showProgressDialog();
                 break;
             case R.id.with_you_comment_tv_toComment:
                 mSelectedCommentId = "";

@@ -167,7 +167,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mHomeViewPagerRelateContents.setAdapter(mRelateAdapter);
 
         mIndicator.setViewPager(mHomeViewPagerRelateContents);
-        mIndicator.createIndicators(3,0);
+        mIndicator.createIndicators(3, 0);
         mHomeViewPagerRelateContents.setOffscreenPageLimit(3);
 
         mHomeViewPagerRelateContents.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -180,7 +180,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                if(positionOffsetPixels == 0){
+                if (positionOffsetPixels == 0) {
                     mHomeViewPagerRelateContents.setCurrentItem(position);
                 }
             }
@@ -198,11 +198,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
-        mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
-        mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
-        mRelateList.add(new RelateContent("https://comic.naver.com/index.nhn", "https://lh3.googleusercontent.com/proxy/ObJKSCZoWKuKueu_xtvebHFa8oVWdirqMVsybYwostJymtylLjTAd0vvo-noOZ41zAC2kegVe5B8TL9I4Hr_8MfL7qk-rAD58FZ4aKCQoA26788oXbGjzdJWM_t5TmVlh9FiXCiJ075NlqEFYFDIBQ8IvPvsT4KC5b7IJwjOBADaW3Qn_yI"));
-
         mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
         mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
         mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
@@ -213,14 +208,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mTestList.add(new OtherTest("8기능", "http://jung.test.typologycentral.com/"));
 
         mOtherTestAdapter.notifyDataSetChanged();
-        mRelateAdapter.notifyDataSetChanged();
         mHomePostAdapter.notifyDataSetChanged();
 
         getUserInfo();
 
     }
 
-    void getUserInfo() {
+    public void getUserInfo() {
         final HomeService homeService = new HomeService(this, mMainActivity);
         homeService.tryGetUserInfo();
         mMainActivity.showProgressDialog();
@@ -234,7 +228,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                 Intent goLoginIntent = new Intent(getActivity(), SocialLoginActivity.class);
                 goLoginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(goLoginIntent);
-                ((MainActivity)getActivity()).finish();
+                ((MainActivity) getActivity()).finish();
                 break;
             case R.id.home_iv_notice:
                 break;
@@ -245,13 +239,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
     @Override
     public void tryGetUserInfoSuccess(String nick, String mbti) {
-        mMainActivity.hideProgressDialog();
         mHomeTvAppBarNick.setText(nick.concat(","));
         mHomeTvAppBarMbti.setText(mbti.toUpperCase());
+
+        final HomeService homeService = new HomeService(this, mMainActivity);
+        homeService.tryGetMbtiRelateContents();
     }
 
     @Override
     public void tryGetUserInfoFailure(String message) {
+        mMainActivity.hideProgressDialog();
+        mMainActivity.showCustomToastShort(message);
+    }
+
+    @Override
+    public void tryGetMbtiRelateContentsSuccess(ArrayList<RelateContent> result) {
+        mRelateList.addAll(result);
+        mRelateAdapter.notifyDataSetChanged();
+        mMainActivity.hideProgressDialog();
+    }
+
+    @Override
+    public void tryGetMbtiRelateContentsFailure(String message) {
         mMainActivity.hideProgressDialog();
         mMainActivity.showCustomToastShort(message);
     }

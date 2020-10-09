@@ -107,7 +107,7 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
         holder.tvWithAllNickname.setText(post.getUser().getNickname());
 
         String createdTime = post.getCreatedAt();
-        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd HH:mm");
 
         String posted = "";

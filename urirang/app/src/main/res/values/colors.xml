@@ -18,6 +18,8 @@
     <color name="colorBasicBlack9">#17000000</color>
     <color name="colorBottomSheetBack">#70000000</color>
 
+    <color name="colorModifyCancel">#400c0c0c</color>
+    <color name="colorModifyTvNickname">#821e2022</color>
 
     <color name="colorSearchLinear">#eeeeee</color>
     <color name="colorInfoTvComplete">#4c000000</color>

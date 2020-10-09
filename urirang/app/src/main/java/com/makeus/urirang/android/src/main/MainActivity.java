@@ -11,10 +11,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
-
-import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
-import static com.makeus.urirang.android.src.ApplicationClass.FCM_TOKEN;
-
 import com.makeus.urirang.android.src.main.adapter.MainFragmentPagerAdapter;
 import com.makeus.urirang.android.src.main.fragments.board.BoardFragment;
 import com.makeus.urirang.android.src.main.fragments.home.HomeFragment;
@@ -23,6 +19,9 @@ import com.makeus.urirang.android.src.main.fragments.worldCup.WorldCupFragment;
 import com.makeus.urirang.android.src.main.interfaces.MainActivityView;
 
 import java.util.HashMap;
+
+import static com.makeus.urirang.android.src.ApplicationClass.FCM_TOKEN;
+import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
 
@@ -72,7 +71,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         mHomeFragment = new HomeFragment();
         mBoardFragment = new BoardFragment(this);
         mWorldCupFragment = new WorldCupFragment();
-        mMyPageFragment = new MyPageFragment();
+        mMyPageFragment = new MyPageFragment(this);
 
         mMainViewPager = findViewById(R.id.main_view_pager);
         mMainPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), 4, this);

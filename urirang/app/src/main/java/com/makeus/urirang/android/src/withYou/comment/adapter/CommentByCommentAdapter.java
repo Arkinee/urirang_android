@@ -117,7 +117,7 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         holder.tvCommentContent.setText(comment.getContent());
 
         String createdTime = comment.getCreatedAt();
-        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd HH:mm");
 
         String posted = "";

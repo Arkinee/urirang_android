@@ -55,6 +55,9 @@
         <activity
             android:name=".src.search.SearchActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.modifyProfile.ModifyProfileActivity"
+            android:screenOrientation="portrait" />
 
         <!-- With You -->
         <activity

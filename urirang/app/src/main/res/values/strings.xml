@@ -133,4 +133,21 @@
     <string name="how_about_this_tv_filter_created_at">최신순</string>
     <string name="how_about_this_tv_filter_popularity">인기순</string>
 
+    <!-- my page -->
+    <string name="my_page">MYPAGE</string>
+    <string name="my_page_tv_modify_profile">프로필 수정</string>
+    <string name="my_page_tv_edit_test_result">편집</string>
+    <string name="my_page_tv_my_test_results">검사 유형 모아보기</string>
+    <string name="my_page_tv_my_posts">내가 쓴 글</string>
+    <string name="my_page_tv_my_commented_posts">댓글 단 글</string>
+    <string name="my_page_no_input_result">입력한 테스트 결과가 없습니다</string>
+
+    <!-- Modify Profile -->
+    <string name="modify_profile">MODIFY</string>
+    <string name="modify_profile_tv_cancel">취소</string>
+    <string name="modify_profile_tv_complete">확인</string>
+    <string name="modify_profile_tv">프로필 설정</string>
+    <string name="modify_profile_tv_nickname">닉네임</string>
+    <string name="modify_profile_tv_mbti">MBTI 유형</string>
+
 </resources>
