@@ -115,7 +115,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                 setUnselectedImage();
                 mMainViewPager.setCurrentItem(3);
                 mFragmentFlag = 4;
-                mMainIvMyPage.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_mypage_unselected));
+                mMainIvMyPage.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_mypage_selected));
                 break;
 
         }
@@ -162,7 +162,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                         mMainIvHome.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_home_unselected));
                         mMainIvBoard.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_board_unselected));
                         mMainIvWorldCup.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_world_cup_unselected));
-                        mMainIvMyPage.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_mypage_unselected));
+                        mMainIvMyPage.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_mypage_selected));
                         mMainViewPager.setScrollEnable(true);
                         break;
                 }

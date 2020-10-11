@@ -70,7 +70,7 @@
             android:background="@null"
             android:hint="@string/search_edt_hint"
             android:inputType="text"
-            android:textColor="@color/colorBoardTvSearch"
+            android:textColor="@color/colorSearchHint"
             android:textColorHint="@color/colorSearchHint"
             android:textSize="11sp" />
 

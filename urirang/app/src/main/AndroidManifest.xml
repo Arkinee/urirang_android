@@ -58,6 +58,12 @@
         <activity
             android:name=".src.modifyProfile.ModifyProfileActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.myCommentPost.MyCommentPostsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.myPost.MyPostsActivity"
+            android:screenOrientation="portrait" />
 
         <!-- With You -->
         <activity

@@ -1,6 +1,7 @@
 package com.makeus.urirang.android.src.withYou.comment.interfaces;
 
 
+import com.makeus.urirang.android.src.withYou.comment.models.IsMyCommentResponse;
 import com.makeus.urirang.android.src.withYou.comment.models.LikeResponse;
 import com.makeus.urirang.android.src.withYou.comment.models.WithYouCommentResponse;
 
@@ -30,5 +31,9 @@ public interface WithYouRetrofitInterface {
     // 논제 게시판 댓글 달기
     @POST("/api/comment/toTopic/{topicId}")
     Call<LikeResponse> tryPostWriteComment(@Path("topicId") int topicId, @Query("commentId") String commentId, @Body HashMap<String, Object> params);
+
+    // 내 댓글인지 확인
+    @GET("/api/comment/isMyComment/{commentId}")
+    Call<IsMyCommentResponse> tryGetIsMyComment(@Path("commentId") int commentId);
 
 }

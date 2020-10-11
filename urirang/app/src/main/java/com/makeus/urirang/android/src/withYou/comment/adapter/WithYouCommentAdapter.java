@@ -40,6 +40,7 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
 
     private CommentByCommentAdapter commentAdapter;
     private int mPosition = -1;
+    private int mCommentId = -1;
 
     public interface OnItemClickListener {
         void onWriteClick(View v, int pos);
@@ -139,19 +140,12 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
             @Override
             public void onLikeClick(View v, int pos) {
                 int commentId = comment.getComments().get(pos).getId();
+                mCommentId = commentId;
                 mPosition = pos;
-                notifyDataSetChanged();
-                final WithYouCommentService likeService = new WithYouCommentService(mView, mContext);
-                likeService.tryPostCommentByCommentLike(commentId, comment.getComments().get(pos).isLiked());
-                ((WithYouCommentActivity) mContext).showProgressDialog();
 
-                // UI 업데이트
-                comment.getComments().get(pos).setLiked(!comment.getComments().get(pos).isLiked());
-                if (comment.getComments().get(pos).isLiked()) {
-                    comment.getComments().get(pos).setLike(comment.getComments().get(pos).getLike() + 1);
-                } else {
-                    comment.getComments().get(pos).setLike(comment.getComments().get(pos).getLike() - 1);
-                }
+                final WithYouCommentService isMyCommentService = new WithYouCommentService(mView, mContext);
+                isMyCommentService.tryGetIsMyComment(commentId);
+                ((WithYouCommentActivity) mContext).showProgressDialog();
             }
         });
 
@@ -229,13 +223,51 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
 
     @Override
     public void tryPostLikeCommentByCommentSuccess() {
-
-//        commentAdapter.likeComment(mPosition);
         ((WithYouCommentActivity) mContext).hideProgressDialog();
     }
 
     @Override
     public void tryPostLikeCommentByCommentFailure(String message) {
+        ((WithYouCommentActivity) mContext).hideProgressDialog();
+        ((WithYouCommentActivity) mContext).showCustomToastShort(message);
+
+        // UI 업데이트 다시 되돌리기
+        WithYouComment comment = mFilterList.get(mPosition);
+        comment.getComments().get(mPosition).setLiked(!comment.getComments().get(mPosition).isLiked());
+        if (comment.getComments().get(mPosition).isLiked()) {
+            comment.getComments().get(mPosition).setLike(comment.getComments().get(mPosition).getLike() + 1);
+        } else {
+            comment.getComments().get(mPosition).setLike(comment.getComments().get(mPosition).getLike() - 1);
+        }
+    }
+
+    @Override
+    public void tryGetIsMyCommentByCommentSuccess(boolean isMyComment) {
+
+        // 내 댓글
+        if (isMyComment) {
+            ((WithYouCommentActivity) mContext).hideProgressDialog();
+            ((WithYouCommentActivity) mContext).showCustomToastShort("자신의 댓글에 좋아요를 누를 수 없습니다");
+        } else {
+            // 내 댓글이 아닌 경우 좋아요 누름
+            WithYouComment comment = mFilterList.get(mPosition);
+
+            final WithYouCommentService likeService = new WithYouCommentService(mView, mContext);
+            likeService.tryPostCommentByCommentLike(mCommentId, comment.getComments().get(mPosition).isLiked());
+            ((WithYouCommentActivity) mContext).showProgressDialog();
+
+            // UI 업데이트
+            comment.getComments().get(mPosition).setLiked(!comment.getComments().get(mPosition).isLiked());
+            if (comment.getComments().get(mPosition).isLiked()) {
+                comment.getComments().get(mPosition).setLike(comment.getComments().get(mPosition).getLike() + 1);
+            } else {
+                comment.getComments().get(mPosition).setLike(comment.getComments().get(mPosition).getLike() - 1);
+            }
+        }
+    }
+
+    @Override
+    public void tryGetIsMyCommentByCommentFailure(String message) {
         ((WithYouCommentActivity) mContext).hideProgressDialog();
         ((WithYouCommentActivity) mContext).showCustomToastShort(message);
     }

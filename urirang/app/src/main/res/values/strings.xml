@@ -150,4 +150,12 @@
     <string name="modify_profile_tv_nickname">닉네임</string>
     <string name="modify_profile_tv_mbti">MBTI 유형</string>
 
+    <!-- My Posts -->
+    <string name="my_posts">내가 쓴 글</string>
+    <string name="my_posts_tv_num_of_posts">작성한 글</string>
+
+    <!-- My Comment Posts -->
+    <string name="my_comment_posts">댓글 단 글</string>
+    <string name="my_comment_posts_tv_num_of_posts">작성한 댓글</string>
+
 </resources>

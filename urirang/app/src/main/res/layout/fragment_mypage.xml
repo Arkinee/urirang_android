@@ -150,25 +150,31 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/my_page_tv_my_test_results" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/my_page_rv_tests"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/my_page_constraint_test_results"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:layout_marginTop="25dp"
-                    app:layout_constraintTop_toBottomOf="@+id/my_page_tv_my_test_results" />
+                    app:layout_constraintTop_toBottomOf="@+id/my_page_tv_my_test_results">
 
-                <TextView
-                    android:id="@+id/my_page_tv_no_results"
-                    android:layout_width="match_parent"
-                    android:layout_height="178dp"
-                    android:layout_marginTop="25dp"
-                    android:gravity="center"
-                    android:text="@string/my_page_no_input_result"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp"
-                    android:visibility="invisible"
-                    app:layout_constraintTop_toBottomOf="@+id/my_page_tv_my_test_results" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/my_page_rv_tests"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/my_page_tv_no_results"
+                        android:layout_width="match_parent"
+                        android:layout_height="178dp"
+                        android:gravity="center"
+                        android:text="@string/my_page_no_input_result"
+                        android:textColor="@android:color/black"
+                        android:textSize="17sp"
+                        android:visibility="invisible"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
                     android:id="@+id/my_page_view_bottom_of_rv"
@@ -176,7 +182,7 @@
                     android:layout_height="11dp"
                     android:layout_marginTop="30dp"
                     android:background="@color/colorHomeBorder"
-                    app:layout_constraintTop_toBottomOf="@+id/my_page_rv_tests" />
+                    app:layout_constraintTop_toBottomOf="@+id/my_page_constraint_test_results" />
 
                 <TextView
                     android:id="@+id/my_page_tv_my_posts"

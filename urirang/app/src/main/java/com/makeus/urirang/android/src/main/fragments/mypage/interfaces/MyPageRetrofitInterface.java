@@ -2,6 +2,7 @@ package com.makeus.urirang.android.src.main.fragments.mypage.interfaces;
 
 
 import com.makeus.urirang.android.src.main.fragments.home.models.UserInfoResponse;
+import com.makeus.urirang.android.src.main.fragments.mypage.models.ResultResponse;
 import com.makeus.urirang.android.src.main.fragments.mypage.models.TestResult;
 
 import java.util.ArrayList;
@@ -17,6 +18,6 @@ public interface MyPageRetrofitInterface {
 
     // 사용자의 테스트 결과 가져오기
     @GET("/api/user/getTestResultList")
-    Call<ArrayList<TestResult>> tryGetTestResults();
+    Call<ResultResponse> tryGetTestResults();
 
 }

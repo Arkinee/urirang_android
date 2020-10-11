@@ -10,9 +10,6 @@ import android.os.Handler;
 import android.util.Base64;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.crashlytics.android.Crashlytics;
 import com.kakao.util.helper.Utility;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
@@ -22,8 +19,6 @@ import com.makeus.urirang.android.src.splash.interfaces.SplashActivityView;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import io.fabric.sdk.android.Fabric;
 
 import static com.makeus.urirang.android.src.ApplicationClass.getFcmToken;
 

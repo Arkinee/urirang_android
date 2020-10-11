@@ -5,12 +5,15 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.howAboutThis.models.Images;
 import com.makeus.urirang.android.src.login.email.interfaces.EmailLoginActivityView;
 import com.makeus.urirang.android.src.login.email.interfaces.EmailLoginRetrofitInterface;
 import com.makeus.urirang.android.src.login.email.models.LoginResponse;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeActivityView;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeRetrofitInterface;
+import com.makeus.urirang.android.src.main.fragments.home.models.CurrentTopicResponse;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
+import com.makeus.urirang.android.src.main.fragments.home.models.TopicHistoryImagesResponse;
 import com.makeus.urirang.android.src.main.fragments.home.models.UserInfoResponse;
 
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ public class HomeService {
         this.mContext = context;
     }
 
+    // 유저 정보 가져오기
     public void tryGetUserInfo() {
         final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
         homeRetrofitInterface.tryGetUserInfo().enqueue(new Callback<UserInfoResponse>() {
@@ -56,6 +60,7 @@ public class HomeService {
         });
     }
 
+    // 관련 컨텐츠 조회
     public void tryGetMbtiRelateContents() {
         final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
         homeRetrofitInterface.tryGetMbtiRelateContents().enqueue(new Callback<ArrayList<RelateContent>>() {
@@ -74,6 +79,70 @@ public class HomeService {
             @Override
             public void onFailure(Call<ArrayList<RelateContent>> call, Throwable t) {
                 mView.tryGetMbtiRelateContentsFailure(mContext.getString(R.string.network_connect_failure));
+            }
+        });
+    }
+
+    // 현재 너희랑 토픽 가져오기
+    public void tryGetCurrentTopic() {
+        final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
+        homeRetrofitInterface.tryGetCurrentTopic().enqueue(new Callback<CurrentTopicResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<CurrentTopicResponse> call, @NonNull Response<CurrentTopicResponse> response) {
+
+                if (response.code() == 200) {
+                    final CurrentTopicResponse result = response.body();
+                    if (result.getImages().size() != 0)
+                        mView.tryGetCurrentTopicSuccess(result.getTitle(), result.getCommentNum(), result.getImages().get(0).getUrl());
+                    else
+                        mView.tryGetCurrentTopicSuccess(result.getTitle(), result.getCommentNum(), "");
+                } else {
+                    mView.tryGetCurrentTopicFailure("너희랑 현재 토픽 오류");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<CurrentTopicResponse> call, Throwable t) {
+                mView.tryGetCurrentTopicFailure(mContext.getString(R.string.network_connect_failure));
+            }
+        });
+    }
+
+    // 명예의 전당  토픽 가져오기
+    public void tryGetTopicHistoryImages() {
+        final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
+        homeRetrofitInterface.tryGetTopicHistoryImages().enqueue(new Callback<ArrayList<TopicHistoryImagesResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<ArrayList<TopicHistoryImagesResponse>> call, @NonNull Response<ArrayList<TopicHistoryImagesResponse>> response) {
+
+                if (response.code() == 200) {
+                    final ArrayList<TopicHistoryImagesResponse> result = response.body();
+
+                    ArrayList<String> urls = new ArrayList<>();
+                    for (int i = 0; i < result.size(); i++) {
+                        if (result.get(i).getImages().size() != 0)
+                            urls.add(result.get(i).getImages().get(0).getUrl());
+                        else
+                            urls.add("");
+                    }
+
+                    if(urls.size() < 4){
+                        for(int i=0; i< 4 - urls.size(); i++){
+                            urls.add("");
+                        }
+                    }
+
+                    mView.tryGetTopicHistoryImagesSuccess(urls);
+                } else {
+                    mView.tryGetTopicHistoryImagesFailure("명예의 전당 이미지 오류");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<TopicHistoryImagesResponse>> call, Throwable t) {
+                mView.tryGetTopicHistoryImagesFailure(mContext.getString(R.string.network_connect_failure));
             }
         });
     }

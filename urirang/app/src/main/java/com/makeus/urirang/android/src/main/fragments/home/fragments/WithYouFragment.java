@@ -1,5 +1,6 @@
 package com.makeus.urirang.android.src.main.fragments.home.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +13,23 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.makeus.urirang.android.R;
 
 public class WithYouFragment extends Fragment implements View.OnClickListener {
 
+    private Context mContext;
     private TextView mHomeWithYouTvTitle;
     private TextView mHomeWithYouTvPeopleParticipate;
     private ImageView mHomeWithYouIvMain;
+
+    public WithYouFragment() {
+    }
+
+    public WithYouFragment(Context context) {
+        this.mContext = context;
+    }
 
     @Nullable
     @Override
@@ -39,11 +50,13 @@ public class WithYouFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mHomeWithYouTvTitle.setText("가장 손절 잘하는\n유형은 무엇?");
-        mHomeWithYouTvPeopleParticipate.setText("115명 참여중");
-
     }
 
+    public void setting(String title, int commentNum, String imageUrl) {
+        mHomeWithYouTvTitle.setText(title);
+        mHomeWithYouTvPeopleParticipate.setText(String.valueOf(commentNum).concat("명 참여중"));
+        Glide.with(mContext).load(imageUrl).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(mHomeWithYouIvMain);
+    }
 
     @Override
     public void onClick(View v) {

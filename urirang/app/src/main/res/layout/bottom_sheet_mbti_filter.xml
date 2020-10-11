@@ -34,7 +34,7 @@
         android:paddingTop="15dp"
         android:paddingEnd="19.3dp"
         android:paddingBottom="15dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_close_filtering"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_sheet_mbti_filter_tv_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottom_sheet_mbti_filter_tv_top" />

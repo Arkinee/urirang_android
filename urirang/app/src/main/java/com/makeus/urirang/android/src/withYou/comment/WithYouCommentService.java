@@ -8,6 +8,7 @@ import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.withYou.comment.interfaces.WithYouActivityView;
 import com.makeus.urirang.android.src.withYou.comment.interfaces.WithYouCommentByCommentView;
 import com.makeus.urirang.android.src.withYou.comment.interfaces.WithYouRetrofitInterface;
+import com.makeus.urirang.android.src.withYou.comment.models.IsMyCommentResponse;
 import com.makeus.urirang.android.src.withYou.comment.models.LikeResponse;
 import com.makeus.urirang.android.src.withYou.comment.models.WithYouCommentResponse;
 
@@ -166,6 +167,28 @@ public class WithYouCommentService {
             @Override
             public void onFailure(Call<LikeResponse> call, Throwable t) {
                 mView.tryPostWriteCommentFailure(mContext.getString(R.string.network_connect_failure));
+            }
+        });
+    }
+
+    // 내 댓글인지 확인
+    public void tryGetIsMyComment(int commentId) {
+        final WithYouRetrofitInterface withYouRetrofitInterface = getRetrofit().create(WithYouRetrofitInterface.class);
+        withYouRetrofitInterface.tryGetIsMyComment(commentId).enqueue(new Callback<IsMyCommentResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<IsMyCommentResponse> call, @NonNull Response<IsMyCommentResponse> response) {
+
+                if (response.code() == 200) {
+                    final IsMyCommentResponse commentResponse = response.body();
+                    mCommentView.tryGetIsMyCommentByCommentSuccess(commentResponse.isMyComment());
+                } else {
+                    mCommentView.tryGetIsMyCommentByCommentFailure("글쓴이 파악 실패");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<IsMyCommentResponse> call, Throwable t) {
+                mCommentView.tryGetIsMyCommentByCommentFailure(mContext.getString(R.string.network_connect_failure));
             }
         });
     }

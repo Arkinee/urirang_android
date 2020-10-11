@@ -24,6 +24,8 @@ import com.makeus.urirang.android.src.main.fragments.mypage.adapter.MyPageAdapte
 import com.makeus.urirang.android.src.main.fragments.mypage.interfaces.MyPageView;
 import com.makeus.urirang.android.src.main.fragments.mypage.models.TestResult;
 import com.makeus.urirang.android.src.modifyProfile.ModifyProfileActivity;
+import com.makeus.urirang.android.src.myCommentPost.MyCommentPostsActivity;
+import com.makeus.urirang.android.src.myPost.MyPostsActivity;
 
 import java.util.ArrayList;
 
@@ -111,7 +113,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener, My
             case R.id.my_page_iv_settings:
                 break;
             case R.id.my_page_tv_modify_profile:
-                if(mDoubleClickFlag) return;
+                if (mDoubleClickFlag) return;
                 mDoubleClickFlag = true;
 
                 Intent modifyIntent = new Intent(mContext, ModifyProfileActivity.class);
@@ -122,8 +124,18 @@ public class MyPageFragment extends Fragment implements View.OnClickListener, My
             case R.id.my_page_tv_edit_test_result:
                 break;
             case R.id.my_page_tv_my_posts:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                Intent myPosts = new Intent(mContext, MyPostsActivity.class);
+                startActivity(myPosts);
                 break;
             case R.id.my_page_tv_my_commented_posts:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                Intent myCommentPosts = new Intent(mContext, MyCommentPostsActivity.class);
+                startActivity(myCommentPosts);
                 break;
         }
     }
@@ -136,6 +148,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener, My
         mMyPageTvMbti.setText(mbti.toUpperCase());
         mMyPageTvNickname.setText(nick);
 
+        mResultList.clear();
         final MyPageService testService = new MyPageService(this, mContext);
         testService.tryGetTestResults();
     }

@@ -8,6 +8,7 @@ import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.main.fragments.home.models.UserInfoResponse;
 import com.makeus.urirang.android.src.main.fragments.mypage.interfaces.MyPageRetrofitInterface;
 import com.makeus.urirang.android.src.main.fragments.mypage.interfaces.MyPageView;
+import com.makeus.urirang.android.src.main.fragments.mypage.models.ResultResponse;
 import com.makeus.urirang.android.src.main.fragments.mypage.models.TestResult;
 
 import java.util.ArrayList;
@@ -52,12 +53,12 @@ public class MyPageService {
 
     public void tryGetTestResults() {
         final MyPageRetrofitInterface myPageRetrofitInterface = getRetrofit().create(MyPageRetrofitInterface.class);
-        myPageRetrofitInterface.tryGetTestResults().enqueue(new Callback<ArrayList<TestResult>>() {
+        myPageRetrofitInterface.tryGetTestResults().enqueue(new Callback<ResultResponse>() {
             @Override
-            public void onResponse(@NonNull Call<ArrayList<TestResult>> call, @NonNull Response<ArrayList<TestResult>> response) {
+            public void onResponse(@NonNull Call<ResultResponse> call, @NonNull Response<ResultResponse> response) {
 
                 if (response.code() == 200) {
-                    final ArrayList<TestResult> results = response.body();
+                    final ArrayList<TestResult> results = response.body().getResults();
                     mView.tryGetTestResultSuccess(results);
                 } else {
                     mView.tryGetTestResultFailure("테스트 결과 가져오기 실패");
@@ -66,7 +67,7 @@ public class MyPageService {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<TestResult>> call, Throwable t) {
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
                 mView.tryGetUserInfoFailure(mContext.getString(R.string.network_connect_failure));
             }
         });

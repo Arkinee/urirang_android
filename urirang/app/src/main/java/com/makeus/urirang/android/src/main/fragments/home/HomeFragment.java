@@ -22,6 +22,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.ApplicationClass;
+import com.makeus.urirang.android.src.howAboutThis.models.Images;
 import com.makeus.urirang.android.src.login.social.SocialLoginActivity;
 import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.HomePostAdapter;
@@ -94,8 +95,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mTestList = new ArrayList<>();
         mFragmentList = new ArrayList<>();
 
-        mWithYouFragment = new WithYouFragment();
-        mHallOfFameFragment = new HallOfFameFragment();
+        mWithYouFragment = new WithYouFragment(mMainActivity);
+        mHallOfFameFragment = new HallOfFameFragment(mMainActivity);
 
         // 상단 viewpager
         mFragmentList.add(mWithYouFragment);
@@ -256,11 +257,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void tryGetMbtiRelateContentsSuccess(ArrayList<RelateContent> result) {
         mRelateList.addAll(result);
         mRelateAdapter.notifyDataSetChanged();
-        mMainActivity.hideProgressDialog();
+
+        final HomeService homeService = new HomeService(this, mMainActivity);
+        homeService.tryGetCurrentTopic();
     }
 
     @Override
     public void tryGetMbtiRelateContentsFailure(String message) {
+        mMainActivity.hideProgressDialog();
+        mMainActivity.showCustomToastShort(message);
+    }
+
+    @Override
+    public void tryGetCurrentTopicSuccess(String title, int commentNum, String imageUrl) {
+        mWithYouFragment.setting(title, commentNum, imageUrl);
+
+        final HomeService homeService = new HomeService(this, mMainActivity);
+        homeService.tryGetTopicHistoryImages();
+    }
+
+    @Override
+    public void tryGetCurrentTopicFailure(String message) {
+        mMainActivity.hideProgressDialog();
+        mMainActivity.showCustomToastShort(message);
+    }
+
+    @Override
+    public void tryGetTopicHistoryImagesSuccess(ArrayList<String> result) {
+        mHallOfFameFragment.imageSetting(result.get(0), result.get(1), result.get(2), result.get(3));
+        mMainActivity.hideProgressDialog();
+    }
+
+    @Override
+    public void tryGetTopicHistoryImagesFailure(String message) {
         mMainActivity.hideProgressDialog();
         mMainActivity.showCustomToastShort(message);
     }

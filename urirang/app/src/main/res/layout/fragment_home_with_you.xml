@@ -25,8 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/home_description"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_dummy_content" />
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 

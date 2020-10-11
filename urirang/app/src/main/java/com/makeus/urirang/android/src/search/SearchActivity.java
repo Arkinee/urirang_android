@@ -29,7 +29,7 @@ import java.util.Objects;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
-public class SearchActivity extends BaseActivity implements BoardWithAllView {
+public class SearchActivity extends BaseActivity implements BoardWithAllView{
 
     private EditText mSearchEdtKeyword;
     private InputMethodManager mInputMethodManager;
