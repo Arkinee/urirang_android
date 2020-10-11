@@ -30,6 +30,7 @@ import com.makeus.urirang.android.src.main.fragments.home.adapters.HomeTopPagerA
 import com.makeus.urirang.android.src.main.fragments.home.adapters.OtherTestAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.RelateContentAdapter;
 import com.makeus.urirang.android.src.main.fragments.home.fragments.HallOfFameFragment;
+import com.makeus.urirang.android.src.main.fragments.home.fragments.HowAboutThisFragment;
 import com.makeus.urirang.android.src.main.fragments.home.fragments.WithYouFragment;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeActivityView;
 import com.makeus.urirang.android.src.main.fragments.home.models.HomePost;
@@ -65,6 +66,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
     private WithYouFragment mWithYouFragment;
     private HallOfFameFragment mHallOfFameFragment;
+    private HowAboutThisFragment mHowAboutThisFragment;
 
     private boolean mDoubleClickFlag = false;
 
@@ -97,10 +99,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
         mWithYouFragment = new WithYouFragment(mMainActivity);
         mHallOfFameFragment = new HallOfFameFragment(mMainActivity);
+        mHowAboutThisFragment = new HowAboutThisFragment(mMainActivity);
 
         // 상단 viewpager
         mFragmentList.add(mWithYouFragment);
         mFragmentList.add(mHallOfFameFragment);
+        mFragmentList.add(mHowAboutThisFragment);
         mHomeTopPagerAdapter = new HomeTopPagerAdapter(mMainActivity.getSupportFragmentManager(), mFragmentList, 3, mMainActivity);
 
         mHomeViewPagerTop.setAdapter(mHomeTopPagerAdapter);
@@ -199,19 +203,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
-        mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
-        mPostList.add(new HomePost("ENTJ", "Logan", "8/25", "몇년 주기로 검사해봐야 할까요?", 88, 156));
-
         mTestList.add(new OtherTest("에고그램", "https://egogramtest.kr/"));
         mTestList.add(new OtherTest("에니어그램", "https://enneagram-app.appspot.com/quest"));
         mTestList.add(new OtherTest("MGRAM", "https://mgram.me/ko/"));
         mTestList.add(new OtherTest("8기능", "http://jung.test.typologycentral.com/"));
 
         mOtherTestAdapter.notifyDataSetChanged();
-        mHomePostAdapter.notifyDataSetChanged();
-
-        getUserInfo();
 
     }
 
@@ -285,7 +282,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     @Override
     public void tryGetTopicHistoryImagesSuccess(ArrayList<String> result) {
         mHallOfFameFragment.imageSetting(result.get(0), result.get(1), result.get(2), result.get(3));
-        mMainActivity.hideProgressDialog();
+
+        final HomeService homeService = new HomeService(this, mMainActivity);
+        homeService.tryGetHowAboutThisImages();
     }
 
     @Override
@@ -295,10 +294,37 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     }
 
     @Override
+    public void tryGetWithAllBest3Success(ArrayList<HomePost> results) {
+        mPostList.addAll(results);
+        mHomePostAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void tryGetWithAllBest3Failure(String message) {
+        mMainActivity.hideProgressDialog();
+        mMainActivity.showCustomToastShort(message);
+    }
+
+    @Override
+    public void tryGetHowAboutThisImagesSuccess(ArrayList<String> result) {
+        mHowAboutThisFragment.imageSetting(result.get(0), result.get(1), result.get(2), result.get(3));
+
+        final HomeService homeService = new HomeService(this, mMainActivity);
+        homeService.tryGetWithAllBest3();
+    }
+
+    @Override
+    public void tryGetHowAboutThisImagesFailure(String message) {
+        mMainActivity.hideProgressDialog();
+        mMainActivity.showCustomToastShort(message);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         mDoubleClickFlag = false;
         mHomeViewPagerTop.setCurrentItem(0);
+        getUserInfo();
     }
 
     @Override

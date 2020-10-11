@@ -158,10 +158,6 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final BoardService withYouService = new BoardService(this, mContext);
-        withYouService.tryGetWithYouInfo(5);
-        ((MainActivity) mContext).showProgressDialog();
-
     }
 
     @Override
@@ -537,6 +533,10 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
     public void onResume() {
         super.onResume();
         mDoubleClickFlag = false;
+
+        final BoardService withYouService = new BoardService(this, mContext);
+        withYouService.tryGetWithYouInfo(5);
+        ((MainActivity) mContext).showProgressDialog();
     }
 }
 

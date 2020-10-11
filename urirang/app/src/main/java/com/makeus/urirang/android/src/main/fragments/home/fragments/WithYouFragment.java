@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.main.MainActivity;
 
 public class WithYouFragment extends Fragment implements View.OnClickListener {
 
@@ -62,7 +63,7 @@ public class WithYouFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_home_with_you_card:
-//                Intent goWithYouBoard = new Intent(getActivity(), );
+                ((MainActivity)mContext).setMainBoardWithYou();
                 break;
         }
     }

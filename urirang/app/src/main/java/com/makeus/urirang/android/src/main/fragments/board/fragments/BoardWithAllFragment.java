@@ -112,6 +112,12 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
 
     }
 
+    public void filter(String mbti){
+        mWithAllList.clear();
+        mPage = 1;
+        getWithAllList(mbti, mPage);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

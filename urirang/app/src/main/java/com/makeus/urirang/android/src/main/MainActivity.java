@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
+import com.makeus.urirang.android.src.dialog.BottomSheetMbtiFilterDialog;
 import com.makeus.urirang.android.src.main.adapter.MainFragmentPagerAdapter;
 import com.makeus.urirang.android.src.main.fragments.board.BoardFragment;
 import com.makeus.urirang.android.src.main.fragments.home.HomeFragment;
@@ -23,7 +24,7 @@ import java.util.HashMap;
 import static com.makeus.urirang.android.src.ApplicationClass.FCM_TOKEN;
 import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
 
-public class MainActivity extends BaseActivity implements MainActivityView {
+public class MainActivity extends BaseActivity implements MainActivityView, BottomSheetMbtiFilterDialog.BottomSheetListener {
 
     private MainFragmentPagerAdapter mMainPagerAdapter;
     private MainViewPager mMainViewPager;
@@ -101,7 +102,6 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                 mMainViewPager.setCurrentItem(1);
                 mFragmentFlag = 2;
                 mMainIvBoard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_board_selected));
-
                 break;
             case R.id.main_iv_world_cup:
                 if (mFragmentFlag == 3) break;
@@ -119,6 +119,17 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                 break;
 
         }
+    }
+
+    public void setMainBoardWithYou(){
+
+        setUnselectedImage();
+        mMainViewPager.setCurrentItem(1);
+        mFragmentFlag = 2;
+        mMainIvBoard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_board_selected));
+        mBoardFragment.setItemWithYou();
+
+
     }
 
     public void setViewPagerListener() {
@@ -208,5 +219,10 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     @Override
     public void tryPostFcmTokenFailure() {
 
+    }
+
+    @Override
+    public void onFilterApply(String mbti) {
+        mBoardFragment.filterWithAll(mbti);
     }
 }

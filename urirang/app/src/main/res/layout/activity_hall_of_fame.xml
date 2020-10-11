@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/hall_of_fame_iv_back_arrow"
         android:layout_width="60dp"
@@ -42,7 +41,7 @@
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:contentDescription="@string/hall_of_fame_description"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_order_by"
         app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_tv_filter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/hall_of_fame_tv_filter"
@@ -70,6 +69,7 @@
         android:id="@+id/hall_of_fame_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

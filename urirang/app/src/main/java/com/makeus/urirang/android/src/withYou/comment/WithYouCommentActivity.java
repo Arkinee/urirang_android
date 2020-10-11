@@ -128,6 +128,15 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
             case R.id.wiyh_you_comment_iv_back_arrow:
                 finish();
                 break;
+            case R.id.with_you_comment_tv_order_by:
+                if(!mSelectedMbti.equals("")) {
+                    mWithYouList.clear();
+                    mPage = 1;
+                    mIsEmptyResult = false;
+                    mSelectedMbti = "";
+                    getWithYouList(mSelectedMbti, mPage);
+                }else return;
+                break;
             case R.id.wiyh_you_comment_tv_mbti_filtering:
                 BottomSheetMbtiFilterDialog filterDialog = new BottomSheetMbtiFilterDialog(mContext);
                 filterDialog.setCancelable(false);

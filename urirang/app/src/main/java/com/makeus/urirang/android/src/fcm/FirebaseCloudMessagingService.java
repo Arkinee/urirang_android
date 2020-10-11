@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -16,12 +15,13 @@ import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.main.MainService;
+import com.makeus.urirang.android.src.main.interfaces.MainActivityView;
 import com.makeus.urirang.android.src.splash.SplashActivity;
-import com.makeus.urirang.android.src.splash.interfaces.FcmView;
 
 import java.util.HashMap;
 
-public class FirebaseCloudMessagingService extends FirebaseMessagingService implements FcmView {
+public class FirebaseCloudMessagingService extends FirebaseMessagingService implements MainActivityView {
 
     public FirebaseCloudMessagingService() {
 
@@ -33,8 +33,8 @@ public class FirebaseCloudMessagingService extends FirebaseMessagingService impl
 
         HashMap<String, Object> params = new HashMap<>();
         params.put("fcmToken", s);
-//        final SplashService fcmService = new SplashService(this, this, params);
-//        fcmService.tryPatchFcmToken();
+        final MainService mainService = new MainService(this, this);
+        mainService.tryPostFcmToken(params);
 
     }
 
@@ -63,7 +63,7 @@ public class FirebaseCloudMessagingService extends FirebaseMessagingService impl
     private void sendNotification(RemoteMessage remoteMessage) {
         // foreground
         String title = remoteMessage.getData().get("title");
-        String message = remoteMessage.getData().get("message");
+        String message = remoteMessage.getData().get("body");
 
         Intent notificationIntent;
         PendingIntent pendingIntent;
@@ -130,12 +130,12 @@ public class FirebaseCloudMessagingService extends FirebaseMessagingService impl
     }
 
     @Override
-    public void tryPatchFcmSuccess() {
+    public void tryPostFcmTokenSuccess() {
 
     }
 
     @Override
-    public void tryPatchFcmFailure(String message) {
+    public void tryPostFcmTokenFailure() {
 
     }
 }

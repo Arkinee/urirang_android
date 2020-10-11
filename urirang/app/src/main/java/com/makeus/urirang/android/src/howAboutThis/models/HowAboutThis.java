@@ -2,6 +2,8 @@ package com.makeus.urirang.android.src.howAboutThis.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class HowAboutThis {
 
     @SerializedName("id")
@@ -29,7 +31,17 @@ public class HowAboutThis {
     @SerializedName("User")
     private User user;
     @SerializedName("Images")
-    private Images images;
+    private ArrayList<Images> images;
+    @SerializedName("isLiked")
+    private boolean isLiked;
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
 
     public int getId() {
         return id;
@@ -79,7 +91,7 @@ public class HowAboutThis {
         return user;
     }
 
-    public Images getImages() {
+    public ArrayList<Images> getImages() {
         return images;
     }
 }

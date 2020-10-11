@@ -151,7 +151,12 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
 
         holder.rvComment.setAdapter(commentAdapter);
 
-        holder.tvCommentNickname.setText(comment.getUserNickName());
+        if (!comment.isAnonymous()) {
+            holder.tvCommentNickname.setText(comment.getUserNickName());
+        } else {
+            holder.tvCommentNickname.setText("익명");
+        }
+
         holder.tvCommentContent.setText(comment.getContent());
 
         if (comment.isLiked()) {

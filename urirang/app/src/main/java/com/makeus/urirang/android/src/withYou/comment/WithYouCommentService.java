@@ -156,7 +156,7 @@ public class WithYouCommentService {
             @Override
             public void onResponse(@NonNull Call<LikeResponse> call, @NonNull Response<LikeResponse> response) {
 
-                if (response.code() == 200 || response.code() == 500) {
+                if (response.code() == 201 || response.code() == 500) {
                     final LikeResponse writeResponse = response.body();
                     mView.tryPostWriteCommentSuccess();
                 } else {

@@ -1,44 +1,89 @@
 package com.makeus.urirang.android.src.main.fragments.home.models;
 
+import com.google.gson.annotations.SerializedName;
+import com.makeus.urirang.android.src.howAboutThis.models.Images;
+import com.makeus.urirang.android.src.howAboutThis.models.User;
+
+import java.util.ArrayList;
+
 public class HomePost {
 
-    private String mbti;
-    private String nickname;
-    private String createdAt;
+    @SerializedName("id")
+    private int id;
+    @SerializedName("userId")
+    private int userId;
+    @SerializedName("title")
     private String title;
-    private int like;
+    @SerializedName("content")
+    private String content;
+    @SerializedName("likes")
+    private int likes;
+    @SerializedName("views")
     private int views;
+    @SerializedName("commentNum")
+    private int commentNum;
+    @SerializedName("type")
+    private String type;
+    @SerializedName("isAnonymous")
+    private boolean isAnonymous;
+    @SerializedName("createdAt")
+    private String createdAt;
+    @SerializedName("updatedAt")
+    private String updatedAt;
+    @SerializedName("User")
+    private User user;
+    @SerializedName("Images")
+    private ArrayList<Images> images;
 
-    public HomePost(String mbti, String nickname, String createdAt, String title, int like, int views) {
-        this.mbti = mbti;
-        this.nickname = nickname;
-        this.createdAt = createdAt;
-        this.title = title;
-        this.like = like;
-        this.views = views;
+    public int getId() {
+        return id;
     }
 
-    public String getMbti() {
-        return mbti;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
+    public int getUserId() {
+        return userId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getLike() {
-        return like;
+    public String getContent() {
+        return content;
+    }
+
+    public int getLikes() {
+        return likes;
     }
 
     public int getViews() {
         return views;
+    }
+
+    public int getCommentNum() {
+        return commentNum;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public boolean isAnonymous() {
+        return isAnonymous;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public ArrayList<Images> getImages() {
+        return images;
     }
 }

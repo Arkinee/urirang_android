@@ -50,6 +50,14 @@ public class BoardFragment extends Fragment implements ViewPager.OnPageChangeLis
         return view;
     }
 
+    public void setItemWithYou(){
+        mBoardViewPager.setCurrentItem(1);
+    }
+
+    public void filterWithAll(String mbti){
+        mWithAllFragment.filter(mbti);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

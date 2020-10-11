@@ -70,6 +70,14 @@
             android:name=".src.withYou.comment.WithYouCommentActivity"
             android:screenOrientation="portrait" />
 
+        <!-- How About This-->
+        <activity
+            android:name=".src.howAboutThis.HowAboutThisActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.howAboutThis.write.HowAboutThisWriteActivity"
+            android:screenOrientation="portrait" />
+
         <!-- Kakao social login-->
         <meta-data
             android:name="com.kakao.sdk.AppKey"

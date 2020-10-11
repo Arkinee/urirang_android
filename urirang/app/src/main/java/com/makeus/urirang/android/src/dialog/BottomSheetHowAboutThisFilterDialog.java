@@ -42,13 +42,19 @@ public class BottomSheetHowAboutThisFilterDialog extends BottomSheetDialogFragme
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bottom_sheet_mbti_filter, container, false);
+        View view = inflater.inflate(R.layout.bottom_sheet_how_about_this_filter, container, false);
 
         ivCreatedAtCheck = view.findViewById(R.id.bottom_sheet_how_about_this_filter_created_at_iv_check);
         ivPopularityCheck = view.findViewById(R.id.bottom_sheet_how_about_this_filter_popularity_iv_check);
 
         LinearLayout linearTop = view.findViewById(R.id.bottom_sheet_how_about_this_linear_top);
         LinearLayout linearBottom = view.findViewById(R.id.bottom_sheet_how_about_this_linear_bottom);
+
+        if (mOption == 1) {
+            ivCreatedAtCheck.setVisibility(View.VISIBLE);
+        } else if (mOption == 2) {
+            ivPopularityCheck.setVisibility(View.VISIBLE);
+        }
 
         linearTop.setOnClickListener(this);
         linearBottom.setOnClickListener(this);
@@ -63,11 +69,13 @@ public class BottomSheetHowAboutThisFilterDialog extends BottomSheetDialogFragme
                 mOption = 1;
                 mListener.applyFilterCreatedAt(mOption);
                 ivCreatedAtCheck.setVisibility(View.VISIBLE);
+                dismiss();
                 break;
             case R.id.bottom_sheet_how_about_this_linear_bottom:
                 mOption = 2;
                 mListener.applyFilterPopularity(mOption);
                 ivPopularityCheck.setVisibility(View.VISIBLE);
+                dismiss();
                 break;
 
         }

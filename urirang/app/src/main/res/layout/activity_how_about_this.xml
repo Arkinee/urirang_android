@@ -18,7 +18,7 @@
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:contentDescription="@string/signup_description"
-            android:onClick="hallOnClick"
+            android:onClick="howOnClick"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:src="@drawable/ic_back_arrow"
@@ -55,11 +55,14 @@
 
             <!-- 1등 -->
             <ImageView
+                android:id="@+id/how_about_this_1st_medal"
                 android:layout_width="21dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/how_about_this"
+                android:elevation="3dp"
+                android:src="@drawable/ic_how_about_this_first"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,6 +73,7 @@
                 android:layout_marginTop="19dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/src_how_about_this_top3"
+                android:onClick="howOnClick"
                 app:layout_constraintDimensionRatio="360:110"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -115,6 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="17dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:letterSpacing="0.05"
@@ -124,8 +129,11 @@
                     android:textSize="14sp"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@+id/how_about_this_1st_card"
-                    app:layout_constraintTop_toTopOf="@+id/how_about_this_1st_card"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="spread"
                     tools:text="내가 겪었던 찐F와 찐T썰 풀어보자" />
 
                 <ImageView
@@ -133,9 +141,10 @@
                     android:layout_width="21dp"
                     android:layout_height="21dp"
                     android:layout_marginStart="17dp"
+                    android:layout_marginBottom="13dp"
                     android:contentDescription="@string/how_about_this"
                     app:layout_constrainedWidth="true"
-                    app:layout_constraintBottom_toBottomOf="@+id/how_about_this_1st_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/how_about_this_1st_tv_nickname"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintHorizontal_chainStyle="packed"
@@ -194,11 +203,14 @@
 
             <!-- 2등 -->
             <ImageView
+                android:id="@+id/how_about_this_2nd_medal"
                 android:layout_width="21dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/how_about_this"
+                android:elevation="3dp"
+                android:src="@drawable/ic_how_about_this_second"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/how_about_this_constraint_1st" />
 
@@ -209,6 +221,7 @@
                 android:layout_marginTop="19dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/src_how_about_this_top3"
+                android:onClick="howOnClick"
                 app:layout_constraintDimensionRatio="360:110"
                 app:layout_constraintTop_toBottomOf="@+id/how_about_this_constraint_1st">
 
@@ -254,6 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="17dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:letterSpacing="0.05"
@@ -263,8 +277,9 @@
                     android:textSize="14sp"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@+id/how_about_this_2nd_card"
-                    app:layout_constraintTop_toTopOf="@+id/how_about_this_2nd_card"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="내가 겪었던 찐F와 찐T썰 풀어보자" />
 
                 <ImageView
@@ -272,9 +287,10 @@
                     android:layout_width="21dp"
                     android:layout_height="21dp"
                     android:layout_marginStart="17dp"
+                    android:layout_marginBottom="13dp"
                     android:contentDescription="@string/how_about_this"
                     app:layout_constrainedWidth="true"
-                    app:layout_constraintBottom_toBottomOf="@+id/how_about_this_2nd_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/how_about_this_2nd_tv_nickname"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintHorizontal_chainStyle="packed"
@@ -333,11 +349,14 @@
 
             <!-- 3등 -->
             <ImageView
+                android:id="@+id/how_about_this_3rd_medal"
                 android:layout_width="21dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/how_about_this"
+                android:elevation="3dp"
+                android:src="@drawable/ic_how_about_this_third"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/how_about_this_constraint_2nd" />
 
@@ -348,6 +367,7 @@
                 android:layout_marginTop="19dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/src_how_about_this_top3"
+                android:onClick="howOnClick"
                 app:layout_constraintDimensionRatio="360:110"
                 app:layout_constraintTop_toBottomOf="@+id/how_about_this_constraint_2nd">
 
@@ -393,6 +413,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="17dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:letterSpacing="0.05"
@@ -402,8 +423,9 @@
                     android:textSize="14sp"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@+id/how_about_this_3rd_card"
-                    app:layout_constraintTop_toTopOf="@+id/how_about_this_3rd_card"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="내가 겪었던 찐F와 찐T썰 풀어보자" />
 
                 <ImageView
@@ -411,9 +433,10 @@
                     android:layout_width="21dp"
                     android:layout_height="21dp"
                     android:layout_marginStart="17dp"
+                    android:layout_marginBottom="13dp"
                     android:contentDescription="@string/how_about_this"
                     app:layout_constrainedWidth="true"
-                    app:layout_constraintBottom_toBottomOf="@+id/how_about_this_3rd_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/how_about_this_3rd_tv_nickname"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintHorizontal_chainStyle="packed"
@@ -482,8 +505,9 @@
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/how_about_this"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/ic_order_by"
                     app:layout_constraintBottom_toBottomOf="@+id/how_about_this_tv_filter"
                     app:layout_constraintEnd_toStartOf="@+id/how_about_this_tv_filter"
                     app:layout_constraintTop_toTopOf="@+id/how_about_this_tv_filter" />
@@ -494,9 +518,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
-                    android:paddingTop="2dp"
-                    android:paddingEnd="10dp"
+                    android:onClick="howOnClick"
                     android:paddingStart="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="2dp"
                     android:text="@string/hall_of_fame_tv_filter_by_created"
                     android:textColor="@color/colorBasicBlack92"
@@ -526,8 +551,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorBlack"
-        android:src="@drawable/ic_with_all_write"
         android:onClick="howOnClick"
+        android:src="@drawable/ic_with_all_write"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

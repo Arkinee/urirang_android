@@ -1,6 +1,7 @@
 package com.makeus.urirang.android.src.main.fragments.home.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,12 @@ import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.hallOfFame.models.PreviousSubject;
 import com.makeus.urirang.android.src.main.fragments.home.models.HomePost;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
 public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.ViewHolder> {
 
@@ -92,14 +98,58 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.ViewHo
         HomePost post = mPostList.get(position);
 
         holder.tvPostTitle.setText(post.getTitle());
-        holder.tvPostNickname.setText(post.getNickname());
-        holder.tvPostCreatedAt.setText(post.getCreatedAt());
-        holder.tvPostLike.setText(String.valueOf(post.getLike()));
-        holder.tvPostViews.setText(String.valueOf(post.getViews()));
+        holder.tvPostNickname.setText(post.getUser().getNickname());
+        holder.tvPostLike.setText(String.valueOf(post.getLikes()));
+        holder.tvPostViews.setText("조회수 ".concat(String.valueOf(post.getViews())));
 
-        if (post.getMbti().equals("")) {
-//        Glide.with(mContext).load(post.get()).into(holder.ivHallOfFameMain);
+        String createdTime = post.getCreatedAt();
+        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd");
+
+        String posted = "";
+        if (createdTime != null) {
+            try {
+                Date before = beforeFormat.parse(createdTime);
+                posted = afterFormat.format(before);
+            } catch (ParseException e) {
+                Log.d(TAG, e.toString());
+            }
         }
+
+        holder.tvPostCreatedAt.setText(posted);
+
+        if (post.getUser().getMbti().equals("intj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("infj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("istj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("istp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("intp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("infp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("isfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("isfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("entj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("enfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("estj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("estp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("entp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("enfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("esfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(holder.ivPostMbti);
+        else if (post.getUser().getMbti().equals("esfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(holder.ivPostMbti);
 
     }
 

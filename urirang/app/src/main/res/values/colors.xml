@@ -36,6 +36,7 @@
     <color name="colorBoardTvSearch">#33151515</color>
     <color name="colorSearchHint">#de151515</color>
     <color name="colorHowAboutThisRank">#777777</color>
+    <color name="colorHowAboutThisLikeCorner">#72979797</color>
     <color name="colorWithYouEdt">#f8f8f8</color>
 
 </resources>

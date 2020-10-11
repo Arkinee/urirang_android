@@ -10,13 +10,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.hallOfFame.models.PreviousSubject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
 public class HallOfFameAdapter extends RecyclerView.Adapter<HallOfFameAdapter.ViewHolder> {
 
@@ -95,11 +101,62 @@ public class HallOfFameAdapter extends RecyclerView.Adapter<HallOfFameAdapter.Vi
         PreviousSubject subject = mSubjectList.get(position);
 
         holder.tvHallOfFameTitle.setText(subject.getTitle());
-        holder.tvHallOfFameNickname.setText(subject.getNickname());
-        holder.tvHallOfFameSelectedAt.setText(subject.getSelectedAt());
-        holder.tvHallOfFameComment.setText(String.valueOf(subject.getComment()));
+        holder.tvHallOfFameNickname.setText(subject.getUser().getNickname());
 
-        Glide.with(mContext).load(subject.getImageUrl()).into(holder.ivHallOfFameMain);
+        String createdTime = subject.getCreatedAt();
+        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat afterFormat = new SimpleDateFormat("MM/dd");
+
+        String posted = "";
+        if (createdTime != null) {
+            try {
+                Date before = beforeFormat.parse(createdTime);
+                posted = afterFormat.format(before);
+            } catch (ParseException e) {
+                Log.d(TAG, e.toString());
+            }
+        }
+
+        holder.tvHallOfFameSelectedAt.setText(posted);
+        holder.tvHallOfFameComment.setText(String.valueOf(subject.getCommentNum()));
+
+        if (subject.getImages().size() != 0)
+            Glide.with(mContext).load(subject.getImages().get(0).getUrl()).into(holder.ivHallOfFameMain);
+        else
+            holder.ivHallOfFameMain.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_default_image));
+
+        if (subject.getUser().getMbti().equals("intj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("infj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("istj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("istp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("intp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("infp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("isfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("isfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("entj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("enfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("estj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("estp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("entp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("enfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("esfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(holder.ivHallOfFameMbti);
+        else if (subject.getUser().getMbti().equals("esfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(holder.ivHallOfFameMbti);
 
     }
 

@@ -12,6 +12,8 @@ import com.makeus.urirang.android.src.login.email.models.LoginResponse;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeActivityView;
 import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeRetrofitInterface;
 import com.makeus.urirang.android.src.main.fragments.home.models.CurrentTopicResponse;
+import com.makeus.urirang.android.src.main.fragments.home.models.HomeHowAboutThisImage;
+import com.makeus.urirang.android.src.main.fragments.home.models.HomePostResponse;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
 import com.makeus.urirang.android.src.main.fragments.home.models.TopicHistoryImagesResponse;
 import com.makeus.urirang.android.src.main.fragments.home.models.UserInfoResponse;
@@ -109,7 +111,7 @@ public class HomeService {
         });
     }
 
-    // 명예의 전당  토픽 가져오기
+    // 명예의 전당 이미지 가져오기
     public void tryGetTopicHistoryImages() {
         final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
         homeRetrofitInterface.tryGetTopicHistoryImages().enqueue(new Callback<ArrayList<TopicHistoryImagesResponse>>() {
@@ -127,8 +129,8 @@ public class HomeService {
                             urls.add("");
                     }
 
-                    if(urls.size() < 4){
-                        for(int i=0; i< 4 - urls.size(); i++){
+                    if (urls.size() < 4) {
+                        for (int i = 0; i < 4 - urls.size(); i++) {
                             urls.add("");
                         }
                     }
@@ -146,4 +148,66 @@ public class HomeService {
             }
         });
     }
+
+    // 이건어때 이미지 가져오기
+    public void tryGetHowAboutThisImages() {
+        final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
+        homeRetrofitInterface.tryGetHowAboutThisImages().enqueue(new Callback<ArrayList<HomeHowAboutThisImage>>() {
+            @Override
+            public void onResponse(@NonNull Call<ArrayList<HomeHowAboutThisImage>> call, @NonNull Response<ArrayList<HomeHowAboutThisImage>> response) {
+
+                if (response.code() == 200) {
+                    final ArrayList<HomeHowAboutThisImage> result = response.body();
+
+                    ArrayList<String> urls = new ArrayList<>();
+                    for (int i = 0; i < result.size(); i++) {
+                        if (result.get(i).getImages().size() != 0)
+                            urls.add(result.get(i).getImages().get(0).getUrl());
+                        else
+                            urls.add("");
+                    }
+
+                    if (urls.size() < 4) {
+                        for (int i = 0; i < 4 - urls.size(); i++) {
+                            urls.add("");
+                        }
+                    }
+
+                    mView.tryGetHowAboutThisImagesSuccess(urls);
+                } else {
+                    mView.tryGetHowAboutThisImagesFailure("이건어때 이미지 오류");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<HomeHowAboutThisImage>> call, Throwable t) {
+                mView.tryGetHowAboutThisImagesFailure(mContext.getString(R.string.network_connect_failure));
+            }
+        });
+    }
+
+    // 모두랑 인기 게시물 3개 가져오기
+    public void tryGetWithAllBest3() {
+        final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
+        homeRetrofitInterface.tryGetWithAllBest3().enqueue(new Callback<HomePostResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<HomePostResponse> call, @NonNull Response<HomePostResponse> response) {
+
+                if (response.code() == 200) {
+                    final HomePostResponse result = response.body();
+                    mView.tryGetWithAllBest3Success(result.getData());
+                } else {
+                    mView.tryGetWithAllBest3Failure("모두랑 베스트3 오류");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<HomePostResponse> call, Throwable t) {
+                mView.tryGetWithAllBest3Failure(mContext.getString(R.string.network_connect_failure));
+            }
+        });
+    }
+
 }

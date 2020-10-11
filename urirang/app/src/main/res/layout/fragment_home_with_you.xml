@@ -34,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="3dp"
         android:background="@drawable/src_home_tv_round_back"
         android:elevation="3dp"
         android:paddingStart="6.5dp"
@@ -51,13 +52,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="11dp"
         android:elevation="3dp"
         android:lineSpacingExtra="9sp"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_home_with_you_tv_people_participate"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tool:text="가장 손절 잘하는\n유형은 무엇?" />
 
@@ -65,25 +66,25 @@
         android:id="@+id/fragment_home_with_you_tv_people_participate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="6dp"
         android:elevation="3dp"
-        android:text="@string/home_tv_with_you"
         android:textColor="@android:color/white"
         android:textSize="9.5sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_home_with_you_tv_title"
+        app:layout_constraintStart_toEndOf="@+id/fragment_home_with_you_tv_round"
         tool:text="115명 참여중" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:contentDescription="@string/home_description"
         android:elevation="3dp"
         android:src="@drawable/ic_angle_bracket_white"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_home_with_you_tv_people_participate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragment_home_with_you_tv_people_participate" />
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_home_with_you_tv_title"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/fragment_home_with_you_iv_highlight"

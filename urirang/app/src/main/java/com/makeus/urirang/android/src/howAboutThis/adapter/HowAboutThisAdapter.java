@@ -96,7 +96,7 @@ public class HowAboutThisAdapter extends RecyclerView.Adapter<HowAboutThisAdapte
         holder.tvNickname.setText(item.getUser().getNickname());
         holder.tvLikes.setText(String.valueOf(item.getLikes()));
 
-        Glide.with(mContext).load(item.getImages().getUrl()).into(holder.ivHowAboutThisThumbnail);
+        Glide.with(mContext).load(item.getImages().get(0).getUrl()).into(holder.ivHowAboutThisThumbnail);
 
         if (item.getUser().getMbti().equals("intj"))
             Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivHowAboutThisMbti);

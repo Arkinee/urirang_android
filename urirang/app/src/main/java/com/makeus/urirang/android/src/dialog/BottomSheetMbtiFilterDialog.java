@@ -1,5 +1,6 @@
 package com.makeus.urirang.android.src.dialog;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.makeus.urirang.android.R;
 
@@ -58,6 +62,27 @@ public class BottomSheetMbtiFilterDialog extends BottomSheetDialogFragment imple
 
     public BottomSheetMbtiFilterDialog(Context context) {
         this.mContext = context;
+    }
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
+        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                BottomSheetDialog d = (BottomSheetDialog) dialog;
+
+                FrameLayout bottomSheet = (FrameLayout) d.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+                BottomSheetBehavior.from(bottomSheet).setSkipCollapsed(true);
+                BottomSheetBehavior.from(bottomSheet).setHideable(true);
+            }
+        });
+
+        return dialog;
     }
 
     @Nullable
@@ -115,8 +140,6 @@ public class BottomSheetMbtiFilterDialog extends BottomSheetDialogFragment imple
         ivEnfp.setOnClickListener(this);
         ivEsfj.setOnClickListener(this);
         ivEsfp.setOnClickListener(this);
-
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         return view;
     }
@@ -263,6 +286,11 @@ public class BottomSheetMbtiFilterDialog extends BottomSheetDialogFragment imple
             throw new ClassCastException(context.toString().concat(" must implement BottomSheetListener"));
         }
 
+    }
+
+    @Override
+    public int getTheme() {
+        return R.style.BottomSheetDialogTheme;
     }
 
     @Override

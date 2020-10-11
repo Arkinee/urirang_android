@@ -44,6 +44,7 @@
             android:textSize="14sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/item_how_about_this_card"
             app:layout_constraintTop_toTopOf="@+id/item_how_about_this_card"
             tools:text="내가 겪었던 찐F와 찐T썰 풀어보자" />

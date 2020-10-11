@@ -99,21 +99,17 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         return vh;
     }
 
-    public void likeComment(int pos) {
-        mCommentList.get(pos).setLiked(!mCommentList.get(pos).isLiked());
-        if (mCommentList.get(pos).isLiked()) {
-            mCommentList.get(pos).setLike(mCommentList.get(pos).getLike() + 1);
-        } else {
-            mCommentList.get(pos).setLike(mCommentList.get(pos).getLike() - 1);
-        }
-        notifyDataSetChanged();
-    }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Comments comment = mCommentList.get(position);
 
-        holder.tvCommentNickname.setText(comment.getUserNickName());
+
+        if (!comment.isAnonymous()) {
+            holder.tvCommentNickname.setText(comment.getUserNickName());
+        } else {
+            holder.tvCommentNickname.setText("익명");
+        }
+
         holder.tvCommentContent.setText(comment.getContent());
 
         String createdTime = comment.getCreatedAt();
