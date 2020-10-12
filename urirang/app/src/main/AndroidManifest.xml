@@ -4,6 +4,8 @@
     package="com.makeus.urirang.android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".src.ApplicationClass"
@@ -50,9 +52,6 @@
             android:name=".src.main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".src.hallOfFame.HallOfFameActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".src.search.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -76,6 +75,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".src.howAboutThis.write.HowAboutThisWriteActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Hall of Fame-->
+        <activity
+            android:name=".src.hallOfFame.HallOfFameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.hallOfFame.content.HallOfFameContentActivity"
             android:screenOrientation="portrait" />
 
         <!-- Kakao social login-->

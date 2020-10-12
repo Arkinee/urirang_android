@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -96,7 +97,11 @@ public class HowAboutThisAdapter extends RecyclerView.Adapter<HowAboutThisAdapte
         holder.tvNickname.setText(item.getUser().getNickname());
         holder.tvLikes.setText(String.valueOf(item.getLikes()));
 
-        Glide.with(mContext).load(item.getImages().get(0).getUrl()).into(holder.ivHowAboutThisThumbnail);
+        if(item.getImages().size() != 0) {
+            Glide.with(mContext).load(item.getImages().get(0).getUrl()).into(holder.ivHowAboutThisThumbnail);
+        }else{
+            holder.ivHowAboutThisThumbnail.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_default_image));
+        }
 
         if (item.getUser().getMbti().equals("intj"))
             Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivHowAboutThisMbti);

@@ -20,6 +20,7 @@
 
     <color name="colorModifyCancel">#400c0c0c</color>
     <color name="colorModifyTvNickname">#821e2022</color>
+    <color name="colorWriteTopicBackGray">#ebebeb</color>
 
     <color name="colorSearchLinear">#eeeeee</color>
     <color name="colorInfoTvComplete">#4c000000</color>

@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <View
+        android:id="@+id/hall_of_fame_content_view_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="360:48"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/hall_of_fame_content_iv_back_arrow"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:contentDescription="@string/hall_of_fame"
+        android:onClick="hallContentOnClick"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_view_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_view_top" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_view_top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/hall_of_fame_content_iv_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:contentDescription="@string/hall_of_fame"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="360:245"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher" />
+
+            <View
+                android:id="@+id/hall_of_fame_content_view_round"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@drawable/src_with_you_round"
+                app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_iv_main" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_view_round"
+                app:layout_constraintVertical_bias="0">
+
+                <TextView
+                    android:id="@+id/hall_of_fame_content_tv_topic_wording"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="11dp"
+                    android:text="@string/hall_of_fame_tv_previous_topic"
+                    android:textColor="@color/colorBasicBlack83"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/hall_of_fame_content_tv_topic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginEnd="20dp"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="@android:color/black"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_tv_topic_wording"
+                    tools:text="MBTI 중 제일 손절 잘하는 유형은 무엇?asdasdasdasdas" />
+
+                <ImageView
+                    android:id="@+id/hall_of_fame_content_presenter_iv_mbti"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/with_you"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_tv_topic" />
+
+                <TextView
+                    android:id="@+id/hall_of_fame_content_presenter_tv_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:letterSpacing="0.06"
+                    android:textColor="@color/colorBasicBlack98"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_presenter_iv_mbti"
+                    app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_presenter_iv_mbti"
+                    app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_presenter_iv_mbti"
+                    tools:text="닉네임" />
+
+                <TextView
+                    android:id="@+id/hall_of_fame_content_tv_selected_at"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:textColorHint="@color/colorBasicBlack40"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_presenter_iv_mbti"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_presenter_iv_mbti"
+                    tools:text="8/25" />
+
+                <View
+                    android:id="@+id/hall_of_fame_content_view_comment_border_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/colorInfoBorder23"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_presenter_iv_mbti" />
+
+                <TextView
+                    android:id="@+id/hall_of_fame_content_tv_comment_wording"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13.9dp"
+                    android:text="@string/with_you_tv_comment"
+                    android:textColor="@color/colorBasicBlack83"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_view_comment_border_top" />
+
+                <TextView
+                    android:id="@+id/hall_of_fame_content_tv_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="13.9dp"
+                    android:textColor="@color/colorBasicBlack27"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_tv_comment_wording"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_view_comment_border_top"
+                    tools:text="124" />
+
+                <ImageView
+                    android:id="@+id/hall_of_fame_content_iv_go_comment"
+                    android:layout_width="46dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/with_you"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:onClick="hallContentOnClick"
+                    android:src="@drawable/ic_angle_bracket_gray"
+                    app:layout_constraintBottom_toTopOf="@+id/hall_of_fame_content_view_comment_border_bottom"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_view_comment_border_top" />
+
+                <View
+                    android:id="@+id/hall_of_fame_content_view_comment_border_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="13.1dp"
+                    android:background="@color/colorInfoBorder23"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_tv_comment" />
+
+                <View
+                    android:id="@+id/hall_of_fame_content_view_comment_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/colorHomeBorder"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_view_comment_border_bottom" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hall_of_fame_content_constraint_first_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hall_of_fame_content_constraint_second_comment"
+                    app:layout_constraintDimensionRatio="320:53"
+                    app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_view_comment_background"
+                    app:layout_constraintVertical_bias="0">
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_first_comment_iv_mbti"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:contentDescription="@string/with_you"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_mbti_1_intj_selected" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_first_comment_tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/colorBasicBlack98"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_first_comment_iv_mbti"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_first_comment_iv_mbti"
+                        tools:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_first_comment_tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/colorBasicBlack40"
+                        android:textSize="8.5sp"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_first_comment_tv_nickname"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_first_comment_iv_mbti"
+                        tools:text="8/25 12:01" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintEnd_toStartOf="@+id/hall_of_fame_content_first_comment_tv_like"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_first_comment_iv_mbti" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_first_comment_tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/colorBasicBlack59"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_first_comment_iv_mbti"
+                        tools:text="35" />
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_first_comment_speech_bubble"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_speech_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_first_comment_tv_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_first_comment_tv_nickname" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_first_comment_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="9sp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBasicBlack83"
+                        android:textSize="11sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_first_comment_speech_bubble"
+                        app:layout_constraintEnd_toEndOf="@+id/hall_of_fame_content_first_comment_speech_bubble"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_first_comment_speech_bubble"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_first_comment_speech_bubble"
+                        tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hall_of_fame_content_constraint_second_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hall_of_fame_content_constraint_third_comment"
+                    app:layout_constraintDimensionRatio="320:53"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_constraint_first_comment">
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_second_comment_iv_mbti"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:contentDescription="@string/with_you"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_mbti_1_intj_selected" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_second_comment_tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/colorBasicBlack98"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_second_comment_iv_mbti"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_second_comment_iv_mbti"
+                        tools:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_second_comment_tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/colorBasicBlack40"
+                        android:textSize="8.5sp"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_second_comment_tv_nickname"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_second_comment_iv_mbti"
+                        tools:text="8/25 12:01" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintEnd_toStartOf="@+id/hall_of_fame_content_second_comment_tv_like"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_second_comment_iv_mbti" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_second_comment_tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/colorBasicBlack59"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_second_comment_iv_mbti"
+                        tools:text="35" />
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_second_comment_speech_bubble"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_speech_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_second_comment_tv_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_second_comment_tv_nickname" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_second_comment_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="9sp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBasicBlack83"
+                        android:textSize="11sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_second_comment_speech_bubble"
+                        app:layout_constraintEnd_toEndOf="@+id/hall_of_fame_content_second_comment_speech_bubble"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_second_comment_speech_bubble"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_second_comment_speech_bubble"
+                        tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hall_of_fame_content_constraint_third_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hall_of_fame_content_constraint_fourth_comment"
+                    app:layout_constraintDimensionRatio="320:53"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_constraint_second_comment">
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_third_comment_iv_mbti"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:contentDescription="@string/with_you"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_mbti_1_intj_selected" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_third_comment_tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/colorBasicBlack98"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_third_comment_iv_mbti"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_third_comment_iv_mbti"
+                        tools:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_third_comment_tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/colorBasicBlack40"
+                        android:textSize="8.5sp"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_third_comment_tv_nickname"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_third_comment_iv_mbti"
+                        tools:text="8/25 12:01" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintEnd_toStartOf="@+id/hall_of_fame_content_third_comment_tv_like"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_third_comment_iv_mbti" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_third_comment_tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/colorBasicBlack59"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_third_comment_iv_mbti"
+                        tools:text="35" />
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_third_comment_speech_bubble"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_speech_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_third_comment_tv_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_third_comment_tv_nickname" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_third_comment_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="9sp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBasicBlack83"
+                        android:textSize="11sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_third_comment_speech_bubble"
+                        app:layout_constraintEnd_toEndOf="@+id/hall_of_fame_content_third_comment_speech_bubble"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_third_comment_speech_bubble"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_third_comment_speech_bubble"
+                        tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- fourth -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hall_of_fame_content_constraint_fourth_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hall_of_fame_content_constraint_fifth_comment"
+                    app:layout_constraintDimensionRatio="320:53"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_constraint_third_comment">
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_fourth_comment_iv_mbti"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:contentDescription="@string/with_you"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_mbti_1_intj_selected" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fourth_comment_tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/colorBasicBlack98"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_fourth_comment_iv_mbti"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fourth_comment_iv_mbti"
+                        tools:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fourth_comment_tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/colorBasicBlack40"
+                        android:textSize="8.5sp"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_fourth_comment_tv_nickname"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fourth_comment_iv_mbti"
+                        tools:text="8/25 12:01" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintEnd_toStartOf="@+id/hall_of_fame_content_fourth_comment_tv_like"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fourth_comment_iv_mbti" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fourth_comment_tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/colorBasicBlack59"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fourth_comment_iv_mbti"
+                        tools:text="35" />
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_fourth_comment_speech_bubble"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_speech_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_fourth_comment_tv_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_fourth_comment_tv_nickname" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fourth_comment_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="9sp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBasicBlack83"
+                        android:textSize="11sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_fourth_comment_speech_bubble"
+                        app:layout_constraintEnd_toEndOf="@+id/hall_of_fame_content_fourth_comment_speech_bubble"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_fourth_comment_speech_bubble"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fourth_comment_speech_bubble"
+                        tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- fifth -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hall_of_fame_content_constraint_fifth_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="320:53"
+                    app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_constraint_fourth_comment">
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_fifth_comment_iv_mbti"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:contentDescription="@string/with_you"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_mbti_1_intj_selected" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fifth_comment_tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/colorBasicBlack98"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_fifth_comment_iv_mbti"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fifth_comment_iv_mbti"
+                        tools:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fifth_comment_tv_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/colorBasicBlack40"
+                        android:textSize="8.5sp"
+                        app:layout_constraintStart_toEndOf="@+id/hall_of_fame_content_fifth_comment_tv_nickname"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fifth_comment_iv_mbti"
+                        tools:text="8/25 12:01" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintEnd_toStartOf="@+id/hall_of_fame_content_fifth_comment_tv_like"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fifth_comment_iv_mbti" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fifth_comment_tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/colorBasicBlack59"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fifth_comment_iv_mbti"
+                        tools:text="35" />
+
+                    <ImageView
+                        android:id="@+id/hall_of_fame_content_fifth_comment_speech_bubble"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/with_you"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_speech_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_fifth_comment_tv_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/hall_of_fame_content_fifth_comment_tv_nickname" />
+
+                    <TextView
+                        android:id="@+id/hall_of_fame_content_fifth_comment_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="9sp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBasicBlack83"
+                        android:textSize="11sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/hall_of_fame_content_fifth_comment_speech_bubble"
+                        app:layout_constraintEnd_toEndOf="@+id/hall_of_fame_content_fifth_comment_speech_bubble"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/hall_of_fame_content_fifth_comment_speech_bubble"
+                        app:layout_constraintTop_toTopOf="@+id/hall_of_fame_content_fifth_comment_speech_bubble"
+                        tools:text="ESTP가 찐임; 뭔가 안맞는다 싶으면 그냥 안보면 되는데 asdasdasdasdasdasd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

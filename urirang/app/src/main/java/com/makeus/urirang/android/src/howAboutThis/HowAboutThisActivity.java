@@ -384,12 +384,16 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
         mDoubleClickFlag = false;
         mIsEmptyResult = false;
         mHowLists.clear();
+        mPage = 1;
+        mSort = "";
         getHowAboutThisListBest3();
     }
 
     @Override
     public void sendLike(boolean like, int pos) {
         if (pos == -1 || pos == -2 || pos == -3) {
+            mPage = 1;
+            mSort = "";
             getHowAboutThisListBest3();
         } else {
             mHowLists.get(pos).setLiked(like);

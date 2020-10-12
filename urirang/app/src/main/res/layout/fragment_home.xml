@@ -208,6 +208,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/home_tv_best_article" />
 
             <ImageView
+                android:id="@+id/home_iv_go_with_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/home_description"

@@ -29,9 +29,10 @@ public class BoardFragment extends Fragment implements ViewPager.OnPageChangeLis
 
     private Context mContext;
 
-    public BoardFragment(){}
+    public BoardFragment() {
+    }
 
-    public BoardFragment(Context context){
+    public BoardFragment(Context context) {
         this.mContext = context;
     }
 
@@ -42,7 +43,7 @@ public class BoardFragment extends Fragment implements ViewPager.OnPageChangeLis
 
         mBoardTab = view.findViewById(R.id.fragment_board_tab);
         mBoardViewPager = view.findViewById(R.id.fragment_board_view_pager);
-        mSectionAdapter = new SectionAdapter(((MainActivity)mContext).getSupportFragmentManager());
+        mSectionAdapter = new SectionAdapter(((MainActivity) mContext).getSupportFragmentManager());
 
         mWithAllFragment = new BoardWithAllFragment(mContext);
         mWithYouFragment = new BoardWithYouFragment(mContext);
@@ -50,11 +51,15 @@ public class BoardFragment extends Fragment implements ViewPager.OnPageChangeLis
         return view;
     }
 
-    public void setItemWithYou(){
+    public void setItemWithYou() {
         mBoardViewPager.setCurrentItem(1);
     }
 
-    public void filterWithAll(String mbti){
+    public void setItemWithAll() {
+        mBoardViewPager.setCurrentItem(0);
+    }
+
+    public void filterWithAll(String mbti) {
         mWithAllFragment.filter(mbti);
     }
 

@@ -65,19 +65,23 @@
 
     <EditText
         android:id="@+id/how_about_this_write_edt_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5.5dp"
+        android:layout_marginEnd="20dp"
         android:background="@null"
         android:hint="@string/how_about_this_write_hint_topic_title"
         android:inputType="text"
         android:letterSpacing="0.06"
+        android:maxLines="1"
         android:paddingTop="7.5dp"
         android:paddingBottom="7.5dp"
         android:textColor="@android:color/black"
         android:textColorHint="@color/colorModifyTvNickname"
         android:textSize="13sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/how_about_this_write_view_border" />
 
@@ -106,11 +110,23 @@
             android:id="@+id/how_about_this_write_iv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/src_write_topic"
             android:contentDescription="@string/how_about_this"
             android:scaleType="centerCrop" />
 
-
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/how_about_this_write_iv_add_image"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:contentDescription="@string/how_about_this"
+        android:elevation="3dp"
+        android:src="@drawable/ic_add_image"
+        app:layout_constraintBottom_toBottomOf="@+id/how_about_this_write_card"
+        app:layout_constraintEnd_toEndOf="@+id/how_about_this_write_card"
+        app:layout_constraintStart_toStartOf="@+id/how_about_this_write_card"
+        app:layout_constraintTop_toTopOf="@+id/how_about_this_write_card" />
 
     <TextView
         android:layout_width="wrap_content"

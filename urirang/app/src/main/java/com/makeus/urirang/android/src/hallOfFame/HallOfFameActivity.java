@@ -1,5 +1,7 @@
 package com.makeus.urirang.android.src.hallOfFame;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.dialog.BottomSheetHallOfFameFilterDialog;
 import com.makeus.urirang.android.src.dialog.BottomSheetHowAboutThisFilterDialog;
 import com.makeus.urirang.android.src.hallOfFame.adapter.HallOfFameAdapter;
+import com.makeus.urirang.android.src.hallOfFame.content.HallOfFameContentActivity;
 import com.makeus.urirang.android.src.hallOfFame.interfaces.HallOfFameActivityView;
 import com.makeus.urirang.android.src.hallOfFame.models.PreviousSubject;
 import com.makeus.urirang.android.src.main.fragments.board.BoardFragment;
@@ -33,10 +36,12 @@ import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
 public class HallOfFameActivity extends BaseActivity implements BottomSheetHallOfFameFilterDialog.BottomSheetFilterOptionListener, HallOfFameActivityView {
 
+    private Context mContext;
     private RecyclerView mHallOfFameRv;
     private HallOfFameAdapter mHallAdapter;
     private ArrayList<PreviousSubject> mHallList;
 
+    private boolean mDoubleClickFlag = false;
     private boolean mIsEmptyResult = false;
     private int mPage = 1;
     private int mOption = 1;
@@ -47,12 +52,18 @@ public class HallOfFameActivity extends BaseActivity implements BottomSheetHallO
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hall_of_fame);
 
+        mContext = this;
         mHallList = new ArrayList<>();
         mHallOfFameRv = findViewById(R.id.hall_of_fame_rv);
         mHallAdapter = new HallOfFameAdapter(this, mHallList, new HallOfFameAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
 
+                Intent fameContent = new Intent(mContext, HallOfFameContentActivity.class);
+                fameContent.putExtra("topicId", mHallList.get(pos).getId());
+                startActivity(fameContent);
             }
         });
 
@@ -95,6 +106,7 @@ public class HallOfFameActivity extends BaseActivity implements BottomSheetHallO
     protected void onResume() {
         super.onResume();
         mHallList.clear();
+        mDoubleClickFlag = false;
         mIsEmptyResult = false;
         mPage = 1;
         getTopicHistoryList(mPage, mSort);
@@ -119,6 +131,7 @@ public class HallOfFameActivity extends BaseActivity implements BottomSheetHallO
     public void applyFilterCreatedAt(int option) {
         mOption = option;
         mIsEmptyResult = false;
+        mHallList.clear();
         mPage = 1;
         mSort = "";
         getTopicHistoryList(mPage, mSort);
@@ -128,6 +141,7 @@ public class HallOfFameActivity extends BaseActivity implements BottomSheetHallO
     public void applyFilterPopularity(int option) {
         mOption = option;
         mIsEmptyResult = false;
+        mHallList.clear();
         mPage = 1;
         mSort = "best";
         getTopicHistoryList(mPage, mSort);

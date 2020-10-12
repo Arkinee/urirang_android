@@ -1,5 +1,6 @@
 package com.makeus.urirang.android.src.main.fragments.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -68,7 +69,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private HallOfFameFragment mHallOfFameFragment;
     private HowAboutThisFragment mHowAboutThisFragment;
 
+    private Context mContext;
     private boolean mDoubleClickFlag = false;
+
+    public HomeFragment() {
+    }
+
+    public HomeFragment(Context context) {
+        this.mContext = context;
+    }
 
     @Nullable
     @Override
@@ -84,6 +93,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
         ImageView homeIvUrirang = view.findViewById(R.id.home_iv_urirang);
         homeIvUrirang.setOnClickListener(this);
+
+        ImageView homeIvGoWithAll = view.findViewById(R.id.home_iv_go_with_all);
+        homeIvGoWithAll.setOnClickListener(this);
 
         mHomeViewPagerTop = view.findViewById(R.id.home_viewpager_top);
         mHomeRvPost = view.findViewById(R.id.home_rv_post);
@@ -146,7 +158,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
             }
         });
 
-        mHomeRvPost.addItemDecoration(new DividerItemDecoration(mHomeRvPost.getContext(), new LinearLayoutManager(getActivity()).getOrientation()));
+        mHomeRvPost.addItemDecoration(new DividerItemDecoration(mHomeRvPost.getContext(), new LinearLayoutManager(mMainActivity).getOrientation()));
         mHomeRvPost.setAdapter(mHomePostAdapter);
 
         // 각종 테스트
@@ -168,7 +180,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
         // 관련 컨텐츠
 
-        mRelateAdapter = new RelateContentAdapter(getActivity(), 3);
+        mRelateAdapter = new RelateContentAdapter(mMainActivity, 3);
         mHomeViewPagerRelateContents.setAdapter(mRelateAdapter);
 
         mIndicator.setViewPager(mHomeViewPagerRelateContents);
@@ -223,14 +235,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         switch (v.getId()) {
             case R.id.home_iv_urirang:
                 ApplicationClass.sSharedPreferences.edit().putString(ApplicationClass.X_ACCESS_TOKEN, "").apply();
-                Intent goLoginIntent = new Intent(getActivity(), SocialLoginActivity.class);
+                Intent goLoginIntent = new Intent(mContext, SocialLoginActivity.class);
                 goLoginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(goLoginIntent);
-                ((MainActivity) getActivity()).finish();
+                ((MainActivity) mContext).finish();
                 break;
             case R.id.home_iv_notice:
+
                 break;
             case R.id.home_linear_go_world_cup:
+                break;
+            case R.id.home_iv_go_with_all:
+                ((MainActivity) mContext).setMainBoardWithALl();
                 break;
         }
     }
@@ -309,6 +325,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void tryGetHowAboutThisImagesSuccess(ArrayList<String> result) {
         mHowAboutThisFragment.imageSetting(result.get(0), result.get(1), result.get(2), result.get(3));
 
+        mPostList.clear();
         final HomeService homeService = new HomeService(this, mMainActivity);
         homeService.tryGetWithAllBest3();
     }

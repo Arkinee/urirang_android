@@ -422,37 +422,37 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
 
             mWithYouFourthTvCreatedAt.setText(posted);
 
-            if (third.getUserMbti().equals("intj"))
+            if (fourth.getUserMbti().equals("intj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("infj"))
+            else if (fourth.getUserMbti().equals("infj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("istj"))
+            else if (fourth.getUserMbti().equals("istj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("istp"))
+            else if (fourth.getUserMbti().equals("istp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("intp"))
+            else if (fourth.getUserMbti().equals("intp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("infp"))
+            else if (fourth.getUserMbti().equals("infp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("isfj"))
+            else if (fourth.getUserMbti().equals("isfj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("isfp"))
+            else if (fourth.getUserMbti().equals("isfp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("entj"))
+            else if (fourth.getUserMbti().equals("entj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("enfj"))
+            else if (fourth.getUserMbti().equals("enfj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("estj"))
+            else if (fourth.getUserMbti().equals("estj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("estp"))
+            else if (fourth.getUserMbti().equals("estp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("entp"))
+            else if (fourth.getUserMbti().equals("entp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("enfp"))
+            else if (fourth.getUserMbti().equals("enfp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("esfj"))
+            else if (fourth.getUserMbti().equals("esfj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mWithYouFourthIvMbti);
-            else if (third.getUserMbti().equals("esfp"))
+            else if (fourth.getUserMbti().equals("esfp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mWithYouFourthIvMbti);
 
         } else {
@@ -483,37 +483,37 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
 
             mWithYouFifthTvCreatedAt.setText(posted);
 
-            if (third.getUserMbti().equals("intj"))
+            if (fifth.getUserMbti().equals("intj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("infj"))
+            else if (fifth.getUserMbti().equals("infj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("istj"))
+            else if (fifth.getUserMbti().equals("istj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("istp"))
+            else if (fifth.getUserMbti().equals("istp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("intp"))
+            else if (fifth.getUserMbti().equals("intp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("infp"))
+            else if (fifth.getUserMbti().equals("infp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("isfj"))
+            else if (fifth.getUserMbti().equals("isfj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("isfp"))
+            else if (fifth.getUserMbti().equals("isfp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("entj"))
+            else if (fifth.getUserMbti().equals("entj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("enfj"))
+            else if (fifth.getUserMbti().equals("enfj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("estj"))
+            else if (fifth.getUserMbti().equals("estj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("estp"))
+            else if (fifth.getUserMbti().equals("estp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("entp"))
+            else if (fifth.getUserMbti().equals("entp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("enfp"))
+            else if (fifth.getUserMbti().equals("enfp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("esfj"))
+            else if (fifth.getUserMbti().equals("esfj"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mWithYouFifthIvMbti);
-            else if (third.getUserMbti().equals("esfp"))
+            else if (fifth.getUserMbti().equals("esfp"))
                 Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mWithYouFifthIvMbti);
 
         } else {

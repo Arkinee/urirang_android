@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
         mMainIvWorldCup = findViewById(R.id.main_iv_world_cup);
         mMainIvMyPage = findViewById(R.id.main_iv_mypage);
 
-        mHomeFragment = new HomeFragment();
+        mHomeFragment = new HomeFragment(this);
         mBoardFragment = new BoardFragment(this);
         mWorldCupFragment = new WorldCupFragment();
         mMyPageFragment = new MyPageFragment(this);
@@ -121,15 +121,20 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
         }
     }
 
-    public void setMainBoardWithYou(){
+    public void setMainBoardWithALl() {
+        setUnselectedImage();
+        mMainViewPager.setCurrentItem(1);
+        mFragmentFlag = 2;
+        mMainIvBoard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_board_selected));
+        mBoardFragment.setItemWithAll();
+    }
 
+    public void setMainBoardWithYou() {
         setUnselectedImage();
         mMainViewPager.setCurrentItem(1);
         mFragmentFlag = 2;
         mMainIvBoard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_board_selected));
         mBoardFragment.setItemWithYou();
-
-
     }
 
     public void setViewPagerListener() {

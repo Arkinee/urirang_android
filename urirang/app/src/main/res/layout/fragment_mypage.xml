@@ -13,8 +13,9 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/my_page"
+        android:elevation="3dp"
         android:padding="10dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +73,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/my_page_tv_mbti"
-                tools:text="예수와 히틀러 그 사이쯤" />
+                android:text="예수와 히틀러 그 사이쯤" />
 
             <View
                 android:id="@+id/my_page_view_round_corner"
