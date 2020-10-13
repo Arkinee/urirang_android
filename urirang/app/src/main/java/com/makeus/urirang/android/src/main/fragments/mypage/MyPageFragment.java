@@ -26,6 +26,7 @@ import com.makeus.urirang.android.src.main.fragments.mypage.models.TestResult;
 import com.makeus.urirang.android.src.modifyProfile.ModifyProfileActivity;
 import com.makeus.urirang.android.src.myCommentPost.MyCommentPostsActivity;
 import com.makeus.urirang.android.src.myPost.MyPostsActivity;
+import com.makeus.urirang.android.src.testResults.TestResultsActivity;
 
 import java.util.ArrayList;
 
@@ -122,6 +123,11 @@ public class MyPageFragment extends Fragment implements View.OnClickListener, My
                 startActivity(modifyIntent);
                 break;
             case R.id.my_page_tv_edit_test_result:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                Intent goTestResults = new Intent(mContext, TestResultsActivity.class);
+                startActivity(goTestResults);
                 break;
             case R.id.my_page_tv_my_posts:
                 if (mDoubleClickFlag) return;

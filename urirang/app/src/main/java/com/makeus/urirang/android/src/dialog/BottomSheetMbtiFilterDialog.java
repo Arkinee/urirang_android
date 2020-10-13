@@ -26,6 +26,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.main.MainActivity;
 
 public class BottomSheetMbtiFilterDialog extends BottomSheetDialogFragment implements View.OnClickListener {
 
@@ -296,5 +297,7 @@ public class BottomSheetMbtiFilterDialog extends BottomSheetDialogFragment imple
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
+
+        ((MainActivity) getActivity()).setBoardDoubleClick(false);
     }
 }

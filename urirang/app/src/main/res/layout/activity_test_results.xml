@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/test_results_top_linear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="360:48"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/test_results__iv_back"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/test_results"
+            android:onClick="testOnClick"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:src="@drawable/ic_back_arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/test_results"
+            android:textColor="@color/colorBlackBoard"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/test_results_view_border"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorInfoBorder34"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_top_linear" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_view_border">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 애니어그램 -->
+            <TextView
+                android:id="@+id/test_results_tv_aniagram_wording"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/test_results_aniagram"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/test_results_tv_aniagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/test_results_add_available"
+                android:textColor="@color/colorBasicBlack83"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_aniagram_wording"
+                app:layout_constraintStart_toEndOf="@+id/test_results_tv_aniagram_wording"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_aniagram_wording" />
+
+            <TextView
+                android:id="@+id/test_results_tv_aniagram_modify_or_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/test_results_tv_modify"
+                android:textColor="@color/colorBasicBlack27"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_aniagram_wording"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_aniagram_wording" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/test_results_rv_aniagram"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_tv_aniagram_wording" />
+
+            <!-- 에고그램 -->
+            <View
+                android:id="@+id/test_results_view_border_egogram"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="19dp"
+                android:background="@color/colorInfoBorder34"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_rv_aniagram" />
+
+            <TextView
+                android:id="@+id/test_results_tv_egogram_wording"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/test_results_egogram"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/test_results_view_border_egogram" />
+
+            <TextView
+                android:id="@+id/test_results_tv_egogram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/test_results_add_available"
+                android:textColor="@color/colorBasicBlack83"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_egogram_wording"
+                app:layout_constraintStart_toEndOf="@+id/test_results_tv_egogram_wording"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_egogram_wording" />
+
+            <TextView
+                android:id="@+id/test_results_tv_modify_or_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/test_results_tv_modify"
+                android:textColor="@color/colorBasicBlack27"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_egogram_wording"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_egogram_wording" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/test_results_rv_egogram"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_tv_egogram_wording" />
+
+            <!-- mgram -->
+            <View
+                android:id="@+id/test_results_view_border_mgram"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="19dp"
+                android:background="@color/colorInfoBorder34"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_rv_egogram" />
+
+            <TextView
+                android:id="@+id/test_results_tv_mgram_wording"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/test_results_mgram"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/test_results_view_border_mgram" />
+
+            <TextView
+                android:id="@+id/test_results_tv_mgram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/test_results_add_available"
+                android:textColor="@color/colorBasicBlack83"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_mgram_wording"
+                app:layout_constraintStart_toEndOf="@+id/test_results_tv_mgram_wording"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_mgram_wording" />
+
+            <TextView
+                android:id="@+id/test_results_tv_modify_or_add_mgram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/test_results_tv_modify"
+                android:textColor="@color/colorBasicBlack27"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_mgram_wording"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_mgram_wording" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/test_results_rv_mgram"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_tv_mgram_wording" />
+
+            <!-- big five -->
+            <View
+                android:id="@+id/test_results_view_border_big_five"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="19dp"
+                android:background="@color/colorInfoBorder34"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_rv_mgram" />
+
+            <TextView
+                android:id="@+id/test_results_tv_big_five_wording"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/test_results_big_five"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_view_border_big_five" />
+
+            <TextView
+                android:id="@+id/test_results_tv_big_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/test_results_add_available"
+                android:textColor="@color/colorBasicBlack83"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_big_five_wording"
+                app:layout_constraintStart_toEndOf="@+id/test_results_tv_big_five_wording"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_big_five_wording" />
+
+            <TextView
+                android:id="@+id/test_results_tv_modify_or_add_big_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/test_results_tv_modify"
+                android:textColor="@color/colorBasicBlack27"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_big_five_wording"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_big_five_wording" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/test_results_rv_big_five"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_tv_big_five_wording" />
+
+            <!-- Love Type -->
+            <View
+                android:id="@+id/test_results_view_border_love_type"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="19dp"
+                android:background="@color/colorInfoBorder34"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_rv_big_five" />
+
+            <TextView
+                android:id="@+id/test_results_tv_love_type_wording"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/test_results_love_type"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_view_border_love_type" />
+
+            <TextView
+                android:id="@+id/test_results_tv_love_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/test_results_add_available"
+                android:textColor="@color/colorBasicBlack83"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_love_type_wording"
+                app:layout_constraintStart_toEndOf="@+id/test_results_tv_love_type_wording"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_love_type_wording" />
+
+            <TextView
+                android:id="@+id/test_results_tv_modify_or_add_love_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/test_results_tv_modify"
+                android:textColor="@color/colorBasicBlack27"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/test_results_tv_love_type_wording"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/test_results_tv_love_type_wording" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/test_results_rv_love_type"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/test_results_tv_love_type_wording" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,8 @@
     <color name="colorModifyTvNickname">#821e2022</color>
     <color name="colorWriteTopicBackGray">#ebebeb</color>
 
+    <color name="colorTestResultsSolid">#b3f8f8f8</color>
+
     <color name="colorSearchLinear">#eeeeee</color>
     <color name="colorInfoTvComplete">#4c000000</color>
     <color name="colorInfoBorder">#979797</color>
@@ -39,5 +41,7 @@
     <color name="colorHowAboutThisRank">#777777</color>
     <color name="colorHowAboutThisLikeCorner">#72979797</color>
     <color name="colorWithYouEdt">#f8f8f8</color>
+
+    <color name="colorTestResults">#d4d4d4</color>
 
 </resources>

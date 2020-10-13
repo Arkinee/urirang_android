@@ -232,6 +232,12 @@ public class BottomSheetHowAboutThisContentDialog extends BottomSheetDialogFragm
     }
 
     @Override
+    public void tryPostHowAboutThisLikeMyTopic() {
+        ((HowAboutThisActivity) mContext).hideProgressDialog();
+        ((HowAboutThisActivity) mContext).showCustomToastShort("내 토픽에 좋아요를 할 수 없습니다");
+    }
+
+    @Override
     public void tryPostHowAboutThisLikeFailure(String message) {
         ((HowAboutThisActivity) mContext).hideProgressDialog();
         ((HowAboutThisActivity) mContext).showCustomToastShort(message);

@@ -200,6 +200,10 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
 
     }
 
+    public void setBoardDoubleClick(boolean b){
+        mBoardFragment.setWithAllDoubleClick(b);
+    }
+
     @Override
     public void onBackPressed() {
 

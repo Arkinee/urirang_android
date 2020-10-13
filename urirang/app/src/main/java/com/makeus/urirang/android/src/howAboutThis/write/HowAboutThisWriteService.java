@@ -9,6 +9,8 @@ import com.makeus.urirang.android.src.howAboutThis.interfaces.HowAboutThisRetrof
 import com.makeus.urirang.android.src.howAboutThis.interfaces.HowAboutThisWriteTopicView;
 import com.makeus.urirang.android.src.howAboutThis.models.WriteTopicResponse;
 
+import java.util.Map;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -28,9 +30,9 @@ public class HowAboutThisWriteService {
     }
 
     // 이건 어때 토픽 게시
-    public void tryPostHowAboutThisTopic(String title, String type, boolean isAnonymous, MultipartBody.Part filePart) {
+    public void tryPostHowAboutThisTopic(Map<String, RequestBody> params) {
         final HowAboutThisRetrofitInterface howAboutThisRetrofitInterface = getRetrofit().create(HowAboutThisRetrofitInterface.class);
-        howAboutThisRetrofitInterface.tryPostHowAboutThisTopic(title, type, isAnonymous, filePart).enqueue(new Callback<WriteTopicResponse>() {
+        howAboutThisRetrofitInterface.tryPostHowAboutThisTopic(params).enqueue(new Callback<WriteTopicResponse>() {
             @Override
             public void onResponse(@NonNull Call<WriteTopicResponse> call, @NonNull Response<WriteTopicResponse> response) {
 

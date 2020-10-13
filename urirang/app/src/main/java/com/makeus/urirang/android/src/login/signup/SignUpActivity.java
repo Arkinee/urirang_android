@@ -127,7 +127,6 @@ public class SignUpActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.signup_tv_next:
 
-
                 //이메일 형식 체크
                 Pattern pattern = Pattern.compile("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$");
                 Matcher m = pattern.matcher(mSignUpEdtEmail.getText().toString());

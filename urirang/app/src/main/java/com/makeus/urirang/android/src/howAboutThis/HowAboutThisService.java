@@ -93,6 +93,8 @@ public class HowAboutThisService {
 
                 if (response.code() == 201) {
                     mLikeView.tryPostHowAboutThisLikeSuccess();
+                }else if(response.code() == 409){
+                    mLikeView.tryPostHowAboutThisLikeMyTopic();
                 } else {
                     mLikeView.tryPostHowAboutThisLikeFailure("이건 어때 좋아요 누르기 실패");
                 }
@@ -115,7 +117,7 @@ public class HowAboutThisService {
 
                 if (response.code() == 201) {
                     mLikeView.tryPostHowAboutThisLikeSuccess();
-                } else {
+                }else {
                     mLikeView.tryPostHowAboutThisLikeFailure("이건 어때 좋아요 풀기 실패");
                 }
 

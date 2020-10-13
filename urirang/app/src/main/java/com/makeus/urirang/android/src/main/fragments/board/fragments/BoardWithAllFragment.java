@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.dialog.BottomSheetMbtiFilterDialog;
 import com.makeus.urirang.android.src.main.MainActivity;
@@ -25,6 +26,7 @@ import com.makeus.urirang.android.src.main.fragments.board.adapters.WithAllAdapt
 import com.makeus.urirang.android.src.main.fragments.board.interfaces.BoardWithAllView;
 import com.makeus.urirang.android.src.main.fragments.board.models.BoardWithAllData;
 import com.makeus.urirang.android.src.search.SearchActivity;
+import com.makeus.urirang.android.src.withAll.WithAllWriteActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -69,6 +71,9 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
         mWithAllRv.addItemDecoration(new DividerItemDecoration(mWithAllRv.getContext(), new LinearLayoutManager(getActivity()).getOrientation()));
         mWithAllRv.setAdapter(mWithAllAdapter);
 
+        FloatingActionButton fbutton = view.findViewById(R.id.fragment_with_all_fab_write);
+
+        fbutton.setOnClickListener(this);
         withAllTvFilter.setOnClickListener(this);
         withAllLinearSearch.setOnClickListener(this);
 
@@ -112,7 +117,11 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
 
     }
 
-    public void filter(String mbti){
+    public void setClickFlag(boolean b) {
+        mDoubleClickFlag = b;
+    }
+
+    public void filter(String mbti) {
         mWithAllList.clear();
         mPage = 1;
         getWithAllList(mbti, mPage);
@@ -122,6 +131,9 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_with_all_tv_mbti_filtering:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
                 BottomSheetMbtiFilterDialog filterDialog = new BottomSheetMbtiFilterDialog(mContext);
                 filterDialog.setCancelable(false);
                 filterDialog.show(((MainActivity) mContext).getSupportFragmentManager(), "MbtiFilterDialog");
@@ -132,6 +144,13 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
 
                 Intent searchIntent = new Intent(mContext, SearchActivity.class);
                 startActivity(searchIntent);
+                break;
+            case R.id.fragment_with_all_fab_write:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                Intent withAllWrite = new Intent(mContext, WithAllWriteActivity.class);
+                startActivity(withAllWrite);
                 break;
         }
     }
@@ -172,5 +191,4 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
         ((MainActivity) mContext).hideProgressDialog();
         ((MainActivity) mContext).showCustomToastShort(message);
     }
-
 }

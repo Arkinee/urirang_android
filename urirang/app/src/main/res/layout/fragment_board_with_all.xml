@@ -76,6 +76,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorBlack"
+        android:onClick=""
         android:src="@drawable/ic_with_all_write"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"

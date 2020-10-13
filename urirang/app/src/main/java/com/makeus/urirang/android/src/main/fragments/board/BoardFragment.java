@@ -63,6 +63,10 @@ public class BoardFragment extends Fragment implements ViewPager.OnPageChangeLis
         mWithAllFragment.filter(mbti);
     }
 
+    public void setWithAllDoubleClick(boolean b){
+        mWithAllFragment.setClickFlag(b);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

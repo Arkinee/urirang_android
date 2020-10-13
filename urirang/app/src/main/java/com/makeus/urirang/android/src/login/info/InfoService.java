@@ -34,8 +34,7 @@ public class InfoService {
             public void onResponse(@NonNull Call<SignupResponse> call, @NonNull Response<SignupResponse> response) {
 
                 if(response.raw().code() == 400){
-                    final SignupResponse signupResponse = response.body();
-                    mView.signupFailure(signupResponse.getMessage());
+                    mView.signupFailure("이메일 또는 비밀번호를 확인해 주세요");
                 }else if(response.raw().code() == 200){
                     final SignupResponse signupResponse = response.body();
                     mView.signupSuccess(signupResponse.getMessage());

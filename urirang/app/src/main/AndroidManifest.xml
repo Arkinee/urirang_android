@@ -11,10 +11,11 @@
         android:name=".src.ApplicationClass"
         android:allowBackup="false"
         android:fullBackupContent="false"
-        android:icon="@drawable/ic_splash_logo"
+        android:icon="@drawable/ic_app_urirang"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/ic_app_urirang"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup"
@@ -68,6 +69,11 @@
         <activity
             android:name=".src.withYou.comment.WithYouCommentActivity"
             android:screenOrientation="portrait" />
+        <!-- With All -->
+        <activity
+            android:name=".src.withAll.WithAllWriteActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait" />
 
         <!-- How About This-->
         <activity
@@ -83,6 +89,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".src.hallOfFame.content.HallOfFameContentActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".src.testResults.TestResultsActivity"
             android:screenOrientation="portrait" />
 
         <!-- Kakao social login-->
