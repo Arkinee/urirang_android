@@ -9,12 +9,16 @@ import com.makeus.urirang.android.src.withAll.interfaces.WithAllRetrofitInterfac
 import com.makeus.urirang.android.src.withAll.interfaces.WithAllWriteActivityView;
 import com.makeus.urirang.android.src.withAll.models.WithAllWriteResponse;
 
+import java.util.List;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Multipart;
+import retrofit2.http.Part;
 
 import static com.makeus.urirang.android.src.ApplicationClass.getRetrofit;
 
@@ -29,9 +33,9 @@ public class WithAllService {
     }
 
     // 이건 어때 토픽 게시
-    public void tryPostWithAll(Map<String, RequestBody> params) {
+    public void tryPostWithAll(RequestBody title, RequestBody content, RequestBody type, RequestBody isAnonymous, List<MultipartBody.Part> params) {
         final WithAllRetrofitInterface withAllRetrofitInterface = getRetrofit().create(WithAllRetrofitInterface.class);
-        withAllRetrofitInterface.tryPostWithAll(params).enqueue(new Callback<WithAllWriteResponse>() {
+        withAllRetrofitInterface.tryPostWithAll(title, content, type, isAnonymous, params).enqueue(new Callback<WithAllWriteResponse>() {
             @Override
             public void onResponse(@NonNull Call<WithAllWriteResponse> call, @NonNull Response<WithAllWriteResponse> response) {
 

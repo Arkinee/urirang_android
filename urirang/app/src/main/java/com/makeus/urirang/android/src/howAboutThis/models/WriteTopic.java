@@ -10,6 +10,8 @@ public class WriteTopic {
     private int userId;
     @SerializedName("title")
     private String title;
+    @SerializedName("content")
+    private String content;
     @SerializedName("likes")
     private int likes;
     @SerializedName("views")
@@ -43,6 +45,10 @@ public class WriteTopic {
 
     public int getViews() {
         return views;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public int getCommentNum() {

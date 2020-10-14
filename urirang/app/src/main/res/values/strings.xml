@@ -118,16 +118,11 @@
 
     <!-- With All -->
     <string name="with_all_write">글 쓰기</string>
+    <string name="with_all_write_hint_title">글 제목</string>
     <string name="with_all_write_edt_hint">내용을 입력해줘</string>
     <string name="with_all_write_total_image">/4</string>
     <string name="file_provider">이미지를 선택해 주세요</string>
     <string name="pick_multi_limit">모두 선택하였습니다</string>
-    <plurals name="pick_multi">
-        <item quantity="one">이미지를 선택해 주세요</item>
-    </plurals>
-    <plurals name="pick_multi_more">
-        <item quantity="one">이미지를 1개 이상 선택해 주세요</item>
-    </plurals>
 
     <!-- MBTI Filter -->
     <string name="mbti_filter_description">MBTI_FILTERING</string>

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -59,6 +60,8 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
         TextView tvWithAllViews;
         TextView tvWithAllLikes;
 
+        CardView cardWIthAll;
+
         ViewHolder(final View itemView) {
             super(itemView);
             // 뷰 객체에 대한 참조. (hold strong reference)
@@ -70,6 +73,8 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
             tvWithAllCreatedAt = itemView.findViewById(R.id.item_with_all_tv_created_at);
             tvWithAllViews = itemView.findViewById(R.id.item_with_all_tv_view);
             tvWithAllLikes = itemView.findViewById(R.id.item_with_all_tv_like);
+
+            cardWIthAll = itemView.findViewById(R.id.item_with_all_card);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -132,10 +137,15 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
         holder.tvWithAllViews.setText(String.valueOf(post.getViews()));
         holder.tvWithAllLikes.setText(String.valueOf(post.getLikes()));
 
-        if (!post.getImages().get(0).getUrl().equals("") && post.getImages().get(0).getUrl() != null) {
-            Glide.with(mContext).load(post.getImages().get(0).getUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.ivWithAllThumbnail);
-        } else {
-            holder.ivWithAllThumbnail.setVisibility(View.INVISIBLE);
+
+        if(post.getImages().size() != 0) {
+            if (!post.getImages().get(0).getUrl().equals("")) {
+                Glide.with(mContext).load(post.getImages().get(0).getUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.ivWithAllThumbnail);
+            } else {
+                holder.cardWIthAll.setVisibility(View.INVISIBLE);
+            }
+        }else{
+            holder.cardWIthAll.setVisibility(View.INVISIBLE);
         }
     }
 

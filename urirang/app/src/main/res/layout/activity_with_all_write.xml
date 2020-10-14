@@ -84,7 +84,7 @@
                 android:layout_marginTop="5.5dp"
                 android:layout_marginEnd="20dp"
                 android:background="@null"
-                android:hint="@string/how_about_this_write_hint_topic_title"
+                android:hint="@string/with_all_write_hint_title"
                 android:inputType="text"
                 android:letterSpacing="0.06"
                 android:maxLines="1"

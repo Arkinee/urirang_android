@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -29,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class WithAllWriteActivity extends BaseActivity implements WithAllWriteActivityView, BottomSheetImagePicker.OnImagesSelectedListener {
@@ -38,7 +41,8 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
     private ArrayList<File> mFileList;
     private ArrayList<Uri> mUriList;
 
-    private EditText mWithAllWriteEdtTopicTitle;
+    private EditText mWithAllWriteEdtTitle;
+    private EditText mWithAllWriteEdtContent;
     private boolean mIsAnonymous = false;
 
     private boolean mDoubleClick = false;
@@ -65,7 +69,8 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
         mUriList = new ArrayList<>();
         mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        mWithAllWriteEdtTopicTitle = findViewById(R.id.with_all_write_edt_title);
+        mWithAllWriteEdtTitle = findViewById(R.id.with_all_write_edt_title);
+        mWithAllWriteEdtContent = findViewById(R.id.with_all_write_edt_content);
 
         mWithAllIv1 = findViewById(R.id.with_all_write_iv_main_1);
         mWithAllIv2 = findViewById(R.id.with_all_write_iv_main_2);
@@ -77,19 +82,42 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
         mWithAllIvRemove3 = findViewById(R.id.with_all_write_iv_main_remove_3);
         mWithAllIvRemove4 = findViewById(R.id.with_all_write_iv_main_remove_4);
 
+        mWithAllWriteEdtTitle.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!mWithAllWriteEdtTitle.getText().toString().equals("")) {
+                    ((TextView) findViewById(R.id.with_all_write_tv_register)).setTextColor(mContext.getResources().getColor(R.color.colorBlack));
+                } else {
+                    ((TextView) findViewById(R.id.with_all_write_tv_register)).setTextColor(mContext.getResources().getColor(R.color.colorModifyCancel));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     void postWithAll() {
 
-        Map<String, RequestBody> map = new HashMap<>();
+//        Map<String, RequestBody> map = new HashMap<>();
+
+        List<MultipartBody.Part> images = new ArrayList<>();
 
         for (File f : mFileList) {
-            RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), f);
-            map.put("images\"; filename=\"" + f.getName(), fileBody);
+            RequestBody fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), f);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("file" + f.getName()  , f.getName(), fileBody);
+            images.add(body);
         }
 
-        RequestBody titleBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtTopicTitle.getText().toString());
+        RequestBody titleBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtTitle.getText().toString());
+        RequestBody contentBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtContent.getText().toString());
         RequestBody typeBody = RequestBody.create(MediaType.parse("text/plain"), "free");
 
         String isAnony = "";
@@ -97,17 +125,18 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
         else isAnony = "false";
 
         RequestBody isAnonymousBody = RequestBody.create(MediaType.parse("text/plain"), isAnony);
-        map.put("title", titleBody);
-        map.put("type", typeBody);
-        map.put("isAnonymous", isAnonymousBody);
+//        map.put("title", titleBody);
+//        map.put("content", contentBody);
+//        map.put("type", typeBody);
+//        map.put("isAnonymous", isAnonymousBody);
+//        map.put("images\"; filename=\"" + f.getName(), fileBody);
 
         final WithAllService withAllService = new WithAllService(this, mContext);
-        withAllService.tryPostWithAll(map);
+        withAllService.tryPostWithAll(titleBody, contentBody, typeBody, isAnonymousBody, images);
         showProgressDialog();
     }
 
     public void withAllOnClick(View view) {
-
         switch (view.getId()) {
             case R.id.with_all_write_tv_cancel:
                 finish();
@@ -124,7 +153,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 
                 break;
             case R.id.with_all_write_iv_main_remove_1:
-                if(mUriList.size() < 1) return;
+                if (mUriList.size() < 1) return;
 
                 mUriList.remove(0);
                 mFileList.remove(0);
@@ -149,9 +178,12 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 }
 
                 setDefaultImage(i);
+                if (mUriList.size() == 0) {
+                    ((ConstraintLayout) findViewById(R.id.with_all_write_constraint_bottom)).setVisibility(View.GONE);
+                }
                 break;
             case R.id.with_all_write_iv_main_remove_2:
-                if(mUriList.size() < 2) return;
+                if (mUriList.size() < 2) return;
 
                 mUriList.remove(1);
                 mFileList.remove(1);
@@ -179,7 +211,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 setDefaultImage(i2);
                 break;
             case R.id.with_all_write_iv_main_remove_3:
-                if(mUriList.size() < 3) return;
+                if (mUriList.size() < 3) return;
 
                 mUriList.remove(2);
                 mFileList.remove(2);
@@ -207,7 +239,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 setDefaultImage(i3);
                 break;
             case R.id.with_all_write_iv_main_remove_4:
-                if(mUriList.size() < 4) return;
+                if (mUriList.size() < 4) return;
 
                 mUriList.remove(3);
                 mFileList.remove(3);
@@ -238,6 +270,11 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 if (mDoubleClick) return;
                 mDoubleClick = true;
 
+                if (mWithAllWriteEdtTitle.getText().toString().equals("")) {
+                    showCustomToastShort("글 제목을 입력해 주세요");
+                    return;
+                }
+
                 postWithAll();
                 break;
 
@@ -246,7 +283,12 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 
     void setDefaultImage(int i) {
 
-        if (i == 2) {
+        if (i == 1) {
+            mWithAllIv1.setImageDrawable(null);
+            mWithAllIv2.setImageDrawable(null);
+            mWithAllIv3.setImageDrawable(null);
+            mWithAllIv4.setImageDrawable(null);
+        } else if (i == 2) {
             mWithAllIv2.setImageDrawable(null);
             mWithAllIv3.setImageDrawable(null);
             mWithAllIv4.setImageDrawable(null);
@@ -337,7 +379,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
             i += 1;
         }
 
-        mSelectedImageNum += list.size();
+        mSelectedImageNum = list.size();
 
         ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mSelectedImageNum));
 
