@@ -44,6 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/how_about_this_relative_top" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/how_about_this_nested_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -534,6 +535,7 @@
                     android:id="@+id/how_about_this_rv"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/how_about_this_tv_filter"
                     tools:listitem="@layout/item_how_about_this" />

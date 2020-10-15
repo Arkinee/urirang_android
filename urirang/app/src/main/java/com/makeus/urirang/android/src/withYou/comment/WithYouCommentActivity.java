@@ -72,7 +72,11 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
             @Override
             public void onWriteClick(View v, int pos) {
                 mSelectedCommentId = String.valueOf(mWithYouCommentAdatper.getItem(pos).getId());
-                mWithYouCommentTvToComment.setText("@".concat(mWithYouCommentAdatper.getItem(pos).getUserNickName()).concat("에게 댓글 남기는 중"));
+
+                if (!mWithYouCommentAdatper.getItem(pos).isAnonymous())
+                    mWithYouCommentTvToComment.setText("@".concat(mWithYouCommentAdatper.getItem(pos).getUserNickName()).concat("에게 댓글 남기는 중"));
+                else mWithYouCommentTvToComment.setText("@".concat("익명").concat("에게 댓글 남기는 중"));
+
                 mWithYouCommentTvToComment.setVisibility(View.VISIBLE);
                 Log.d("로그", "selected comment id " + mSelectedCommentId);
             }
@@ -129,13 +133,13 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
                 finish();
                 break;
             case R.id.with_you_comment_tv_order_by:
-                if(!mSelectedMbti.equals("")) {
+                if (!mSelectedMbti.equals("")) {
                     mWithYouList.clear();
                     mPage = 1;
                     mIsEmptyResult = false;
                     mSelectedMbti = "";
                     getWithYouList(mSelectedMbti, mPage);
-                }else return;
+                } else return;
                 break;
             case R.id.wiyh_you_comment_tv_mbti_filtering:
                 BottomSheetMbtiFilterDialog filterDialog = new BottomSheetMbtiFilterDialog(mContext);
@@ -151,7 +155,7 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
                 mIsAnonymous = !mIsAnonymous;
                 break;
             case R.id.with_you_comment_iv_write:
-                if(mWithYouCommentEdtContent.getText().toString().equals("")){
+                if (mWithYouCommentEdtContent.getText().toString().equals("")) {
                     showCustomToastShort("내용을 입력해 주세요");
                     return;
                 }

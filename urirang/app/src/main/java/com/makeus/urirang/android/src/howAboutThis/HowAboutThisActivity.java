@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,8 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
     private HowAboutThisAdapter mHowAdapter;
     private ArrayList<HowAboutThis> mHowLists;
     private RecyclerView rvHowAboutThis;
+
+    private NestedScrollView mHowAboutThisNestedScroll;
 
     private ImageView mHowAboutThisIvFirstMedal;
     private ImageView mHowAboutThisIvSecondMedal;
@@ -67,6 +70,7 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
     private int mOption = 1;
     private boolean mIsEmptyResult = false;
     private boolean mDoubleClickFlag = false;
+    private boolean mLoading = false;
     private String mSort = "";
 
     private HowAboutThis mFirstItem;
@@ -77,6 +81,8 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_how_about_this);
+
+        mHowAboutThisNestedScroll = findViewById(R.id.how_about_this_nested_scroll);
 
         mHowAboutThisIvFirstMedal = findViewById(R.id.how_about_this_1st_medal);
         mHowAboutThisIvSecondMedal = findViewById(R.id.how_about_this_2nd_medal);
@@ -120,26 +126,33 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
         rvHowAboutThis.addItemDecoration(new DividerItemDecoration(rvHowAboutThis.getContext(), LinearLayoutManager.VERTICAL));
         rvHowAboutThis.setAdapter(mHowAdapter);
 
-        rvHowAboutThis.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
+        mHowAboutThisNestedScroll.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
 
-                int lastVisibleItemPosition = ((LinearLayoutManager) Objects.requireNonNull(rvHowAboutThis.getLayoutManager())).findLastCompletelyVisibleItemPosition();
-                int itemTotalCount = rvHowAboutThis.getAdapter().getItemCount() - 1;
+            if (scrollY > oldScrollY) {
+                Log.d(TAG, "Scroll DOWN");
+            }
+            if (scrollY < oldScrollY) {
+                Log.d(TAG, "Scroll UP");
+            }
 
-                if (lastVisibleItemPosition == itemTotalCount) {
+            if (scrollY == 0) {
+                Log.d(TAG, "TOP SCROLL");
+            }
+
+            if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+                Log.d(TAG, "BOTTOM SCROLL");
+                // here where the trick is going
+
+                if (mLoading) {
 
                     if (!mIsEmptyResult) {
                         Log.d(TAG, mPage + "번째 페이지 how about this");
                         getHowAboutThisList(mPage, mSort);
                     }
-                }
-            }
 
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
+                    mLoading = false;
+                }
+
             }
         });
     }
@@ -197,6 +210,7 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
         mOption = option;
         mSort = "";
         mHowLists.clear();
+        mIsEmptyResult = false;
         mPage = 1;
         getHowAboutThisList(mPage, mSort);
     }
@@ -206,6 +220,7 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
         mOption = option;
         mSort = "best";
         mHowLists.clear();
+        mIsEmptyResult = false;
         mPage = 1;
         getHowAboutThisList(mPage, mSort);
     }
@@ -366,6 +381,7 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
             mIsEmptyResult = true;
         }
 
+        mLoading = true;
         mHowLists.addAll(results);
         mHowAdapter.notifyDataSetChanged();
         mPage += 1;
@@ -381,6 +397,7 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onresume how about this");
         mDoubleClickFlag = false;
         mIsEmptyResult = false;
         mHowLists.clear();

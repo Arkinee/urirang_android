@@ -124,6 +124,10 @@
     <string name="file_provider">이미지를 선택해 주세요</string>
     <string name="pick_multi_limit">모두 선택하였습니다</string>
 
+    <string name="with_all_comment_tv_top">모두랑</string>
+    <string name="with_all_description">WITHALL</string>
+    <string name="with_all_content_tv_comment">댓글</string>
+
     <!-- MBTI Filter -->
     <string name="mbti_filter_description">MBTI_FILTERING</string>
     <string name="mbti_filter">MBTI 필터링</string>

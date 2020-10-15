@@ -1,4 +1,4 @@
-package com.makeus.urirang.android.src.withAll.models;
+package com.makeus.urirang.android.src.withAll.write.models;
 
 import com.google.gson.annotations.SerializedName;
 import com.makeus.urirang.android.src.howAboutThis.models.WriteTopic;

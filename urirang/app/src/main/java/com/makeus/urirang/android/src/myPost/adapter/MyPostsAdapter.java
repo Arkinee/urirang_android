@@ -106,7 +106,7 @@ public class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHold
         if (posts.getType().equals("free")) {
             holder.tvPostsType.setText("모두랑");
         } else if (posts.getType().equals("topic")) {
-            holder.tvPostsType.setText("너희랑");
+            holder.tvPostsType.setText("이건 어때");
         }
 
         holder.tvPostsTitle.setText(posts.getTitle());

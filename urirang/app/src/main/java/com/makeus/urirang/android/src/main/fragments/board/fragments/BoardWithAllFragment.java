@@ -26,7 +26,8 @@ import com.makeus.urirang.android.src.main.fragments.board.adapters.WithAllAdapt
 import com.makeus.urirang.android.src.main.fragments.board.interfaces.BoardWithAllView;
 import com.makeus.urirang.android.src.main.fragments.board.models.BoardWithAllData;
 import com.makeus.urirang.android.src.search.SearchActivity;
-import com.makeus.urirang.android.src.withAll.WithAllWriteActivity;
+import com.makeus.urirang.android.src.withAll.content.WithAllContentActivity;
+import com.makeus.urirang.android.src.withAll.write.WithAllWriteActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -61,11 +62,13 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
         LinearLayout withAllLinearSearch = view.findViewById(R.id.fragment_with_all_linear_search);
         TextView withAllTvFilter = view.findViewById(R.id.fragment_with_all_tv_mbti_filtering);
         mWithAllRv = view.findViewById(R.id.fragment_with_all_rv);
-        mWithAllAdapter = new WithAllAdapter(mContext, mWithAllList, new WithAllAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
+        mWithAllAdapter = new WithAllAdapter(mContext, mWithAllList, (v, pos) -> {
+            if (mDoubleClickFlag) return;
+            mDoubleClickFlag = true;
 
-            }
+            Intent goContent = new Intent((MainActivity) mContext, WithAllContentActivity.class);
+            goContent.putExtra("postId", mWithAllAdapter.getItem(pos).getId());
+            startActivity(goContent);
         });
 
         mWithAllRv.addItemDecoration(new DividerItemDecoration(mWithAllRv.getContext(), new LinearLayoutManager(getActivity()).getOrientation()));

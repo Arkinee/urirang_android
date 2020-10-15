@@ -164,6 +164,7 @@
             android:id="@+id/bottom_sheet_how_about_this_tv_send_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="10sp"
             android:layout_marginStart="7dp"
             android:textStyle="bold"
             android:textColor="@color/colorBasicBlack40"

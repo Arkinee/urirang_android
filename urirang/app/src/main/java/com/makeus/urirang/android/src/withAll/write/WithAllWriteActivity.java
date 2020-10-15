@@ -1,4 +1,4 @@
-package com.makeus.urirang.android.src.withAll;
+package com.makeus.urirang.android.src.withAll.write;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -20,6 +20,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.kroegerama.imgpicker.BottomSheetImagePicker;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
+import com.makeus.urirang.android.src.withAll.WithAllService;
 import com.makeus.urirang.android.src.withAll.interfaces.WithAllWriteActivityView;
 
 import org.jetbrains.annotations.NotNull;
@@ -109,22 +110,31 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 //        Map<String, RequestBody> map = new HashMap<>();
 
         List<MultipartBody.Part> images = new ArrayList<>();
-
-        for (File f : mFileList) {
-            RequestBody fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), f);
-            MultipartBody.Part body = MultipartBody.Part.createFormData("file" + f.getName()  , f.getName(), fileBody);
-            images.add(body);
-        }
-
-        RequestBody titleBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtTitle.getText().toString());
-        RequestBody contentBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtContent.getText().toString());
-        RequestBody typeBody = RequestBody.create(MediaType.parse("text/plain"), "free");
-
         String isAnony = "";
         if (mIsAnonymous) isAnony = "true";
         else isAnony = "false";
 
-        RequestBody isAnonymousBody = RequestBody.create(MediaType.parse("text/plain"), isAnony);
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM);
+        builder.addFormDataPart("title", mWithAllWriteEdtTitle.getText().toString());
+        builder.addFormDataPart("content", mWithAllWriteEdtContent.getText().toString());
+        builder.addFormDataPart("type", "free");
+        builder.addFormDataPart("isAnonymous", isAnony);
+
+        for (File f : mFileList) {
+            RequestBody fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), f);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("file" + f.getName()  , f.getName(), fileBody);
+//            builder.addFormDataPart("images", f.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), f));
+            images.add(body);
+        }
+
+//        MultipartBody requestBody = builder.build();
+
+//        RequestBody titleBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtTitle.getText().toString());
+//        RequestBody contentBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtContent.getText().toString());
+//        RequestBody typeBody = RequestBody.create(MediaType.parse("text/plain"), "free");
+//
+//        RequestBody isAnonymousBody = RequestBody.create(MediaType.parse("text/plain"), isAnony);
 //        map.put("title", titleBody);
 //        map.put("content", contentBody);
 //        map.put("type", typeBody);
@@ -132,7 +142,8 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 //        map.put("images\"; filename=\"" + f.getName(), fileBody);
 
         final WithAllService withAllService = new WithAllService(this, mContext);
-        withAllService.tryPostWithAll(titleBody, contentBody, typeBody, isAnonymousBody, images);
+//        withAllService.tryPostWithAll(titleBody, contentBody, typeBody, isAnonymousBody, images);
+        withAllService.tryPostWithAll(mWithAllWriteEdtTitle.getText().toString(), mWithAllWriteEdtContent.getText().toString(), "free", mIsAnonymous, images);
         showProgressDialog();
     }
 
