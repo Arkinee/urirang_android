@@ -121,30 +121,30 @@ public class HowAboutThisWriteActivity extends BaseActivity implements HowAboutT
                 break;
             case R.id.how_about_this_write_card:
 
-                int permssionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+//                int permssionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+//
+//                if (permssionCheck != PackageManager.PERMISSION_GRANTED) {
+//
+//                    Toast.makeText(this, "권한 승인이 필요합니다", Toast.LENGTH_LONG).show();
+//
+//                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                            Manifest.permission.CAMERA)) {
+//                        Toast.makeText(this, "카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        ActivityCompat.requestPermissions(this,
+//                                new String[]{Manifest.permission.CAMERA},
+//                                MY_PERMISSIONS_REQUEST_CAMERA);
+//                        Toast.makeText(this, "카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
+//
+//                    }
+//                } else {
 
-                if (permssionCheck != PackageManager.PERMISSION_GRANTED) {
-
-                    Toast.makeText(this, "권한 승인이 필요합니다", Toast.LENGTH_LONG).show();
-
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                            Manifest.permission.CAMERA)) {
-                        Toast.makeText(this, "카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
-                    } else {
-                        ActivityCompat.requestPermissions(this,
-                                new String[]{Manifest.permission.CAMERA},
-                                MY_PERMISSIONS_REQUEST_CAMERA);
-                        Toast.makeText(this, "카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
-
-                    }
-                } else {
-
-                    ImagePicker.Companion.with(this)
-                            .crop()
-                            .compress(1024)
-                            .maxResultSize(1080, 1080)
-                            .start();
-                }
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+//                }
                 break;
         }
     }

@@ -64,6 +64,9 @@
         <activity
             android:name=".src.myPost.MyPostsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.license.LicenseActivity"
+            android:screenOrientation="portrait" />
 
         <!-- With You -->
         <activity

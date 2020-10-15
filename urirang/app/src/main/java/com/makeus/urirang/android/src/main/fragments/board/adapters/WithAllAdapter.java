@@ -140,6 +140,7 @@ public class WithAllAdapter extends RecyclerView.Adapter<WithAllAdapter.ViewHold
 
         if(post.getImages().size() != 0) {
             if (!post.getImages().get(0).getUrl().equals("")) {
+                holder.cardWIthAll.setVisibility(View.VISIBLE);
                 Glide.with(mContext).load(post.getImages().get(0).getUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.ivWithAllThumbnail);
             } else {
                 holder.cardWIthAll.setVisibility(View.INVISIBLE);

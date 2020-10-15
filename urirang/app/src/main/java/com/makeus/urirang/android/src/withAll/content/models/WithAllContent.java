@@ -10,8 +10,6 @@ public class WithAllContent {
     private boolean isLiked;
     @SerializedName("post")
     private WithAllPost post;
-    @SerializedName("commentList")
-    private ArrayList<WithAllComment> commentsList;
 
     public boolean isLiked() {
         return isLiked;
@@ -19,9 +17,5 @@ public class WithAllContent {
 
     public WithAllPost getPost() {
         return post;
-    }
-
-    public ArrayList<WithAllComment> getCommentsList() {
-        return commentsList;
     }
 }

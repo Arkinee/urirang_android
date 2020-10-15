@@ -1,11 +1,14 @@
 package com.makeus.urirang.android.src.withAll.write;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -18,6 +21,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.kroegerama.imgpicker.BottomSheetImagePicker;
+import com.kroegerama.imgpicker.ButtonType;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.withAll.WithAllService;
@@ -26,11 +30,12 @@ import com.makeus.urirang.android.src.withAll.interfaces.WithAllWriteActivityVie
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import id.zelory.compressor.Compressor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -107,43 +112,31 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 
     void postWithAll() {
 
-//        Map<String, RequestBody> map = new HashMap<>();
+        HashMap<String, RequestBody> map = new HashMap<>();
 
         List<MultipartBody.Part> images = new ArrayList<>();
+
+        for (File f : mFileList) {
+            RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), f);
+            images.add(MultipartBody.Part.createFormData("images", f.getName(), fileBody));
+        }
+
+        RequestBody titleBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtTitle.getText().toString());
+        RequestBody contentBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtContent.getText().toString());
+        RequestBody typeBody = RequestBody.create(MediaType.parse("text/plain"), "free");
+
         String isAnony = "";
         if (mIsAnonymous) isAnony = "true";
         else isAnony = "false";
+        RequestBody isAnonymousBody = RequestBody.create(MediaType.parse("text/plain"), isAnony);
 
-        MultipartBody.Builder builder = new MultipartBody.Builder();
-        builder.setType(MultipartBody.FORM);
-        builder.addFormDataPart("title", mWithAllWriteEdtTitle.getText().toString());
-        builder.addFormDataPart("content", mWithAllWriteEdtContent.getText().toString());
-        builder.addFormDataPart("type", "free");
-        builder.addFormDataPart("isAnonymous", isAnony);
-
-        for (File f : mFileList) {
-            RequestBody fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), f);
-            MultipartBody.Part body = MultipartBody.Part.createFormData("file" + f.getName()  , f.getName(), fileBody);
-//            builder.addFormDataPart("images", f.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), f));
-            images.add(body);
-        }
-
-//        MultipartBody requestBody = builder.build();
-
-//        RequestBody titleBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtTitle.getText().toString());
-//        RequestBody contentBody = RequestBody.create(MediaType.parse("text/plain"), mWithAllWriteEdtContent.getText().toString());
-//        RequestBody typeBody = RequestBody.create(MediaType.parse("text/plain"), "free");
-//
-//        RequestBody isAnonymousBody = RequestBody.create(MediaType.parse("text/plain"), isAnony);
-//        map.put("title", titleBody);
-//        map.put("content", contentBody);
-//        map.put("type", typeBody);
-//        map.put("isAnonymous", isAnonymousBody);
-//        map.put("images\"; filename=\"" + f.getName(), fileBody);
+        map.put("title", titleBody);
+        map.put("content", contentBody);
+        map.put("type", typeBody);
+        map.put("isAnonymous", isAnonymousBody);
 
         final WithAllService withAllService = new WithAllService(this, mContext);
-//        withAllService.tryPostWithAll(titleBody, contentBody, typeBody, isAnonymousBody, images);
-        withAllService.tryPostWithAll(mWithAllWriteEdtTitle.getText().toString(), mWithAllWriteEdtContent.getText().toString(), "free", mIsAnonymous, images);
+        withAllService.tryPostWithAll(map, images);
         showProgressDialog();
     }
 
@@ -156,6 +149,8 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 mDoubleClick = true;
 
                 new BottomSheetImagePicker.Builder(getString(R.string.file_provider))
+                        .cameraButton(ButtonType.Button)
+                        .galleryButton(ButtonType.Button)
                         .multiSelect(1, 4)
                         .peekHeight(R.dimen.peekHeight)
                         .columnSize(R.dimen.columnSize)
@@ -189,7 +184,10 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 }
 
                 setDefaultImage(i);
+                ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
                 if (mUriList.size() == 0) {
+                    ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setVisibility(View.GONE);
+                    ((TextView) findViewById(R.id.with_all_write_tv_num_of_images_total)).setVisibility(View.GONE);
                     ((ConstraintLayout) findViewById(R.id.with_all_write_constraint_bottom)).setVisibility(View.GONE);
                 }
                 break;
@@ -219,6 +217,10 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                     i2 += 1;
                 }
 
+                ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
+                if (mUriList.size() < 2) {
+                    mWithAllIvRemove2.setVisibility(View.GONE);
+                }
                 setDefaultImage(i2);
                 break;
             case R.id.with_all_write_iv_main_remove_3:
@@ -247,6 +249,10 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                     i3 += 1;
                 }
 
+                ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
+                if (mUriList.size() < 3) {
+                    mWithAllIvRemove3.setVisibility(View.GONE);
+                }
                 setDefaultImage(i3);
                 break;
             case R.id.with_all_write_iv_main_remove_4:
@@ -275,6 +281,10 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                     i4 += 1;
                 }
 
+                ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
+                if (mUriList.size() < 4) {
+                    mWithAllIvRemove2.setVisibility(View.GONE);
+                }
                 setDefaultImage(i4);
                 break;
             case R.id.with_all_write_tv_register:
@@ -345,10 +355,14 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
     public void tryPostWithAllFailure(String message) {
         hideProgressDialog();
         showCustomToastShort(message);
+        mDoubleClick = false;
     }
 
     @Override
     public void onImagesSelected(@NotNull List<? extends Uri> list, @org.jetbrains.annotations.Nullable String s) {
+
+        mUriList.clear();
+        mFileList.clear();
 
         mDoubleClick = false;
         if (list.size() == 0) {
@@ -369,7 +383,25 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 
         int i = 1;
         for (Uri uri : list) {
-            File file = new File(uri.toString());
+            File file = new File(getPathFromUri(uri));
+
+            if (file.exists()) {
+                long fileSize = file.length();
+                Log.d("BreezeWind", "file size: " + fileSize);
+                if (fileSize > 2000000) { // 2 mb
+                    // 압축
+                    try {
+                        file = new Compressor(WithAllWriteActivity.this).compressToFile(file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    long afterFileSize = file.length();
+                    Log.d("BreezeWind", "after file size: " + afterFileSize);
+                }
+            }
+
+
             mUriList.add(uri);
             mFileList.add(file);
 
@@ -393,6 +425,20 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
         mSelectedImageNum = list.size();
 
         ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mSelectedImageNum));
+
+    }
+
+    public String getPathFromUri(Uri uri) {
+
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+
+        cursor.moveToNext();
+
+        String path = cursor.getString(cursor.getColumnIndex("_data"));
+
+        cursor.close();
+
+        return path;
 
     }
 }

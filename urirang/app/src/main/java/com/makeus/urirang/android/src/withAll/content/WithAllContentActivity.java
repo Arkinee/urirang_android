@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,6 +47,8 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
     private ArrayList<WithAllComment> mCommentList;
     private TextView mWithAllContentTvNumOfComment;
 
+    private NestedScrollView mScroll;
+
     // 이미지
     private CardView mWithAllContentCard1;
     private CardView mWithAllContentCard2;
@@ -72,6 +75,9 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
 
     private int mPostId = -1;
     private boolean mIsLiked = false;
+    private boolean mIsEmptyResult = false;
+    private int mPage = 1;
+    private boolean mLoading = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,15 +88,43 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
         mCommentList = new ArrayList<>();
         mPostId = getIntent().getIntExtra("postId", -1);
 
+        mScroll = findViewById(R.id.with_all_content_nested_scroll);
         mWithAllContentRv = findViewById(R.id.with_all_content_rv_comment);
-        mCommentAdapter = new WithAllContentCommentAdapter(mContext, mCommentList, new WithAllContentCommentAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
+        mCommentAdapter = new WithAllContentCommentAdapter(mContext, mCommentList, (v, pos) -> {
+
+        });
+
+        mWithAllContentRv.setAdapter(mCommentAdapter);
+
+        mScroll.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+
+            if (scrollY > oldScrollY) {
+                Log.d(TAG, "Scroll DOWN");
+            }
+            if (scrollY < oldScrollY) {
+                Log.d(TAG, "Scroll UP");
+            }
+
+            if (scrollY == 0) {
+                Log.d(TAG, "TOP SCROLL");
+            }
+
+            if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+                Log.d(TAG, "BOTTOM SCROLL");
+                // here where the trick is going
+
+                if (mLoading) {
+
+                    if (!mIsEmptyResult) {
+                        Log.d(TAG, mPage + "번째 페이지 with all comment");
+                        getWithAllCommentList();
+                    }
+
+                    mLoading = false;
+                }
 
             }
         });
-//        mWithAllContentRv.addItemDecoration(new DividerItemDecoration(mWithAllContentRv.getContext(), LinearLayoutManager.VERTICAL));
-        mWithAllContentRv.setAdapter(mCommentAdapter);
 
         mWithAllContentTvNumOfComment = findViewById(R.id.with_all_content_tv_comment_num);
 
@@ -119,9 +153,15 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
 
     }
 
-    void getWithAllContent() {
-        final WithAllService getContent = new WithAllService(this, this);
+    void getWithAllContent(int option) {
+        final WithAllService getContent = new WithAllService(this, this, option);
         getContent.tryGetWithAllContent(mPostId);
+        showProgressDialog();
+    }
+
+    void getWithAllCommentList() {
+        final WithAllService getComment = new WithAllService(this, this, 1);
+        getComment.tryGetWithAllComment(mPostId, mPage, 10);
     }
 
     public void withAllContentOnClick(View view) {
@@ -133,7 +173,7 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
                 if (mDoubleClick) return;
                 mDoubleClick = true;
 
-                final WithAllService likeDislike = new WithAllService(this, this);
+                final WithAllService likeDislike = new WithAllService(this, this, 1);
                 if (mIsLiked) {
                     likeDislike.tryPostDisLike(mPostId);
                 } else {
@@ -143,11 +183,6 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
 
                 break;
             case R.id.with_all_content_iv_share:
-                if (mDoubleClick) return;
-                mDoubleClick = true;
-
-                break;
-            case R.id.with_all_content_iv_comment:
                 if (mDoubleClick) return;
                 mDoubleClick = true;
 
@@ -169,13 +204,13 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
     protected void onResume() {
         super.onResume();
         mDoubleClick = false;
-        getWithAllContent();
+        getWithAllContent(1);
     }
 
 
-    @Override
-    public void tryGetContentSuccess(WithAllContentResponse response) {
+    void setWithAllContent(WithAllContentResponse response) {
 
+        mWithAllContentTvNickname.setText(response.getData().getPost().getUser().getNickname());
         String title = response.getData().getPost().getTitle() + " (" + String.valueOf(response.getData().getPost().getCommentNum()) + ")";
         SpannableString spannableString = new SpannableString(title);
         int start = title.indexOf("(");
@@ -247,8 +282,50 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
             Glide.with(mContext).load(response.getData().getPost().getImages().get(3).getUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(mWithAllContentIv4);
         }
 
-        mCommentList.addAll(response.getData().getCommentsList());
-        mCommentAdapter.notifyDataSetChanged();
+        if (response.getData().getPost().getUser().getMbti().equals("intj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("infj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("istj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("istp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("intp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("infp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("isfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("isfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("entj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("enfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("estj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("estp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("entp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("enfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("esfj"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mWithAllContentIvMbti);
+        else if (response.getData().getPost().getUser().getMbti().equals("esfp"))
+            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mWithAllContentIvMbti);
+
+    }
+
+    @Override
+    public void tryGetContentSuccess(WithAllContentResponse response) {
+        setWithAllContent(response);
+        getWithAllCommentList();
+    }
+
+    @Override
+    public void tryGetContentOnlySuccess(WithAllContentResponse response) {
+        setWithAllContent(response);
         hideProgressDialog();
     }
 
@@ -266,7 +343,7 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
 //        mWithAllLinearLikes.setBackgroundResource(R.drawable.src_how_about_this_like_corner);
 //        mWithAllContentIvSendLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_true));
 //        mWithAllContentTvSendLike.setTextColor(getResources().getColor(R.color.colorHotPink));
-        getWithAllContent();
+        getWithAllContent(2);
     }
 
     @Override
@@ -276,11 +353,31 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
 //        mWithAllLinearLikes.setBackgroundResource(R.drawable.src_how_about_this_dislike_corner);
 //        mWithAllContentIvSendLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_false));
 //        mWithAllContentTvSendLike.setTextColor(getResources().getColor(R.color.colorBasicBlack40));
-        getWithAllContent();
+        getWithAllContent(2);
     }
 
     @Override
     public void tryPostLikeDislikeFailure(String message) {
+        hideProgressDialog();
+        showCustomToastShort(message);
+        mDoubleClick = false;
+    }
+
+    @Override
+    public void tryGetCommentListSuccess(ArrayList<WithAllComment> results) {
+        if (results.size() < 10) {
+            mIsEmptyResult = true;
+        }
+
+        mCommentList.addAll(results);
+        mCommentAdapter.notifyDataSetChanged();
+        mPage += 1;
+        mLoading = true;
+        hideProgressDialog();
+    }
+
+    @Override
+    public void tryGetCommentListFailure(String message) {
         hideProgressDialog();
         showCustomToastShort(message);
     }

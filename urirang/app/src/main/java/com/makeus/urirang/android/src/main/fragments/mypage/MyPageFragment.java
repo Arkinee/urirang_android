@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.RecyclerHorizontalDecoration;
+import com.makeus.urirang.android.src.license.LicenseActivity;
 import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.mypage.adapter.MyPageAdapter;
 import com.makeus.urirang.android.src.main.fragments.mypage.interfaces.MyPageView;
@@ -66,6 +67,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener, My
 
         TextView tvMyPageMyPosts = view.findViewById(R.id.my_page_tv_my_posts);
         TextView tvMyPageMyCommentedPosts = view.findViewById(R.id.my_page_tv_my_commented_posts);
+        TextView tvMyPageLicense = view.findViewById(R.id.my_page_tv_license);
 
         mMyPageTvMbti = view.findViewById(R.id.my_page_tv_mbti);
         mMyPageTvCharacteristic = view.findViewById(R.id.my_page_tv_characteristic);
@@ -92,6 +94,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener, My
         tvMyPageEditResults.setOnClickListener(this);
         tvMyPageMyPosts.setOnClickListener(this);
         tvMyPageMyCommentedPosts.setOnClickListener(this);
+        tvMyPageLicense.setOnClickListener(this);
 
         return view;
     }
@@ -142,6 +145,13 @@ public class MyPageFragment extends Fragment implements View.OnClickListener, My
 
                 Intent myCommentPosts = new Intent(mContext, MyCommentPostsActivity.class);
                 startActivity(myCommentPosts);
+                break;
+            case R.id.my_page_tv_license:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                Intent goLicense = new Intent(mContext, LicenseActivity.class);
+                startActivity(goLicense);
                 break;
         }
     }

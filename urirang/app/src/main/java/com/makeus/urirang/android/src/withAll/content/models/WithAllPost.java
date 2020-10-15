@@ -2,6 +2,7 @@ package com.makeus.urirang.android.src.withAll.content.models;
 
 import com.google.gson.annotations.SerializedName;
 import com.makeus.urirang.android.src.howAboutThis.models.Images;
+import com.makeus.urirang.android.src.howAboutThis.models.User;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,12 @@ public class WithAllPost {
     private String updatedAt;
     @SerializedName("Images")
     private ArrayList<Images> images;
+    @SerializedName("User")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
 
     public int getId() {
         return id;

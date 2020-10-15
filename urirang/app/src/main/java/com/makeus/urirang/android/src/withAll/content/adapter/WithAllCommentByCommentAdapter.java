@@ -1,12 +1,10 @@
-package com.makeus.urirang.android.src.withYou.comment.adapter;
+package com.makeus.urirang.android.src.withAll.content.adapter;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.withYou.comment.models.Comments;
-import com.makeus.urirang.android.src.withYou.comment.models.WithYouComment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +24,7 @@ import java.util.Date;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
-public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByCommentAdapter.ViewHolder> {
+public class WithAllCommentByCommentAdapter extends RecyclerView.Adapter<WithAllCommentByCommentAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<Comments> mCommentList;
@@ -41,7 +38,7 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         this.mListener = listener;
     }
 
-    public CommentByCommentAdapter(Context context, ArrayList<Comments> commentLists, OnItemClickListener listener) {
+    public WithAllCommentByCommentAdapter(Context context, ArrayList<Comments> commentLists, OnItemClickListener listener) {
         this.mContext = context;
         this.mCommentList = commentLists;
         this.mListener = listener;
@@ -51,28 +48,21 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
 
         ImageView ivCommentMbti;
         ImageView ivNew;
-        ImageView ivLike;
 
         TextView tvCommentNickname;
         TextView tvCommentCreatedAt;
         TextView tvCommentContent;
-        TextView tvCommentLike;
-
-        LinearLayout linearCommentLike;
 
         ViewHolder(final View itemView) {
             super(itemView);
             // 뷰 객체에 대한 참조. (hold strong reference)
-            ivCommentMbti = itemView.findViewById(R.id.item_with_you_comment_by_comment_iv_mbti);
-            ivNew = itemView.findViewById(R.id.item_with_you_comment_by_comment_iv_new);
-            ivLike = itemView.findViewById(R.id.item_with_you_comment_by_comment_iv_like);
-            tvCommentNickname = itemView.findViewById(R.id.item_with_you_comment_by_comment_tv_nickname);
-            tvCommentCreatedAt = itemView.findViewById(R.id.item_with_you_comment_by_comment_tv_created_at);
-            tvCommentContent = itemView.findViewById(R.id.item_with_you_comment_by_comment_tv_content);
-            tvCommentLike = itemView.findViewById(R.id.item_with_you_comment_by_comment_tv_like);
-            linearCommentLike = itemView.findViewById(R.id.item_with_you_comment_linear_like);
+            ivCommentMbti = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_iv_mbti);
+            ivNew = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_iv_new);
+            tvCommentNickname = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_tv_nickname);
+            tvCommentCreatedAt = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_tv_created_at);
+            tvCommentContent = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_tv_content);
 
-            linearCommentLike.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos = getAdapterPosition();
@@ -93,7 +83,7 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
 
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.item_with_you_comment_by_comment, parent, false);
+        View view = inflater.inflate(R.layout.item_with_all_content_comment_by_comment, parent, false);
         ViewHolder vh = new ViewHolder(view);
 
         return vh;
@@ -134,15 +124,6 @@ public class CommentByCommentAdapter extends RecyclerView.Adapter<CommentByComme
         } else holder.ivNew.setVisibility(View.INVISIBLE);
 
         holder.tvCommentCreatedAt.setText(posted);
-        holder.tvCommentLike.setText(String.valueOf(comment.getLike()));
-
-        if (comment.isLiked()) {
-            holder.ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_true));
-            holder.tvCommentLike.setTextColor(mContext.getResources().getColor(R.color.colorHotPink));
-        } else {
-            holder.ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_liked_false));
-            holder.tvCommentLike.setTextColor(mContext.getResources().getColor(R.color.colorBasicBlack27));
-        }
 
         if (comment.getUserMbti().equals("intj"))
             Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivCommentMbti);

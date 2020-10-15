@@ -58,15 +58,28 @@
             app:layout_constraintTop_toTopOf="@+id/item_with_all_content_comment_tv_created_at" />
 
         <TextView
-            android:id="@+id/item_with_you_content_comment_tv_content"
+            android:id="@+id/item_with_all_content_comment_tv_write_comment"
             android:layout_width="wrap_content"
-            android:layout_height="20sp"
-            android:layout_marginTop="2dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="3dp"
+            android:text="@string/with_you_tv_write_comment"
+            android:textColor="@color/colorInfoBorder34"
+            android:textSize="8.5dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_with_all_content_comment_iv_mbti" />
+
+        <TextView
+            android:id="@+id/item_with_all_content_comment_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
-            android:ellipsize="end"
-            android:gravity="center"
+            android:gravity="start"
             android:lineSpacingExtra="9sp"
-            android:maxLines="1"
             android:textColor="@color/colorBasicBlack83"
             android:textSize="11sp"
             app:layout_constrainedWidth="true"
@@ -74,16 +87,18 @@
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@+id/item_with_all_content_comment_tv_nickname"
             app:layout_constraintTop_toBottomOf="@+id/item_with_all_content_comment_tv_nickname"
-            tools:text="나도... 집에가고 싶다" />
+            tools:text="나도... 집에가고 싶다 asdawd\nasdmasd" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/item_with_you_content_comment_rv"
+            android:id="@+id/item_with_all_content_comment_rv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/item_with_you_content_comment_tv_content"
-            app:layout_constraintTop_toBottomOf="@+id/item_with_you_content_comment_tv_content"
-
-            />
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/item_with_all_content_comment_tv_content"
+            app:layout_constraintTop_toBottomOf="@+id/item_with_all_content_comment_tv_content"
+            tools:listitem="@layout/item_with_all_content_comment_by_comment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.makeus.urirang.android.R;
+import com.makeus.urirang.android.src.RecyclerDecoration;
 import com.makeus.urirang.android.src.howAboutThis.models.Images;
 import com.makeus.urirang.android.src.withAll.content.models.WithAllComment;
 import com.makeus.urirang.android.src.withAll.content.models.WithAllContent;
@@ -32,7 +33,7 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
     private OnItemClickListener mListener = null;
 
     public interface OnItemClickListener {
-        void onItemClick(View v, int pos);
+        void onWriteCommentClick(View v, int pos);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -52,6 +53,8 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
         TextView tvCommentNickname;
         TextView tvCommentCreatedAt;
         TextView tvCommentContent;
+        TextView tvCommentWriteComment;
+        RecyclerView rvComment;
 
 
         ViewHolder(final View itemView) {
@@ -61,15 +64,18 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
             ivCommentNew = itemView.findViewById(R.id.item_with_all_content_comment_iv_new);
             tvCommentNickname = itemView.findViewById(R.id.item_with_all_content_comment_tv_nickname);
             tvCommentCreatedAt = itemView.findViewById(R.id.item_with_all_content_comment_tv_created_at);
-            tvCommentContent = itemView.findViewById(R.id.item_with_you_content_comment_tv_content);
+            tvCommentContent = itemView.findViewById(R.id.item_with_all_content_comment_tv_content);
+            tvCommentWriteComment = itemView.findViewById(R.id.item_with_all_content_comment_tv_write_comment);
+            rvComment = itemView.findViewById(R.id.item_with_all_content_comment_rv);
+            rvComment.addItemDecoration(new RecyclerDecoration(mContext, 13));
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            tvCommentWriteComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos = getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
                         if (mListener != null) {
-                            mListener.onItemClick(v, pos);
+                            mListener.onWriteCommentClick(v, pos);
                         }
                     }
                 }
@@ -93,7 +99,20 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WithAllComment comment = mCommentList.get(position);
 
-        holder.tvCommentNickname.setText(comment.getUserNickName());
+        WithAllCommentByCommentAdapter adapter = new WithAllCommentByCommentAdapter(mContext, comment.getComments(), new WithAllCommentByCommentAdapter.OnItemClickListener() {
+            @Override
+            public void onLikeClick(View v, int pos) {
+
+            }
+        });
+
+        holder.rvComment.setAdapter(adapter);
+
+        if (!comment.isAnonymous()) {
+            holder.tvCommentNickname.setText(comment.getUserNickName());
+        } else {
+            holder.tvCommentNickname.setText("익명");
+        }
 
         if (comment.getUserMbti().equals("intj"))
             Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivCommentMbti);

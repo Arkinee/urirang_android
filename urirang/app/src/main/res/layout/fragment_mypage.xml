@@ -68,12 +68,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:text="예수와 히틀러 그 사이쯤"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_page_tv_mbti"
-                android:text="예수와 히틀러 그 사이쯤" />
+                app:layout_constraintTop_toBottomOf="@+id/my_page_tv_mbti" />
 
             <View
                 android:id="@+id/my_page_view_round_corner"
@@ -219,6 +219,20 @@
                     android:textStyle="bold"
                     app:layout_constraintDimensionRatio="360:57"
                     app:layout_constraintTop_toBottomOf="@+id/my_page_view_bottom_of_my_posts" />
+
+                <TextView
+                    android:id="@+id/my_page_tv_license"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/my_page_tv_license"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintDimensionRatio="360:57"
+                    app:layout_constraintTop_toBottomOf="@+id/my_page_tv_my_commented_posts" />
 
                 <View
                     android:id="@+id/my_page_view_bottom_of_my_commented_posts"

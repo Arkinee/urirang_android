@@ -350,7 +350,7 @@
         android:contentDescription="@string/with_all_write"
         android:onClick="withAllOnClick"
         android:padding="16dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_select_picture"
         app:layout_constraintBottom_toBottomOf="@+id/with_all_write_view_bottom"
         app:layout_constraintStart_toStartOf="@+id/with_all_write_view_bottom"
         app:layout_constraintTop_toTopOf="@+id/with_all_write_view_bottom" />
