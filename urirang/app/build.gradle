@@ -75,7 +75,6 @@ dependencies {
 
     // image picker
     implementation 'com.github.dhaval2404:imagepicker:1.7.5'
-    implementation 'com.kroegerama:bottomsheet-imagepicker:1.1.2'
 
     // image compress
     implementation 'id.zelory:compressor:2.1.0'

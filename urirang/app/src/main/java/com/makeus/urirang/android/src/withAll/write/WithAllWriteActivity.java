@@ -1,8 +1,8 @@
 package com.makeus.urirang.android.src.withAll.write;
 
+import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,19 +15,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.kroegerama.imgpicker.BottomSheetImagePicker;
-import com.kroegerama.imgpicker.ButtonType;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.withAll.WithAllService;
 import com.makeus.urirang.android.src.withAll.interfaces.WithAllWriteActivityView;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,7 +39,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class WithAllWriteActivity extends BaseActivity implements WithAllWriteActivityView, BottomSheetImagePicker.OnImagesSelectedListener {
+public class WithAllWriteActivity extends BaseActivity implements WithAllWriteActivityView {
 
     private Context mContext;
     private InputMethodManager mInputMethodManager;
@@ -53,7 +52,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
     private boolean mIsAnonymous = false;
 
     private boolean mDoubleClick = false;
-    private int mSelectedImageNum = 0;
+    private int mImageCount = 0;
 
     private ImageView mWithAllIv1;
     private ImageView mWithAllIv2;
@@ -146,20 +145,20 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
             case R.id.with_all_write_tv_cancel:
                 finish();
             case R.id.with_all_write_iv_go_gallery:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
 
-                new BottomSheetImagePicker.Builder(getString(R.string.file_provider))
-                        .cameraButton(ButtonType.Button)
-                        .galleryButton(ButtonType.Button)
-                        .multiSelect(1, 4)
-                        .peekHeight(R.dimen.peekHeight)
-                        .columnSize(R.dimen.columnSize)
-                        .requestTag("multi")
-                        .show(getSupportFragmentManager(), null);
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
 
                 break;
             case R.id.with_all_write_iv_main_remove_1:
                 if (mUriList.size() < 1) return;
 
+                mImageCount -= 1;
                 mUriList.remove(0);
                 mFileList.remove(0);
                 int i = 1;
@@ -182,6 +181,18 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                     i += 1;
                 }
 
+                if (mImageCount < 2) {
+                    mWithAllIvRemove2.setVisibility(View.INVISIBLE);
+                }
+
+                if (mImageCount < 3) {
+                    mWithAllIvRemove3.setVisibility(View.INVISIBLE);
+                }
+
+                if (mImageCount < 4) {
+                    mWithAllIvRemove4.setVisibility(View.INVISIBLE);
+                }
+
                 setDefaultImage(i);
                 ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
                 if (mUriList.size() == 0) {
@@ -193,6 +204,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
             case R.id.with_all_write_iv_main_remove_2:
                 if (mUriList.size() < 2) return;
 
+                mImageCount -= 1;
                 mUriList.remove(1);
                 mFileList.remove(1);
 
@@ -216,6 +228,18 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                     i2 += 1;
                 }
 
+                if (mImageCount < 2) {
+                    mWithAllIvRemove2.setVisibility(View.INVISIBLE);
+                }
+
+                if (mImageCount < 3) {
+                    mWithAllIvRemove3.setVisibility(View.INVISIBLE);
+                }
+
+                if (mImageCount < 4) {
+                    mWithAllIvRemove4.setVisibility(View.INVISIBLE);
+                }
+
                 ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
                 if (mUriList.size() < 2) {
                     mWithAllIvRemove2.setVisibility(View.GONE);
@@ -225,6 +249,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
             case R.id.with_all_write_iv_main_remove_3:
                 if (mUriList.size() < 3) return;
 
+                mImageCount -= 1;
                 mUriList.remove(2);
                 mFileList.remove(2);
 
@@ -248,6 +273,14 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                     i3 += 1;
                 }
 
+                if (mImageCount < 3) {
+                    mWithAllIvRemove3.setVisibility(View.INVISIBLE);
+                }
+
+                if (mImageCount < 4) {
+                    mWithAllIvRemove4.setVisibility(View.INVISIBLE);
+                }
+
                 ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
                 if (mUriList.size() < 3) {
                     mWithAllIvRemove3.setVisibility(View.GONE);
@@ -257,6 +290,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
             case R.id.with_all_write_iv_main_remove_4:
                 if (mUriList.size() < 4) return;
 
+                mImageCount -= 1;
                 mUriList.remove(3);
                 mFileList.remove(3);
 
@@ -278,6 +312,10 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                     }
 
                     i4 += 1;
+                }
+
+                if (mImageCount < 4) {
+                    mWithAllIvRemove4.setVisibility(View.INVISIBLE);
                 }
 
                 ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mUriList.size()));
@@ -307,6 +345,78 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 break;
 
         }
+    }
+
+    // 이미지 선택 후
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            //Image Uri will not be null for RESULT_OK
+            Uri fileUri = data.getData();
+            mUriList.add(fileUri);
+
+            mImageCount += 1;
+
+            ((ConstraintLayout) findViewById(R.id.with_all_write_constraint_bottom)).setVisibility(View.VISIBLE);
+            ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setVisibility(View.VISIBLE);
+            ((TextView) findViewById(R.id.with_all_write_tv_num_of_images_total)).setVisibility(View.VISIBLE);
+
+            mWithAllIvRemove1.setVisibility(View.INVISIBLE);
+            mWithAllIvRemove2.setVisibility(View.INVISIBLE);
+            mWithAllIvRemove3.setVisibility(View.INVISIBLE);
+            mWithAllIvRemove4.setVisibility(View.INVISIBLE);
+
+            if (mImageCount == 1) {
+                mWithAllIv1.setImageURI(fileUri);
+                mWithAllIvRemove1.setVisibility(View.VISIBLE);
+            } else if (mImageCount == 2) {
+                mWithAllIv2.setImageURI(fileUri);
+                mWithAllIvRemove1.setVisibility(View.VISIBLE);
+                mWithAllIvRemove2.setVisibility(View.VISIBLE);
+            } else if (mImageCount == 3) {
+                mWithAllIv3.setImageURI(fileUri);
+                mWithAllIvRemove1.setVisibility(View.VISIBLE);
+                mWithAllIvRemove2.setVisibility(View.VISIBLE);
+                mWithAllIvRemove3.setVisibility(View.VISIBLE);
+            } else if (mImageCount == 4) {
+                mWithAllIv4.setImageURI(fileUri);
+                mWithAllIvRemove1.setVisibility(View.VISIBLE);
+                mWithAllIvRemove2.setVisibility(View.VISIBLE);
+                mWithAllIvRemove3.setVisibility(View.VISIBLE);
+                mWithAllIvRemove4.setVisibility(View.VISIBLE);
+            }
+
+            ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mImageCount));
+
+            //You can get File object from intent
+            File file = ImagePicker.Companion.getFile(data);
+
+            if (file.exists()) {
+                long fileSize = file.length();
+                Log.d("BreezeWind", "file size: " + fileSize);
+                if (fileSize > 1000000) { // 2 mb
+                    // 압축
+                    try {
+                        file = new Compressor(WithAllWriteActivity.this).compressToFile(file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    long afterFileSize = file.length();
+                    Log.d("BreezeWind", "after file size: " + afterFileSize);
+                }
+            }
+
+            mFileList.add(file);
+
+        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, ImagePicker.Companion.getError(data), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     void setDefaultImage(int i) {
@@ -363,89 +473,5 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
         hideProgressDialog();
         showCustomToastShort(message);
         mDoubleClick = false;
-    }
-
-    @Override
-    public void onImagesSelected(@NotNull List<? extends Uri> list, @org.jetbrains.annotations.Nullable String s) {
-
-        mUriList.clear();
-        mFileList.clear();
-
-        mDoubleClick = false;
-        if (list.size() == 0) {
-            ((ConstraintLayout) findViewById(R.id.with_all_write_constraint_bottom)).setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.with_all_write_tv_num_of_images_total)).setVisibility(View.GONE);
-            return;
-        } else {
-            ((ConstraintLayout) findViewById(R.id.with_all_write_constraint_bottom)).setVisibility(View.VISIBLE);
-            ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setVisibility(View.VISIBLE);
-            ((TextView) findViewById(R.id.with_all_write_tv_num_of_images_total)).setVisibility(View.VISIBLE);
-        }
-
-        mWithAllIvRemove1.setVisibility(View.INVISIBLE);
-        mWithAllIvRemove2.setVisibility(View.INVISIBLE);
-        mWithAllIvRemove3.setVisibility(View.INVISIBLE);
-        mWithAllIvRemove4.setVisibility(View.INVISIBLE);
-
-        int i = 1;
-        for (Uri uri : list) {
-            File file = new File(getPathFromUri(uri));
-
-            if (file.exists()) {
-                long fileSize = file.length();
-                Log.d("BreezeWind", "file size: " + fileSize);
-                if (fileSize > 2000000) { // 2 mb
-                    // 압축
-                    try {
-                        file = new Compressor(WithAllWriteActivity.this).compressToFile(file);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    long afterFileSize = file.length();
-                    Log.d("BreezeWind", "after file size: " + afterFileSize);
-                }
-            }
-
-
-            mUriList.add(uri);
-            mFileList.add(file);
-
-            if (i == 1) {
-                Glide.with(this).load(uri).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(mWithAllIv1);
-                mWithAllIvRemove1.setVisibility(View.VISIBLE);
-            } else if (i == 2) {
-                Glide.with(this).load(uri).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(mWithAllIv2);
-                mWithAllIvRemove2.setVisibility(View.VISIBLE);
-            } else if (i == 3) {
-                Glide.with(this).load(uri).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(mWithAllIv3);
-                mWithAllIvRemove3.setVisibility(View.VISIBLE);
-            } else if (i == 4) {
-                Glide.with(this).load(uri).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(mWithAllIv4);
-                mWithAllIvRemove4.setVisibility(View.VISIBLE);
-            }
-
-            i += 1;
-        }
-
-        mSelectedImageNum = list.size();
-
-        ((TextView) findViewById(R.id.with_all_write_tv_num_of_images)).setText(String.valueOf(mSelectedImageNum));
-
-    }
-
-    public String getPathFromUri(Uri uri) {
-
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-
-        cursor.moveToNext();
-
-        String path = cursor.getString(cursor.getColumnIndex("_data"));
-
-        cursor.close();
-
-        return path;
-
     }
 }

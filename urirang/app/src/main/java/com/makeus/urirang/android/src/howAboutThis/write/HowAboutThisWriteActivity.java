@@ -47,6 +47,7 @@ public class HowAboutThisWriteActivity extends BaseActivity implements HowAboutT
 
     private InputMethodManager mInputMethodManager;
 
+    private boolean mDoubleClick = false;
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 1001;
 
     @Override
@@ -120,7 +121,8 @@ public class HowAboutThisWriteActivity extends BaseActivity implements HowAboutT
 
                 break;
             case R.id.how_about_this_write_card:
-
+                if(mDoubleClick)return;
+                mDoubleClick = true;
 //                int permssionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
 //
 //                if (permssionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -219,6 +221,12 @@ public class HowAboutThisWriteActivity extends BaseActivity implements HowAboutT
     public void tryPostHowAboutThisWriteTopicFailure(String message) {
         hideProgressDialog();
         showCustomToastShort(message);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mDoubleClick = false;
     }
 
     /*
