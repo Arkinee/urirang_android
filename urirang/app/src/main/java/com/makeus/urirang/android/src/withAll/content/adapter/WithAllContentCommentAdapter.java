@@ -18,6 +18,7 @@ import com.makeus.urirang.android.src.RecyclerDecoration;
 import com.makeus.urirang.android.src.howAboutThis.models.Images;
 import com.makeus.urirang.android.src.withAll.content.models.WithAllComment;
 import com.makeus.urirang.android.src.withAll.content.models.WithAllContent;
+import com.makeus.urirang.android.src.withYou.comment.models.WithYouComment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,12 +26,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
+import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
 
 public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllContentCommentAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<WithAllComment> mCommentList;
     private OnItemClickListener mListener = null;
+    private WithAllCommentByCommentAdapter adapter;
 
     public interface OnItemClickListener {
         void onWriteCommentClick(View v, int pos);
@@ -55,7 +58,7 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
         TextView tvCommentContent;
         TextView tvCommentWriteComment;
         RecyclerView rvComment;
-
+        View viewComment;
 
         ViewHolder(final View itemView) {
             super(itemView);
@@ -67,7 +70,8 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
             tvCommentContent = itemView.findViewById(R.id.item_with_all_content_comment_tv_content);
             tvCommentWriteComment = itemView.findViewById(R.id.item_with_all_content_comment_tv_write_comment);
             rvComment = itemView.findViewById(R.id.item_with_all_content_comment_rv);
-            rvComment.addItemDecoration(new RecyclerDecoration(mContext, 13));
+//            rvComment.addItemDecoration(new RecyclerDecoration(mContext, 12));
+            viewComment = itemView.findViewById(R.id.item_with_all_content_comment_view_background);
 
             tvCommentWriteComment.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -99,7 +103,11 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WithAllComment comment = mCommentList.get(position);
 
-        WithAllCommentByCommentAdapter adapter = new WithAllCommentByCommentAdapter(mContext, comment.getComments(), new WithAllCommentByCommentAdapter.OnItemClickListener() {
+        if(comment.getUserId() == sSharedPreferences.getInt("userId", -1))
+            holder.viewComment.setBackgroundColor(mContext.getResources().getColor(R.color.colorHotPink3));
+        else holder.viewComment.setBackgroundColor(mContext.getResources().getColor(R.color.colorWhite));
+
+        adapter = new WithAllCommentByCommentAdapter(mContext, comment.getComments(), new WithAllCommentByCommentAdapter.OnItemClickListener() {
             @Override
             public void onLikeClick(View v, int pos) {
 
@@ -180,4 +188,11 @@ public class WithAllContentCommentAdapter extends RecyclerView.Adapter<WithAllCo
         return mCommentList.size();
     }
 
+    public WithAllComment getItem(int position) {
+        return mCommentList.get(position);
+    }
+
+    public WithAllCommentByCommentAdapter getCommentByCommentAdapter() {
+        return adapter;
+    }
 }

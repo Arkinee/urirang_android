@@ -1,6 +1,7 @@
 package com.makeus.urirang.android.src.withAll.interfaces;
 
 import com.makeus.urirang.android.src.withAll.content.models.WithAllCommentResponse;
+import com.makeus.urirang.android.src.withAll.content.models.WithAllCommentWriteResponse;
 import com.makeus.urirang.android.src.withAll.content.models.WithAllContentResponse;
 import com.makeus.urirang.android.src.withAll.write.models.WithAllWriteResponse;
 import com.makeus.urirang.android.src.withYou.comment.models.LikeResponse;
@@ -11,6 +12,7 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -41,4 +43,8 @@ public interface WithAllRetrofitInterface {
     // 모두랑 좋아요 해제
     @POST("/api/post/dislike/{postId}")
     Call<LikeResponse> tryPostWithAllDislike(@Path("postId") int postId);
+
+    // 모두랑 댓글달기
+    @POST("/api/comment/toPost/{postId}")
+    Call<WithAllCommentWriteResponse> tryPostWithAllComment(@Path("postId") int postId, @Query("commentId") String commentId, @Body HashMap<String, Object> params);
 }

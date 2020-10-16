@@ -3,12 +3,15 @@ package com.makeus.urirang.android.src.withAll.content;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,6 +37,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
@@ -48,6 +52,7 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
     private TextView mWithAllContentTvNumOfComment;
 
     private NestedScrollView mScroll;
+    private TextView mWithAllContentToComment;
 
     // 이미지
     private CardView mWithAllContentCard1;
@@ -73,11 +78,19 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
     private TextView mWithAllContentTvSendLike;
     private LinearLayout mWithAllLinearLikes;
 
+    // 하단
+    private EditText mWithAllContentEdtComment;
+    private TextView mWithAllContentTvAnonymous;
+    private ImageView mWithAllContentIvSend;
+
     private int mPostId = -1;
     private boolean mIsLiked = false;
     private boolean mIsEmptyResult = false;
     private int mPage = 1;
     private boolean mLoading = true;
+    private boolean mIsAnonymous = false;
+    private String mSelectedCommentId = "";
+    private int mPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +101,23 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
         mCommentList = new ArrayList<>();
         mPostId = getIntent().getIntExtra("postId", -1);
 
+        mWithAllContentEdtComment = findViewById(R.id.with_all_content_edt_comment);
+        mWithAllContentTvAnonymous = findViewById(R.id.with_all_content_tv_anonymous);
+        mWithAllContentIvSend = findViewById(R.id.with_all_content_iv_send);
+
+        mWithAllContentToComment = findViewById(R.id.with_all_content_tv_toComment);
         mScroll = findViewById(R.id.with_all_content_nested_scroll);
         mWithAllContentRv = findViewById(R.id.with_all_content_rv_comment);
         mCommentAdapter = new WithAllContentCommentAdapter(mContext, mCommentList, (v, pos) -> {
 
+            mSelectedCommentId = String.valueOf(mCommentAdapter.getItem(pos).getId());
+            mPosition = pos;
+
+            if (!mCommentAdapter.getItem(pos).isAnonymous())
+                mWithAllContentToComment.setText("@".concat(mCommentAdapter.getItem(pos).getUserNickName()).concat("에게 댓글 남기는 중"));
+            else mWithAllContentToComment.setText("@".concat("익명").concat("에게 댓글 남기는 중"));
+
+            mWithAllContentToComment.setVisibility(View.VISIBLE);
         });
 
         mWithAllContentRv.setAdapter(mCommentAdapter);
@@ -151,17 +177,27 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
         mWithAllLinearLikes = findViewById(R.id.with_all_content_linear_send_like);
         mWithAllContentTvContent = findViewById(R.id.with_all_content_tv_content);
 
-    }
+        mWithAllContentEdtComment.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-    void getWithAllContent(int option) {
-        final WithAllService getContent = new WithAllService(this, this, option);
-        getContent.tryGetWithAllContent(mPostId);
-        showProgressDialog();
-    }
+            }
 
-    void getWithAllCommentList() {
-        final WithAllService getComment = new WithAllService(this, this, 1);
-        getComment.tryGetWithAllComment(mPostId, mPage, 10);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!mWithAllContentEdtComment.getText().toString().equals("")) {
+                    mWithAllContentIvSend.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_comment_send));
+                } else {
+                    mWithAllContentIvSend.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_comment_send_default));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
     public void withAllContentOnClick(View view) {
@@ -187,17 +223,49 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
                 mDoubleClick = true;
 
                 break;
+            case R.id.with_all_content_tv_anonymous:
+                mIsAnonymous = !mIsAnonymous;
+
+                if (mIsAnonymous) {
+                    mWithAllContentTvAnonymous.setTextColor(getResources().getColor(R.color.colorBlack));
+                } else {
+                    mWithAllContentTvAnonymous.setTextColor(getResources().getColor(R.color.colorBasicBlack11));
+                }
+                break;
+            case R.id.with_all_content_iv_send:
+                if (mWithAllContentEdtComment.getText().toString().equals("")) {
+                    showCustomToastShort("의견을 입력해 주세요");
+                    return;
+                }
+
+                sendComment();
+                break;
+            case R.id.with_all_content_tv_toComment:
+                mSelectedCommentId = "";
+                mWithAllContentToComment.setVisibility(View.GONE);
+                break;
         }
     }
 
-    void sendLikeOrDisLike(boolean b) {
+    void getWithAllContent(int option) {
+        final WithAllService getContent = new WithAllService(this, this, option);
+        getContent.tryGetWithAllContent(mPostId);
+        showProgressDialog();
+    }
 
-        if (!b) {
+    void getWithAllCommentList() {
+        final WithAllService getComment = new WithAllService(this, this, 1);
+        getComment.tryGetWithAllComment(mPostId, mPage, 10);
+    }
 
-        } else {
+    void sendComment() {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("content", mWithAllContentEdtComment.getText().toString());
+        params.put("isAnonymous", mIsAnonymous);
 
-        }
-
+        final WithAllService commentService = new WithAllService(this, this, 1);
+        commentService.tryPostWithAllCommentWrite(mPostId, mSelectedCommentId, params);
+        showProgressDialog();
     }
 
     @Override
@@ -206,7 +274,6 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
         mDoubleClick = false;
         getWithAllContent(1);
     }
-
 
     void setWithAllContent(WithAllContentResponse response) {
 
@@ -380,5 +447,29 @@ public class WithAllContentActivity extends BaseActivity implements WithAllConte
     public void tryGetCommentListFailure(String message) {
         hideProgressDialog();
         showCustomToastShort(message);
+    }
+
+    @Override
+    public void tryPostCommentWriteSuccess(String message) {
+        mIsAnonymous = false;
+        mWithAllContentTvAnonymous.setTextColor(getResources().getColor(R.color.colorBasicBlack11));
+        mWithAllContentEdtComment.setText("");
+        mWithAllContentIvSend.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_comment_send_default));
+        mWithAllContentToComment.setVisibility(View.GONE);
+
+        mPage = 1;
+        mCommentList.clear();
+        getWithAllContent(1);
+
+        mSelectedCommentId = "";
+        mDoubleClick = false;
+        hideProgressDialog();
+    }
+
+    @Override
+    public void tryPostCommentWriteFailure(String message) {
+        hideProgressDialog();
+        showCustomToastShort(message);
+        mDoubleClick = false;
     }
 }

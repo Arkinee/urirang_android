@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public interface WithAllContentActivityView {
 
     void tryGetContentSuccess(WithAllContentResponse response);
+
     void tryGetContentOnlySuccess(WithAllContentResponse response);
 
     void tryGetContentFailure(String message);
@@ -21,5 +22,9 @@ public interface WithAllContentActivityView {
     void tryGetCommentListSuccess(ArrayList<WithAllComment> results);
 
     void tryGetCommentListFailure(String message);
+
+    void tryPostCommentWriteSuccess(String message);
+
+    void tryPostCommentWriteFailure(String message);
 
 }

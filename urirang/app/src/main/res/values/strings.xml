@@ -127,6 +127,7 @@
     <string name="with_all_comment_tv_top">모두랑</string>
     <string name="with_all_description">WITHALL</string>
     <string name="with_all_content_tv_comment">댓글</string>
+    <string name="with_all_content_hint_edt">댓글을 입력해 주세요</string>
 
     <!-- MBTI Filter -->
     <string name="mbti_filter_description">MBTI_FILTERING</string>

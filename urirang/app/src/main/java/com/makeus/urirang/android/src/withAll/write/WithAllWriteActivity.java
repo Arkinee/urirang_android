@@ -49,6 +49,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 
     private EditText mWithAllWriteEdtTitle;
     private EditText mWithAllWriteEdtContent;
+    private TextView mWithAllWriteTvAnonymous;
     private boolean mIsAnonymous = false;
 
     private boolean mDoubleClick = false;
@@ -64,7 +65,6 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
     private ImageView mWithAllIvRemove3;
     private ImageView mWithAllIvRemove4;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +77,7 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
 
         mWithAllWriteEdtTitle = findViewById(R.id.with_all_write_edt_title);
         mWithAllWriteEdtContent = findViewById(R.id.with_all_write_edt_content);
+        mWithAllWriteTvAnonymous = findViewById(R.id.with_all_write_tv_anonymous);
 
         mWithAllIv1 = findViewById(R.id.with_all_write_iv_main_1);
         mWithAllIv2 = findViewById(R.id.with_all_write_iv_main_2);
@@ -145,8 +146,6 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
             case R.id.with_all_write_tv_cancel:
                 finish();
             case R.id.with_all_write_iv_go_gallery:
-                if (mDoubleClick) return;
-                mDoubleClick = true;
 
                 new BottomSheetImagePicker.Builder(getString(R.string.file_provider))
                         .cameraButton(ButtonType.Button)
@@ -297,6 +296,14 @@ public class WithAllWriteActivity extends BaseActivity implements WithAllWriteAc
                 }
 
                 postWithAll();
+                break;
+            case R.id.with_all_write_tv_anonymous:
+                mIsAnonymous = !mIsAnonymous;
+                if (mIsAnonymous) {
+                    mWithAllWriteTvAnonymous.setTextColor(getResources().getColor(R.color.colorBlack));
+                } else {
+                    mWithAllWriteTvAnonymous.setTextColor(getResources().getColor(R.color.colorBasicBlack11));
+                }
                 break;
 
         }

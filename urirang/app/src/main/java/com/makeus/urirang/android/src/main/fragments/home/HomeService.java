@@ -48,7 +48,7 @@ public class HomeService {
 
                 if (response.code() == 200) {
                     final UserInfoResponse userInfoResponse = response.body();
-                    mView.tryGetUserInfoSuccess(userInfoResponse.getNickname(), userInfoResponse.getMbti());
+                    mView.tryGetUserInfoSuccess(userInfoResponse.getNickname(), userInfoResponse.getMbti(), userInfoResponse.getId());
                 } else {
                     mView.tryGetUserInfoFailure("사용자 정보 받아오기 실패");
                 }

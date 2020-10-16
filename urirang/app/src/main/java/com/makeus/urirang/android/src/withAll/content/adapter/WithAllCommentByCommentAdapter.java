@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
+import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
 
 public class WithAllCommentByCommentAdapter extends RecyclerView.Adapter<WithAllCommentByCommentAdapter.ViewHolder> {
 
@@ -53,6 +55,8 @@ public class WithAllCommentByCommentAdapter extends RecyclerView.Adapter<WithAll
         TextView tvCommentCreatedAt;
         TextView tvCommentContent;
 
+        ConstraintLayout constraintComment;
+
         ViewHolder(final View itemView) {
             super(itemView);
             // 뷰 객체에 대한 참조. (hold strong reference)
@@ -61,6 +65,7 @@ public class WithAllCommentByCommentAdapter extends RecyclerView.Adapter<WithAll
             tvCommentNickname = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_tv_nickname);
             tvCommentCreatedAt = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_tv_created_at);
             tvCommentContent = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_tv_content);
+            constraintComment = itemView.findViewById(R.id.item_with_all_content_comment_by_comment_constraint);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,6 +97,11 @@ public class WithAllCommentByCommentAdapter extends RecyclerView.Adapter<WithAll
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Comments comment = mCommentList.get(position);
+
+        if (comment.getUserId() == sSharedPreferences.getInt("userId", -1))
+            holder.constraintComment.setBackgroundColor(mContext.getResources().getColor(R.color.colorHotPink3));
+        else
+            holder.constraintComment.setBackgroundColor(mContext.getResources().getColor(R.color.colorWhite));
 
         if (!comment.isAnonymous()) {
             holder.tvCommentNickname.setText(comment.getUserNickName());

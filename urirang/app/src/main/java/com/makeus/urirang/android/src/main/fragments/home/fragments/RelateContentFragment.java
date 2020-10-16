@@ -16,18 +16,20 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.hallOfFame.HallOfFameActivity;
+import com.makeus.urirang.android.src.main.MainActivity;
 
 public class RelateContentFragment extends Fragment implements View.OnClickListener {
 
     private ImageView mHomeRelateContentIvMain;
     private String link;
     private String imageUrl;
+    private boolean mDoubleClick = false;
 
-    public RelateContentFragment(){
+    public RelateContentFragment() {
 
     }
 
-    public RelateContentFragment(String link, String iamgeUrl){
+    public RelateContentFragment(String link, String iamgeUrl) {
         this.link = link;
         this.imageUrl = iamgeUrl;
     }
@@ -47,7 +49,8 @@ public class RelateContentFragment extends Fragment implements View.OnClickListe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(imageUrl != null && !imageUrl.equals("")) Glide.with(this).load(imageUrl).into(mHomeRelateContentIvMain);
+        if (imageUrl != null && !imageUrl.equals(""))
+            Glide.with(this).load(imageUrl).into(mHomeRelateContentIvMain);
 
     }
 
@@ -56,11 +59,21 @@ public class RelateContentFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_home_relate_content_iv:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                ((MainActivity) getActivity()).showProgressDialog();
                 Intent urlIntent = new Intent(Intent.ACTION_VIEW);
                 Uri uri = Uri.parse(link);
                 urlIntent.setData(uri);
                 startActivity(urlIntent);
                 break;
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((MainActivity) getActivity()).hideProgressDialog();
     }
 }

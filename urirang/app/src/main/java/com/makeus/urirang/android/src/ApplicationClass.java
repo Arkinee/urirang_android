@@ -124,6 +124,24 @@ public class ApplicationClass extends Application {
         return retrofit;
     }
 
+    public static Retrofit getRetrofitForImageUpload() {
+        if (retrofit == null) {
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .connectTimeout(30000, TimeUnit.MILLISECONDS)
+                    .addNetworkInterceptor(new XAccessTokenInterceptor()) // JWT 자동 헤더 전송
+                    .build();
+
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+
+        return retrofit;
+    }
+
     public static Retrofit getRetrofitForKakao() {
         if (retrofitForKakao == null) {
             OkHttpClient client = new OkHttpClient.Builder()

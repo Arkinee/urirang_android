@@ -21,9 +21,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
+
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.ApplicationClass;
-import com.makeus.urirang.android.src.howAboutThis.models.Images;
 import com.makeus.urirang.android.src.login.social.SocialLoginActivity;
 import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.home.adapters.HomePostAdapter;
@@ -179,7 +180,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         new PagerSnapHelper().attachToRecyclerView(mHomeRvOtherTest);
 
         // 관련 컨텐츠
-
         mRelateAdapter = new RelateContentAdapter(mMainActivity, 3);
         mHomeViewPagerRelateContents.setAdapter(mRelateAdapter);
 
@@ -252,9 +252,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     }
 
     @Override
-    public void tryGetUserInfoSuccess(String nick, String mbti) {
+    public void tryGetUserInfoSuccess(String nick, String mbti, int userId) {
         mHomeTvAppBarNick.setText(nick.concat(","));
         mHomeTvAppBarMbti.setText(mbti.toUpperCase());
+        sSharedPreferences.edit().putInt("userId", userId).apply();
 
         final HomeService homeService = new HomeService(this, mMainActivity);
         homeService.tryGetMbtiRelateContents();

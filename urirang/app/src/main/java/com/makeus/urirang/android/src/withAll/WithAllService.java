@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.withAll.content.models.WithAllCommentResponse;
+import com.makeus.urirang.android.src.withAll.content.models.WithAllCommentWriteResponse;
 import com.makeus.urirang.android.src.withAll.content.models.WithAllContentResponse;
 import com.makeus.urirang.android.src.withAll.interfaces.WithAllContentActivityView;
 import com.makeus.urirang.android.src.withAll.interfaces.WithAllRetrofitInterface;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 import static com.makeus.urirang.android.src.ApplicationClass.getRetrofit;
+import static com.makeus.urirang.android.src.ApplicationClass.getRetrofitForImageUpload;
 
 public class WithAllService {
 
@@ -46,7 +48,7 @@ public class WithAllService {
 
     // 모두랑 토픽 게시
     public void tryPostWithAll(HashMap<String, RequestBody> params, List<MultipartBody.Part> images) {
-        final WithAllRetrofitInterface withAllRetrofitInterface = getRetrofit().create(WithAllRetrofitInterface.class);
+        final WithAllRetrofitInterface withAllRetrofitInterface = getRetrofitForImageUpload().create(WithAllRetrofitInterface.class);
         withAllRetrofitInterface.tryPostWithAll(params, images).enqueue(new Callback<WithAllWriteResponse>() {
             @Override
             public void onResponse(@NonNull Call<WithAllWriteResponse> call, @NonNull Response<WithAllWriteResponse> response) {
@@ -91,6 +93,29 @@ public class WithAllService {
             @Override
             public void onFailure(Call<WithAllContentResponse> call, Throwable t) {
                 mContentView.tryGetContentFailure(mContext.getString(R.string.network_connect_failure));
+            }
+        });
+    }
+
+    // 모두랑 댓글 쓰기
+    public void tryPostWithAllCommentWrite(int postId, String commentId, HashMap<String, Object> params) {
+        final WithAllRetrofitInterface withAllRetrofitInterface = getRetrofit().create(WithAllRetrofitInterface.class);
+        withAllRetrofitInterface.tryPostWithAllComment(postId, commentId, params).enqueue(new Callback<WithAllCommentWriteResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<WithAllCommentWriteResponse> call, @NonNull Response<WithAllCommentWriteResponse> response) {
+
+                if (response.code() == 201) {
+                    final WithAllCommentWriteResponse contentResponse = response.body();
+                    mContentView.tryPostCommentWriteSuccess(contentResponse.getMessage());
+                } else {
+                    mContentView.tryPostCommentWriteFailure("게시물이 존재하지 않습니다");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<WithAllCommentWriteResponse> call, Throwable t) {
+                mContentView.tryPostCommentWriteFailure(mContext.getString(R.string.network_connect_failure));
             }
         });
     }

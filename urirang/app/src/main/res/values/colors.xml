@@ -2,13 +2,14 @@
 <resources>
     <color name="colorPrimary">#00000000</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#000000</color>
     <color name="colorAccentTemp">#03DAC5</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBlackBoard">#090909</color>
     <color name="colorBasicBlack27">#46000000</color>
     <color name="colorBasicBlack47">#76000000</color>
     <color name="colorBasicBlack40">#66000000</color>
+    <color name="colorBasicBlack65">#A6000000</color>
     <color name="colorBasicBlack83">#D6000000</color>
     <color name="colorBasicBlack38">#63000000</color>
     <color name="colorBasicBlack98">#fc000000</color>
@@ -22,6 +23,7 @@
     <color name="colorModifyCancel">#400c0c0c</color>
     <color name="colorModifyTvNickname">#821e2022</color>
     <color name="colorWriteTopicBackGray">#ebebeb</color>
+    <color name="colorWhite">#ffffff</color>
 
     <color name="colorTestResultsSolid">#b3f8f8f8</color>
 
@@ -32,6 +34,7 @@
     <color name="colorInfoBorder34">#56979797</color>
     <color name="colorInfoNickname">#821e2022</color>
     <color name="colorInfoView">#5a979797</color>
+    <color name="colorHotPink3">#08ea0071</color>
     <color name="colorHotPink">#ea0071</color>
     <color name="colorGreenCyan">#34f899</color>
     <color name="colorDodgerBlue">#438aff</color>

@@ -18,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:fontFamily="@font/font_family_nanum_square_bold"
         android:onClick="withAllOnClick"
         android:padding="10dp"
         android:text="@string/modify_profile_tv_cancel"
@@ -31,6 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/font_family_nanum_square_extra_bold"
         android:text="@string/with_all_write"
         android:textColor="@android:color/black"
         android:textSize="15sp"
@@ -45,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_family_nanum_square_bold"
         android:onClick="withAllOnClick"
         android:padding="10dp"
         android:text="@string/how_about_this_write_tv_register"
@@ -85,6 +88,7 @@
                 android:layout_marginTop="5.5dp"
                 android:layout_marginEnd="20dp"
                 android:background="@null"
+                android:fontFamily="@font/font_family_nanum_square_regular"
                 android:hint="@string/with_all_write_hint_title"
                 android:inputType="text"
                 android:letterSpacing="0.06"
@@ -117,6 +121,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:background="@null"
+                android:fontFamily="@font/font_family_nanum_square_light"
                 android:gravity="start|top"
                 android:hint="@string/with_all_write_edt_hint"
                 android:inputType="textMultiLine"
@@ -356,9 +361,12 @@
         app:layout_constraintTop_toTopOf="@+id/with_all_write_view_bottom" />
 
     <TextView
+        android:id="@+id/with_all_write_tv_anonymous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_family_nanum_square_extra_bold"
+        android:onClick="withAllOnClick"
         android:padding="10dp"
         android:text="@string/with_you_tv_write_comment_anonymous"
         android:textColor="@color/colorBasicBlack11"

@@ -4,16 +4,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserInfoResponse {
 
+    @SerializedName("id")
+    private int id;
     @SerializedName("email")
-    String email;
+    private String email;
     @SerializedName("nickname")
-    String nickname;
+    private String nickname;
     @SerializedName("mbti")
-    String mbti;
+    private String mbti;
     @SerializedName("postNum")
-    int postNum;
+    private int postNum;
     @SerializedName("commentNum")
-    int commentNum;
+    private int commentNum;
+
+    public int getId() {
+        return id;
+    }
 
     public String getNickname() {
         return nickname;
