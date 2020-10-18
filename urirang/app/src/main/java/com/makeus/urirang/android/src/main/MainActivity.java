@@ -1,7 +1,9 @@
 package com.makeus.urirang.android.src.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import com.makeus.urirang.android.src.main.fragments.home.HomeFragment;
 import com.makeus.urirang.android.src.main.fragments.mypage.MyPageFragment;
 import com.makeus.urirang.android.src.main.fragments.worldCup.WorldCupFragment;
 import com.makeus.urirang.android.src.main.interfaces.MainActivityView;
+import com.makeus.urirang.android.src.notice.NoticeActivity;
 
 import java.util.HashMap;
 
@@ -43,6 +46,8 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
     private int mFragmentFlag = 1;
     private Context mContext;
 
+    private boolean mFromPush = false;
+    private boolean mDoubleClick = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,13 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
 
         initialize();
         refreshFcmToken();
+        mFromPush = getIntent().getBooleanExtra("fromPush", false);
+        Log.d("BreezeWind", "from: " + mFromPush);
 
+        if (mFromPush) {
+            Intent notice = new Intent(this, NoticeActivity.class);
+            startActivity(notice);
+        }
     }
 
     void refreshFcmToken() {
@@ -200,7 +211,7 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
 
     }
 
-    public void setBoardDoubleClick(boolean b){
+    public void setBoardDoubleClick(boolean b) {
         mBoardFragment.setWithAllDoubleClick(b);
     }
 
@@ -218,6 +229,12 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
             Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mDoubleClick = false;
     }
 
     @Override

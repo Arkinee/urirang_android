@@ -188,7 +188,7 @@
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/src_with_you_comment_edt_back"
                 android:hint="@string/with_you_tv_comment_hint_new_opinion"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:paddingStart="13dp"
                 android:paddingEnd="13dp"
                 android:textColor="@color/colorSearchHint"

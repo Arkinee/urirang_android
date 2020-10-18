@@ -65,6 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:paddingBottom="54dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/fragment_with_all_linear_search"
         tool:listitem="@layout/item_board_with_all" />
@@ -76,7 +77,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorBlack"
-        android:onClick=""
         android:src="@drawable/ic_with_all_write"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"

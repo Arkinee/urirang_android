@@ -1,35 +1,23 @@
-package com.makeus.urirang.android.src.testResults;
+package com.makeus.urirang.android.src.testResults.content;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
-import com.makeus.urirang.android.src.dialog.BottomSheetHallOfFameFilterDialog;
-import com.makeus.urirang.android.src.hallOfFame.HallOfFameService;
-import com.makeus.urirang.android.src.hallOfFame.adapter.HallOfFameAdapter;
-import com.makeus.urirang.android.src.hallOfFame.content.HallOfFameContentActivity;
-import com.makeus.urirang.android.src.hallOfFame.interfaces.HallOfFameActivityView;
-import com.makeus.urirang.android.src.hallOfFame.models.PreviousSubject;
 import com.makeus.urirang.android.src.howAboutThis.models.Images;
 import com.makeus.urirang.android.src.main.fragments.home.RvSpaceDecoration;
+import com.makeus.urirang.android.src.testResults.TestResultsService;
 import com.makeus.urirang.android.src.testResults.adapter.TestAdapter;
 import com.makeus.urirang.android.src.testResults.interfaces.TestResultsActivityView;
-import com.makeus.urirang.android.src.testResults.model.TestResultsResponse;
+import com.makeus.urirang.android.src.testResults.content.model.TestResults;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
 public class TestResultsActivity extends BaseActivity implements TestResultsActivityView {
 
@@ -64,6 +52,12 @@ public class TestResultsActivity extends BaseActivity implements TestResultsActi
         setContentView(R.layout.activity_test_results);
 
         mContext = this;
+
+        mAniagramList = new ArrayList<>();
+        mEgogramList = new ArrayList<>();
+        mMgramList = new ArrayList<>();
+        mBigFiveList = new ArrayList<>();
+        mLoveTypeList = new ArrayList<>();
 
         // 애니어그램
         mTestAniagramRv = findViewById(R.id.test_results_rv_aniagram);
@@ -170,16 +164,47 @@ public class TestResultsActivity extends BaseActivity implements TestResultsActi
             case R.id.test_results__iv_back:
                 finish();
                 break;
+            case R.id.test_results_tv_aniagram_modify_or_add:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+
+
+                break;
+            case R.id.test_results_tv_modify_or_add:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                break;
+            case R.id.test_results_rv_mgram:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                break;
+            case R.id.test_results_tv_modify_or_add_big_five:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                break;
+            case R.id.test_results_tv_modify_or_add_love_type:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                break;
         }
     }
 
-    @Override
-    public void tryGetSuccess(TestResultsResponse response) {
 
+    @Override
+    public void tryGetSuccess(ArrayList<TestResults> results) {
+
+
+        hideProgressDialog();
     }
 
     @Override
     public void tryGetFailure(String message) {
-
+        hideProgressDialog();
+        showCustomToastShort(message);
     }
 }

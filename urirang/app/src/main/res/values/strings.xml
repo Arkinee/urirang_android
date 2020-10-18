@@ -139,6 +139,10 @@
     <string name="search">검색</string>
     <string name="search_edt_hint">검색어 입력</string>
 
+    <!-- Notice -->
+    <string name="notice">알림</string>
+    <string name="notice_tv_empty">등록된 알림이 없어요!</string>
+
     <!-- How About This -->
     <string name="how_about_this">HOWABOUTTHIS</string>
     <string name="how_about_this_tv_top">이건 어때</string>
@@ -174,6 +178,9 @@
     <string name="test_results_add_available">추가 가능</string>
     <string name="test_results_tv_modify">수정</string>
     <string name="test_results_tv_add">추가</string>
+    <string name="test_results_write_hint">검사결과</string>
+    <string name="test_results_write_tv_result">결과 유형</string>
+    <string name="test_results_tv_images">결과 사진</string>
 
     <!-- Modify Profile -->
     <string name="modify_profile">MODIFY</string>

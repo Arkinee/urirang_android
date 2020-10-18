@@ -40,7 +40,7 @@
         android:background="@color/colorInfoBorder34"
         app:layout_constraintTop_toBottomOf="@+id/test_results_top_linear" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,18 +57,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="13dp"
+                android:fontFamily="@font/noto_sans_regular"
                 android:text="@string/test_results_aniagram"
                 android:textColor="@android:color/black"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/test_results_tv_aniagram"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/noto_sans_demi_light"
                 android:text="@string/test_results_add_available"
                 android:textColor="@color/colorBasicBlack83"
                 android:textSize="11sp"
@@ -81,11 +83,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:fontFamily="@font/noto_sans_bold"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:text="@string/test_results_tv_modify"
+                android:text="@string/test_results_tv_add"
                 android:textColor="@color/colorBasicBlack27"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -356,6 +359,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

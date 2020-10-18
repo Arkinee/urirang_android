@@ -54,7 +54,6 @@ public class RelateContentFragment extends Fragment implements View.OnClickListe
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

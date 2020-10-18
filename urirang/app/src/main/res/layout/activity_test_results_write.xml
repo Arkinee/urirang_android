@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <View
+        android:id="@+id/test_results_write_view_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="360:48"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/test_results_write_tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/font_family_nanum_square_bold"
+        android:onClick="testWriteOnClick"
+        android:padding="10dp"
+        android:text="@string/modify_profile_tv_cancel"
+        android:textColor="@color/colorModifyCancel"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/test_results_write_view_top"
+        app:layout_constraintStart_toStartOf="@+id/test_results_write_view_top"
+        app:layout_constraintTop_toTopOf="@+id/test_results_write_view_top" />
+
+    <TextView
+        android:id="@+id/test_results_tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_family_nanum_square_extra_bold"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/test_results_write_view_top"
+        app:layout_constraintEnd_toEndOf="@+id/test_results_write_view_top"
+        app:layout_constraintStart_toStartOf="@+id/test_results_write_view_top"
+        app:layout_constraintTop_toTopOf="@+id/test_results_write_view_top"
+        tools:text="에니어그램" />
+
+    <TextView
+        android:id="@+id/test_results_write_tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_family_nanum_square_bold"
+        android:onClick="testWriteOnClick"
+        android:padding="10dp"
+        android:text="@string/how_about_this_write_tv_register"
+        android:textColor="@color/colorModifyCancel"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/test_results_write_view_top"
+        app:layout_constraintEnd_toEndOf="@+id/test_results_write_view_top"
+        app:layout_constraintTop_toTopOf="@+id/test_results_write_view_top" />
+
+    <View
+        android:id="@+id/test_results_write_view_border"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorInfoBorder34"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_write_view_top" />
+
+
+    <TextView
+        android:id="@+id/test_results_write_tv_result_wording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/noto_sans_regular"
+        android:text="@string/test_results_write_tv_result"
+        android:textColor="@color/colorModifyTvNickname"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_write_view_border" />
+
+    <EditText
+        android:id="@+id/test_results_write_edt_test_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="@null"
+        android:ellipsize="end"
+        android:fontFamily="@font/noto_sans_regular"
+        android:hint="@string/test_results_write_hint"
+        android:inputType="text"
+        android:letterSpacing="0.06"
+        android:maxLines="1"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@color/colorModifyTvNickname"
+        android:textSize="13sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_write_tv_result_wording" />
+
+    <View
+        android:id="@+id/test_results_write_view_bottom_of_edt"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorInfoView"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_write_edt_test_results" />
+
+    <TextView
+        android:id="@+id/test_results_write_tv_test_images_wording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        android:fontFamily="@font/noto_sans_regular"
+        android:letterSpacing="0.06"
+        android:text="@string/test_results_tv_images"
+        android:textColor="@color/colorModifyTvNickname"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_write_view_bottom_of_edt" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintDimensionRatio="320:124"
+        app:layout_constraintTop_toBottomOf="@+id/test_results_write_tv_test_images_wording">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/test_results_write_card_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:onClick="testWriteOnClick"
+            app:cardCornerRadius="4dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintDimensionRatio="100:124"
+            app:layout_constraintEnd_toStartOf="@+id/test_results_write_card_2"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside">
+
+            <ImageView
+                android:id="@+id/test_results_write_iv_main_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/src_write_topic"
+                android:contentDescription="@string/test_results"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/test_results_write_iv_main_remove_1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/test_results"
+                android:onClick="withAllOnClick"
+                android:paddingStart="6dp"
+                android:paddingBottom="6dp"
+                android:src="@drawable/ic_image_remove"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/test_results_write_plus_1"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/test_results"
+                android:src="@drawable/ic_add_image" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/test_results_write_card_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:onClick="testWriteOnClick"
+            app:cardCornerRadius="4dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintDimensionRatio="100:124"
+            app:layout_constraintEnd_toStartOf="@+id/test_results_write_card_3"
+            app:layout_constraintStart_toEndOf="@+id/test_results_write_card_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside">
+
+            <ImageView
+                android:id="@+id/test_results_write_iv_main_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/src_write_topic"
+                android:contentDescription="@string/test_results"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/test_results_write_iv_main_remove_2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/test_results"
+                android:onClick="withAllOnClick"
+                android:paddingStart="6dp"
+                android:paddingBottom="6dp"
+                android:src="@drawable/ic_image_remove"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/test_results_write_plus_2"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/test_results"
+                android:src="@drawable/ic_add_image" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/test_results_write_card_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:onClick="testWriteOnClick"
+            app:cardCornerRadius="4dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintDimensionRatio="100:124"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/test_results_write_card_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside">
+
+            <ImageView
+                android:id="@+id/test_results_write_iv_main_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/src_write_topic"
+                android:contentDescription="@string/test_results"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/test_results_write_iv_main_remove_3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/test_results"
+                android:onClick="withAllOnClick"
+                android:paddingStart="6dp"
+                android:paddingBottom="6dp"
+                android:src="@drawable/ic_image_remove"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/test_results_write_plus_3"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/test_results"
+                android:src="@drawable/ic_add_image" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

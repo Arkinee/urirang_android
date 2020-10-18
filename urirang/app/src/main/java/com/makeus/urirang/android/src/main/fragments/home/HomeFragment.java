@@ -38,6 +38,7 @@ import com.makeus.urirang.android.src.main.fragments.home.interfaces.HomeActivit
 import com.makeus.urirang.android.src.main.fragments.home.models.HomePost;
 import com.makeus.urirang.android.src.main.fragments.home.models.OtherTest;
 import com.makeus.urirang.android.src.main.fragments.home.models.RelateContent;
+import com.makeus.urirang.android.src.notice.NoticeActivity;
 
 import java.util.ArrayList;
 
@@ -241,7 +242,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                 ((MainActivity) mContext).finish();
                 break;
             case R.id.home_iv_notice:
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
 
+                Intent notice = new Intent(mMainActivity, NoticeActivity.class);
+                startActivity(notice);
                 break;
             case R.id.home_linear_go_world_cup:
                 break;

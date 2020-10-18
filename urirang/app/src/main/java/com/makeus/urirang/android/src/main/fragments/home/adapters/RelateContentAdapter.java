@@ -25,12 +25,12 @@ public class RelateContentAdapter extends FragmentStateAdapter {
     private List<Fragment> mRelateList;
     private int mCount;
 
-    public RelateContentAdapter(FragmentActivity fa, int count){
+    public RelateContentAdapter(FragmentActivity fa, int count) {
         super(fa);
         mCount = count;
     }
 
-    public void addFragment(Fragment fragment){
+    public void addFragment(Fragment fragment) {
         mRelateList.add(fragment);
     }
 
@@ -44,11 +44,16 @@ public class RelateContentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         int index = getRealPosition(position);
 
-        if(index == 0) return new RelateContentFragment("https://www.youtube.com/watch?v=eAZG7BuXnOo&ab_channel=OTR", "https://woorirang-dev.s3.ap-northeast-2.amazonaws.com/mbtiContents/%EF%BF%BD%08%EF%BF%BD%20%18%EF%BF%BDD%20L%20%EF%BF%BD%EF%BF%BD_woorirang_1602032348265.png");
-        else if(index == 1) return new RelateContentFragment("https://m.blog.naver.com/94cs/221810776769", "https://woorirang-dev.s3.ap-northeast-2.amazonaws.com/mbtiContents/%EF%BF%BDLX%208%20H%EF%BF%BD%1C_woorirang_1602032382314.png");
-        else if (index == 2) return new RelateContentFragment("https://comic.naver.com/webtoon/list.nhn?titleId=751013&no=24&weekday=wed", "https://woorirang-dev.s3.ap-northeast-2.amazonaws.com/mbtiContents/%60%EF%BF%BDX%20mbti_woorirang_1602032407223.png");
+        if (index == 0)
+            return new RelateContentFragment("https://www.youtube.com/watch?v=eAZG7BuXnOo&ab_channel=OTR", "https://woorirang-dev.s3.ap-northeast-2.amazonaws.com/mbtiContents/group.png");
+        else if (index == 1)
+            return new RelateContentFragment("https://m.blog.naver.com/94cs/221810776769", "https://woorirang-dev.s3.ap-northeast-2.amazonaws.com/mbtiContents/group_3.png");
+        else if (index == 2)
+            return new RelateContentFragment("https://comic.naver.com/webtoon/list.nhn?titleId=751013&no=24&weekday=wed", "https://woorirang-dev.s3.ap-northeast-2.amazonaws.com/mbtiContents/group_2.png");
         else return null;
     }
 
-    public int getRealPosition(int position) {return position % mCount;}
+    public int getRealPosition(int position) {
+        return position % mCount;
+    }
 }

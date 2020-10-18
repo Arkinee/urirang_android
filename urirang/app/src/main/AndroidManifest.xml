@@ -67,10 +67,16 @@
         <activity
             android:name=".src.license.LicenseActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.notice.NoticeActivity"
+            android:screenOrientation="portrait" />
 
         <!-- With You -->
         <activity
             android:name=".src.withYou.comment.WithYouCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.withYou.image.WithYouImageActivity"
             android:screenOrientation="portrait" />
         <!-- With All -->
         <activity
@@ -99,7 +105,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".src.testResults.TestResultsActivity"
+            android:name=".src.testResults.content.TestResultsActivity"
             android:screenOrientation="portrait" />
 
         <!-- Kakao social login-->

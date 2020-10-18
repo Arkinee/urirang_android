@@ -21,6 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_family_nanum_square_extra_bold"
             android:text="@string/social_login_tv_top_1"
             android:textColor="@android:color/white"
             android:textSize="37sp" />
@@ -32,6 +33,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_family_nanum_square_extra_bold"
                 android:text="@string/social_login_tv_top_2"
                 android:textColor="@android:color/white"
                 android:textSize="37sp"
@@ -41,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/font_family_nanum_square_extra_bold"
                 android:text="@string/social_login_tv_top_3"
                 android:textColor="@android:color/white"
                 android:textSize="37sp" />
@@ -64,6 +67,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_family_nanum_square_extra_bold"
                 android:text="@string/mbti"
                 android:textColor="@android:color/white"
                 android:textSize="10.5sp"
@@ -72,6 +76,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_family_nanum_square_regular"
                 android:text="@string/social_login_tv_top_4"
                 android:textColor="@android:color/white"
                 android:textSize="10.5sp" />
@@ -85,6 +90,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_family_nanum_square_regular"
                 android:text="@string/social_login_tv_top_5"
                 android:textColor="@android:color/white"
                 android:textSize="10.5sp" />
@@ -93,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:fontFamily="@font/font_family_nanum_square_extra_bold"
                 android:text="@string/social_login_tv_top_6"
                 android:textColor="@android:color/white"
                 android:textSize="10.5sp"
@@ -105,11 +112,12 @@
     <ImageView
         android:id="@+id/social_login_iv_mbti"
         android:layout_width="match_parent"
-        android:layout_height="216dp"
+        android:layout_height="0dp"
         android:layout_marginTop="42dp"
         android:contentDescription="@string/social_login_description"
         android:scaleType="fitXY"
         android:src="@drawable/ic_mbti_logo"
+        app:layout_constraintDimensionRatio="360:235"
         app:layout_constraintTop_toBottomOf="@+id/social_login_linear_center" />
 
 
@@ -127,6 +135,7 @@
             android:layout_marginStart="48dp"
             android:layout_marginEnd="48dp"
             android:background="@drawable/src_social_login_btn"
+            android:fontFamily="@font/font_family_nanum_square_bold"
             android:gravity="center"
             android:onClick="socialLoginOnclick"
             android:text="@string/social_login_tv_email_login"
@@ -154,6 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:fontFamily="@font/font_family_nanum_square_bold"
                 android:text="@string/social_login_tv_kakao_login"
                 android:textColor="@android:color/black"
                 android:textSize="11sp"
@@ -182,6 +192,7 @@
                 android:id="@+id/social_login_tv_use_anonymous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_family_nanum_square_regular"
                 android:onClick="socialLoginOnclick"
                 android:paddingStart="5dp"
                 android:paddingTop="5dp"
@@ -201,6 +212,7 @@
                 android:id="@+id/social_login_tv_use_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_family_nanum_square_regular"
                 android:onClick="socialLoginOnclick"
                 android:paddingStart="5dp"
                 android:paddingTop="5dp"

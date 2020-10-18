@@ -23,12 +23,14 @@ import com.makeus.urirang.android.src.main.fragments.board.interfaces.BoardWithY
 import com.makeus.urirang.android.src.main.fragments.board.models.BoardWithYouData;
 import com.makeus.urirang.android.src.main.fragments.board.models.CommentList;
 import com.makeus.urirang.android.src.withYou.comment.WithYouCommentActivity;
+import com.makeus.urirang.android.src.withYou.image.WithYouImageActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
+import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
 
 public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
 
@@ -82,6 +84,7 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
 
     private boolean mDoubleClickFlag = false;
     private int mTopicId = 0;
+    private String mImageUrl = "";
 
     public BoardWithYouFragment() {
     }
@@ -100,6 +103,18 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
         mWithYouTvNickname = view.findViewById(R.id.with_you_presenter_tv_nickname);
         mWithYouTvCommentNum = view.findViewById(R.id.with_you_tv_comment);
         mWithYouIvMbti = view.findViewById(R.id.with_you_presenter_iv_mbti);
+
+        mWithyouivMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mDoubleClickFlag) return;
+                mDoubleClickFlag = true;
+
+                Intent goImage = new Intent(mContext, WithYouImageActivity.class);
+                goImage.putExtra("imageUrl", mImageUrl);
+                startActivity(goImage);
+            }
+        });
 
         //1
         mWithYouFirstConstraint = view.findViewById(R.id.with_you_constraint_first_comment);
@@ -164,9 +179,11 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
     public void tryGetWithYouSuccess(BoardWithYouData data) {
 
         mTopicId = data.getTopic().getId();
+        sSharedPreferences.edit().putInt("currentTopicId", mTopicId).apply();
+        mImageUrl = data.getTopic().getImages().get(0).getUrl();
 
         // 상단
-        Glide.with(mContext).load(data.getTopic().getImages().get(0).getUrl()).into(mWithyouivMain);
+        Glide.with(mContext).load(mImageUrl).into(mWithyouivMain);
         mWithYouTvTopic.setText(data.getTopic().getTitle());
         mWithYouTvNickname.setText(data.getTopic().getUser().getNickname());
         mWithYouTvCommentNum.setText(String.valueOf(data.getTopic().getCommentNum()));
@@ -460,7 +477,7 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
         }
 
         // fifth
-        if (data.getCommentLists().size() >= 4) {
+        if (data.getCommentLists().size() >= 5) {
             fifth = data.getCommentLists().get(4);
             mWithYouFifthTvNickname.setText(fifth.getUserNickName());
             mWithYouFifthTvCreatedAt.setText(fifth.getCreatedAt());

@@ -18,6 +18,7 @@ import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.RecyclerDecoration;
 import com.makeus.urirang.android.src.dialog.BottomSheetMbtiFilterDialog;
+import com.makeus.urirang.android.src.dialog.BottomSheetWithYouMbtiFilterDialog;
 import com.makeus.urirang.android.src.withYou.comment.adapter.WithYouCommentAdapter;
 import com.makeus.urirang.android.src.withYou.comment.interfaces.WithYouActivityView;
 import com.makeus.urirang.android.src.withYou.comment.models.WithYouComment;
@@ -28,7 +29,7 @@ import java.util.Objects;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 
-public class WithYouCommentActivity extends BaseActivity implements WithYouActivityView, BottomSheetMbtiFilterDialog.BottomSheetListener {
+public class WithYouCommentActivity extends BaseActivity implements WithYouActivityView, BottomSheetWithYouMbtiFilterDialog.BottomSheetListener {
 
     private Context mContext;
     private WithYouActivityView mView;
@@ -54,7 +55,7 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wiyh_you_comment);
+        setContentView(R.layout.activity_with_you_comment);
 
         mView = this;
         mContext = this;
@@ -142,7 +143,7 @@ public class WithYouCommentActivity extends BaseActivity implements WithYouActiv
                 } else return;
                 break;
             case R.id.wiyh_you_comment_tv_mbti_filtering:
-                BottomSheetMbtiFilterDialog filterDialog = new BottomSheetMbtiFilterDialog(mContext);
+                BottomSheetWithYouMbtiFilterDialog filterDialog = new BottomSheetWithYouMbtiFilterDialog(mContext);
                 filterDialog.setCancelable(false);
                 filterDialog.show(getSupportFragmentManager(), "MbtiFilterDialog");
                 break;

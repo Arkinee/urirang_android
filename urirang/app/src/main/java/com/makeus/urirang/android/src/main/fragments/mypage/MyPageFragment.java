@@ -27,7 +27,7 @@ import com.makeus.urirang.android.src.main.fragments.mypage.models.TestResult;
 import com.makeus.urirang.android.src.modifyProfile.ModifyProfileActivity;
 import com.makeus.urirang.android.src.myCommentPost.MyCommentPostsActivity;
 import com.makeus.urirang.android.src.myPost.MyPostsActivity;
-import com.makeus.urirang.android.src.testResults.TestResultsActivity;
+import com.makeus.urirang.android.src.testResults.content.TestResultsActivity;
 
 import java.util.ArrayList;
 

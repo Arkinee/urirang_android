@@ -26,6 +26,7 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
 
     private Context mContext;
     private SplashActivityView mView;
+    private boolean mFromPush;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,10 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
 
         mContext = this;
         mView = this;
+
+        mFromPush = getIntent().getBooleanExtra("fromPush", false);
+        Log.d("BreezeWind", "from, splash: " + mFromPush);
+
         getFcmToken();
         Handler hd = new Handler();
         hd.postDelayed(new splashHandler(), 750); // 1초 후에 hd handler 실행
@@ -49,6 +54,7 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
     @Override
     public void tryGetAutoLoginSuccessGoMain() {
         Intent goMain = new Intent(SplashActivity.this, MainActivity.class);
+        goMain.putExtra("fromPush", mFromPush);
         startActivity(goMain);
         finish();
     }

@@ -72,6 +72,7 @@ public class BoardWithAllFragment extends Fragment implements View.OnClickListen
         });
 
         mWithAllRv.addItemDecoration(new DividerItemDecoration(mWithAllRv.getContext(), new LinearLayoutManager(getActivity()).getOrientation()));
+        mWithAllRv.setHasFixedSize(true);
         mWithAllRv.setAdapter(mWithAllAdapter);
 
         FloatingActionButton fbutton = view.findViewById(R.id.fragment_with_all_fab_write);

@@ -1,4 +1,4 @@
-package com.makeus.urirang.android.src.testResults.model;
+package com.makeus.urirang.android.src.testResults.content.model;
 
 import com.google.gson.annotations.SerializedName;
 

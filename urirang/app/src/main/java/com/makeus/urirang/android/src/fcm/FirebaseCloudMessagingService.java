@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -17,6 +18,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.main.MainService;
 import com.makeus.urirang.android.src.main.interfaces.MainActivityView;
+import com.makeus.urirang.android.src.notice.NoticeActivity;
 import com.makeus.urirang.android.src.splash.SplashActivity;
 
 import java.util.HashMap;
@@ -68,7 +70,14 @@ public class FirebaseCloudMessagingService extends FirebaseMessagingService impl
         Intent notificationIntent;
         PendingIntent pendingIntent;
 
-        notificationIntent = new Intent(getApplicationContext(), SplashActivity.class);
+        if (!isRunning()) {
+            Log.d("BreezeWind", "foreground");
+            notificationIntent = new Intent(getApplicationContext(), NoticeActivity.class);
+        } else {
+            Log.d("BreezeWind", "background");
+            notificationIntent = new Intent(getApplicationContext(), SplashActivity.class);
+            notificationIntent.putExtra("fromPush", true);
+        }
 
         pendingIntent = PendingIntent.getActivity(getApplicationContext(), (int) (System.currentTimeMillis() / 1000), notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
