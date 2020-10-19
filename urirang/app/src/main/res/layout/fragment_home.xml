@@ -35,68 +35,68 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:lineSpacingExtra="15sp"
+                    android:fontFamily="@font/font_family_nanum_square_extra_bold"
+                    android:lineSpacingExtra="9sp"
                     android:textColor="@android:color/white"
-                    android:textSize="23sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="뚜진," />
 
-                <TextView
-                    android:id="@+id/home_tv_appbar_mbti"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/src_mbti_back_pink"
+                <ImageView
+                    android:id="@+id/home_iv_appbar_mbti"
+                    android:layout_width="59dp"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="11dp"
+                    android:contentDescription="@string/home_description"
                     android:lineSpacingExtra="15sp"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
+                    android:scaleType="fitXY"
                     android:textColor="@android:color/white"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/home_tv_appbar_nick"
-                    tools:text="INTP" />
+                    tools:src="@drawable/ic_wording_enfj" />
 
                 <TextView
                     android:id="@+id/home_tv_appbar_suffix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
                     android:lineSpacingExtra="15sp"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:text="@string/home_tv_app_bar_tv_suffix"
                     android:textColor="@android:color/white"
-                    android:textSize="23sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/home_tv_appbar_mbti"
-                    app:layout_constraintTop_toBottomOf="@+id/home_tv_appbar_nick" />
+                    app:layout_constraintBottom_toBottomOf="@+id/home_iv_appbar_mbti"
+                    app:layout_constraintStart_toEndOf="@+id/home_iv_appbar_mbti"
+                    app:layout_constraintTop_toTopOf="@+id/home_iv_appbar_mbti" />
 
                 <TextView
                     android:id="@+id/home_tv_appbar_extra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="15dp"
-                    android:lineSpacingExtra="15sp"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:lineSpacingExtra="9sp"
                     android:text="@string/home_tv_app_bar_tv_extra"
                     android:textColor="@android:color/white"
-                    android:textSize="23sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/home_tv_appbar_mbti" />
+                    app:layout_constraintTop_toBottomOf="@+id/home_iv_appbar_mbti" />
 
                 <LinearLayout
                     android:id="@+id/home_linear_go_world_cup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="13dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="21dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/home_tv_appbar_nick"
                     app:layout_constraintTop_toBottomOf="@+id/home_tv_appbar_extra">
@@ -104,11 +104,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_family_nanum_square_extra_bold"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="@string/home_tv_go_world_cup"
                         android:textColor="@android:color/white"
-                        android:textSize="9.5sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -187,10 +188,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="26dp"
+                android:fontFamily="@font/nanum_square_round_regular"
                 android:text="@string/home_tv_best_article"
                 android:textColor="@color/colorBasicBlack47"
-                android:textSize="9.5sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_viewpager_top" />
 
@@ -199,7 +201,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/nanum_square_round_extra_bold"
                 android:text="@string/home_tv_popular_article"
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
@@ -246,9 +249,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
+                android:fontFamily="@font/nanum_square_round_regular"
                 android:text="@string/home_tv_other_test"
                 android:textColor="@color/colorBasicBlack47"
-                android:textSize="9.5sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_view_bottom_of_rv" />
 
@@ -258,6 +262,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="7dp"
+                android:fontFamily="@font/nanum_square_round_extra_bold"
                 android:text="@string/home_tv_other_test_wording"
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
@@ -289,9 +294,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
+                android:fontFamily="@font/nanum_square_round_regular"
                 android:text="@string/home_tv_relative_contents"
                 android:textColor="@color/colorBasicBlack47"
-                android:textSize="9.5sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_view_bottom_of_rv_2" />
 
@@ -301,6 +307,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="7dp"
+                android:fontFamily="@font/nanum_square_round_extra_bold"
                 android:text="@string/home_tv_relative_contents_wording"
                 android:textColor="@android:color/black"
                 android:textSize="15sp"

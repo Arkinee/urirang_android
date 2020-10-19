@@ -10,6 +10,7 @@
         android:id="@+id/item_home_other_test_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/nanum_square_round_extra_bold"
         android:background="@drawable/src_item_other_test"
         android:gravity="center"
         android:textColor="@android:color/white"

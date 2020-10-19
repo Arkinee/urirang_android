@@ -131,7 +131,7 @@
 
     <!-- MBTI Filter -->
     <string name="mbti_filter_description">MBTI_FILTERING</string>
-    <string name="mbti_filter">MBTI 필터링</string>
+    <string name="mbti_filter">성격유형 필터링</string>
     <string name="mbti_filter_tv_apply">필터링 적용</string>
 
     <!-- Search -->
@@ -157,6 +157,10 @@
     <string name="how_about_this_write_tv_register">등록</string>
     <string name="how_about_this_write_hint_topic_title">토픽 제목</string>
     <string name="how_about_this_write_hint_tv_guide">* 메인 이미지로 사용될 사진을 등록해줘!</string>
+
+    <!-- World Cup -->
+    <string name="world_cup">월드컵</string>
+    <string name="world_cup_tv_ready">가까운 시일내에 업데이트됩니다!</string>
 
     <!-- my page -->
     <string name="my_page">MYPAGE</string>

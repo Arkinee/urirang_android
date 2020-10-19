@@ -148,6 +148,13 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
         mBoardFragment.setItemWithYou();
     }
 
+    public void setMainWorldCup() {
+        setUnselectedImage();
+        mMainViewPager.setCurrentItem(2);
+        mFragmentFlag = 3;
+        mMainIvWorldCup.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_world_cup_selected));
+    }
+
     public void setViewPagerListener() {
 
         mMainViewPager.setOffscreenPageLimit(4);

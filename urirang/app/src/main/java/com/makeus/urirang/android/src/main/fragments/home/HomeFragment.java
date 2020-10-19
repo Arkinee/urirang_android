@@ -23,6 +23,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
 
+import com.bumptech.glide.Glide;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.ApplicationClass;
 import com.makeus.urirang.android.src.login.social.SocialLoginActivity;
@@ -47,7 +48,7 @@ import me.relex.circleindicator.CircleIndicator3;
 public class HomeFragment extends Fragment implements View.OnClickListener, HomeActivityView {
 
     private TextView mHomeTvAppBarNick;
-    private TextView mHomeTvAppBarMbti;
+    private ImageView mHomeIvAppBarMbti;
     private MainActivity mMainActivity;
 
     private ViewPager mHomeViewPagerTop;
@@ -90,7 +91,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
         mMainActivity = (MainActivity) getActivity();
         mHomeTvAppBarNick = view.findViewById(R.id.home_tv_appbar_nick);
-        mHomeTvAppBarMbti = view.findViewById(R.id.home_tv_appbar_mbti);
+        mHomeIvAppBarMbti = view.findViewById(R.id.home_iv_appbar_mbti);
         LinearLayout homeLinearGoWorldCup = view.findViewById(R.id.home_linear_go_world_cup);
 
         ImageView homeIvUrirang = view.findViewById(R.id.home_iv_urirang);
@@ -249,6 +250,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                 startActivity(notice);
                 break;
             case R.id.home_linear_go_world_cup:
+                ((MainActivity) mContext).setMainWorldCup();
                 break;
             case R.id.home_iv_go_with_all:
                 ((MainActivity) mContext).setMainBoardWithALl();
@@ -259,7 +261,41 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     @Override
     public void tryGetUserInfoSuccess(String nick, String mbti, int userId) {
         mHomeTvAppBarNick.setText(nick.concat(","));
-        mHomeTvAppBarMbti.setText(mbti.toUpperCase());
+
+        if (mbti.equals("intj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_intj).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("infj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_infj).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("istj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_istj).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("istp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_istp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("intp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_intp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("infp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_infp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("isfj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_infp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("isfp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_isfp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("entj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_entj).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("enfj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_enfj).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("estj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_estj).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("estp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_estp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("entp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_entp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("enfp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_enfp).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("esfj")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_esfj).into(mHomeIvAppBarMbti);
+        } else if (mbti.equals("esfp")) {
+            Glide.with(mContext).load(R.drawable.ic_wording_esfp).into(mHomeIvAppBarMbti);
+        }
+
         sSharedPreferences.edit().putInt("userId", userId).apply();
 
         final HomeService homeService = new HomeService(this, mMainActivity);

@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
+        android:fontFamily="@font/nanum_square_round_extra_bold"
         android:text="@string/board"
         android:textColor="@color/colorBlackBoard"
         android:textSize="15sp"
