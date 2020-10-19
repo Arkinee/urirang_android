@@ -181,6 +181,7 @@
     <string name="test_results_write_hint">검사결과</string>
     <string name="test_results_write_tv_result">결과 유형</string>
     <string name="test_results_tv_images">결과 사진</string>
+    <string name="test_results_tv_no_images">저장된 사진이 없습니다</string>
 
     <!-- Modify Profile -->
     <string name="modify_profile">MODIFY</string>
@@ -213,8 +214,22 @@ Unless required by applicable law or agreed to in writing, software\n
 distributed under the License is distributed on an "AS IS" BASIS,\n
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n
 See the License for the specific language governing permissions and\n
-limitations under the License.\n
+limitations under the License.\n\n
 
+        Resource : Image Picker\n\n
+        Copyright 2019, The Android Open Source Project\n\n
+
+Licensed under the Apache License, Version 2.0 (the "License");\n
+you may not use this file except in compliance with the License.\n
+You may obtain a copy of the License at\n\n
+
+http://www.apache.org/licenses/LICENSE-2.0\n\n
+
+Unless required by applicable law or agreed to in writing, software\n
+distributed under the License is distributed on an "AS IS" BASIS,\n
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n
+See the License for the specific language governing permissions and\n
+limitations under the License.\n\n
     </string>
 
 </resources>

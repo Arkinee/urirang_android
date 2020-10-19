@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
     <RelativeLayout
         android:id="@+id/test_results_top_linear"
@@ -12,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/test_results__iv_back"
+            android:id="@+id/test_results_iv_back"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/test_results"
@@ -25,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:fontFamily="@font/font_family_nanum_square_extra_bold"
             android:text="@string/test_results"
             android:textColor="@color/colorBlackBoard"
             android:textSize="15sp"
@@ -48,7 +51,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
 
             <!-- 애니어그램 -->
             <TextView
@@ -84,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/noto_sans_bold"
+                android:onClick="testOnClick"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
@@ -105,7 +110,8 @@
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/test_results_tv_aniagram_wording" />
+                app:layout_constraintTop_toBottomOf="@+id/test_results_tv_aniagram_wording"
+                tools:listitem="@layout/item_test_results" />
 
             <!-- 에고그램 -->
             <View
@@ -143,15 +149,16 @@
                 app:layout_constraintTop_toTopOf="@+id/test_results_tv_egogram_wording" />
 
             <TextView
-                android:id="@+id/test_results_tv_modify_or_add"
+                android:id="@+id/test_results_tv_egogram_modify_or_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:onClick="testOnClick"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:text="@string/test_results_tv_modify"
+                android:text="@string/test_results_tv_add"
                 android:textColor="@color/colorBasicBlack27"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -210,11 +217,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:onClick="testOnClick"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:text="@string/test_results_tv_modify"
+                android:text="@string/test_results_tv_add"
                 android:textColor="@color/colorBasicBlack27"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -272,11 +280,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:onClick="testOnClick"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:text="@string/test_results_tv_modify"
+                android:text="@string/test_results_tv_add"
                 android:textColor="@color/colorBasicBlack27"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -334,11 +343,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:onClick="testOnClick"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:text="@string/test_results_tv_modify"
+                android:text="@string/test_results_tv_add"
                 android:textColor="@color/colorBasicBlack27"
                 android:textSize="10sp"
                 android:textStyle="bold"

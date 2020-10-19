@@ -80,7 +80,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Images image = mImageList.get(position);
 
-        Glide.with(mContext).load(image.getUrl()).placeholder(R.drawable.ic_default_image).into(holder.ivTestMain);
+        if (image.getUrl() == null || image.getUrl().equals("")) {
+            holder.ivTestMain.setVisibility(View.INVISIBLE);
+        } else {
+            holder.ivTestMain.setVisibility(View.VISIBLE);
+            Glide.with(mContext).load(image.getUrl()).placeholder(R.drawable.ic_default_image).into(holder.ivTestMain);
+        }
 
     }
 

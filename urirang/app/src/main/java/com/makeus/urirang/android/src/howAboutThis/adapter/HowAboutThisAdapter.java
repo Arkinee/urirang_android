@@ -97,44 +97,44 @@ public class HowAboutThisAdapter extends RecyclerView.Adapter<HowAboutThisAdapte
         holder.tvNickname.setText(item.getUser().getNickname());
         holder.tvLikes.setText(String.valueOf(item.getLikes()));
 
-        if(item.getImages().size() != 0) {
+        if (item.getImages().size() != 0) {
             Glide.with(mContext).load(item.getImages().get(0).getUrl()).into(holder.ivHowAboutThisThumbnail);
-        }else{
+        } else {
             holder.ivHowAboutThisThumbnail.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_default_image));
         }
 
         if (item.getUser().getMbti().equals("intj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("infj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("istj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("istp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istp).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("intp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intp).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("infp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infp).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("isfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("isfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("entj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("enfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("estj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("estp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estp).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("entp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entp).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("enfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("esfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(holder.ivHowAboutThisMbti);
         else if (item.getUser().getMbti().equals("esfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(holder.ivHowAboutThisMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(holder.ivHowAboutThisMbti);
     }
 
     @Override

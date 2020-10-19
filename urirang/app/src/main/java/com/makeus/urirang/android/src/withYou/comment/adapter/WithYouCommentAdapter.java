@@ -193,37 +193,37 @@ public class WithYouCommentAdapter extends RecyclerView.Adapter<WithYouCommentAd
         holder.tvCommentLike.setText(String.valueOf(comment.getLikes()));
 
         if (comment.getUserMbti().equals("intj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("infj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("istj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("istp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istp).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("intp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intp).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("infp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infp).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("isfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("isfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("entj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("enfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("estj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("estp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estp).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("entp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entp).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("enfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("esfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(holder.ivCommentMbti);
         else if (comment.getUserMbti().equals("esfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(holder.ivCommentMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(holder.ivCommentMbti);
     }
 
     @Override

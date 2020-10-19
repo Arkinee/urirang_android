@@ -37,7 +37,7 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
         mView = this;
 
         mFromPush = getIntent().getBooleanExtra("fromPush", false);
-        Log.d("BreezeWind", "from, splash: " + mFromPush);
+//        Log.d("BreezeWind", "from, splash: " + mFromPush);
 
         getFcmToken();
         Handler hd = new Handler();
@@ -82,10 +82,10 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
             try {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.w("urirang", "디버그 keyHash " + Base64.encodeToString(md.digest(), Base64.NO_WRAP));
+                Log.w("BreezeWind", "디버그 keyHash " + Base64.encodeToString(md.digest(), Base64.NO_WRAP));
                 return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
             } catch (NoSuchAlgorithmException e) {
-                Log.w("urirang", "디버그 keyHash" + signature, e);
+                Log.w("BreezeWind", "디버그 keyHash" + signature, e);
             }
         }
 

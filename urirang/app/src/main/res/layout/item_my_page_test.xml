@@ -9,19 +9,33 @@
         android:id="@+id/item_my_page_card"
         android:layout_width="100dp"
         android:layout_height="0dp"
-        android:background="@drawable/src_my_page_test_stroke"
         app:cardCornerRadius="4dp"
         app:layout_constraintDimensionRatio="100:124"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/item_my_page_iv_default"
+            android:layout_width="41dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/test_results"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_default_image" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/src_my_page_test_stroke" />
+
+        <ImageView
             android:id="@+id/item_my_page_test_iv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/my_page"
-            android:scaleType="centerCrop"
-            tools:src="@mipmap/ic_launcher" />
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 

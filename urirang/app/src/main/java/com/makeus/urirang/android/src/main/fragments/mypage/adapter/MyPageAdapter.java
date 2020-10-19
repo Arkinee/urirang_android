@@ -45,6 +45,7 @@ public class MyPageAdapter extends RecyclerView.Adapter<MyPageAdapter.ViewHolder
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivTestMain;
+        ImageView ivDefault;
 
         TextView tvTestTitle;
         TextView tvTestResult;
@@ -53,6 +54,7 @@ public class MyPageAdapter extends RecyclerView.Adapter<MyPageAdapter.ViewHolder
             super(itemView);
             // 뷰 객체에 대한 참조. (hold strong reference)
             ivTestMain = itemView.findViewById(R.id.item_my_page_test_iv_main);
+            ivDefault = itemView.findViewById(R.id.item_my_page_iv_default);
             tvTestTitle = itemView.findViewById(R.id.item_my_page_test_tv_title);
             tvTestResult = itemView.findViewById(R.id.item_my_page_test_tv_result);
 
@@ -90,7 +92,12 @@ public class MyPageAdapter extends RecyclerView.Adapter<MyPageAdapter.ViewHolder
         holder.tvTestTitle.setText(result.getTest().getTitle());
         holder.tvTestResult.setText(result.getResultText());
 
-//        Glide.with(mContext).load(result.getImages().get(0).getUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.ivTestMain);
+        if (result.getImages().size() == 0) {
+            holder.ivTestMain.setVisibility(View.GONE);
+        } else {
+            holder.ivTestMain.setVisibility(View.VISIBLE);
+            Glide.with(mContext).load(result.getImages().get(0).getUrl()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.ivTestMain);
+        }
     }
 
     @Override

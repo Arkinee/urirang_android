@@ -9,20 +9,28 @@
         android:id="@+id/item_test_results_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="4dp">
+        android:background="@color/colorTestResultsSolid"
+        app:cardCornerRadius="5dp">
 
         <ImageView
             android:id="@+id/item_test_results_iv_default"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="41dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
             android:contentDescription="@string/test_results"
             android:scaleType="centerInside"
             android:src="@drawable/ic_default_image" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/src_test_results_back" />
 
         <ImageView
             android:id="@+id/item_test_results_iv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/test_results" />
 
     </androidx.cardview.widget.CardView>

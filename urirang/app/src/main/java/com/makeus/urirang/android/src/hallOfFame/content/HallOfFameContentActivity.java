@@ -211,37 +211,37 @@ public class HallOfFameContentActivity extends BaseActivity implements HallOfFam
         mFameContentTvSelectedAt.setText(postedDate);
 
         if (data.getTopic().getUser().getMbti().equals("intj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("infj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("istj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("istp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("intp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("infp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("isfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("isfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("entj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("enfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("estj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("estp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("entp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("enfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("esfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mFameContentIvMbti);
         else if (data.getTopic().getUser().getMbti().equals("esfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mFameContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mFameContentIvMbti);
 
 
         // 하단
@@ -277,37 +277,37 @@ public class HallOfFameContentActivity extends BaseActivity implements HallOfFam
             mFameContentFirstTvCreatedAt.setText(posted);
 
             if (first.getUserMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mFameContentFirstIvMbti);
             else if (first.getUserMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mFameContentFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mFameContentFirstIvMbti);
 
         } else {
             mFameContentFirstConstraint.setVisibility(View.INVISIBLE);
@@ -339,37 +339,37 @@ public class HallOfFameContentActivity extends BaseActivity implements HallOfFam
             mFameContentSecondTvCreatedAt.setText(posted);
 
             if (second.getUserMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mFameContentSecondIvMbti);
             else if (second.getUserMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mFameContentSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mFameContentSecondIvMbti);
 
         } else {
             mFameContentSecondConstraint.setVisibility(View.INVISIBLE);
@@ -401,37 +401,37 @@ public class HallOfFameContentActivity extends BaseActivity implements HallOfFam
             mFameContentThirdTvCreatedAt.setText(posted);
 
             if (third.getUserMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mFameContentThirdIvMbti);
             else if (third.getUserMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mFameContentThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mFameContentThirdIvMbti);
 
         } else {
             mFameContentThirdConstraint.setVisibility(View.INVISIBLE);
@@ -462,37 +462,37 @@ public class HallOfFameContentActivity extends BaseActivity implements HallOfFam
             mFameContentFourthTvCreatedAt.setText(posted);
 
             if (fourth.getUserMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mFameContentFourthIvMbti);
             else if (fourth.getUserMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mFameContentFourthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mFameContentFourthIvMbti);
 
         } else {
             mFameContentFourthConstraint.setVisibility(View.INVISIBLE);
@@ -523,37 +523,37 @@ public class HallOfFameContentActivity extends BaseActivity implements HallOfFam
             mFameContentFifthTvCreatedAt.setText(posted);
 
             if (fifth.getUserMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mFameContentFifthIvMbti);
             else if (fifth.getUserMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mFameContentFifthIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mFameContentFifthIvMbti);
 
         } else {
             mFameContentFifthConstraint.setVisibility(View.INVISIBLE);

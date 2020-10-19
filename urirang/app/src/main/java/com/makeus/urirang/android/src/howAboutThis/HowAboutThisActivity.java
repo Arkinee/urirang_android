@@ -237,37 +237,37 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
             mHowAboutThisFirstTvlikes.setText(String.valueOf(results.get(0).getLikes()));
 
             if (results.get(0).getUser().getMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mHowAboutThisFirstIvMbti);
             else if (results.get(0).getUser().getMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mHowAboutThisFirstIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mHowAboutThisFirstIvMbti);
 
         } else {
             mHowAboutThisIvFirstMedal.setVisibility(View.GONE);
@@ -282,37 +282,37 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
             mHowAboutThisSecondTvlikes.setText(String.valueOf(results.get(1).getLikes()));
 
             if (results.get(1).getUser().getMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mHowAboutThisSecondIvMbti);
             else if (results.get(1).getUser().getMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mHowAboutThisSecondIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mHowAboutThisSecondIvMbti);
 
         } else {
             mHowAboutThisIvSecondMedal.setVisibility(View.GONE);
@@ -327,37 +327,37 @@ public class HowAboutThisActivity extends BaseActivity implements BottomSheetHow
             mHowAboutThisThirdTvlikes.setText(String.valueOf(results.get(2).getLikes()));
 
             if (results.get(2).getUser().getMbti().equals("intj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("infj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("istj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("istp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("intp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("infp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("isfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("isfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("entj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("enfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("estj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("estp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("entp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("enfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("esfj"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mHowAboutThisThirdIvMbti);
             else if (results.get(2).getUser().getMbti().equals("esfp"))
-                Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mHowAboutThisThirdIvMbti);
+                Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mHowAboutThisThirdIvMbti);
 
         } else {
             mHowAboutThisIvThirdMedal.setVisibility(View.GONE);

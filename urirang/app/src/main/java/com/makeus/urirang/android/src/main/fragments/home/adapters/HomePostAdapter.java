@@ -119,37 +119,37 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.ViewHo
         holder.tvPostCreatedAt.setText(posted);
 
         if (post.getUser().getMbti().equals("intj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("infj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("istj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("istp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istp).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("intp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intp).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("infp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infp).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("isfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("isfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("entj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("enfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("estj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("estp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estp).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("entp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entp).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("enfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("esfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(holder.ivPostMbti);
         else if (post.getUser().getMbti().equals("esfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(holder.ivPostMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(holder.ivPostMbti);
 
     }
 

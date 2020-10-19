@@ -161,37 +161,37 @@ public class BottomSheetHowAboutThisContentDialog extends BottomSheetDialogFragm
         }
 
         if (mHowAboutThis.getUser().getMbti().equals("intj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_1_intj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("infj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_2_infj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("istj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_3_istj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("istp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_4_istp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_istp).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("intp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_5_intp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_intp).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("infp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_6_infp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_infp).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("isfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_7_isfj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("isfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_8_isfp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_isfp).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("entj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_9_entj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("enfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_10_enfj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("estj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_11_estj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("estp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_12_estp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_estp).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("entp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_13_entp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_entp).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("enfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_14_enfp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_enfp).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("esfj"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_15_esfj_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfj).into(mHowAboutThisContentIvMbti);
         else if (mHowAboutThis.getUser().getMbti().equals("esfp"))
-            Glide.with(mContext).load(R.drawable.ic_mbti_16_esfp_selected).into(mHowAboutThisContentIvMbti);
+            Glide.with(mContext).load(R.drawable.ic_profile_esfp).into(mHowAboutThisContentIvMbti);
 
 
     }

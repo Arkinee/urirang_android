@@ -68,7 +68,7 @@ public class TestResultsService {
             @Override
             public void onResponse(@NonNull Call<WriteTestResultsResponse> call, @NonNull Response<WriteTestResultsResponse> response) {
 
-                if (response.code() == 200) {
+                if (response.code() == 201) {
                     mWriteView.tryPostWriteResultsSuccess();
                 } else {
                     mWriteView.tryPostWriteResultsFailure("결과 전송 실패");
@@ -78,19 +78,20 @@ public class TestResultsService {
 
             @Override
             public void onFailure(Call<WriteTestResultsResponse> call, Throwable t) {
+                t.printStackTrace();
                 mView.tryGetFailure(mContext.getString(R.string.network_connect_failure));
             }
         });
     }
 
-    // 테스트 결과 추가
+    // 테스트 결과 수정
     public void tryPostModifyTestResults(int testId, HashMap<String, RequestBody> params, List<MultipartBody.Part> images) {
         final TestResultsRetrofitInterface resultsRetrofitInterface = getRetrofit().create(TestResultsRetrofitInterface.class);
         resultsRetrofitInterface.tryPostModifyTestResults(testId, params, images).enqueue(new Callback<WriteTestResultsResponse>() {
             @Override
             public void onResponse(@NonNull Call<WriteTestResultsResponse> call, @NonNull Response<WriteTestResultsResponse> response) {
 
-                if (response.code() == 200) {
+                if (response.code() == 201) {
                     mWriteView.tryPostWriteResultsSuccess();
                 } else {
                     mWriteView.tryPostWriteResultsFailure("결과 전송 실패");

@@ -2,7 +2,9 @@ package com.makeus.urirang.android.src.testResults.content.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Test {
+import java.io.Serializable;
+
+public class Test implements Serializable {
 
     @SerializedName("id")
     private int id;

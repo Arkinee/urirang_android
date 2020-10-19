@@ -2,7 +2,9 @@ package com.makeus.urirang.android.src.howAboutThis.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Images {
+import java.io.Serializable;
+
+public class Images implements Serializable {
 
     @SerializedName("url")
     private String url;

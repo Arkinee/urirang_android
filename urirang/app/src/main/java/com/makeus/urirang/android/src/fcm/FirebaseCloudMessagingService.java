@@ -71,10 +71,10 @@ public class FirebaseCloudMessagingService extends FirebaseMessagingService impl
         PendingIntent pendingIntent;
 
         if (!isRunning()) {
-            Log.d("BreezeWind", "foreground");
+//            Log.d("BreezeWind", "foreground");
             notificationIntent = new Intent(getApplicationContext(), NoticeActivity.class);
         } else {
-            Log.d("BreezeWind", "background");
+//            Log.d("BreezeWind", "background");
             notificationIntent = new Intent(getApplicationContext(), SplashActivity.class);
             notificationIntent.putExtra("fromPush", true);
         }
@@ -86,7 +86,7 @@ public class FirebaseCloudMessagingService extends FirebaseMessagingService impl
          * 오레오 버전부터는 Notification Channel이 없으면 푸시가 생성되지 않는 현상이 있습니다.
          * **/
 
-        String channel = "OMO";
+        String channel = "URIRANG";
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -95,7 +95,7 @@ public class FirebaseCloudMessagingService extends FirebaseMessagingService impl
             NotificationManager noticeChannel = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             NotificationChannel channelMessage = new NotificationChannel(channel, channel_nm,
                     NotificationManager.IMPORTANCE_DEFAULT);
-            channelMessage.setDescription("OMO 앱 이벤트 푸시알림 채널");
+            channelMessage.setDescription("우리랑 앱 이벤트 푸시알림 채널");
             channelMessage.enableLights(true);
             channelMessage.enableVibration(true);
             channelMessage.setShowBadge(false);
