@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.dialog.BottomSheetMbtiFilterDialog;
+import com.makeus.urirang.android.src.dialog.BottomSheetWorldCupFilterDialog;
 import com.makeus.urirang.android.src.main.adapter.MainFragmentPagerAdapter;
 import com.makeus.urirang.android.src.main.fragments.board.BoardFragment;
 import com.makeus.urirang.android.src.main.fragments.home.HomeFragment;
@@ -27,7 +28,7 @@ import java.util.HashMap;
 import static com.makeus.urirang.android.src.ApplicationClass.FCM_TOKEN;
 import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
 
-public class MainActivity extends BaseActivity implements MainActivityView, BottomSheetMbtiFilterDialog.BottomSheetListener {
+public class MainActivity extends BaseActivity implements MainActivityView, BottomSheetMbtiFilterDialog.BottomSheetListener, BottomSheetWorldCupFilterDialog.BottomSheetFilterOptionListener {
 
     private MainFragmentPagerAdapter mMainPagerAdapter;
     private MainViewPager mMainViewPager;
@@ -82,7 +83,7 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
 
         mHomeFragment = new HomeFragment(this);
         mBoardFragment = new BoardFragment(this);
-        mWorldCupFragment = new WorldCupFragment();
+        mWorldCupFragment = new WorldCupFragment(this);
         mMyPageFragment = new MyPageFragment(this);
 
         mMainViewPager = findViewById(R.id.main_view_pager);
@@ -257,5 +258,15 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
     @Override
     public void onFilterApply(String mbti) {
         mBoardFragment.filterWithAll(mbti);
+    }
+
+    @Override
+    public void applyFilterCreatedAt(int option) {
+        mWorldCupFragment.applyCreatedAt(option);
+    }
+
+    @Override
+    public void applyFilterPopularity(int option) {
+        mWorldCupFragment.applyPopularity(option);
     }
 }

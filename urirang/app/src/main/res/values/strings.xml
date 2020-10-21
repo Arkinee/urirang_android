@@ -161,6 +161,60 @@
     <!-- World Cup -->
     <string name="world_cup">월드컵</string>
     <string name="world_cup_tv_ready">가까운 시일내에 업데이트됩니다!</string>
+    <string name="world_cup_tv_popular">인기 월드컵</string>
+    <string name="world_cup_middle_dot">\u2022</string>
+    <string name="world_cup_tv_participate">참여</string>
+    <string name="world_cup_tv_1">1위</string>
+    <string name="world_cup_tv_2">2위</string>
+    <string name="world_cup_tv_3">3위</string>
+    <string name="world_cup_tv_write_next">다음</string>
+    <string name="world_cup_tv_write_world_cup">월드컵 만들기</string>
+    <string name="world_cup_tv_write_num_of_round">몇 강으로 만들어 볼까요?</string>
+    <string name="world_cup_tv_write_num_of_round_32">32강</string>
+    <string name="world_cup_tv_write_num_of_round_16">16강</string>
+    <string name="world_cup_tv_write_num_of_round_8">8강</string>
+    <string name="world_cup_tv_write_title_description">월드컵 제목과 설명을 입력해 주세요.</string>
+    <string name="world_cup_tv_write_title_hint">제목</string>
+    <string name="world_cup_tv_write_description_hint">50자 이내로 설명을 입력해 주세요.</string>
+    <string name="world_cup_tv_write_register_candidates">후보를 등록해 주세요.</string>
+
+    <string name="world_cup_candidate_tv_1">1</string>
+    <string name="world_cup_candidate_tv_2">2</string>
+    <string name="world_cup_candidate_tv_3">3</string>
+    <string name="world_cup_candidate_tv_4">4</string>
+    <string name="world_cup_candidate_tv_5">5</string>
+    <string name="world_cup_candidate_tv_6">6</string>
+    <string name="world_cup_candidate_tv_7">7</string>
+    <string name="world_cup_candidate_tv_8">8</string>
+    <string name="world_cup_candidate_tv_9">9</string>
+    <string name="world_cup_candidate_tv_10">10</string>
+
+    <string name="world_cup_candidate_tv_11">11</string>
+    <string name="world_cup_candidate_tv_12">12</string>
+    <string name="world_cup_candidate_tv_13">13</string>
+    <string name="world_cup_candidate_tv_14">14</string>
+    <string name="world_cup_candidate_tv_15">15</string>
+    <string name="world_cup_candidate_tv_16">16</string>
+    <string name="world_cup_candidate_tv_17">17</string>
+    <string name="world_cup_candidate_tv_18">18</string>
+    <string name="world_cup_candidate_tv_19">19</string>
+    <string name="world_cup_candidate_tv_20">20</string>
+
+    <string name="world_cup_candidate_tv_21">21</string>
+    <string name="world_cup_candidate_tv_22">22</string>
+    <string name="world_cup_candidate_tv_23">23</string>
+    <string name="world_cup_candidate_tv_24">24</string>
+    <string name="world_cup_candidate_tv_25">25</string>
+    <string name="world_cup_candidate_tv_26">26</string>
+    <string name="world_cup_candidate_tv_27">27</string>
+    <string name="world_cup_candidate_tv_28">28</string>
+    <string name="world_cup_candidate_tv_29">29</string>
+    <string name="world_cup_candidate_tv_30">30</string>
+
+    <string name="world_cup_candidate_tv_31">31</string>
+    <string name="world_cup_candidate_tv_32">32</string>
+
+    <string name="world_cup_candidate_edt_hint">후보 입력</string>
 
     <!-- my page -->
     <string name="my_page">MYPAGE</string>

@@ -1,0 +1,1563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <View
+        android:id="@+id/world_cup_write_view_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="360:48"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/world_cup_write_tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/font_family_nanum_square_bold"
+        android:onClick="worldCupOnClick"
+        android:padding="10dp"
+        android:text="@string/modify_profile_tv_cancel"
+        android:textColor="@color/colorModifyCancel"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/world_cup_write_view_top"
+        app:layout_constraintStart_toStartOf="@+id/world_cup_write_view_top"
+        app:layout_constraintTop_toTopOf="@+id/world_cup_write_view_top" />
+
+    <TextView
+        android:id="@+id/world_cup_write_tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_family_nanum_square_extra_bold"
+        android:text="@string/world_cup_tv_write_world_cup"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/world_cup_write_view_top"
+        app:layout_constraintEnd_toEndOf="@+id/world_cup_write_view_top"
+        app:layout_constraintStart_toStartOf="@+id/world_cup_write_view_top"
+        app:layout_constraintTop_toTopOf="@+id/world_cup_write_view_top" />
+
+    <TextView
+        android:id="@+id/world_cup_write_tv_next_and_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_family_nanum_square_bold"
+        android:onClick="worldCupWriteOnClick"
+        android:padding="10dp"
+        android:text="@string/world_cup_tv_write_next"
+        android:textColor="@color/colorModifyCancel"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/world_cup_write_view_top"
+        app:layout_constraintEnd_toEndOf="@+id/world_cup_write_view_top"
+        app:layout_constraintTop_toTopOf="@+id/world_cup_write_view_top" />
+
+    <View
+        android:id="@+id/world_cup_write_view_border"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorInfoBorder34"
+        app:layout_constraintTop_toBottomOf="@+id/world_cup_write_view_top" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/world_cup_write_constraint_information"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/world_cup_write_view_border">
+
+        <TextView
+            android:id="@+id/world_cup_write_tv_round_wording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/nanum_square_round_bold"
+            android:text="@string/world_cup_tv_write_num_of_round"
+            android:textColor="@color/colorBasicBlack83"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/world_cup_write_linear_round_32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:onClick="worldCupWriteOnClick"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/world_cup_write_tv_round_wording"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_write_tv_round_wording">
+
+            <ImageView
+                android:id="@+id/world_cup_write_iv_round_32"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/world_cup"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/world_cup_write_tv_round_32"
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="9dp"
+                android:fontFamily="@font/font_family_nanum_square_bold"
+                android:gravity="center"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/world_cup_tv_write_num_of_round_32"
+                android:textColor="@color/colorBasicBlack38"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/world_cup_write_linear_round_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:onClick="worldCupWriteOnClick"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/world_cup_write_tv_round_wording"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_write_tv_round_wording">
+
+            <ImageView
+                android:id="@+id/world_cup_write_iv_round_16"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/world_cup"
+                android:src="@drawable/ic_check_default" />
+
+            <TextView
+                android:id="@+id/world_cup_write_tv_round_16"
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="9dp"
+                android:fontFamily="@font/font_family_nanum_square_bold"
+                android:gravity="center"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/world_cup_tv_write_num_of_round_16"
+                android:textColor="@color/colorBasicBlack38"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/world_cup_write_linear_round_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="14dp"
+            android:onClick="worldCupWriteOnClick"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/world_cup_write_linear_round_16"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_write_tv_round_wording">
+
+            <ImageView
+                android:id="@+id/world_cup_write_iv_round_8"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/world_cup"
+                android:src="@drawable/ic_check_default" />
+
+            <TextView
+                android:id="@+id/world_cup_write_tv_round_8"
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="9dp"
+                android:fontFamily="@font/font_family_nanum_square_bold"
+                android:gravity="center"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/world_cup_tv_write_num_of_round_8"
+                android:textColor="@color/colorBasicBlack38"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/world_cup_write_tv_title_and_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="47dp"
+            android:fontFamily="@font/font_family_nanum_square_bold"
+            android:text="@string/world_cup_tv_write_title_description"
+            android:textColor="@color/colorBasicBlack83"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/world_cup_write_tv_round_wording"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_write_linear_round_32" />
+
+        <EditText
+            android:id="@+id/world_cup_write_edt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6.5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans_medium"
+            android:hint="@string/world_cup_tv_write_title_hint"
+            android:inputType="text"
+            android:letterSpacing="0.06"
+            android:maxLines="1"
+            android:paddingTop="7.5dp"
+            android:paddingBottom="7.5dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/colorModifyTvNickname"
+            android:textSize="13sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_write_tv_title_and_description" />
+
+        <View
+            android:id="@+id/world_cup_write_view_bottom_of_edt"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/colorInfoView"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_write_edt_title" />
+
+        <EditText
+            android:id="@+id/world_cup_write_edt_description"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20.5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/src_world_cup_write_edt_back"
+            android:fontFamily="@font/noto_sans_demi_light"
+            android:gravity="start|top"
+            android:hint="@string/world_cup_tv_write_description_hint"
+            android:inputType="textMultiLine"
+            android:maxLength="50"
+            android:paddingStart="9dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorModifyTvNickname"
+            android:textSize="11sp"
+            app:layout_constraintDimensionRatio="320:60"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_write_view_bottom_of_edt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/world_cup_write_scroll_candidates"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/world_cup_write_view_border">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/world_cup_write_constraint_candidates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/world_cup_write_tv_register_candidates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/font_family_nanum_square_bold"
+                android:text="@string/world_cup_tv_write_register_candidates"
+                android:textColor="@color/colorBasicBlack83"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_tv_register_candidates">
+
+                <TextView
+                    android:id="@+id/candidate_1_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_1"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_1_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_1_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_1_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_1_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_1_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_1_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_1_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_1_card"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_1_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_1_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_1_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_1_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_1_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_1">
+
+                <TextView
+                    android:id="@+id/candidate_2_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_2"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_2_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_2_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_2_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_2_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_2_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_2_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_2_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_2_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_2_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_2_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_2_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_2_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_2">
+
+                <TextView
+                    android:id="@+id/candidate_3_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_3"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_3_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_3_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_3_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_3_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_3_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_3_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_3_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_3_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_3_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_3_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_3_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_3_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_3">
+
+                <TextView
+                    android:id="@+id/candidate_4_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_4"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_4_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_4_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_4_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_4_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_4_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_4_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_4_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_4_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_4_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_4_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_4_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_4_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_4">
+
+                <TextView
+                    android:id="@+id/candidate_5_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_5"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_5_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_5_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_5_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_5_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_5_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_5_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_5_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_5_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_5_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_5_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_5_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_5_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_6"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_5">
+
+                <TextView
+                    android:id="@+id/candidate_6_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_6"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_6_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_6_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_6_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_6_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_6_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_6_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_6_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_6_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_6_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_6_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_6_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_6_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_6">
+
+                <TextView
+                    android:id="@+id/candidate_7_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_7"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_7_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_7_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_7_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_7_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_7_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_7_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_7_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_7_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_7_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_7_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_7_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_7_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_8"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_7">
+
+                <TextView
+                    android:id="@+id/candidate_8_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_8"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_8_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_8_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_8_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_8_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_8_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_8_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_8_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_8_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_8_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_8_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_8_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_8_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_9"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_8">
+
+                <TextView
+                    android:id="@+id/candidate_9_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_9"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_9_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_9_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_9_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_9_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_9_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_9_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_9_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_9_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_9_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_9_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_9_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_9_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_10"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_9">
+
+                <TextView
+                    android:id="@+id/candidate_10_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_10"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_10_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_10_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_10_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_10_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_10_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_10_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_10_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_10_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_10_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_10_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_10_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_10_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_11"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_10">
+
+                <TextView
+                    android:id="@+id/candidate_11_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_11"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_11_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_11_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_11_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_11_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_11_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_11_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_11_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_11_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_11_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_11_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_11_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_11_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_12"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_11">
+
+                <TextView
+                    android:id="@+id/candidate_12_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_12"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_12_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_12_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_12_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_12_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_12_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_12_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_12_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_12_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_12_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_12_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_12_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_12_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_13"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_12">
+
+                <TextView
+                    android:id="@+id/candidate_13_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_13"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_13_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_13_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_13_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_13_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_13_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_13_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_13_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_13_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_13_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_13_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_13_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_13_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_14"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_13">
+
+                <TextView
+                    android:id="@+id/candidate_14_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_14"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_14_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_14_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_14_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_14_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_14_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_14_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_14_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_14_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_14_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_14_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_14_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_14_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_15"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_14">
+
+                <TextView
+                    android:id="@+id/candidate_15_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_15"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_15_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_15_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_15_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_15_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_15_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_15_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_15_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_15_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_15_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_15_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_15_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_15_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/world_cup_write_constraint_candidate_16"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30.5dp"
+                app:layout_constraintDimensionRatio="360:170"
+                app:layout_constraintTop_toBottomOf="@+id/world_cup_write_constraint_candidate_15">
+
+                <TextView
+                    android:id="@+id/candidate_16_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_extra_bold"
+                    android:text="@string/world_cup_candidate_tv_10"
+                    android:textColor="@color/colorSearchHint"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/candidate_16_card"
+                    app:layout_constraintEnd_toStartOf="@+id/candidate_16_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/candidate_16_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/candidate_16_card"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintDimensionRatio="200:135.7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/candidate_16_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_write_topic"
+                        android:contentDescription="@string/world_cup"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/candidate_16_iv_add"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/world_cup"
+                        android:src="@drawable/ic_add_image" />
+
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/candidate_16_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/noto_sans_demi_light"
+                    android:hint="@string/world_cup_candidate_edt_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingTop="4.5dp"
+                    android:paddingBottom="4.5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorModifyTvNickname"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_16_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_16_card" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorInfoView"
+                    app:layout_constraintEnd_toEndOf="@+id/candidate_16_card"
+                    app:layout_constraintStart_toStartOf="@+id/candidate_16_card"
+                    app:layout_constraintTop_toBottomOf="@+id/candidate_16_edt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

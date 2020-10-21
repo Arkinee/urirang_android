@@ -5,7 +5,9 @@
     <color name="colorAccent">#000000</color>
     <color name="colorAccentTemp">#03DAC5</color>
     <color name="colorBlack">#000000</color>
+
     <color name="colorBlackBoard">#090909</color>
+    <color name="colorBasicBlack25">#43000000</color>
     <color name="colorBasicBlack27">#46000000</color>
     <color name="colorBasicBlack47">#76000000</color>
     <color name="colorBasicBlack40">#66000000</color>
