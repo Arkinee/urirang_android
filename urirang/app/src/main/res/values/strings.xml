@@ -177,6 +177,7 @@
     <string name="world_cup_tv_write_title_hint">제목</string>
     <string name="world_cup_tv_write_description_hint">50자 이내로 설명을 입력해 주세요.</string>
     <string name="world_cup_tv_write_register_candidates">후보를 등록해 주세요.</string>
+    <string name="world_cup_tv_write_random_matching_wording">*월드컵 후보 매칭은 랜덤으로 이뤄져!</string>
 
     <string name="world_cup_candidate_tv_1">1</string>
     <string name="world_cup_candidate_tv_2">2</string>

@@ -1,6 +1,7 @@
 package com.makeus.urirang.android.src.main.fragments.worldCup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.worldCup.adapter.WorldCupAdapter;
 import com.makeus.urirang.android.src.main.fragments.worldCup.interfaces.WorldCupView;
 import com.makeus.urirang.android.src.main.fragments.worldCup.model.WorldCup;
+import com.makeus.urirang.android.src.worldCup.write.WorldCupWriteActivity;
 
 import java.util.ArrayList;
 
@@ -148,6 +150,7 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
     @Override
     public void onResume() {
         super.onResume();
+        mWorldCupList.clear();
         mDoubleClick = false;
         mIsEmptyResult = false;
         mLoading = true;
@@ -232,6 +235,8 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
                 if (mDoubleClick) return;
                 mDoubleClick = true;
 
+                Intent write = new Intent(mContext, WorldCupWriteActivity.class);
+                startActivity(write);
                 break;
             case R.id.world_cup_popular_constraint:
                 if (mDoubleClick) return;

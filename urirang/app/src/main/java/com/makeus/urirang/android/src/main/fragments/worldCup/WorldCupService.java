@@ -92,7 +92,7 @@ public class WorldCupService {
             @Override
             public void onResponse(@NonNull Call<WorldCupWriteResponse> call, @NonNull Response<WorldCupWriteResponse> response) {
 
-                if (response.code() == 200) {
+                if (response.code() == 201) {
                     mWriteView.tryPostWorldCupSuccess();
                 } else {
                     mWriteView.tryPostWorldCupFailure("월드컵 만들기 실패");
@@ -102,6 +102,7 @@ public class WorldCupService {
 
             @Override
             public void onFailure(Call<WorldCupWriteResponse> call, Throwable t) {
+                t.printStackTrace();
                 mWriteView.tryPostWorldCupFailure(mContext.getString(R.string.network_connect_failure));
             }
         });

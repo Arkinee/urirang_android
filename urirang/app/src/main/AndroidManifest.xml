@@ -112,6 +112,11 @@
             android:name=".src.hallOfFame.content.HallOfFameContentActivity"
             android:screenOrientation="portrait" />
 
+        <!-- World Cup-->
+        <activity
+            android:name=".src.worldCup.write.WorldCupWriteActivity"
+            android:screenOrientation="portrait" />
+
         <!-- Kakao social login-->
         <meta-data
             android:name="com.kakao.sdk.AppKey"

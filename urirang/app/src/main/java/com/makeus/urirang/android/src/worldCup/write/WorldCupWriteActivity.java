@@ -23,15 +23,10 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.main.fragments.worldCup.WorldCupService;
-import com.makeus.urirang.android.src.main.fragments.worldCup.interfaces.WorldCupView;
-import com.makeus.urirang.android.src.withAll.WithAllService;
-import com.makeus.urirang.android.src.withAll.interfaces.WithAllWriteActivityView;
 import com.makeus.urirang.android.src.worldCup.interfaces.WorldCupWriteView;
 
 import java.io.File;
@@ -45,13 +40,14 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
+import static android.view.View.GONE;
+
 public class WorldCupWriteActivity extends BaseActivity implements WorldCupWriteView {
 
     private Context mContext;
     private InputMethodManager mInputMethodManager;
     private ArrayList<File> mFileList;
     private ArrayList<Uri> mUriList;
-    private ArrayList<String> mCandidateList;
 
     private ConstraintLayout mConstraintInformation;
     private ScrollView mScrollCandidates;
@@ -70,15 +66,16 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
     private int mScreenNum = 1;
     private boolean mIsTitleExist = false;
     private boolean mIsDescriptionExist = false;
+    private int mSelectedImage = 0;
 
-    private CardView mCardCandidate9;
-    private CardView mCardCandidate10;
-    private CardView mCardCandidate11;
-    private CardView mCardCandidate12;
-    private CardView mCardCandidate13;
-    private CardView mCardCandidate14;
-    private CardView mCardCandidate15;
-    private CardView mCardCandidate16;
+    private ConstraintLayout mConstraintCandidate9;
+    private ConstraintLayout mConstraintCandidate10;
+    private ConstraintLayout mConstraintCandidate11;
+    private ConstraintLayout mConstraintCandidate12;
+    private ConstraintLayout mConstraintCandidate13;
+    private ConstraintLayout mConstraintCandidate14;
+    private ConstraintLayout mConstraintCandidate15;
+    private ConstraintLayout mConstraintCandidate16;
 
     private ImageView mIvCandidate1;
     private ImageView mIvCandidate2;
@@ -103,10 +100,8 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
         setContentView(R.layout.activity_world_cup_write);
 
         mContext = this;
-        mCandidateList = new ArrayList<>();
         mFileList = new ArrayList<>();
         mUriList = new ArrayList<>();
-        mCandidateList = new ArrayList<>();
 
         mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -183,14 +178,14 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
 
     void initialize() {
 
-        mCardCandidate9 = findViewById(R.id.candidate_9_card);
-        mCardCandidate10 = findViewById(R.id.candidate_10_card);
-        mCardCandidate11 = findViewById(R.id.candidate_11_card);
-        mCardCandidate12 = findViewById(R.id.candidate_12_card);
-        mCardCandidate13 = findViewById(R.id.candidate_13_card);
-        mCardCandidate14 = findViewById(R.id.candidate_14_card);
-        mCardCandidate15 = findViewById(R.id.candidate_15_card);
-        mCardCandidate16 = findViewById(R.id.candidate_16_card);
+        mConstraintCandidate9 = findViewById(R.id.world_cup_write_constraint_candidate_9);
+        mConstraintCandidate10 = findViewById(R.id.world_cup_write_constraint_candidate_10);
+        mConstraintCandidate11 = findViewById(R.id.world_cup_write_constraint_candidate_11);
+        mConstraintCandidate12 = findViewById(R.id.world_cup_write_constraint_candidate_12);
+        mConstraintCandidate13 = findViewById(R.id.world_cup_write_constraint_candidate_13);
+        mConstraintCandidate14 = findViewById(R.id.world_cup_write_constraint_candidate_14);
+        mConstraintCandidate15 = findViewById(R.id.world_cup_write_constraint_candidate_15);
+        mConstraintCandidate16 = findViewById(R.id.world_cup_write_constraint_candidate_16);
 
         mIvCandidate1 = findViewById(R.id.candidate_1_iv);
         mIvCandidate2 = findViewById(R.id.candidate_2_iv);
@@ -217,9 +212,55 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
 
         List<MultipartBody.Part> images = new ArrayList<>();
 
-        for (File f : mFileList) {
-            RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), f);
-            images.add(MultipartBody.Part.createFormData("images", f.getName(), fileBody));
+        if (mRoundNum == 8) {
+            for (int i = 0; i < 8; i++) {
+                File f = mFileList.get(i);
+                RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), f);
+                images.add(MultipartBody.Part.createFormData("images", f.getName(), fileBody));
+            }
+        } else if (mRoundNum == 16) {
+            for (int i = 0; i < 16; i++) {
+                File f = mFileList.get(i);
+                RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), f);
+                images.add(MultipartBody.Part.createFormData("images", f.getName(), fileBody));
+            }
+        }
+
+        int current = 0;
+        RequestBody candidate1 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_1_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate1);
+        RequestBody candidate2 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_2_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate2);
+        RequestBody candidate3 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_3_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate3);
+        RequestBody candidate4 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_4_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate4);
+        RequestBody candidate5 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_5_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate5);
+        RequestBody candidate6 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_6_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate6);
+        RequestBody candidate7 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_7_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate7);
+        RequestBody candidate8 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_8_edt)).getText().toString());
+        map.put("candidateNameList[" + current++ + "]", candidate8);
+
+        if (mRoundNum == 16) {
+            RequestBody candidate9 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_9_edt)).getText().toString());
+            map.put("candidateNameList[" + current++ + "]", candidate9);
+            RequestBody candidate10 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_10_edt)).getText().toString());
+            map.put("candidateNameList[" + current++ + "]", candidate10);
+            RequestBody candidate11 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_11_edt)).getText().toString());
+            map.put("candidateNameList[" + current++ + "]", candidate11);
+            RequestBody candidate12 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_12_edt)).getText().toString());
+            map.put("candidateNameList[" + current++ + "]", candidate12);
+            RequestBody candidate13 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_13_edt)).getText().toString());
+            map.put("candidateNameList[" + current++ + "]", candidate13);
+            RequestBody candidate14 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_14_edt)).getText().toString());
+            map.put("candidateNameList[" + current++ + "]", candidate14);
+            RequestBody candidate15 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_15_edt)).getText().toString());
+            map.put("candidateNameList[" + current++ + "]", candidate15);
+            RequestBody candidate16 = RequestBody.create(MediaType.parse("text/plain"), ((EditText) findViewById(R.id.candidate_16_edt)).getText().toString());
+            map.put("candidateNameList[" + current + "]", candidate16);
         }
 
         RequestBody titleBody = RequestBody.create(MediaType.parse("text/plain"), mEdtTitle.getText().toString());
@@ -240,18 +281,19 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
             case R.id.world_cup_write_linear_round_8:
                 mRoundNum = 8;
                 mIvRound8.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_check_selected));
-                mTvRound8.setTextColor(getResources().getColor(R.color.colorBasicBlack38));
+                mTvRound8.setTextColor(getResources().getColor(R.color.colorSearchHint));
                 mIvRound16.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_check_default));
-                mTvRound16.setTextColor(getResources().getColor(R.color.colorSearchHint));
+                mTvRound16.setTextColor(getResources().getColor(R.color.colorBasicBlack38));
                 break;
             case R.id.world_cup_write_linear_round_16:
                 mRoundNum = 16;
-                mTvRound8.setTextColor(getResources().getColor(R.color.colorSearchHint));
+                mTvRound8.setTextColor(getResources().getColor(R.color.colorBasicBlack38));
                 mIvRound8.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_check_default));
-                mTvRound16.setTextColor(getResources().getColor(R.color.colorBasicBlack38));
+                mTvRound16.setTextColor(getResources().getColor(R.color.colorSearchHint));
                 mIvRound16.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_check_selected));
                 break;
-            case R.id.with_all_write_tv_cancel:
+            case R.id.world_cup_write_tv_cancel:
+
                 if (mScreenNum == 1) {
                     finish();
                 } else if (mScreenNum == 2) {
@@ -259,22 +301,21 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
 
                     ((TextView) findViewById(R.id.world_cup_write_tv_next_and_register)).setText(getString(R.string.signup_tv_next));
 
-                    mConstraintInformation.animate().alpha(0f).setDuration(750).withEndAction(
-                            () -> {
-                                mConstraintInformation.setAlpha(1f);
-                            }
-                    ).start();
-
                     mScrollCandidates.animate().alpha(1f).setDuration(750).withEndAction(
                             () -> {
                                 mScrollCandidates.setAlpha(0f);
+                                mScrollCandidates.setVisibility(GONE);
+                                mConstraintInformation.animate().alpha(0f).setDuration(750).withEndAction(
+                                        () -> {
+                                            mConstraintInformation.setAlpha(1f);
+                                            mConstraintInformation.setVisibility(View.VISIBLE);
+                                        }
+                                ).start();
                             }
                     ).start();
-
                 }
+                break;
             case R.id.world_cup_write_tv_next_and_register:
-                if (mDoubleClick) return;
-                mDoubleClick = true;
 
                 if (mScreenNum == 1) {
 
@@ -299,21 +340,227 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
                     mConstraintInformation.animate().alpha(1f).setDuration(750).withEndAction(
                             () -> {
                                 mConstraintInformation.setAlpha(0f);
+                                mConstraintInformation.setVisibility(GONE);
+                                mScrollCandidates.setVisibility(View.VISIBLE);
+                                mScrollCandidates.animate().alpha(0f).setDuration(750).withEndAction(
+                                        () -> {
+                                            mScrollCandidates.setAlpha(1f);
+                                        }
+                                ).start();
                             }
                     ).start();
 
-                    mScrollCandidates.animate().alpha(0f).setDuration(750).withEndAction(
-                            () -> {
-                                mScrollCandidates.setAlpha(1f);
-                            }
-                    ).start();
+//                    mScrollCandidates.animate().alpha(0f).setDuration(750).withEndAction(
+//                            () -> {
+//                                mScrollCandidates.setAlpha(1f);
+//                            }
+//                    ).start();
+
+                    if (mRoundNum == 8) {
+                        mConstraintCandidate9.setVisibility(GONE);
+                        mConstraintCandidate10.setVisibility(GONE);
+                        mConstraintCandidate11.setVisibility(GONE);
+                        mConstraintCandidate12.setVisibility(GONE);
+                        mConstraintCandidate13.setVisibility(GONE);
+                        mConstraintCandidate14.setVisibility(GONE);
+                        mConstraintCandidate15.setVisibility(GONE);
+                        mConstraintCandidate16.setVisibility(GONE);
+                    } else if (mRoundNum == 16) {
+                        mConstraintCandidate9.setVisibility(View.VISIBLE);
+                        mConstraintCandidate10.setVisibility(View.VISIBLE);
+                        mConstraintCandidate11.setVisibility(View.VISIBLE);
+                        mConstraintCandidate12.setVisibility(View.VISIBLE);
+                        mConstraintCandidate13.setVisibility(View.VISIBLE);
+                        mConstraintCandidate14.setVisibility(View.VISIBLE);
+                        mConstraintCandidate15.setVisibility(View.VISIBLE);
+                        mConstraintCandidate16.setVisibility(View.VISIBLE);
+                    }
 
                 } else if (mScreenNum == 2) {
-                    mScreenNum -= 1;
+                    if (mFileList.size() != mRoundNum) {
+                        showCustomToastShort("후보를 모두 등록해 주세요");
+                        return;
+                    }
 
                     postWorldCup();
 
                 }
+                break;
+            case R.id.candidate_1_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 1;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_2_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 2;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_3_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 3;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_4_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 4;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_5_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 5;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_6_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 6;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_7_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 7;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_8_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 8;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_9_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 9;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_10_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 10;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_11_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 11;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_12_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 12;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_13_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 13;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_14_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 14;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_15_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 15;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
+                break;
+            case R.id.candidate_16_card:
+                if (mDoubleClick) return;
+                mDoubleClick = true;
+
+                mSelectedImage = 16;
+                ImagePicker.Companion.with(this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080, 1080)
+                        .start();
                 break;
 
         }
@@ -327,10 +574,29 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
         if (resultCode == Activity.RESULT_OK) {
             //Image Uri will not be null for RESULT_OK
             Uri fileUri = data.getData();
-            mUriList.add(fileUri);
+
+            File file = ImagePicker.Companion.getFile(data);
+
+            if (file.exists()) {
+                long fileSize = file.length();
+                Log.d("BreezeWind", "file size: " + fileSize);
+                if (fileSize > 1000000) { // 2 mb
+                    // 압축
+                    try {
+                        file = new Compressor(WorldCupWriteActivity.this).compressToFile(file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    long afterFileSize = file.length();
+                    Log.d("BreezeWind", "after file size: " + afterFileSize);
+                }
+            }
 
             if (mImageCount != mRoundNum) {
 
+                mUriList.add(fileUri);
+                mFileList.add(file);
                 mImageCount += 1;
 
                 if (mImageCount == 1) {
@@ -369,29 +635,62 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
 
             } else {
 
+                mUriList.set(mSelectedImage - 1, fileUri);
+                mFileList.set(mSelectedImage - 1, file);
 
-            }
+                switch (mSelectedImage) {
+                    case 1:
+                        mIvCandidate1.setImageURI(fileUri);
+                        break;
+                    case 2:
+                        mIvCandidate2.setImageURI(fileUri);
+                        break;
+                    case 3:
+                        mIvCandidate3.setImageURI(fileUri);
+                        break;
+                    case 4:
+                        mIvCandidate4.setImageURI(fileUri);
+                        break;
+                    case 5:
+                        mIvCandidate5.setImageURI(fileUri);
+                        break;
+                    case 6:
+                        mIvCandidate6.setImageURI(fileUri);
+                        break;
+                    case 7:
+                        mIvCandidate7.setImageURI(fileUri);
+                        break;
+                    case 8:
+                        mIvCandidate8.setImageURI(fileUri);
+                        break;
+                    case 9:
+                        mIvCandidate9.setImageURI(fileUri);
+                        break;
+                    case 10:
+                        mIvCandidate10.setImageURI(fileUri);
+                        break;
+                    case 11:
+                        mIvCandidate11.setImageURI(fileUri);
+                        break;
+                    case 12:
+                        mIvCandidate12.setImageURI(fileUri);
+                        break;
+                    case 13:
+                        mIvCandidate13.setImageURI(fileUri);
+                        break;
+                    case 14:
+                        mIvCandidate14.setImageURI(fileUri);
+                        break;
+                    case 15:
+                        mIvCandidate15.setImageURI(fileUri);
+                        break;
+                    case 16:
+                        mIvCandidate16.setImageURI(fileUri);
+                        break;
 
-            //You can get File object from intent
-            File file = ImagePicker.Companion.getFile(data);
-
-            if (file.exists()) {
-                long fileSize = file.length();
-                Log.d("BreezeWind", "file size: " + fileSize);
-                if (fileSize > 1000000) { // 2 mb
-                    // 압축
-                    try {
-                        file = new Compressor(WorldCupWriteActivity.this).compressToFile(file);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    long afterFileSize = file.length();
-                    Log.d("BreezeWind", "after file size: " + afterFileSize);
                 }
-            }
 
-            mFileList.add(file);
+            }
 
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, ImagePicker.Companion.getError(data), Toast.LENGTH_SHORT).show();
