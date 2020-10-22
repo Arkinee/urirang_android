@@ -291,7 +291,5 @@ public class BottomSheetAllResultMbtiFilterDialog extends BottomSheetDialogFragm
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
-
-        ((MainActivity) getActivity()).setBoardDoubleClick(false);
     }
 }
