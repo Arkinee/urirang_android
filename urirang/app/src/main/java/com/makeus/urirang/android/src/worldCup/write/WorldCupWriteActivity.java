@@ -27,6 +27,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.BaseActivity;
 import com.makeus.urirang.android.src.main.fragments.worldCup.WorldCupService;
+import com.makeus.urirang.android.src.worldCup.WorldCupWriteAndContentService;
 import com.makeus.urirang.android.src.worldCup.interfaces.WorldCupWriteView;
 
 import java.io.File;
@@ -271,7 +272,7 @@ public class WorldCupWriteActivity extends BaseActivity implements WorldCupWrite
         map.put("description", descriptionBody);
         map.put("roundNum", roundNumBody);
 
-        final WorldCupService worldCupWriteService = new WorldCupService(this, mContext);
+        final WorldCupWriteAndContentService worldCupWriteService = new WorldCupWriteAndContentService(this, mContext);
         worldCupWriteService.tryPostWorldCup(map, images);
         showProgressDialog();
     }

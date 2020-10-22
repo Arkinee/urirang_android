@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/world_cup_content_iv_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/world_cup"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBasicBlack68" />
+
+    <ImageView
+        android:id="@+id/world_cup_content_iv_back_arrow"
+        android:layout_width="60dp"
+        android:layout_height="52dp"
+        android:contentDescription="@string/world_cup"
+        android:onClick="worldCupContentOnClick"
+        android:paddingStart="20dp"
+        android:paddingTop="21dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="21dp"
+        android:src="@drawable/ic_white_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/world_cup_content_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="34sp"
+        android:fontFamily="@font/nanum_square_round_extra_bold"
+        android:textColor="@color/colorWhite"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        tools:text="내 취향 여자 연예인" />
+
+
+    <LinearLayout
+        android:id="@+id/world_cup_content_linear_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/world_cup_content_tv_title">
+
+        <ImageView
+            android:id="@+id/world_cup_content_iv_mbti"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:contentDescription="@string/world_cup"
+            tools:src="@drawable/ic_profile_isfj" />
+
+        <TextView
+            android:id="@+id/world_cup_content_tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/font_family_notosans_medium"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp"
+            tools:text="닉네임" />
+
+        <TextView
+            android:id="@+id/world_cup_content_tv_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/noto_sans_demi_light"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            tools:text="16강" />
+
+        <TextView
+            android:id="@+id/world_cup_content_tv_participate_wording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="3dp"
+            android:fontFamily="@font/noto_sans_demi_light"
+            android:text="@string/world_cup_tv_participate"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/world_cup_content_tv_participate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="3dp"
+            android:fontFamily="@font/noto_sans_demi_light"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp"
+            tools:text="145" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/world_cup_content_tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/noto_sans_demi_light"
+        android:lineSpacingExtra="7sp"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/world_cup_content_linear_info"
+        tools:text="취향 소나무인 사람들 모엿\n 내 취향 여자 연옌들 월드컵 해봅시닷" />
+
+    <TextView
+        android:id="@+id/world_cup_content_tv_start"
+        android:layout_width="156dp"
+        android:layout_height="38dp"
+        android:background="@drawable/src_world_cup_content_start"
+        android:fontFamily="@font/nanum_square_round_extra_bold"
+        android:gravity="center"
+        android:onClick="worldCupContentOnClick"
+        android:text="@string/world_cup_tv_content_start"
+        android:textColor="@color/colorBlack"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/world_cup_content_tv_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

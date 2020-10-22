@@ -243,6 +243,10 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
     protected void onResume() {
         super.onResume();
         mDoubleClick = false;
+
+        if (getIntent().getBooleanExtra("goWithAll", false)) {
+            setMainBoardWithALl();
+        }
     }
 
     @Override

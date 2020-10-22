@@ -11,7 +11,9 @@
     <color name="colorBasicBlack27">#46000000</color>
     <color name="colorBasicBlack47">#76000000</color>
     <color name="colorBasicBlack40">#66000000</color>
+    <color name="colorBasicBlack43">#6A000000</color>
     <color name="colorBasicBlack65">#A6000000</color>
+    <color name="colorBasicBlack68">#A9000000</color>
     <color name="colorBasicBlack83">#D6000000</color>
     <color name="colorBasicBlack38">#63000000</color>
     <color name="colorBasicBlack98">#fc000000</color>
@@ -50,5 +52,9 @@
     <color name="colorWithYouEdt">#f8f8f8</color>
 
     <color name="colorTestResults">#d4d4d4</color>
+
+    <!-- World Cup -->
+    <color name="colorWorldCupRound">#D50c0c0c</color>
+    <color name="colorWorldCup82Grey">#D5d8d8d8</color>
 
 </resources>

@@ -13,9 +13,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 
-public interface WorldCupWriteRetroifInterface {
+public interface WorldCupWriteRetrofitInterface {
 
     @Multipart
     @POST("/api/worldCup")
     Call<WorldCupWriteResponse> tryPostWorldCupWrite(@PartMap HashMap<String, RequestBody> params, @Part List<MultipartBody.Part> images);
+
 }

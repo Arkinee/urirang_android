@@ -23,6 +23,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@mipmap/ic_launcher" />
 
+            <ImageView
+                android:id="@+id/with_you_iv_share"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/with_you"
+                android:padding="10dp"
+                android:src="@drawable/ic_share"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/with_you_iv_main" />
+
             <View
                 android:id="@+id/with_you_view_round"
                 android:layout_width="match_parent"

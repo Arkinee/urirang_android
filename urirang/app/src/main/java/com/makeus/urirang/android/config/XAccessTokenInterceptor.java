@@ -22,7 +22,7 @@ public class XAccessTokenInterceptor implements Interceptor {
         final String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, null);
 
         if (jwtToken != null) {
-//            Log.d("TAG", "token: " + jwtToken);
+            Log.d("TAG", "token: " + jwtToken);
             builder.addHeader("Authorization", jwtToken);
         }
         return chain.proceed(builder.build());

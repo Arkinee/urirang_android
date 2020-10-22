@@ -30,15 +30,9 @@ public class WorldCupService {
 
     private Context mContext;
     private WorldCupView mView;
-    private WorldCupWriteView mWriteView;
 
     public WorldCupService(final WorldCupView view, Context context) {
         this.mView = view;
-        this.mContext = context;
-    }
-
-    public WorldCupService(final WorldCupWriteView view, Context context) {
-        this.mWriteView = view;
         this.mContext = context;
     }
 
@@ -85,28 +79,5 @@ public class WorldCupService {
             }
         });
     }
-
-    public void tryPostWorldCup(HashMap<String, RequestBody> params, List<MultipartBody.Part> images) {
-        final WorldCupRetrofitInterface worldCupRetrofitInterface = getRetrofit().create(WorldCupRetrofitInterface.class);
-        worldCupRetrofitInterface.tryPostWorldCup(params, images).enqueue(new Callback<WorldCupWriteResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<WorldCupWriteResponse> call, @NonNull Response<WorldCupWriteResponse> response) {
-
-                if (response.code() == 201) {
-                    mWriteView.tryPostWorldCupSuccess();
-                } else {
-                    mWriteView.tryPostWorldCupFailure("월드컵 만들기 실패");
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<WorldCupWriteResponse> call, Throwable t) {
-                t.printStackTrace();
-                mWriteView.tryPostWorldCupFailure(mContext.getString(R.string.network_connect_failure));
-            }
-        });
-    }
-
 
 }

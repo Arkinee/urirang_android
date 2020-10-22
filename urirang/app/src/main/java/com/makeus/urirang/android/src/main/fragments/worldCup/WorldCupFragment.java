@@ -28,6 +28,8 @@ import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.worldCup.adapter.WorldCupAdapter;
 import com.makeus.urirang.android.src.main.fragments.worldCup.interfaces.WorldCupView;
 import com.makeus.urirang.android.src.main.fragments.worldCup.model.WorldCup;
+import com.makeus.urirang.android.src.worldCup.content.WorldCupContentActivity;
+import com.makeus.urirang.android.src.worldCup.content.models.WorldCupContent;
 import com.makeus.urirang.android.src.worldCup.write.WorldCupWriteActivity;
 
 import java.util.ArrayList;
@@ -47,6 +49,8 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
     private TextView mWorldCupTvPopularParticipate;
     private TextView mWorldCupTvPopularDesc;
 
+    private TextView mWorldCupTvOrderBy;
+
     private ImageView mWorldCupIvPopularMain;
     private ImageView mWorldCupIvPopularMbti;
 
@@ -56,6 +60,7 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
     private boolean mIsEmptyResult = false;
     private boolean mLoading = true;
     private String mSort = "";
+    private int mPopularId = -1;
 
     public WorldCupFragment() {
     }
@@ -76,6 +81,7 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
         mWorldCupIvPopularMbti = view.findViewById(R.id.world_cup_popular_iv_mbti);
         mWorldCupIvPopularMain = view.findViewById(R.id.world_cup_iv_first_main);
         mWorldCupTvPopularDesc = view.findViewById(R.id.world_cup_tv_popular_desc);
+        mWorldCupTvOrderBy = view.findViewById(R.id.world_cup_tv_order_by);
 
         mWorldCupList = new ArrayList<>();
         RecyclerView worldCupRv = view.findViewById(R.id.world_cup_rv);
@@ -83,6 +89,9 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
             if (mDoubleClick) return;
             mDoubleClick = true;
 
+            Intent worldCup = new Intent(mContext, WorldCupContentActivity.class);
+            worldCup.putExtra("worldCupId", mWorldCupList.get(pos).getId());
+            startActivity(worldCup);
 
         });
         worldCupRv.addItemDecoration(new RecyclerDecoration(mContext, 11));
@@ -162,10 +171,11 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
     @Override
     public void tryGetBestSuccess(WorldCup worldCup) {
 
+        mPopularId = worldCup.getId();
         mWorldCupTvPopularTitle.setText(worldCup.getTitle());
         mWorldCupTvPopularNickname.setText(worldCup.getUser().getNickname());
 
-        String round = " " + mContext.getString(R.string.world_cup_middle_dot) + " " + worldCup.getRoundNum() + " " + mContext.getString(R.string.world_cup_middle_dot);
+        String round = " " + mContext.getString(R.string.world_cup_middle_dot) + " " + worldCup.getRoundNum() + "강 " + mContext.getString(R.string.world_cup_middle_dot);
         mWorldCupTvPopularRound.setText(round);
 
         Glide.with(mContext).load(worldCup.getWorldCupCandidates().get(0).getImageUrl()).into(mWorldCupIvPopularMain);
@@ -242,6 +252,15 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
                 if (mDoubleClick) return;
                 mDoubleClick = true;
 
+                Intent start = new Intent(mContext, WorldCupContentActivity.class);
+                if (mPopularId != -1)
+                    start.putExtra("worldCupId", mPopularId);
+                else {
+                    ((MainActivity) mContext).showCustomToastShort("월드컵 불러오기 실패");
+                    return;
+                }
+                startActivity(start);
+
                 break;
             case R.id.world_cup_linear_order_by:
                 if (mDoubleClick) return;
@@ -262,6 +281,7 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
         mDoubleClick = false;
         mLoading = true;
         mOption = 1;
+        mWorldCupTvOrderBy.setText(mContext.getResources().getString(R.string.hall_of_fame_tv_filter_by_created));
         getList();
     }
 
@@ -273,6 +293,7 @@ public class WorldCupFragment extends Fragment implements WorldCupView, View.OnC
         mDoubleClick = false;
         mLoading = true;
         mOption = 2;
+        mWorldCupTvOrderBy.setText(mContext.getResources().getString(R.string.hall_of_fame_tv_filter_by_popularity));
         getList();
     }
 

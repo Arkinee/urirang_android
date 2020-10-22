@@ -2,7 +2,9 @@ package com.makeus.urirang.android.src.main.fragments.worldCup.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Candidate {
+import java.io.Serializable;
+
+public class Candidate implements Serializable {
     @SerializedName("id")
     private int id;
     @SerializedName("worldCupId")

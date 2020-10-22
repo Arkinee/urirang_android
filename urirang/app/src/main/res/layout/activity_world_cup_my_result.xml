@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWithYouEdt">
+
+    <ImageView
+        android:id="@+id/world_cup_my_result_iv_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/world_cup"
+        android:src="@drawable/ic_world_cup_finish"
+        app:layout_constraintDimensionRatio="360:127"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/world_cup_my_result_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/src_view_radius_4_white"
+        app:layout_constraintDimensionRatio="320:446"
+        app:layout_constraintTop_toBottomOf="@+id/world_cup_my_result_iv_top">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/world_cup_my_result_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="18dp"
+            app:cardCornerRadius="4dp"
+            app:layout_constraintDimensionRatio="284:277"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/world_cup_my_result_iv_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/world_cup"
+                android:scaleType="centerCrop"
+                tools:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/world_cup_my_result_tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_gravity="bottom"
+                android:background="@color/colorBasicBlack25"
+                android:fontFamily="@font/nanum_square_round_extra_bold"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                tools:text="이주영" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/world_cup_my_result_tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:fontFamily="@font/nanum_square_round_extra_bold"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_my_result_card"
+            tools:text="랭킹 9위" />
+
+        <LinearLayout
+            android:id="@+id/world_cup_my_result_linear_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/world_cup_my_result_tv_rank">
+
+            <TextView
+                android:id="@+id/world_cup_my_result_tv_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_square_round_extra_bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp"
+                tools:text="11%" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_square_round_regular"
+                android:text="@string/world_cup_tv_result_percent_wording"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/world_cup_my_result_tv_go_all"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/src_go_all"
+            android:fontFamily="@font/nanum_square_round_extra_bold"
+            android:gravity="center"
+            android:text="@string/world_cup_tv_result_go_all"
+            android:textColor="@color/colorWhite"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="156:38"
+            app:layout_constraintEnd_toEndOf="@+id/world_cup_my_result_linear_percent"
+            app:layout_constraintStart_toStartOf="@+id/world_cup_my_result_linear_percent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -105,7 +105,7 @@ public class WorldCupAdapter extends RecyclerView.Adapter<WorldCupAdapter.ViewHo
         holder.tvWorldCupTitle.setText(worldCup.getTitle());
         holder.tvWorldCupNickname.setText(worldCup.getUser().getNickname());
 
-        String round = " " + mContext.getString(R.string.world_cup_middle_dot) + " " + worldCup.getRoundNum() + " " + mContext.getString(R.string.world_cup_middle_dot);
+        String round = " " + mContext.getString(R.string.world_cup_middle_dot) + " " + worldCup.getRoundNum() + "강 " + mContext.getString(R.string.world_cup_middle_dot);
         holder.tvWorldCupRound.setText(round);
         holder.tvWorldCupParticipate.setText(String.valueOf(worldCup.getJoinNum()));
 

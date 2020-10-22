@@ -116,6 +116,15 @@
         <activity
             android:name=".src.worldCup.write.WorldCupWriteActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.worldCup.content.WorldCupContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.worldCup.result.my.WorldCupMyResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.worldCup.result.all.WorldCupAllResultActivity"
+            android:screenOrientation="portrait" />
 
         <!-- Kakao social login-->
         <meta-data

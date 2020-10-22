@@ -173,11 +173,26 @@
     <string name="world_cup_tv_write_num_of_round_32">32강</string>
     <string name="world_cup_tv_write_num_of_round_16">16강</string>
     <string name="world_cup_tv_write_num_of_round_8">8강</string>
+    <string name="world_cup_tv_write_num_of_round_4">4강</string>
+    <string name="world_cup_tv_write_num_of_round_1">결승</string>
     <string name="world_cup_tv_write_title_description">월드컵 제목과 설명을 입력해 주세요.</string>
     <string name="world_cup_tv_write_title_hint">제목</string>
     <string name="world_cup_tv_write_description_hint">50자 이내로 설명을 입력해 주세요.</string>
     <string name="world_cup_tv_write_register_candidates">후보를 등록해 주세요.</string>
     <string name="world_cup_tv_write_random_matching_wording">*월드컵 후보 매칭은 랜덤으로 이뤄져!</string>
+
+    <string name="world_cup_tv_content_start">시작하기</string>
+    <string name="world_cup_tv_content_restart">다시하기</string>
+    <string name="world_cup_tv_content_vs">VS</string>
+
+    <string name="world_cup_tv_result_percent_wording">가 같은 후보를 선택했어!</string>
+    <string name="world_cup_tv_result_go_all">전체 결과 보기</string>
+
+    <string name="world_cup_tv_all_result_top">결과 보기</string>
+    <string name="world_cup_tv_all_result_wording">내 월드컵 결과</string>
+    <string name="world_cup_tv_all_result_my_mbti_wording">나와 같은 유형 결과</string>
+    <string name="world_cup_tv_all_result">전체 랭킹</string>
+    <string name="world_cup_tv_all_result_go_with_all">모두랑으로 떠들러가기</string>
 
     <string name="world_cup_candidate_tv_1">1</string>
     <string name="world_cup_candidate_tv_2">2</string>

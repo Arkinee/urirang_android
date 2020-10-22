@@ -16,18 +16,25 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.kakao.kakaolink.v2.KakaoLinkResponse;
+import com.kakao.kakaolink.v2.KakaoLinkService;
+import com.kakao.network.ErrorResult;
+import com.kakao.network.callback.ResponseCallback;
+import com.kakao.util.helper.log.Logger;
 import com.makeus.urirang.android.R;
 import com.makeus.urirang.android.src.main.MainActivity;
 import com.makeus.urirang.android.src.main.fragments.board.BoardService;
 import com.makeus.urirang.android.src.main.fragments.board.interfaces.BoardWithYouView;
 import com.makeus.urirang.android.src.main.fragments.board.models.BoardWithYouData;
 import com.makeus.urirang.android.src.main.fragments.board.models.CommentList;
+import com.makeus.urirang.android.src.main.fragments.board.models.Topic;
 import com.makeus.urirang.android.src.withYou.comment.WithYouCommentActivity;
 import com.makeus.urirang.android.src.withYou.image.WithYouImageActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import static com.makeus.urirang.android.src.ApplicationClass.TAG;
 import static com.makeus.urirang.android.src.ApplicationClass.sSharedPreferences;
@@ -85,6 +92,7 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
     private boolean mDoubleClickFlag = false;
     private int mTopicId = 0;
     private String mImageUrl = "";
+    private Topic mTopic;
 
     public BoardWithYouFragment() {
     }
@@ -154,16 +162,22 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
 
         // 모든 코멘트 보기로 가기
         ImageView ivGoComment = view.findViewById(R.id.with_you_iv_go_comment);
-        ivGoComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mDoubleClickFlag) return;
-                mDoubleClickFlag = true;
+        ivGoComment.setOnClickListener(v -> {
+            if (mDoubleClickFlag) return;
+            mDoubleClickFlag = true;
 
-                Intent goComment = new Intent(mContext, WithYouCommentActivity.class);
-                goComment.putExtra("topicId", mTopicId);
-                startActivity(goComment);
-            }
+            Intent goComment = new Intent(mContext, WithYouCommentActivity.class);
+            goComment.putExtra("topicId", mTopicId);
+            startActivity(goComment);
+        });
+
+        ImageView ivShare = view.findViewById(R.id.with_you_iv_share);
+        ivShare.setOnClickListener(v -> {
+            if (mDoubleClickFlag) return;
+            mDoubleClickFlag = true;
+
+            makeKakaoLinkFeed();
+
         });
 
         return view;
@@ -175,9 +189,34 @@ public class BoardWithYouFragment extends Fragment implements BoardWithYouView {
 
     }
 
+    public void makeKakaoLinkFeed() {
+
+        String title = mTopic.getTitle();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("title", title);
+        params.put("comment", String.valueOf(mTopic.getCommentNum()));
+        params.put("image", mImageUrl);
+
+        KakaoLinkService.getInstance().sendCustom(mContext, "38761", params, new ResponseCallback<KakaoLinkResponse>() {
+            @Override
+            public void onFailure(ErrorResult errorResult) {
+                Logger.e(errorResult.toString());
+            }
+
+            @Override
+            public void onSuccess(KakaoLinkResponse result) {
+//                Log.d("로그", "카카오 링크 success: " +  result.toString());
+            }
+
+        });
+
+    }
+
     @Override
     public void tryGetWithYouSuccess(BoardWithYouData data) {
 
+        mTopic = data.getTopic();
         mTopicId = data.getTopic().getId();
         sSharedPreferences.edit().putInt("currentTopicId", mTopicId).apply();
         mImageUrl = data.getTopic().getImages().get(0).getUrl();

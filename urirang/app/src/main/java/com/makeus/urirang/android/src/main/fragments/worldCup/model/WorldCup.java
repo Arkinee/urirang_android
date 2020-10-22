@@ -3,9 +3,10 @@ package com.makeus.urirang.android.src.main.fragments.worldCup.model;
 import com.google.gson.annotations.SerializedName;
 import com.makeus.urirang.android.src.howAboutThis.models.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class WorldCup {
+public class WorldCup implements Serializable {
 
     @SerializedName("id")
     private int id;
