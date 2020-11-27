@@ -217,8 +217,8 @@ public class WorldCupAllResultActivity extends BaseActivity implements WorldCupA
                 mDoubleClick = true;
 
                 Intent goWithAll = new Intent(this, MainActivity.class);
-                goWithAll.putExtra("goWithAll", true);
                 goWithAll.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                goWithAll.putExtra("goWithAll", true);
                 startActivity(goWithAll);
                 finish();
                 break;

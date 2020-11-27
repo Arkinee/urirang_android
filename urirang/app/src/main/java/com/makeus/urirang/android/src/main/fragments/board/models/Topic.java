@@ -21,7 +21,7 @@ public class Topic {
     @SerializedName("createdAt")
     private String createdAt;
     @SerializedName("updatedAt")
-    private String updatedat;
+    private String updatedAt;
     @SerializedName("User")
     private User user;
     @SerializedName("Images")
@@ -51,8 +51,8 @@ public class Topic {
         return createdAt;
     }
 
-    public String getUpdatedat() {
-        return updatedat;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
     public User getUser() {

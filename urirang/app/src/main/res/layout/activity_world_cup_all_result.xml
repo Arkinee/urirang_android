@@ -587,39 +587,47 @@
                     app:layout_constraintTop_toBottomOf="@+id/world_cup_all_result_tv_third_ratio"
                     tools:listitem="@layout/item_world_cup_result" />
 
-                <RelativeLayout
-                    android:id="@+id/world_cup_all_result_relative_bottom"
-                    android:layout_width="175dp"
-                    android:layout_height="38dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="70dp"
-                    android:background="@drawable/src_go_all"
-                    android:onClick="allResultClick"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintDimensionRatio="360:38"
                     app:layout_constraintTop_toBottomOf="@+id/world_cup_all_result_rv">
 
-                    <TextView
-                        android:id="@+id/world_cup_all_result_tv_go_with_all"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/nanum_square_round_extra_bold"
-                        android:text="@string/world_cup_tv_all_result_go_with_all"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="11sp" />
+                    <RelativeLayout
+                        android:id="@+id/world_cup_all_result_relative_bottom"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/src_go_all"
+                        android:onClick="allResultClick"
+                        app:layout_constraintDimensionRatio="156:38"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
 
-                    <ImageView
-                        android:layout_width="17dp"
-                        android:layout_height="17dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="9dp"
-                        android:layout_toStartOf="@+id/world_cup_all_result_tv_go_with_all"
-                        android:contentDescription="@string/world_cup"
-                        android:src="@drawable/ic_board_in_world_cup" />
+                        <TextView
+                            android:id="@+id/world_cup_all_result_tv_go_with_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/nanum_square_round_extra_bold"
+                            android:text="@string/world_cup_tv_all_result_go_with_all"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="11sp" />
 
-                </RelativeLayout>
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="4dp"
+                            android:layout_toStartOf="@+id/world_cup_all_result_tv_go_with_all"
+                            android:contentDescription="@string/world_cup"
+                            android:src="@drawable/ic_board_in_world_cup" />
+
+                    </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

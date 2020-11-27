@@ -58,11 +58,15 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
         initialize();
         refreshFcmToken();
         mFromPush = getIntent().getBooleanExtra("fromPush", false);
-        Log.d("BreezeWind", "from: " + mFromPush);
+//        Log.d("BreezeWind", "from: " + mFromPush);
 
         if (mFromPush) {
             Intent notice = new Intent(this, NoticeActivity.class);
             startActivity(notice);
+        }
+
+        if (getIntent().getBooleanExtra("goWithAll", false)) {
+            setMainBoardWithALl();
         }
     }
 
@@ -243,10 +247,6 @@ public class MainActivity extends BaseActivity implements MainActivityView, Bott
     protected void onResume() {
         super.onResume();
         mDoubleClick = false;
-
-        if (getIntent().getBooleanExtra("goWithAll", false)) {
-            setMainBoardWithALl();
-        }
     }
 
     @Override

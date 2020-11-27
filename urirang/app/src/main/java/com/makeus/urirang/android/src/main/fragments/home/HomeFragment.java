@@ -236,11 +236,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.home_iv_urirang:
-                ApplicationClass.sSharedPreferences.edit().putString(ApplicationClass.X_ACCESS_TOKEN, "").apply();
-                Intent goLoginIntent = new Intent(mContext, SocialLoginActivity.class);
-                goLoginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(goLoginIntent);
-                ((MainActivity) mContext).finish();
+//                ApplicationClass.sSharedPreferences.edit().putString(ApplicationClass.X_ACCESS_TOKEN, "").apply();
+//                Intent goLoginIntent = new Intent(mContext, SocialLoginActivity.class);
+//                goLoginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(goLoginIntent);
+//                ((MainActivity) mContext).finish();
                 break;
             case R.id.home_iv_notice:
                 if (mDoubleClickFlag) return;
